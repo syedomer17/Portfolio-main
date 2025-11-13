@@ -259,3 +259,6 @@ body {
   transform: scale(1.08);
 }
 
+html {
+  scroll-behavior: smooth;
+}

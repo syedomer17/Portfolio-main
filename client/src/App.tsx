@@ -5,6 +5,8 @@ import Contact from "./components/Contact";
 import "./App.css";
 import Particles from "./components/Particles";
 import { motion } from "framer-motion";
+import Experience from "./components/Experience";
+
 
 export default function Home() {
   return (
@@ -29,6 +31,7 @@ export default function Home() {
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         <Hero />
+        <Experience />
         <TechStack />
         <Projects />
         <Contact />

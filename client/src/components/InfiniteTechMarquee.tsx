@@ -9,7 +9,7 @@ export default function InfiniteTechMarquee({ children }: { children: React.Reac
       speed={45}
       pauseOnHover={false}
       direction="left"
-      className="w-full flex items-center"
+      className="w-full overflow-hidden"
     >
       {children}
     </Marquee>

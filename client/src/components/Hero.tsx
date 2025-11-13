@@ -1,61 +1,92 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+
+import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
 import TextType from "./reactbits/TextType";
 
 export default function Hero() {
-  const ref = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -80]);
-
   return (
-    <div ref={ref} className="container-xl mx-auto">
-      <motion.div style={{ y }}>
-        <GlassCard className="mt-16 text-center">
-          <h1 className="hero-yellow text-6xl sm:text-7xl font-extrabold leading-tight">
-            Hello! I’m <span className="text-white">Syed Omer Ali</span> 🚀
-          </h1>
+    <section className="container mx-auto px-4 sm:px-6 pt-20">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+      >
+        <GlassCard className="relative px-6 py-12 sm:px-14 sm:py-20 rounded-3xl overflow-hidden">
 
-          {/* TYPING SUBTITLE */}
-          <TextType
-            as="p"
-            className="mt-4 text-gray-300 text-xl font-medium tracking-wide"
-            text={[
-              "Full Stack Developer",
-              "DevOps Engineer",
-              "Cloud Enthusiast",
-              "API & System Design Engineer",
-              "Cloud Infrastructure Builder",
-            ]}
-            typingSpeed={50}
-            deletingSpeed={30}
-            pauseDuration={1200}
-            cursorCharacter="|"
-            textColors={["#ffffff", "#f6c400", "#34d399", "#93c5fd"]}
-            variableSpeed={{ min: 30, max: 90 }}
-            startOnVisible={true}
-            loop={true}
-          />
+          {/* Soft gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 pointer-events-none" />
 
-          {/* PARAGRAPH ABOUT YOU */}
-          <p className="mt-6 text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
-            I’m a Full Stack Developer and DevOps Engineer who builds scalable,
-            real-world applications with modern technologies like React,
-            Next.js, Node.js, and cloud-native DevOps tools. I specialize in
-            creating secure, high-performance systems — including OAuth flows,
-            CI/CD pipelines, cloud deployments, and end-to-end infrastructure
-            setups. My work blends strong development skills with operational
-            thinking to deliver solutions that are reliable, scalable, and
-            production-ready.
-          </p>
+          <div className="relative max-w-4xl mx-auto">
+            
+            {/* Title */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+              <span className="text-gray-400">Hello! I'm</span>{" "}
+              <span className="bg-gradient-to-r from-blue-300 to-purple-300 text-transparent bg-clip-text">
+                Syed Omer Ali
+              </span>{" "}
+              <span className="inline-block">🚀</span>
+            </h1>
+
+            {/* Subtitle – Typing */}
+            <div className="mt-6 text-xl sm:text-2xl font-medium leading-relaxed">
+              <TextType
+                as="p"
+                className="font-semibold"
+                text={[
+                  "Full Stack Developer",
+                  "API & System Designer",
+                  "DevOps Engineer",
+                  "Cloud Infrastructure Builder",
+                ]}
+                typingSpeed={60}
+                deletingSpeed={40}
+                pauseDuration={1500}
+                cursorCharacter="|"
+                textColors={[
+                  "#93c5fd",
+                  "#fbbf24",
+                  "#34d399",
+                  "#c084fc"
+                ]}
+                startOnVisible={true}
+                loop={true}
+              />
+            </div>
+
+            {/* Description */}
+            <p className="mt-8 text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
+              I design and build scalable, production-ready systems using{" "}
+              <span className="text-blue-300 font-medium">modern web technologies</span>{" "}
+              and <span className="text-purple-300 font-medium">cloud-native DevOps practices</span>.
+              From OAuth-based authentication flows to CI/CD pipelines and cloud deployments,
+              I combine engineering precision with DevOps discipline to ship high-quality,
+              reliable, and scalable real-world applications.
+            </p>
+
+            {/* Buttons */}
+            <div className="mt-12 flex flex-wrap items-center gap-4">
+              <motion.a
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.97 }}
+                href="#projects"
+                className="px-7 py-3.5 bg-blue-500/90 hover:bg-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/20 transition-all"
+              >
+                View Projects
+              </motion.a>
+
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                href="#contact"
+                className="px-7 py-3.5 bg-white/5 hover:bg-white/10 text-gray-200 font-semibold rounded-xl border border-white/10 transition-all"
+              >
+                Get in Touch
+              </motion.a>
+            </div>
+          </div>
         </GlassCard>
       </motion.div>
-    </div>
+    </section>
   );
 }

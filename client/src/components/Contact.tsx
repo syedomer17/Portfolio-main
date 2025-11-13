@@ -1,29 +1,91 @@
 "use client";
-import GlassCard from "./GlassCard";
-import { Github, Linkedin, Globe } from "lucide-react";
+
+import { Github, Linkedin, Globe, Mail } from "lucide-react";
 
 export default function Contact() {
   return (
-    <div className="container-xl mx-auto section-spacing">
-      <div style={{ maxWidth: 1100 }} className="mx-auto">
-        <GlassCard>
-          <h2 className="text-2xl font-semibold text-green-300 mb-4">Connect With Me 🌐</h2>
+    <section id="contact" className="container mx-auto px-4 section-spacing">
+      <div className="max-w-3xl mx-auto">
+        
+        {/* Header */}
+        <h2 className="text-3xl font-bold text-white mb-6 tracking-tight">
+          Connect With Me
+        </h2>
 
-          <div className="flex flex-col gap-4 text-gray-200">
-            <a className="flex items-center gap-3 hover:text-white" href="https://github.com/syedomer17">
-              <Github size={18}/> GitHub
-            </a>
+        {/* Description */}
+        <p className="text-gray-400 mb-10 text-lg">
+          I'm always open to collaborations, opportunities, or just a friendly chat.
+        </p>
 
-            <a className="flex items-center gap-3 hover:text-white" href="#">
-              <Linkedin size={18}/> LinkedIn
-            </a>
+        {/* Contact Grid */}
+        <div className="grid sm:grid-cols-2 gap-5">
 
-            <a className="flex items-center gap-3 hover:text-white" href="https://syedomer.me">
-              <Globe size={18}/> syedomer.me
-            </a>
-          </div>
-        </GlassCard>
+          <SimpleContactItem
+            icon={<Github size={20} />}
+            label="GitHub"
+            href="https://github.com/syedomer17"
+          />
+
+          <SimpleContactItem
+            icon={<Linkedin size={20} />}
+            label="LinkedIn"
+            href="https://www.linkedin.com/in/syed-omer-ali-b73501324/"
+          />
+
+          <SimpleContactItem
+            icon={<Globe size={20} />}
+            label="syedomer.me"
+            href="https://syedomer.me"
+          />
+
+          <SimpleContactItem
+            icon={<Mail size={20} />}
+            label="syedomerali2006@gmail.com"
+            href="mailto:syedomerali2006@gmail.com"
+          />
+
+        </div>
       </div>
-    </div>
+    </section>
+  );
+}
+
+function SimpleContactItem({
+  icon,
+  label,
+  href,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  href: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      className="
+        flex items-center gap-4 p-4
+        rounded-xl border border-white/10
+        bg-white/5 backdrop-blur-md
+        transition-all duration-200
+        hover:bg-white/10 hover:border-white/20
+      "
+    >
+      {/* Icon */}
+      <div
+        className="
+          p-3 rounded-lg 
+          bg-white/10 border border-white/15 
+          text-gray-300
+        "
+      >
+        {icon}
+      </div>
+
+      {/* Text */}
+      <span className="text-gray-200 text-base font-medium">
+        {label}
+      </span>
+    </a>
   );
 }
