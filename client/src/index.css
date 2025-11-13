@@ -167,3 +167,84 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* body {
+  background-image: url('/your-bg-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+} */
+
+.bg-overlay {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+body {
+  background-image: url('/background-portfolio.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.bg-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+}
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px) brightness(0.65);
+}
+
+.bg-overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.bg-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.65)
+  );
+}
+
+.bg-radial-focus {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.tech-pill {
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e5e7eb;
+  font-size: 16px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+
+  box-shadow:
+    inset 0 0 12px rgba(255, 255, 255, 0.06),
+    0 0 12px rgba(0, 0, 0, 0.40);
+}
