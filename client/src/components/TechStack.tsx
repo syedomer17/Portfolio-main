@@ -1,6 +1,5 @@
 "use client";
 
-import GlassCard from "./GlassCard";
 import InfiniteTechMarquee from "./InfiniteTechMarquee";
 
 const techList = [
@@ -19,22 +18,28 @@ const techList = [
 export default function TechStack() {
   return (
     <div className="container-xl mx-auto section-spacing">
-      <div style={{ maxWidth: 1100 }} className="mx-auto">
-        <GlassCard>
-          <h2 className="text-2xl font-semibold text-blue-300 mb-4">
+      <div className="mx-auto max-w-5xl">
+        <div className="backdrop-blur-xl bg-white/5 border border-white/10 
+                        rounded-3xl shadow-2xl p-10 relative overflow-hidden">
+
+          <h2 className="text-3xl font-semibold text-blue-300 mb-8 flex items-center gap-2">
             Tech Stack ⚡
           </h2>
 
-          <div className="mt-10 w-full overflow-hidden">
-            <InfiniteTechMarquee>
-              {techList.map((tech, index) => (
-                <span key={index} className="tech-pill mx-6">
-                  {tech}
-                </span>
-              ))}
-            </InfiniteTechMarquee>
-          </div>
-        </GlassCard>
+          {/* Marquee Section */}
+          <InfiniteTechMarquee>
+            {techList.map((tech, index) => (
+              <span
+                key={index}
+                tabIndex={0}
+                aria-label={tech}
+                className="tech-pill mx-6"
+              >
+                {tech}
+              </span>
+            ))}
+          </InfiniteTechMarquee>
+        </div>
       </div>
     </div>
   );
