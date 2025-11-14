@@ -6,22 +6,22 @@ import { Briefcase } from "lucide-react";
 
 const experience = [
   {
-    role: "Full Stack Intern",
-    company: "Code for India",
-    year: "2025",
-    desc: "Built production-ready web and backend systems with Next.js, Node.js, MongoDB, OAuth, and CI/CD tooling. Focused on authentication, performance, and scalable system architecture.",
+    role: "AWS + DevOps Engineer",
+    company: "Full Stack Academy",
+    year: "2025 — Present",
+    desc: "Designed and implemented CI/CD pipelines, containerized applications with Docker, and managed cloud infrastructure on AWS. Enhanced deployment speed and system monitoring.",
   },
   {
-    role: "Backend Developer",
-    company: "Freelance Work",
+    role: "Frontend Developer",
+    company: "The Hacking School",
     year: "2024 — 2025",
     desc: "Developed secure APIs, authentication flows, database services, and Docker-based deployments. Automated cloud workflows and improved reliability.",
   },
   {
-    role: "Student Developer",
-    company: "Personal Projects",
-    year: "2023 — Present",
-    desc: "Exploring system design, cloud, automation, microservices, and DevOps practices. Building hands-on projects around CI/CD, containers, and distributed systems.",
+    role: "Full Stack Developer",
+    company: "Code for India",
+    year: "2024 — 2025",
+    desc: "Built production-ready web and backend systems with Next.js, Node.js, MongoDB, OAuth, and CI/CD tooling. Focused on authentication, performance, and scalable system architecture.",
   },
 ];
 
