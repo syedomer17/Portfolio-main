@@ -7,36 +7,68 @@ export default function Projects() {
   const items = [
     {
       title: "GitHub Gist Manager",
-      stack: "Next.js • MongoDB • OAuth",
+      stack: "Next.js • MongoDB • OAuth • TailwindCSS • Shadcn UI • TypeScript",
       description:
         "A full GitHub Gist dashboard allowing users to view, edit, delete, fork and create gists using secure GitHub OAuth.",
-      github: "#",
-      demo: "#",
+      github: "https://github.com/syedomer17/Next.js-gist-search",
+      demo: "https://gist.syedomer.me",
     },
     {
       title: "AI Resume Builder",
-      stack: "Next.js • Gemini AI",
+      stack: "Next.js • Gemini AI • TailwindCSS • Shadcn UI • MongoDB • TypeScript",
       description:
         "AI-powered resume builder that generates ATS-optimized resumes based on job descriptions and your profile.",
-      github: "#",
-      demo: "#",
+      github: "https://github.com/syedomer17/AI-powered-resume",
+      demo: "https://hireai.syedomer.me",
+    },
+    {
+      title: "AI Fitness Coach",
+      stack: "React • Next.js • OpenAI • TailwindCSS • Shadcn UI • MongoDB • TypeScript",
+      description:
+        "Personalized fitness coaching app that creates workout plans and nutrition advice using AI based on user goals.",
+      github: "https://github.com/syedomer17/Next.js-AI-fitness-App",
+      demo: "https://fitsync.syedomer.me",
+    },
+    {
+      title: "AI Interviewer",
+      stack: "React.js • Node.js • Express.js • MongoDB • OpenAI • TailwindCSS • Shadcn UI • TypeScript",
+      description:
+        "Mock interview platform that uses AI to simulate technical interviews, provide feedback, and suggest improvements.",
+      github: "https://github.com/syedomer17/AI-Powered-Interview-Assistant",
+      demo: "https://hirelens.syedomer.me",
+    },
+    {
+      title: "Nginx Generator",
+      stack: " Next.js • TailwindCSS • Shadcn UI • MongoDB • TypeScript",
+      description:
+        "Web app that generates optimized Nginx configuration files based on user inputs for various use cases.",
+      github: "https://github.com/syedomer17/Next.js-nginx-config-generator",
+      demo: "https://nginx.syedomer.me",
+    },
+    {
+      title: "Expense Tracker",
+      stack: "React • Node.js • Express • PostgreSQL • TailwindCSS • Shadcn UI",
+      description:
+        "Full-stack expense tracking app with user authentication, real-time charts, and budget management features.",
+      github: "https://github.com/syedomer17/Expense-Tracker-App",
+      demo: "https://trackify.syedomer.me",
     },
     {
       title: "OAuth Auth System",
-      stack: "NestJS • Fastify",
+      stack: "Node.js • Express • MongoDB • JWT • Typescript",
       description:
         "Production-grade authentication system with email verification, refresh tokens, Twilio OTP, and secure token rotation.",
-      github: "#",
+      github: "https://github.com/syedomer17/graphQL-auth",
       demo: "#",
     },
-    {
-      title: "DevOps Pipelines",
-      stack: "Jenkins • Docker • CI/CD",
-      description:
-        "End-to-end CI/CD pipelines using Jenkins, Docker, build triggers, automated deployments, and multi-env workflows.",
-      github: "#",
-      demo: "#",
-    },
+    // {
+    //   title: "DevOps Pipelines",
+    //   stack: "Jenkins • Docker • CI/CD",
+    //   description:
+    //     "End-to-end CI/CD pipelines using Jenkins, Docker, build triggers, automated deployments, and multi-env workflows.",
+    //   github: "#",
+    //   demo: "#",
+    // },
   ];
 
   return (
