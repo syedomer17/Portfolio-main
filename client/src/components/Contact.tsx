@@ -1,56 +1,59 @@
 "use client";
 
-import { Github, Linkedin, Globe, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { X } from "lucide-react"; // X / Twitter icon
 
 export default function Contact() {
   return (
     <section id="contact" className="container mx-auto px-4 section-spacing">
       <div className="max-w-3xl mx-auto">
-        
+
         {/* Header */}
-        <h2 className="text-3xl font-bold text-white mb-6 tracking-tight">
+        <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">
           Connect With Me
         </h2>
 
         {/* Description */}
-        <p className="text-gray-400 mb-10 text-lg">
-          I'm always open to collaborations, opportunities, or just a friendly chat.
+        <p className="text-gray-400 mb-10 text-[17px] leading-relaxed">
+          Whether you want to collaborate, discuss an idea, or simply say hello — 
+          feel free to reach out.
         </p>
 
-        {/* Contact Grid */}
-        <div className="grid sm:grid-cols-2 gap-5">
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 gap-4">
 
-          <SimpleContactItem
-            icon={<Github size={20} />}
+          <MinimalContactItem
+            icon={<Github size={18} />}
             label="GitHub"
             href="https://github.com/syedomer17"
           />
 
-          <SimpleContactItem
-            icon={<Linkedin size={20} />}
+          <MinimalContactItem
+            icon={<Linkedin size={18} />}
             label="LinkedIn"
             href="https://www.linkedin.com/in/syed-omer-ali-b73501324/"
           />
 
-          <SimpleContactItem
-            icon={<Globe size={20} />}
-            label="syedomer.me"
-            href="https://syedomer.me"
+          <MinimalContactItem
+            icon={<X size={18} />}
+            label="Twitter"
+            href="https://x.com/SyedOmerAl20006"
           />
 
-          <SimpleContactItem
-            icon={<Mail size={20} />}
+          <MinimalContactItem
+            icon={<Mail size={18} />}
             label="syedomerali2006@gmail.com"
             href="mailto:syedomerali2006@gmail.com"
           />
 
         </div>
+
       </div>
     </section>
   );
 }
 
-function SimpleContactItem({
+function MinimalContactItem({
   icon,
   label,
   href,
@@ -64,26 +67,26 @@ function SimpleContactItem({
       href={href}
       target="_blank"
       className="
-        flex items-center gap-4 p-4
-        rounded-xl border border-white/10
-        bg-white/5 backdrop-blur-md
-        transition-all duration-200
-        hover:bg-white/10 hover:border-white/20
+        flex items-center gap-3 px-3 py-3
+        rounded-lg border border-white/10
+        hover:border-white/20
+        transition-colors duration-200
+        group
       "
     >
       {/* Icon */}
-      <div
-        className="
-          p-3 rounded-lg 
-          bg-white/10 border border-white/15 
-          text-gray-300
-        "
-      >
+      <div className="
+        text-gray-400 group-hover:text-white
+        transition-colors duration-200
+      ">
         {icon}
       </div>
 
       {/* Text */}
-      <span className="text-gray-200 text-base font-medium">
+      <span className="
+        text-gray-200 group-hover:text-white
+        transition-colors duration-200 text-[15px]
+      ">
         {label}
       </span>
     </a>
