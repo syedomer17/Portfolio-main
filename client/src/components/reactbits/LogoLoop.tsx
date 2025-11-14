@@ -1,19 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-const techList = [
-  "JavaScript",
-  "TypeScript",
-  "MongoDB",
-  "Express",
-  "React",
-  "Node.js",
-  "Next.js",
-  "Docker",
-  "Linux",
-  "CI/CD",
-];
-
-
 export type LogoItem =
   | {
       node: React.ReactNode;
