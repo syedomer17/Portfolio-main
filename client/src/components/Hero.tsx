@@ -3,8 +3,12 @@
 import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
 import TextType from "./reactbits/TextType";
+import { useRef } from "react";
+import VariableProximity from "./reactbits/VariableProximity";
 
 export default function Hero() {
+  const nameRef = useRef(null);
+
   return (
     <section className="container mx-auto px-4 sm:px-6 pt-20">
       <motion.div
@@ -18,17 +22,32 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 pointer-events-none" />
 
           <div className="relative max-w-4xl mx-auto">
-            
+
             {/* Title */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
-              <span className="text-gray-400">Hello! I'm</span>{" "}
-              <span className="bg-gradient-to-r from-blue-300 to-purple-300 text-transparent bg-clip-text">
-                Syed Omer Ali
-              </span>{" "}
-              <span className="inline-block">🚀</span>
+
+              <span className="text-gray-400">Hello! I'm </span>
+
+              {/* FIX — gradient + VariableProximity text */}
+              <span className="inline-block bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
+                <VariableProximity
+                  label="Syed Omer Ali"
+                  className={'variable-proximity-demo'}
+                  fromFontVariationSettings="'wght' 400, 'opsz' 12"
+                  toFontVariationSettings="'wght' 1000, 'opsz' 40"
+                  containerRef={nameRef}
+                  radius={120}
+                  falloff="linear"
+                />
+              </span>
+
+              <span className="inline-block"> 🚀</span>
             </h1>
 
-            {/* Subtitle – Typing */}
+            {/* Required invisible container for mouse-tracking */}
+            <div ref={nameRef} className="h-0 w-0"></div>
+
+            {/* Subtitle – Typing Animation */}
             <div className="mt-6 text-xl sm:text-2xl font-medium leading-relaxed">
               <TextType
                 as="p"
@@ -47,7 +66,7 @@ export default function Hero() {
                   "#93c5fd",
                   "#fbbf24",
                   "#34d399",
-                  "#c084fc"
+                  "#c084fc",
                 ]}
                 startOnVisible={true}
                 loop={true}
@@ -58,10 +77,10 @@ export default function Hero() {
             <p className="mt-8 text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
               I design and build scalable, production-ready systems using{" "}
               <span className="text-blue-300 font-medium">modern web technologies</span>{" "}
-              and <span className="text-purple-300 font-medium">cloud-native DevOps practices</span>.
-              From OAuth-based authentication flows to CI/CD pipelines and cloud deployments,
-              I combine engineering precision with DevOps discipline to ship high-quality,
-              reliable, and scalable real-world applications.
+              and{" "}
+              <span className="text-purple-300 font-medium">cloud-native DevOps practices</span>.
+              From OAuth authentication flows to CI/CD pipelines and cloud deployments,
+              I deliver high-performance, reliable applications end to end.
             </p>
 
             {/* Buttons */}
@@ -85,6 +104,7 @@ export default function Hero() {
               </motion.a>
             </div>
           </div>
+
         </GlassCard>
       </motion.div>
     </section>
