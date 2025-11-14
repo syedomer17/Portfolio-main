@@ -6,6 +6,7 @@ import "./App.css";
 import Particles from "./components/Particles";
 import { motion } from "framer-motion";
 import Experience from "./components/Experience";
+import Education from "./components/Education";
 
 
 export default function Home() {
@@ -34,6 +35,7 @@ export default function Home() {
         <Experience />
         <TechStack />
         <Projects />
+        <Education />
         <Contact />
       </motion.div>
     </main>
