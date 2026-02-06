@@ -1,96 +1,98 @@
 "use client";
 
-import InfiniteTechMarquee from "./InfiniteTechMarquee";
+import { motion } from "framer-motion";
+import { 
+  SiReact, 
+  SiNextdotjs, 
+  SiExpo, 
+  SiDjango, 
+  SiExpress, 
+  SiPostgresql, 
+  SiMongodb, 
+  SiRedis, 
+  SiPrisma, 
+  SiTailwindcss, 
+  SiPostman, 
+  SiTypescript, 
+  SiJavascript, 
+  SiPython, 
+  SiCplusplus, 
+  SiGit, 
+  SiGithub, 
+  SiFigma, 
+  SiDocker, 
+  SiLinux, 
+  SiBun,
+  SiNodedotjs
+} from "react-icons/si";
 
-const techList = [
-  "html5",
-  "css3",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Tailwind CSS",
-  "Shadcn UI",
-  "MUI",
-  "Chakra UI",
-  "Node.js",
-  "Express",
-  "NestJS",
-  "Fastify",
-  "Next.js",
-  "MySQL",
-  "PostgreSQL",
-  "SQLite",
-  "Prisma",
-  "MongoDB",
-  "Redis",
-  "Linux",
-  "AWS",
-  "DigitalOcean",
-  "GCP",
-  "Git",
-  "Github",
-  "Maven",
-  "Jenkins",
-  "Ansible",
-  "Docker Compose",
-  "Docker",
-  "Kubernetes",
-  "Prometheus",
-  "Grafana",
-  "Terraform",
-  "CI/CD",
+const skills = [
+  { name: "React", icon: SiReact },
+  { name: "Next", icon: SiNextdotjs },
+  { name: "Expo", icon: SiExpo },
+  { name: "Django", icon: SiDjango },
+  { name: "Express", icon: SiExpress },
+  { name: "Node", icon: SiNodedotjs },
+  { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "MongoDB", icon: SiMongodb },
+  { name: "Redis", icon: SiRedis },
+  { name: "Prisma", icon: SiPrisma },
+  { name: "Tailwind", icon: SiTailwindcss },
+  { name: "Postman", icon: SiPostman },
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "JavaScript", icon: SiJavascript },
+  { name: "Python", icon: SiPython },
+  { name: "C/C++", icon: SiCplusplus },
+  { name: "SQL", icon: SiPostgresql },
+  { name: "Git", icon: SiGit },
+  { name: "Github", icon: SiGithub },
+  { name: "Figma", icon: SiFigma },
+  { name: "Docker", icon: SiDocker },
+  { name: "Linux", icon: SiLinux },
+  { name: "Bun", icon: SiBun },
 ];
 
 export default function TechStack() {
   return (
-    <section className="container mx-auto section-spacing px-4">
-      <div className="max-w-6xl mx-auto">
-
-        {/* Outer Clean Card */}
-        <div
-          className="
-            relative rounded-2xl p-10
-            bg-gradient-to-br from-white/5 to-white/2
-            border border-white/10 
-            backdrop-blur-xl 
-            shadow-[0_8px_40px_rgba(0,0,0,0.45)]
-            overflow-hidden
-          "
+    <section id="skills" className="container mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-3xl font-bold mb-8 text-slate-900 dark:text-white"
         >
+          Skills & Technologies
+        </motion.h2>
 
-          {/* Faded edges (very subtle designer touch) */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black/40 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black/40 to-transparent" />
-
-          {/* Title */}
-          <h2 className="text-3xl font-semibold text-blue-300 mb-8 tracking-tight">
-            Tech Stack ⚡
-          </h2>
-
-          {/* Marquee */}
-          <div className="py-3">
-            <InfiniteTechMarquee>
-              {techList.map((tech, index) => (
-                <span
-                  key={index}
-                  className="
-                    mx-8 px-5 py-2
-                    rounded-xl
-                    text-gray-200 font-medium text-sm
-                    bg-white/5 
-                    border border-white/10
-                    backdrop-blur-md
-                    shadow-[inset_0_0_6px_rgba(255,255,255,0.04)]
-                    hover:bg-white/10 hover:shadow-[0_0_12px_rgba(255,255,255,0.15)]
-                    transition-all duration-300 select-none
-                  "
-                >
-                  {tech}
-                </span>
-              ))}
-            </InfiniteTechMarquee>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap gap-3"
+        >
+          {skills.map((skill, index) => {
+            const Icon = skill.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.02 }}
+                whileHover={{ scale: 1.1, y: -5 }}
+                className="group relative"
+              >
+                <div className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-300 dark:hover:border-blue-500 transition-all hover:shadow-lg">
+                  <Icon className="w-5 h-5 text-slate-600 dark:text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors" />
+                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                    {skill.name}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );

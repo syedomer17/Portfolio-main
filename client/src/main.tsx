@@ -3,6 +3,7 @@ import './index.css'
 import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFound from './components/page/NotFound.tsx';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')!).render(
-  <>
+  <ThemeProvider>
     <RouterProvider router={router} />
-  </>,
+  </ThemeProvider>,
 )

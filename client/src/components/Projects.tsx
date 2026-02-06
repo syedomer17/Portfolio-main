@@ -1,149 +1,153 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Stagger from "./Stagger";
+import { ExternalLink, Pin } from "lucide-react";
+
+const projects = [
+  {
+    title: "Lunel",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, itaque.",
+    image: "/api/placeholder/400/250",
+    status: "Building",
+    isComingSoon: true,
+  },
+  {
+    title: "Asap",
+    description: "Record studio-quality remote audio and video, locally captured without quality loss.",
+    image: "/api/placeholder/400/250",
+    status: "Building",
+    isComingSoon: true,
+  },
+  {
+    title: "Cuez",
+    description: "A special platform where people can organize their personal life better.",
+    image: "/api/placeholder/400/250",
+    status: "Live",
+    url: "https://cuez.app",
+  },
+  {
+    title: "The Daily Crimes",
+    description: "A newspaper website covering the latest crimes and law enforcement news.",
+    image: "/api/placeholder/400/250",
+    status: "Live",
+    url: "https://thedailycrimes.com",
+  },
+];
 
 export default function Projects() {
-  const items = [
-    {
-      title: "GitHub Gist Manager",
-      stack: "Next.js • MongoDB • OAuth • TailwindCSS • Shadcn UI • TypeScript",
-      description:
-        "A full GitHub Gist dashboard allowing users to view, edit, delete, fork and create gists using secure GitHub OAuth.",
-      github: "https://github.com/syedomer17/Next.js-gist-search",
-      demo: "https://gist.syedomer.me",
-    },
-    {
-      title: "AI Resume Builder",
-      stack: "Next.js • Gemini AI • TailwindCSS • Shadcn UI • MongoDB • TypeScript",
-      description:
-        "AI-powered resume builder that generates ATS-optimized resumes based on job descriptions and your profile.",
-      github: "https://github.com/syedomer17/AI-powered-resume",
-      demo: "https://hireai.syedomer.me",
-    },
-    {
-      title: "AI Fitness Coach",
-      stack: "React • Next.js • OpenAI • TailwindCSS • Shadcn UI • MongoDB • TypeScript",
-      description:
-        "Personalized fitness coaching app that creates workout plans and nutrition advice using AI based on user goals.",
-      github: "https://github.com/syedomer17/Next.js-AI-fitness-App",
-      demo: "https://fitsync.syedomer.me",
-    },
-    {
-      title: "AI Interviewer",
-      stack: "React.js • Node.js • Express.js • MongoDB • OpenAI • TailwindCSS • Shadcn UI • TypeScript",
-      description:
-        "Mock interview platform that uses AI to simulate technical interviews, provide feedback, and suggest improvements.",
-      github: "https://github.com/syedomer17/AI-Powered-Interview-Assistant",
-      demo: "https://hirelens.syedomer.me",
-    },
-    {
-      title: "Nginx Generator",
-      stack: " Next.js • TailwindCSS • Shadcn UI • MongoDB • TypeScript",
-      description:
-        "Web app that generates optimized Nginx configuration files based on user inputs for various use cases.",
-      github: "https://github.com/syedomer17/Next.js-nginx-config-generator",
-      demo: "https://nginx.syedomer.me",
-    },
-    {
-      title: "Expense Tracker",
-      stack: "React • Node.js • Express • PostgreSQL • TailwindCSS • Shadcn UI",
-      description:
-        "Full-stack expense tracking app with user authentication, real-time charts, and budget management features.",
-      github: "https://github.com/syedomer17/Expense-Tracker-App",
-      demo: "https://trackify.syedomer.me",
-    },
-    {
-      title: "OAuth Auth System",
-      stack: "Node.js • Express • MongoDB • JWT • Typescript",
-      description:
-        "Production-grade authentication system with email verification, refresh tokens, Twilio OTP, and secure token rotation.",
-      github: "https://github.com/syedomer17/graphQL-auth",
-      demo: "#",
-    },
-    // {
-    //   title: "DevOps Pipelines",
-    //   stack: "Jenkins • Docker • CI/CD",
-    //   description:
-    //     "End-to-end CI/CD pipelines using Jenkins, Docker, build triggers, automated deployments, and multi-env workflows.",
-    //   github: "#",
-    //   demo: "#",
-    // },
-  ];
-
   return (
     <section id="projects" className="container mx-auto px-4 py-16">
       <div className="max-w-4xl mx-auto">
-        {/* Title */}
-        <h2 className="text-3xl font-semibold text-purple-300 mb-8">
-          Projects 🚀
-        </h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-3xl font-bold mb-8 text-slate-900 dark:text-white"
+        >
+          Projects
+        </motion.h2>
 
-        {/* List */}
-        <Stagger>
-          <div className="flex flex-col gap-6">
-            {items.map((p, i) => (
-              <motion.div
-                key={i}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 },
-                }}
-                className="
-                  w-full p-6 rounded-2xl 
-                  bg-white/5 border border-white/10 
-                  backdrop-blur-xl shadow-lg relative
-                  hover:bg-white/10 hover:border-white/20
-                  transition-all duration-300
-                "
-              >
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-white">
-                  {p.title}
-                </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group relative bg-white dark:bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500 transition-all hover:shadow-xl"
+            >
+              {/* Coming Soon Badge */}
+              {project.isComingSoon && (
+                <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium rounded-full">
+                  Coming Soon
+                </div>
+              )}
 
-                <p className="text-sm text-blue-300 mt-1">{p.stack}</p>
+              {/* Pin Icon */}
+              <button className="absolute top-4 right-4 z-10 p-2 bg-white/90 dark:bg-slate-800/90 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                <Pin className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+              </button>
 
-                <p className="text-gray-300 mt-3 leading-relaxed">
-                  {p.description}
+              {/* Project Image */}
+              <div className="relative h-48 bg-linear-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 overflow-hidden">
+                {project.isComingSoon ? (
+                  <div className="w-full h-full flex items-center justify-center bg-black">
+                    <div className="text-center">
+                      <p className="text-white text-sm font-medium mb-2">STAY TUNED</p>
+                      <p className="text-white text-4xl font-bold tracking-wider">
+                        C<span className="inline-block mx-1 w-12 h-1 bg-white align-middle"></span>MING
+                        <br />
+                        S<span className="inline-block mx-1 w-12 h-1 bg-white align-middle"></span>
+                        <span className="inline-block mx-1 w-12 h-1 bg-white align-middle"></span>N
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                )}
+              </div>
+
+              {/* Project Info */}
+              <div className="p-5">
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+                    {project.title}
+                  </h3>
+                  <span
+                    className={`flex items-center gap-1 text-xs font-medium ${
+                      project.status === "Live"
+                        ? "text-green-600 dark:text-green-400"
+                        : "text-red-600 dark:text-red-400"
+                    }`}
+                  >
+                    <span
+                      className={`w-2 h-2 rounded-full ${
+                        project.status === "Live" ? "bg-green-600 dark:bg-green-400" : "bg-red-600 dark:bg-red-400"
+                      }`}
+                    />
+                    {project.status}
+                  </span>
+                </div>
+
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                  {project.description}
                 </p>
 
-                {/* Buttons */}
-                <div className="flex gap-4 mt-5">
+                {project.url && (
                   <a
-                    href={p.github}
+                    href={project.url}
                     target="_blank"
-                    className="
-                      px-4 py-2 rounded-lg
-                      bg-white/10 border border-white/20
-                      text-white text-sm
-                      flex items-center gap-2
-                      hover:bg-white hover:text-black
-                      transition-all duration-200
-                    "
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    <span>GitHub</span>
+                    View Project
+                    <ExternalLink className="w-4 h-4" />
                   </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-                  <a
-                    href={p.demo}
-                    target="_blank"
-                    className="
-                      px-4 py-2 rounded-lg
-                      bg-white/10 border border-white/20
-                      text-white text-sm
-                      flex items-center gap-2
-                      hover:bg-white hover:text-black
-                      transition-all duration-200
-                    "
-                  >
-                    <span>Live Demo</span>
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </Stagger>
+        {/* View All Button */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="flex justify-center mt-8"
+        >
+          <button className="px-6 py-3 bg-slate-900 dark:bg-slate-700 text-white rounded-lg font-medium hover:bg-slate-800 dark:hover:bg-slate-600 transition-colors flex items-center gap-2">
+            View All
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </button>
+        </motion.div>
       </div>
     </section>
   );

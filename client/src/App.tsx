@@ -7,13 +7,15 @@ import Particles from "./components/Particles";
 import { motion } from "framer-motion";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
+import Blogs from "./components/Blogs";
 
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative">
-      {/* BACKGROUND - parallax + overlays */}
-      <div className="bg-wrapper">
+    <main className="min-h-screen relative bg-white dark:bg-[#0B0D10] transition-colors duration-300">
+      
+      {/* BACKGROUND - parallax + overlays for dark mode */}
+      <div className="bg-wrapper opacity-0 dark:opacity-100 transition-opacity duration-300">
         <div
           className="parallax-bg"
           style={{ backgroundImage: "url('/bg.jpg')" }}
@@ -33,8 +35,9 @@ export default function Home() {
       >
         <Hero />
         <Experience />
-        <TechStack />
         <Projects />
+        <Blogs />
+        <TechStack />
         <Education />
         <Contact />
       </motion.div>
