@@ -39,7 +39,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="container mx-auto px-4 sm:px-6 pb-16">
+    <section id="projects" className="container mx-auto px-4 sm:px-6 pb-0">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <motion.h2

@@ -1,0 +1,138 @@
+backend:
+import { Request, Response } from "express";
+
+export type ContributionLevel =
+  | "NONE"
+  | "FIRST_QUARTILE"
+  | "SECOND_QUARTILE"
+  | "THIRD_QUARTILE"
+  | "FOURTH_QUARTILE";
+
+export interface ContributionDay {
+  date: string;
+  contributionCount: number;
+  contributionLevel: ContributionLevel;
+}
+
+export interface ContributionWeek {
+  contributionDays: ContributionDay[];
+}
+
+export interface ContributionData {
+  totalContributions: number;
+  weeks: ContributionWeek[];
+}
+
+export async function getGitHubContributions(
+  username: string
+): Promise<ContributionData> {
+  const to = new Date();
+  const from = new Date();
+  from.setDate(from.getDate() - 365);
+
+  const query = `
+    query($username: String!, $from: DateTime!, $to: DateTime!) {
+      user(login: $username) {
+        contributionsCollection(from: $from, to: $to) {
+          contributionCalendar {
+            totalContributions
+            weeks {
+              contributionDays {
+                date
+                contributionCount
+                contributionLevel
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) throw new Error("GITHUB_TOKEN missing");
+
+  const res = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      query,
+      variables: {
+        username,
+        from: from.toISOString(),
+        to: to.toISOString(),
+      },
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`GitHub API failed: ${res.statusText}`);
+  }
+
+  const json = await res.json();
+  if (json.errors) throw new Error(json.errors[0].message);
+
+  const calendar =
+    json.data.user.contributionsCollection.contributionCalendar;
+
+  return {
+    totalContributions: calendar.totalContributions,
+    weeks: calendar.weeks,
+  };
+}
+
+export async function githubContributionsHandler(
+  req: Request,
+  res: Response
+) {
+  try {
+    const { username } = req.params;
+    if (!username) {
+      return res.status(400).json({ error: "Username required" });
+    }
+
+    const data = await getGitHubContributions(username);
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({
+      error: "Failed to fetch GitHub contributions",
+      message: err instanceof Error ? err.message : "Unknown error",
+    });
+  }
+}
+
+githubApi.ts:
+export async function fetchGitHubContributions(username: string) {
+  const res = await fetch(`/api/github/${username}`);
+  if (!res.ok) throw new Error("Failed to fetch contributions");
+  return res.json();
+}
+
+ui:
+const levelColors: Record<string, string> = {
+  NONE: "bg-[#ebedf0] dark:bg-[#161b22]",
+  FIRST_QUARTILE: "bg-[#9be9a8] dark:bg-[#0e4429]",
+  SECOND_QUARTILE: "bg-[#40c463] dark:bg-[#006d32]",
+  THIRD_QUARTILE: "bg-[#30a14e] dark:bg-[#26a641]",
+  FOURTH_QUARTILE: "bg-[#216e39] dark:bg-[#39d353]",
+};
+
+in Hero.tsx
+<div className="flex gap-[2px]">
+  {contributionData.weeks.map((week, wi) => (
+    <div key={wi} className="flex flex-col gap-[2px]">
+      {week.contributionDays.map((day, di) => (
+        <div
+          key={di}
+          className={`w-[10px] h-[10px] rounded-[2px] ${
+            levelColors[day.contributionLevel]
+          } hover:ring-1 hover:ring-slate-400 dark:hover:ring-white`}
+          title={`${day.date}: ${day.contributionCount} contributions`}
+        />
+      ))}
+    </div>
+  ))}
+</div>
