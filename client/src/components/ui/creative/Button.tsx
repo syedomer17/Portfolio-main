@@ -13,7 +13,7 @@ function ButtonCreativeTop({ children, href, onClick, icon }: ButtonCreativeTopP
 
     const content = (
         <div
-            className='cursor-pointer px-5 py-2.5 rounded-[9px] text-center font-medium text-sm inline-flex items-center gap-2 bg-slate-700 dark:bg-[#C7C7C7] text-white dark:text-[#0E0D09]'
+            className='cursor-pointer px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-[9px] text-center font-medium text-sm inline-flex items-center gap-2 bg-slate-700 dark:bg-[#C7C7C7] text-white dark:text-[#0E0D09]'
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

@@ -12,7 +12,7 @@ export default function LeetcodeHoverCard() {
                 href="https://leetcode.com/syedomerali_200"
                 target="_blank"
                 rel="noopener noreferrer"
-                onMouseEnter={() => setShowCard(true)}
+                onMouseEnter={() => window.innerWidth >= 640 && setShowCard(true)}
                 onMouseLeave={() => setShowCard(false)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

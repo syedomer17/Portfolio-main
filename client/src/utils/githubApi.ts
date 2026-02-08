@@ -1,64 +1,71 @@
+export type ContributionLevel =
+    | "NONE"
+    | "FIRST_QUARTILE"
+    | "SECOND_QUARTILE"
+    | "THIRD_QUARTILE"
+    | "FOURTH_QUARTILE";
+
 export interface ContributionDay {
-    date: string;
+    date: string; // YYYY-MM-DD
     contributionCount: number;
-    contributionLevel: number; // 0-4
+    contributionLevel: ContributionLevel;
+}
+
+export interface ContributionWeek {
+    contributionDays: ContributionDay[];
 }
 
 export interface ContributionData {
     totalContributions: number;
-    days: ContributionDay[];
+    weeks: ContributionWeek[];
 }
 
-/**
- * Fetches GitHub contribution data from the backend API
- * @param username - GitHub username
- * @returns Contribution data for the past 365 days
- */
 export async function fetchGitHubContributions(
     username: string
 ): Promise<ContributionData> {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:9000';
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:9000";
 
-    try {
-        const response = await fetch(`${API_URL}/api/github-contributions/${username}`);
+    const res = await fetch(
+        `${API_URL}/api/github-contributions/${username}`
+    );
 
-        if (!response.ok) {
-            throw new Error(`Backend API error: ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching GitHub contributions:', error);
-        throw error;
+    if (!res.ok) {
+        throw new Error("Failed to fetch GitHub contributions");
     }
+
+    return res.json();
 }
 
-/**
- * Generates mock contribution data for fallback/testing
- */
-export function generateMockContributions(): ContributionData {
-    const days: ContributionDay[] = [];
+/* ---------------- NORMALIZER (CRITICAL FIX) ---------------- */
+
+export function normalizeContributionData(
+    data: ContributionData
+): ContributionData {
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    for (let i = 364; i >= 0; i--) {
-        const date = new Date(today);
-        date.setDate(date.getDate() - i);
+    const start = new Date(today);
+    start.setDate(start.getDate() - 365);
 
-        const level = Math.floor(Math.random() * 5);
-        const count = level === 0 ? 0 : level * 3;
+    const allDays = data.weeks.flatMap((w) => w.contributionDays);
 
-        days.push({
-            date: date.toISOString().split('T')[0],
-            contributionCount: count,
-            contributionLevel: level,
+    const filtered = allDays.filter((d) => {
+        const date = new Date(d.date);
+        return date >= start && date <= today;
+    });
+
+    const weeks: ContributionWeek[] = [];
+    for (let i = 0; i < filtered.length; i += 7) {
+        weeks.push({
+            contributionDays: filtered.slice(i, i + 7),
         });
     }
 
-    const totalContributions = days.reduce((sum, day) => sum + day.contributionCount, 0);
-
     return {
-        totalContributions,
-        days,
+        totalContributions: filtered.reduce(
+            (sum, d) => sum + d.contributionCount,
+            0
+        ),
+        weeks,
     };
 }

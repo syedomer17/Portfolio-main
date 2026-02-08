@@ -12,11 +12,11 @@ export default function LinkedinHoverCard() {
                 href="https://linkedin.com/in/syedomer17"
                 target="_blank"
                 rel="noopener noreferrer"
-                onMouseEnter={() => setShowCard(true)}
+                onMouseEnter={() => window.innerWidth >= 640 && setShowCard(true)}
                 onMouseLeave={() => setShowCard(false)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
+                className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] sm:dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
                 style={{ fontFamily: '"Instagram Sans", sans-serif' }}
             >
                 <FaLinkedin className="w-4 h-4" />

@@ -13,11 +13,11 @@ export default function GithubHoverCard() {
                 href="https://github.com/syedomer17"
                 target="_blank"
                 rel="noopener noreferrer"
-                onMouseEnter={() => setShowCard(true)}
+                onMouseEnter={() => window.innerWidth >= 640 && setShowCard(true)}
                 onMouseLeave={() => setShowCard(false)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
+                className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] sm:dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
                 style={{ fontFamily: '"Instagram Sans", sans-serif' }}
             >
                 <FaGithub className="w-4 h-4" />
@@ -51,10 +51,10 @@ export default function GithubHoverCard() {
                             {/* Name and Username */}
                             <div className="flex-1">
                                 <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-0.5">
-                                    Rinkit Adhana
+                                    Syed Omer Ali
                                 </h3>
                                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                                    rinkitadhana
+                                    syedomer17
                                 </p>
                             </div>
                         </div>

@@ -3,8 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { CalendarDays, Eye, Mail, RefreshCw } from "lucide-react";
 
-import { FaXTwitter } from "react-icons/fa6";
-import { SiLeetcode } from "react-icons/si";
 import { HiMenu } from "react-icons/hi";
 import { FaInstagram, FaYoutube, FaDiscord } from "react-icons/fa";
 import { SiBehance, SiBluesky } from "react-icons/si";
@@ -18,7 +16,13 @@ import TwitterHoverCard from "./Twitter";
 import LinkedinHoverCard from "./Linkedin";
 import MediumHoverCard from "./Medium";
 import LeetcodeHoverCard from "./Leetcode";
-import { fetchGitHubContributions, generateMockContributions, type ContributionData } from "../utils/githubApi";
+import {
+  fetchGitHubContributions,
+  normalizeContributionData,
+  type ContributionData,
+} from "../utils/githubApi";
+import { LEVEL_COLORS } from "../utils/colors";
+import { formatDateDDMMYYYY } from "../utils/date";
 
 export default function Hero() {
   const [views] = useState(3300);
@@ -27,6 +31,12 @@ export default function Hero() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [contributionData, setContributionData] = useState<ContributionData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  // Prevent flash of unstyled content on initial load
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleImageSwitch = () => {
     // Play audio
@@ -45,13 +55,10 @@ export default function Hero() {
   useEffect(() => {
     async function loadContributions() {
       try {
-        // Try to fetch real data from GitHub API
-        const data = await fetchGitHubContributions('syedomer17');
-        setContributionData(data);
-      } catch (error) {
-        console.warn('Failed to fetch GitHub data, using mock data:', error);
-        // Fallback to mock data if API fails
-        setContributionData(generateMockContributions());
+        const raw = await fetchGitHubContributions("syedomer17");
+        setContributionData(normalizeContributionData(raw));
+      } catch (err) {
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -60,13 +67,18 @@ export default function Hero() {
     loadContributions();
   }, []);
 
+  // Don't render anything until mounted to prevent FOUC
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <section className="container mx-auto px-4 sm:px-6 pt-20 pb-16">
+    <section className="container mx-auto px-4 sm:px-6 pt-20 pb-0">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease: "easeOut" }}
-        className="max-w-3xl mx-auto relative"
+        className="max-w-2xl mx-auto relative"
       >
         {/* Theme Toggle - aligned with image top */}
         <div className="absolute top-0 -right-1 z-10">
@@ -74,7 +86,7 @@ export default function Hero() {
         </div>
 
         {/* Profile Header Row */}
-        <div className="flex items-end gap-6 mb-8">
+        <div className="flex items-end gap-3 sm:gap-6 mb-8">
           {/* Profile Image */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -97,7 +109,7 @@ export default function Hero() {
             {/* Image Switch Button - Top Right of Image */}
             <motion.button
               onClick={handleImageSwitch}
-              className="absolute -right-12 top-[-0.1px] w-8 h-8 rounded-full text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors flex items-center justify-center"
+              className="absolute -right-8 sm:-right-12 top-[-0.1px] w-8 h-8 rounded-full text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors flex items-center justify-center"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               disabled={isAnimating}
@@ -128,8 +140,8 @@ export default function Hero() {
 
           {/* Name and Title */}
           <div className="flex-1">
-            <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
-              Rinkit Adhana
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}>
+              Syed Omer Ali
             </h1>
             <div className="flex items-center justify-between">
               <div className="text-slate-400 dark:text-slate-600 text-base">
@@ -142,7 +154,7 @@ export default function Hero() {
                     "Software Engineer",
                     "System Designer",
                   ]}
-                  className="text-base font-normal"
+                  className="text-sm sm:text-base font-normal"
                 />
               </div>
               {/* View Count */}
@@ -172,9 +184,9 @@ export default function Hero() {
         {/* Content Section - Full Width Below Header */}
         <div className="space-y-6">
           {/* Bio */}
-          <div className="space-y-3">
+          <div className="space-y-3" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
             <p className="text-slate-700 dark:text-slate-200 leading-relaxed">
-              Hey, I'm Rinkit, a full stack developer who loves building clean, modern websites and apps where
+              Hey, I'm Omer, a full stack developer who loves building clean, modern websites and apps where
               design, functionality, and even the smallest details matter, with a focus on making products that are
               both practical and visually satisfying.
             </p>
@@ -185,34 +197,38 @@ export default function Hero() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             <ButtonCreativeTop href="#contact" icon={<CalendarDays className="w-4 h-4" />}>
-              <strong>
+              <span className="font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
                 Book an intro call
-              </strong>
+              </span>
             </ButtonCreativeTop>
             <a
               href="mailto:your@email.com"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[9px] text-sm font-medium bg-white dark:bg-[#2E2E2E] text-slate-900 dark:text-[#D4D4D4] border border-slate-300 dark:border-transparent"
+              className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-[9px] text-sm font-medium bg-white dark:bg-[#2E2E2E] text-slate-900 dark:text-[#D4D4D4] border border-slate-300 dark:border-transparent"
             >
               <Mail className="w-4 h-4" />
-              <strong>
+              <span className="font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
                 Send an email
-              </strong>
+              </span>
             </a>
           </div>
 
           {/* Social Links */}
           <div>
-            <p className="text-slate-500 dark:text-[#94A3B8] text-sm mb-4 mt-6">
+            <p className="text-slate-500 dark:text-[#94A3B8] text-sm mb-2 sm:mb-4 mt-6">
               Here are my <strong className="font-medium text-slate-900 dark:text-white">socials</strong>
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               <GithubHoverCard />
               <TwitterHoverCard />
               <LinkedinHoverCard />
-              <MediumHoverCard />
-              <LeetcodeHoverCard />
+              <div className="hidden sm:inline-block">
+                <MediumHoverCard />
+              </div>
+              <div className="hidden sm:inline-block">
+                <LeetcodeHoverCard />
+              </div>
 
               {/* More Button with Dropdown */}
               <div className="relative">
@@ -220,7 +236,7 @@ export default function Hero() {
                   onClick={() => setShowMoreMenu(!showMoreMenu)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
+                  className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] sm:dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
                   style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                 >
                   <HiMenu className="w-4 h-4" />
@@ -238,23 +254,23 @@ export default function Hero() {
                     >
                       <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-100 dark:bg-[#3A3A3A] hover:bg-slate-200 dark:hover:bg-[#454545] rounded-lg transition-colors mb-1">
                         <SiBehance className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white">Behance</span>
+                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Behance</span>
                       </a>
                       <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-100 dark:bg-[#3A3A3A] hover:bg-slate-200 dark:hover:bg-[#454545] rounded-lg transition-colors mb-1">
                         <FaDiscord className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white">Discord</span>
+                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Discord</span>
                       </a>
                       <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-100 dark:bg-[#3A3A3A] hover:bg-slate-200 dark:hover:bg-[#454545] rounded-lg transition-colors mb-1">
                         <SiBluesky className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white">Bluesky</span>
+                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Bluesky</span>
                       </a>
                       <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-100 dark:bg-[#3A3A3A] hover:bg-slate-200 dark:hover:bg-[#454545] rounded-lg transition-colors mb-1">
                         <FaInstagram className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white">Instagram</span>
+                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Instagram</span>
                       </a>
                       <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-100 dark:bg-[#3A3A3A] hover:bg-slate-200 dark:hover:bg-[#454545] rounded-lg transition-colors">
                         <FaYoutube className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white">YouTube</span>
+                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>YouTube</span>
                       </a>
                     </motion.div>
                   )}
@@ -264,71 +280,59 @@ export default function Hero() {
           </div>
 
           {/* GitHub Contribution Graph */}
-          <div className="pt-6 border-t border-slate-200 dark:border-slate-800 -mx-6 px-6">
+          <div className="block mt-6 sm:-mt-2 sm:-mx-6 px-0 sm:pl-8 sm:pr-6">
             {loading ? (
               <div className="flex items-center justify-center py-8">
                 <span className="text-xs text-slate-500 dark:text-slate-600">Loading contributions...</span>
               </div>
             ) : contributionData ? (
               <>
-                {/* Month Labels */}
-                <div className="mb-2 overflow-x-auto scrollbar-hide">
-                  <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400 min-w-[800px]">
-                    <span>Feb</span>
-                    <span>Mar</span>
-                    <span>Apr</span>
-                    <span>May</span>
-                    <span>Jun</span>
-                    <span>Jul</span>
-                    <span>Aug</span>
-                    <span>Sep</span>
-                    <span>Oct</span>
-                    <span>Nov</span>
-                    <span>Dec</span>
-                    <span>Jan</span>
-                  </div>
-                </div>
+                {/* Shared Scroll Container for Alignment */}
+                <div className="overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 sm:px-0">
+                  <div className="w-max min-w-full">
+                    {/* Month Labels */}
+                    <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400 mb-2 px-1">
+                      {Array.from({ length: 12 }).map((_, i) => {
+                        const date = new Date();
+                        date.setMonth(date.getMonth() - (11 - i));
+                        return (
+                          <span key={i}>
+                            {date.toLocaleString('default', { month: 'short' })}
+                          </span>
+                        );
+                      })}
+                    </div>
 
-                {/* Contribution Grid - Compact */}
-                <div className="overflow-x-auto scrollbar-hide pb-2">
-                  <div className="flex gap-[2px] min-w-[800px]">
-                    {Array.from({ length: 53 }).map((_, weekIndex) => (
-                      <div key={weekIndex} className="flex flex-col gap-[2px]">
-                        {Array.from({ length: 7 }).map((_, dayIndex) => {
-                          const dayData = contributionData.days[weekIndex * 7 + dayIndex];
-                          const level = dayData?.contributionLevel || 0;
-                          const colors = [
-                            'bg-slate-800 dark:bg-slate-800/60',
-                            'bg-slate-700 dark:bg-slate-700/70',
-                            'bg-slate-600 dark:bg-slate-600/80',
-                            'bg-slate-500 dark:bg-slate-500',
-                            'bg-slate-300 dark:bg-slate-300'
-                          ];
-                          return (
+                    {/* Contribution Grid - Compact */}
+                    <div className="flex gap-[2px]">
+                      {contributionData.weeks.map((week, wi) => (
+                        <div key={wi} className="flex flex-col gap-[2px]">
+                          {week.contributionDays.map((day, di) => (
                             <div
-                              key={dayIndex}
-                              className={`w-[10px] h-[10px] rounded-[2px] ${colors[level]} hover:ring-1 hover:ring-slate-400 dark:hover:ring-slate-500 transition-all cursor-pointer`}
-                              title={dayData ? `${dayData.date}: ${dayData.contributionCount} contributions` : ''}
+                              key={di}
+                              className={`w-[10px] h-[10px] rounded-[2px] ${LEVEL_COLORS[day.contributionLevel]
+                                } hover:ring-1 hover:ring-slate-400 dark:hover:ring-white transition-all cursor-pointer`}
+                              title={`${formatDateDDMMYYYY(day.date)}: ${day.contributionCount} contributions`}
                             />
-                          );
-                        })}
-                      </div>
-                    ))}
+                          ))}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 {/* Bottom Legend */}
                 <div className="flex justify-between items-center mt-3">
                   <span className="text-xs text-slate-500 dark:text-slate-400">
-                    {contributionData.totalContributions} activities in {new Date().getFullYear()}
+                    {contributionData.totalContributions} activities in the last year
                   </span>
                   <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                     <span>Less</span>
                     <div className="flex gap-1">
-                      <div className="w-[10px] h-[10px] bg-slate-800 dark:bg-slate-800/60 rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-slate-700 dark:bg-slate-700/70 rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-slate-600 dark:bg-slate-600/80 rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-slate-300 dark:bg-slate-300 rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-[#ebedf0] dark:bg-[#161b22] rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-[#9be9a8] dark:bg-[#0e4429] rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-[#40c463] dark:bg-[#006d32] rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-[#216e39] dark:bg-[#39d353] rounded-[2px]" />
                     </div>
                     <span>More</span>
                   </div>
