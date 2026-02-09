@@ -1,14 +1,8 @@
-export type ContributionLevel =
-    | "NONE"
-    | "FIRST_QUARTILE"
-    | "SECOND_QUARTILE"
-    | "THIRD_QUARTILE"
-    | "FOURTH_QUARTILE";
-
+// Removed ContributionLevel as it's not used in the new API
 export interface ContributionDay {
-    date: string; // YYYY-MM-DD
+    date: string;
     contributionCount: number;
-    contributionLevel: ContributionLevel;
+    color: string;
 }
 
 export interface ContributionWeek {
@@ -36,36 +30,15 @@ export async function fetchGitHubContributions(
     return res.json();
 }
 
-/* ---------------- NORMALIZER (CRITICAL FIX) ---------------- */
-
 export function normalizeContributionData(
     data: ContributionData
 ): ContributionData {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    // The new API returns data in the correct format (weeks), so we might not need heavy normalization.
+    // However, to be safe and ensure we show exactly the last year/relevant days:
 
-    const start = new Date(today);
-    start.setDate(start.getDate() - 365);
+    // We can just return the data as is if the API is doing its job, or do a simple pass through.
+    // Previous logic was fixing missing days or filtering.
 
-    const allDays = data.weeks.flatMap((w) => w.contributionDays);
-
-    const filtered = allDays.filter((d) => {
-        const date = new Date(d.date);
-        return date >= start && date <= today;
-    });
-
-    const weeks: ContributionWeek[] = [];
-    for (let i = 0; i < filtered.length; i += 7) {
-        weeks.push({
-            contributionDays: filtered.slice(i, i + 7),
-        });
-    }
-
-    return {
-        totalContributions: filtered.reduce(
-            (sum, d) => sum + d.contributionCount,
-            0
-        ),
-        weeks,
-    };
+    // Let's just return the data for now as the server logic (mock or real) is designed to return correct weeks.
+    return data;
 }

@@ -3,29 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar, HandMetal } from "lucide-react";
 
-const blogs = [
-  {
-    title: "My GSOC Journey: The 2-Month Sprint from Doubt to Done",
-    date: "Jun 2025",
-    views: 340,
-    tags: ["GSOC", "Open Source"],
-    url: "#"
-  },
-  {
-    title: "JWT Authentication APIs with TypeScript, Node.js, and MongoDB.",
-    date: "Feb 2025",
-    views: 52,
-    tags: ["Authentication", "TypeScript", "MongoDB"],
-    url: "#"
-  },
-  {
-    title: "Docker with Node.js & Express.js — Basics.",
-    date: "Feb 2025",
-    views: 20,
-    tags: ["Docker", "Node.js", "Express.js"],
-    url: "#"
-  },
-];
+import { blogs } from "../data/blogs";
 
 export default function Blogs() {
   return (
@@ -68,7 +46,7 @@ export default function Blogs() {
                       style={{
                         fontFamily: '"Instagram Sans", sans-serif',
                         fontSize: '16px',
-                        lineHeight: '12.8px',
+                        lineHeight: '1.4',
                         fontWeight: 700,
                         letterSpacing: 'normal'
                       }}
@@ -116,7 +94,7 @@ export default function Blogs() {
                     </div>
                   </div>
 
-                  <ArrowUpRight className="w-4 h-4 text-gray-400 dark:text-[#666] group-hover:text-black dark:group-hover:text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 shrink-0 mt-1" />
+                  <ArrowUpRight className="w-4 h-4 text-gray-400 dark:text-[#666] group-hover:text-black dark:group-hover:text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 shrink-0 mt-1 hidden sm:block" />
                 </div>
               </a>
               {/* Dashed Separator below each item except likely the last one if desired, but image shows separators. Logic here adds below each. */}
@@ -139,6 +117,7 @@ export default function Blogs() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onClick={() => window.location.href = '/blogs'}
             className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
             style={{ fontFamily: '"Instagram Sans", sans-serif' }}
           >

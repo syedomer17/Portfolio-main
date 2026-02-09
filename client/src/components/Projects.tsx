@@ -3,39 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
-const projects = [
-  {
-    title: "Lunel",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, itaque.",
-    image: "/api/placeholder/400/250",
-    status: "Building",
-    isComingSoon: true,
-    isPinned: true,
-  },
-  {
-    title: "Asap",
-    description: "Record studio-quality remote audio and video, locally captured without quality loss.",
-    image: "/api/placeholder/400/250",
-    status: "Building",
-    isComingSoon: true,
-  },
-  {
-    title: "Cuez",
-    description: "A social platform where developers share projects, ideas, and grow together.",
-    image: "/cuez-preview.png",
-    screenLabel: "Home Feed",
-    status: "Live",
-    url: "https://cuez.app",
-  },
-  {
-    title: "The Daily Crimes",
-    description: "A crime news website presenting cases through a clean, newspaper-style interface.",
-    image: "/daily-crimes-preview.png",
-    screenLabel: "News Screen",
-    status: "Live",
-    url: "https://thedailycrimes.com",
-  },
-];
+import { projects } from "../data/projects";
 
 export default function Projects() {
   return (
@@ -201,6 +169,7 @@ export default function Projects() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onClick={() => window.location.href = '/projects'}
             className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
             style={{ fontFamily: '"Instagram Sans", sans-serif' }}
           >

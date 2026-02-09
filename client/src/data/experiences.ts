@@ -1,0 +1,37 @@
+export const experiences = [
+    {
+        company: "Meta Inc.",
+        role: "Software Engineer",
+        type: "Full Time",
+        location: "Palo Alto, USA - Remote",
+        period: "Aug, 2025 - Present",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/120px-Meta_Platforms_Inc._logo.svg.png",
+        achievements: [
+            "Owned the core presentation editor, driving major performance and reliability improvements",
+            "Designed and built core editor features like drag-and-drop, resize, and keyboard shortcuts end-to-end",
+            "Owned a foundational refactor, strengthening a critical codebase to enable safer and faster production",
+            "Drove major Drive page performance improvements, resolving bugs to deliver faster, reliable experiences",
+        ],
+        tags: ["Next", "Tailwind", "TypeScript", "JavaScript", "Express", "PostgreSQL", "Docker"],
+    },
+    {
+        company: "GSoC",
+        role: "Full Stack Developer",
+        type: "Contract",
+        location: "USA - Remote",
+        period: "May, 2025 - Nov, 2025",
+        logo: "https://developers.google.com/static/open-source/gsoc/resources/downloads/GSoC-Vertical.svg",
+        achievements: [],
+        tags: [],
+    },
+    {
+        company: "OWASP",
+        role: "Open Source Contributor",
+        type: "Contract",
+        location: "USA - Remote",
+        period: "Feb, 2025 - May, 2025",
+        logo: "https://owasp.org/assets/images/logo.png",
+        achievements: [],
+        tags: [],
+    },
+];

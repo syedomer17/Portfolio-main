@@ -75,7 +75,7 @@ export default function TechStack() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-wrap gap-2"
+          className="flex flex-wrap gap-1.5 sm:gap-2"
         >
           {skills.map((skill, index) => {
             const Icon = skill.icon;
@@ -90,11 +90,11 @@ export default function TechStack() {
                 className="group relative"
               >
                 <div
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-transparent border border-[#333] rounded-[10px] hover:border-[#555] transition-colors"
+                  className="flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 bg-transparent border border-[#333] rounded-[10px] hover:border-[#555] transition-colors"
                 >
-                  <Icon className="w-3.5 h-3.5 text-[#70717B] dark:text-[#D4D4D4] group-hover:text-[#424242] dark:group-hover:text-[#D4D4D4] transition-colors" />
+                  <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#70717B] dark:text-[#D4D4D4] group-hover:text-[#424242] dark:group-hover:text-[#D4D4D4] transition-colors" />
                   <span
-                    className="text-[13px] font-medium text-[#70717B] dark:text-[#D4D4D4] group-hover:text-[#424242] dark:group-hover:text-[#D4D4D4] transition-colors"
+                    className="text-xs sm:text-[13px] font-medium text-[#70717B] dark:text-[#D4D4D4] group-hover:text-[#424242] dark:group-hover:text-[#D4D4D4] transition-colors"
                     style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                   >
                     {skill.name}

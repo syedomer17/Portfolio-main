@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CalendarDays, Eye, Mail, RefreshCw } from "lucide-react";
 
 import { HiMenu } from "react-icons/hi";
-import { FaInstagram, FaYoutube, FaDiscord } from "react-icons/fa";
-import { SiBehance, SiBluesky } from "react-icons/si";
+import { FaInstagram, FaYoutube, FaDiscord, FaMedium } from "react-icons/fa";
+import { SiBehance, SiBluesky, SiLeetcode } from "react-icons/si";
 import { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { WordRotate } from "./ui/word-rotate";
@@ -20,9 +20,10 @@ import {
   fetchGitHubContributions,
   normalizeContributionData,
   type ContributionData,
+  type ContributionDay,
+  type ContributionWeek,
 } from "../utils/githubApi";
-import { LEVEL_COLORS } from "../utils/colors";
-import { formatDateDDMMYYYY } from "../utils/date";
+
 
 export default function Hero() {
   const [views] = useState(3300);
@@ -31,12 +32,7 @@ export default function Hero() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [contributionData, setContributionData] = useState<ContributionData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [mounted, setMounted] = useState(false);
-
-  // Prevent flash of unstyled content on initial load
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [hoveredDay, setHoveredDay] = useState<{ x: number; y: number; content: string } | null>(null);
 
   const handleImageSwitch = () => {
     // Play audio
@@ -51,14 +47,122 @@ export default function Hero() {
     setCurrentImage(currentImage === "/myImage.png" ? "/background-portfolio.png" : "/myImage.png");
   };
 
+  // Format date for tooltip (from Github.tsx)
+  const formatDateForTooltip = (dateStr: string) =>
+    new Date(dateStr).toLocaleDateString("en-US", {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+
+  // Tooltip handlers (from Github.tsx)
+  const handleMouseEnter = (event: React.MouseEvent, day: ContributionDay) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const content =
+      day.contributionCount === 0
+        ? `No contributions on ${formatDateForTooltip(day.date)}`
+        : `${day.contributionCount} contribution${day.contributionCount !== 1 ? "s" : ""} on ${formatDateForTooltip(day.date)}`;
+    setHoveredDay({
+      x: rect.left + rect.width / 2,
+      y: rect.top - 8,
+      content,
+    });
+  };
+
+  const handleMouseLeave = () => setHoveredDay(null);
+
+  // Generate month labels above the graph (from Github.tsx)
+  const getMonthLabels = () => {
+    if (!contributionData || !contributionData.weeks.length) return null;
+
+    const months: { [key: string]: string } = {
+      0: "Jan", 1: "Feb", 2: "Mar", 3: "Apr", 4: "May", 5: "Jun",
+      6: "Jul", 7: "Aug", 8: "Sep", 9: "Oct", 10: "Nov", 11: "Dec",
+    };
+
+    const labels = contributionData.weeks.map((week, i) => {
+      const firstDay = week.contributionDays[0];
+      if (!firstDay) return null;
+      const monthIndex = new Date(firstDay.date).getMonth();
+
+      // Show label only if first week or month changes from previous
+      if (
+        i === 0 ||
+        (i > 0 &&
+          new Date(contributionData.weeks[i - 1].contributionDays[0].date).getMonth() !== monthIndex)
+      ) {
+        return (
+          <div
+            key={i}
+            className="text-xs text-secondary w-2.5 text-center font-mono opacity-50 dark:text-slate-400"
+            style={{ marginLeft: i === 0 ? 2 : 0 }}
+          >
+            {months[monthIndex]}
+          </div>
+        );
+      }
+      return <div key={i} className="w-2.5" />;
+    });
+
+    return <div className="flex gap-[2px] mb-1">{labels}</div>;
+  };
+
+  // Generate mock data (from Github.tsx)
+  const generateMockData = () => {
+    const weeks: ContributionWeek[] = [];
+    const today = new Date();
+    const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
+    const startDate = new Date(oneYearAgo);
+    startDate.setDate(startDate.getDate() - startDate.getDay());
+    const currentDate = new Date(startDate);
+    let totalContribs = 0;
+
+    for (let week = 0; week < 53; week++) {
+      const contributionDays: ContributionDay[] = [];
+      for (let day = 0; day < 7; day++) {
+        if (currentDate <= today) {
+          const rand = Math.random();
+          let contributionCount = 0;
+          if (rand > 0.7) contributionCount = Math.floor(Math.random() * 3) + 1;
+          else if (rand > 0.85) contributionCount = Math.floor(Math.random() * 5) + 4;
+          else if (rand > 0.95) contributionCount = Math.floor(Math.random() * 10) + 8;
+          totalContribs += contributionCount;
+          contributionDays.push({
+            date: currentDate.toISOString().split("T")[0],
+            contributionCount,
+            color: contributionCount === 0 ? "#161b22" : "#39d353",
+          });
+        }
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+      if (contributionDays.length > 0) {
+        weeks.push({ contributionDays });
+      }
+    }
+    // Using slice(-53) to match server logic and ensure consistency
+    setContributionData({ totalContributions: totalContribs, weeks: weeks.slice(-53) });
+  };
+
+  // Get contribution intensity CSS class (from Github.tsx)
+  const getContributionIntensity = (count: number) => {
+    if (count === 0) return "bg-green-900/30 border-none";
+    if (count <= 3) return "bg-green-600 border-none";
+    if (count <= 6) return "bg-green-500 border-none";
+    if (count <= 9) return "bg-green-400 border-none";
+    return "bg-green-300 border-none";
+  };
+
   // Fetch GitHub contribution data
   useEffect(() => {
+    generateMockData(); // Show mock data immediately
     async function loadContributions() {
       try {
         const raw = await fetchGitHubContributions("syedomer17");
         setContributionData(normalizeContributionData(raw));
       } catch (err) {
         console.error(err);
+        // Keep mock data on error
       } finally {
         setLoading(false);
       }
@@ -67,10 +171,7 @@ export default function Hero() {
     loadContributions();
   }, []);
 
-  // Don't render anything until mounted to prevent FOUC
-  if (!mounted) {
-    return null;
-  }
+
 
   return (
     <section className="container mx-auto px-4 sm:px-6 pt-20 pb-0">
@@ -230,13 +331,13 @@ export default function Hero() {
                 <LeetcodeHoverCard />
               </div>
 
-              {/* More Button with Dropdown */}
+              {/* More Button with Dropdown - Visible on all screens */}
               <div className="relative">
                 <motion.button
                   onClick={() => setShowMoreMenu(!showMoreMenu)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] sm:dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
+                  className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
                   style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                 >
                   <HiMenu className="w-4 h-4" />
@@ -249,28 +350,28 @@ export default function Hero() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute bottom-full left-0 mb-2 w-40 bg-transparent dark:bg-transparent border border-slate-200 dark:border-[#3A3A3A] rounded-xl shadow-xl z-10 p-1.5"
+                      className="absolute bottom-full left-0 mb-2 w-40 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#3A3A3A] rounded-xl shadow-xl z-20 p-1.5"
                       style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                     >
-                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-100 dark:bg-[#3A3A3A] hover:bg-slate-200 dark:hover:bg-[#454545] rounded-lg transition-colors mb-1">
-                        <SiBehance className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Behance</span>
+                      <a href="https://leetcode.com/syedomerali_200" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
+                        <SiLeetcode className="w-4 h-4 text-[#FFA116]" />
+                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>LeetCode</span>
                       </a>
-                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-100 dark:bg-[#3A3A3A] hover:bg-slate-200 dark:hover:bg-[#454545] rounded-lg transition-colors mb-1">
-                        <FaDiscord className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Discord</span>
+                      <a href="https://medium.com/@syedomerali2006" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
+                        <FaMedium className="w-4 h-4 text-black dark:text-white" />
+                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Medium</span>
                       </a>
-                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-100 dark:bg-[#3A3A3A] hover:bg-slate-200 dark:hover:bg-[#454545] rounded-lg transition-colors mb-1">
-                        <SiBluesky className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Bluesky</span>
-                      </a>
-                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-100 dark:bg-[#3A3A3A] hover:bg-slate-200 dark:hover:bg-[#454545] rounded-lg transition-colors mb-1">
+                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
                         <FaInstagram className="w-4 h-4 text-slate-700 dark:text-white" />
                         <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Instagram</span>
                       </a>
-                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-100 dark:bg-[#3A3A3A] hover:bg-slate-200 dark:hover:bg-[#454545] rounded-lg transition-colors">
+                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
                         <FaYoutube className="w-4 h-4 text-slate-700 dark:text-white" />
                         <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>YouTube</span>
+                      </a>
+                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors">
+                        <FaDiscord className="w-4 h-4 text-slate-700 dark:text-white" />
+                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Discord</span>
                       </a>
                     </motion.div>
                   )}
@@ -291,17 +392,7 @@ export default function Hero() {
                 <div className="overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 sm:px-0">
                   <div className="w-max min-w-full">
                     {/* Month Labels */}
-                    <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400 mb-2 px-1">
-                      {Array.from({ length: 12 }).map((_, i) => {
-                        const date = new Date();
-                        date.setMonth(date.getMonth() - (11 - i));
-                        return (
-                          <span key={i}>
-                            {date.toLocaleString('default', { month: 'short' })}
-                          </span>
-                        );
-                      })}
-                    </div>
+                    {getMonthLabels()}
 
                     {/* Contribution Grid - Compact */}
                     <div className="flex gap-[2px]">
@@ -310,9 +401,11 @@ export default function Hero() {
                           {week.contributionDays.map((day, di) => (
                             <div
                               key={di}
-                              className={`w-[10px] h-[10px] rounded-[2px] ${LEVEL_COLORS[day.contributionLevel]
-                                } hover:ring-1 hover:ring-slate-400 dark:hover:ring-white transition-all cursor-pointer`}
-                              title={`${formatDateDDMMYYYY(day.date)}: ${day.contributionCount} contributions`}
+                              className={`w-[10px] h-[10px] rounded-[2px] ${getContributionIntensity(
+                                day.contributionCount
+                              )} hover:ring-1 hover:ring-slate-400 dark:hover:ring-white transition-all cursor-pointer`}
+                              onMouseEnter={(e) => handleMouseEnter(e, day)}
+                              onMouseLeave={handleMouseLeave}
                             />
                           ))}
                         </div>
@@ -320,6 +413,20 @@ export default function Hero() {
                     </div>
                   </div>
                 </div>
+
+                {/* Tooltip */}
+                {hoveredDay && (
+                  <div
+                    className="fixed z-50 px-2 py-1 text-xs text-white bg-gray-900 border border-gray-700 rounded shadow-lg pointer-events-none"
+                    style={{
+                      left: `${hoveredDay.x}px`,
+                      top: `${hoveredDay.y}px`,
+                      transform: "translateX(-50%) translateY(-100%)",
+                    }}
+                  >
+                    {hoveredDay.content}
+                  </div>
+                )}
 
                 {/* Bottom Legend */}
                 <div className="flex justify-between items-center mt-3">
@@ -329,10 +436,11 @@ export default function Hero() {
                   <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                     <span>Less</span>
                     <div className="flex gap-1">
-                      <div className="w-[10px] h-[10px] bg-[#ebedf0] dark:bg-[#161b22] rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-[#9be9a8] dark:bg-[#0e4429] rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-[#40c463] dark:bg-[#006d32] rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-[#216e39] dark:bg-[#39d353] rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-green-900/30 rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-green-600 rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-green-500 rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-green-400 rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-green-300 rounded-[2px]" />
                     </div>
                     <span>More</span>
                   </div>

@@ -11,7 +11,16 @@ import Blogs from "./components/Blogs";
 import Certifications from "./components/Certifications";
 import Newsletter from "./components/Newsletter";
 
+import { useState, useEffect } from "react";
+
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
   return (
     <main className="min-h-screen relative bg-white dark:bg-[#0B0D10] transition-colors duration-300">
 

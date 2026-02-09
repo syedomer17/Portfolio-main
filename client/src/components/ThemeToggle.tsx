@@ -10,7 +10,7 @@ export default function ThemeToggle() {
     // Play audio
     const audio = new Audio('/audio/woosh.mp3');
     audio.play().catch(err => console.log('Audio play failed:', err));
-    
+
     // Toggle theme
     toggleTheme();
   };
@@ -30,12 +30,12 @@ export default function ThemeToggle() {
           opacity: isDark ? 1 : 0,
           rotate: isDark ? 0 : 180,
         }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
+        transition={{ duration: 0.7, ease: "easeInOut" }}
         className="absolute"
       >
-        <Moon className="w-5 h-5 text-white" />
+        <Moon className="text-[#D4D4D4]" style={{ width: '15.9862px', height: '15.9862px' }} />
       </motion.div>
-      
+
       <motion.div
         initial={false}
         animate={{
@@ -43,7 +43,7 @@ export default function ThemeToggle() {
           opacity: isDark ? 0 : 1,
           rotate: isDark ? -180 : 0,
         }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
+        transition={{ duration: 0.7, ease: "easeInOut" }}
         className="absolute"
       >
         <Sun className="w-5 h-5 text-black" />

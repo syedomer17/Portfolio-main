@@ -4,46 +4,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 
-const experiences = [
-  {
-    company: "Meta Inc.",
-    role: "Software Engineer",
-    type: "Full Time",
-    location: "Palo Alto, USA - Remote",
-    period: "Aug, 2025 - Present",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/120px-Meta_Platforms_Inc._logo.svg.png",
-    achievements: [
-      "Owned the core presentation editor, driving major performance and reliability improvements",
-      "Designed and built core editor features like drag-and-drop, resize, and keyboard shortcuts end-to-end",
-      "Owned a foundational refactor, strengthening a critical codebase to enable safer and faster production",
-      "Drove major Drive page performance improvements, resolving bugs to deliver faster, reliable experiences",
-    ],
-    tags: ["Next", "Tailwind", "TypeScript", "JavaScript", "Express", "PostgreSQL", "Docker"],
-  },
-  {
-    company: "GSoC",
-    role: "Full Stack Developer",
-    type: "Contract",
-    location: "USA - Remote",
-    period: "May, 2025 - Nov, 2025",
-    logo: "https://developers.google.com/static/open-source/gsoc/resources/downloads/GSoC-Vertical.svg",
-    achievements: [],
-    tags: [],
-  },
-  {
-    company: "OWASP",
-    role: "Open Source Contributor",
-    type: "Contract",
-    location: "USA - Remote",
-    period: "Feb, 2025 - May, 2025",
-    logo: "https://owasp.org/assets/images/logo.png",
-    achievements: [],
-    tags: [],
-  },
-];
+import { experiences } from "../data/experiences";
+
+import { useNavigate } from "react-router-dom";
 
 export default function Experience() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+
+  const navigate = useNavigate();
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -82,7 +50,7 @@ export default function Experience() {
               {/* Card Header - Always Visible */}
               <button
                 onClick={() => toggleExpand(index)}
-                className="w-full py-4 sm:py-5 flex items-center gap-4 transition-colors group"
+                className="w-full py-4 sm:py-5 flex items-center gap-2 sm:gap-4 transition-colors group"
               >
                 {/* Company Logo */}
                 <div className="shrink-0">
@@ -104,19 +72,12 @@ export default function Experience() {
                     >
                       {exp.company}
                     </h3>
-                    {/* Show Full Time badge only when expanded */}
-                    <AnimatePresence>
-                      {expandedIndex === index && (
-                        <motion.span
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.8 }}
-                          className="px-2 py-0.5 text-xs font-medium bg-transparent text-[#70717B] dark:text-[#989898] rounded border border-slate-300 dark:border-[#3A3A3A]"
-                        >
-                          {exp.type}
-                        </motion.span>
-                      )}
-                    </AnimatePresence>
+                    {/* Type Badge - Always Visible */}
+                    <span
+                      className="px-1.5 py-0.5 sm:px-2 text-[10px] sm:text-xs font-medium bg-transparent text-[#70717B] dark:text-[#989898] rounded border border-slate-300 dark:border-[#3A3A3A]"
+                    >
+                      {exp.type}
+                    </span>
                   </div>
                   <p
                     className="text-sm leading-5 font-normal text-[#70717B] dark:text-[#989898]"
@@ -127,16 +88,16 @@ export default function Experience() {
                 </div>
 
                 {/* Date & Location + Chevron */}
-                <div className="shrink-0 flex items-center gap-3">
+                <div className="shrink-0 flex items-center gap-1.5 sm:gap-3">
                   <div className="text-right">
                     <p
-                      className="text-sm leading-5 font-medium text-[#333333] dark:text-[#EBEBEB]"
+                      className="text-xs sm:text-sm leading-5 font-medium text-[#333333] dark:text-[#EBEBEB]"
                       style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                     >
                       {exp.period}
                     </p>
                     <p
-                      className="text-md text-[#70717B] dark:text-[#989898]"
+                      className="text-xs sm:text-sm text-[#70717B] dark:text-[#989898]"
                       style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                     >
                       {exp.location}
@@ -145,7 +106,7 @@ export default function Experience() {
                   <motion.div
                     animate={{ rotate: expandedIndex === index ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className="text-slate-400 dark:text-slate-500 hover:dark:text-[#EBEBEB] -mt-[1.5px]"
+                    className="text-slate-400 dark:text-slate-500 hover:dark:text-[#EBEBEB] -mt-[1.5px] hidden sm:block"
                   >
                     <ChevronDown className="w-5 h-5" />
                   </motion.div>
@@ -223,6 +184,7 @@ export default function Experience() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onClick={() => navigate("/experiences")}
             className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
             style={{ fontFamily: '"Instagram Sans", sans-serif' }}
           >
