@@ -9,6 +9,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 
 import ProjectsPage from "./components/page/Projects";
 import CertificationsPage from "./components/page/Certifications";
+import { IntroCall as IntroCallPage } from "./components/page/IntroCall";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/certifications",
     element: <CertificationsPage />,
+  },
+  {
+    path: "/intro-call",
+    element: <IntroCallPage />,
   },
 ]);
 

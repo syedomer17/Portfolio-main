@@ -144,13 +144,17 @@ export default function Hero() {
     setContributionData({ totalContributions: totalContribs, weeks: weeks.slice(-53) });
   };
 
-  // Get contribution intensity CSS class (from Github.tsx)
-  const getContributionIntensity = (count: number) => {
-    if (count === 0) return "bg-green-900/30 border-none";
-    if (count <= 3) return "bg-green-600 border-none";
-    if (count <= 6) return "bg-green-500 border-none";
-    if (count <= 9) return "bg-green-400 border-none";
-    return "bg-green-300 border-none";
+  // Get contribution intensity CSS class (Dynamic logic)
+  const getContributionIntensity = (count: number, maxCount: number) => {
+    if (count === 0) return "bg-[#161b22] border-none"; // Level 0: No contributions
+
+    // Calculate intensity relative to the maximum contribution in the dataset
+    const ratio = maxCount > 0 ? count / maxCount : 0;
+
+    if (ratio <= 0.25) return "bg-[#0e4429] border-none"; // Level 1
+    if (ratio <= 0.50) return "bg-[#006d32] border-none"; // Level 2
+    if (ratio <= 0.75) return "bg-[#26a641] border-none"; // Level 3
+    return "bg-[#39d353] border-none"; // Level 4
   };
 
   // Fetch GitHub contribution data
@@ -396,20 +400,31 @@ export default function Hero() {
 
                     {/* Contribution Grid - Compact */}
                     <div className="flex gap-[2px]">
-                      {contributionData.weeks.map((week, wi) => (
-                        <div key={wi} className="flex flex-col gap-[2px]">
-                          {week.contributionDays.map((day, di) => (
-                            <div
-                              key={di}
-                              className={`w-[10px] h-[10px] rounded-[2px] ${getContributionIntensity(
-                                day.contributionCount
-                              )} hover:ring-1 hover:ring-slate-400 dark:hover:ring-white transition-all cursor-pointer`}
-                              onMouseEnter={(e) => handleMouseEnter(e, day)}
-                              onMouseLeave={handleMouseLeave}
-                            />
-                          ))}
-                        </div>
-                      ))}
+                      {(() => {
+                        // Calculate max contribution count for relative intensity
+                        const maxCount = Math.max(
+                          ...contributionData.weeks.flatMap((w) =>
+                            w.contributionDays.map((d) => d.contributionCount)
+                          ),
+                          0
+                        );
+
+                        return contributionData.weeks.map((week, wi) => (
+                          <div key={wi} className="flex flex-col gap-[2px]">
+                            {week.contributionDays.map((day, di) => (
+                              <div
+                                key={di}
+                                className={`w-[10px] h-[10px] rounded-[2px] ${getContributionIntensity(
+                                  day.contributionCount,
+                                  maxCount
+                                )} hover:ring-1 hover:ring-slate-400 dark:hover:ring-white transition-all cursor-pointer`}
+                                onMouseEnter={(e) => handleMouseEnter(e, day)}
+                                onMouseLeave={handleMouseLeave}
+                              />
+                            ))}
+                          </div>
+                        ));
+                      })()}
                     </div>
                   </div>
                 </div>
@@ -436,11 +451,11 @@ export default function Hero() {
                   <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                     <span>Less</span>
                     <div className="flex gap-1">
-                      <div className="w-[10px] h-[10px] bg-green-900/30 rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-green-600 rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-green-500 rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-green-400 rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-green-300 rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-[#161b22] rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-[#0e4429] rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-[#006d32] rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-[#26a641] rounded-[2px]" />
+                      <div className="w-[10px] h-[10px] bg-[#39d353] rounded-[2px]" />
                     </div>
                     <span>More</span>
                   </div>
