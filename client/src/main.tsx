@@ -8,6 +8,7 @@ import BlogsPage from './components/page/Blogs.tsx';
 import { ThemeProvider } from './contexts/ThemeContext';
 
 import ProjectsPage from "./components/page/Projects";
+import CertificationsPage from "./components/page/Certifications";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/projects",
     element: <ProjectsPage />,
+  },
+  {
+    path: "/certifications",
+    element: <CertificationsPage />,
   },
 ]);
 
