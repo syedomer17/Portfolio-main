@@ -159,7 +159,7 @@ export default function ExperiencesPage() {
                             Love what I do?{" "}
                             <a
                                 href="mailto:syedomerali.200@gmail.com"
-                                className="font-bold text-slate-900 dark:text-white hover:underline transition-all"
+                                className="font-bold text-slate-900 dark:text-white hover:underline transition-all hover-glitch inline-block"
                             >
                                 Hire me!
                             </a>

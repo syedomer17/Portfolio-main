@@ -325,3 +325,19 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Chrome, Safari and Opera */
 }
+
+/* Smooth Chromatic Aberration / Glitch Hover Effect */
+.hover-glitch {
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth and slow premium transition */
+}
+
+.hover-glitch:hover {
+  text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
+  letter-spacing: 0.05em; /* Slight expansion */
+  transform: scale(1.05);
+}
+
+.dark .hover-glitch:hover {
+  text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
+}

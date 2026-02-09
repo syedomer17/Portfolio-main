@@ -127,7 +127,7 @@ export default function BlogsPage() {
                                 href="https://medium.com/@syedomerali_200"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="font-bold text-slate-900 dark:text-white hover:underline transition-all"
+                                className="font-bold text-slate-900 dark:text-white hover:underline transition-all hover-glitch inline-block"
                             >
                                 Medium
                             </a>

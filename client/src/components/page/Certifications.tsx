@@ -125,7 +125,7 @@ export default function CertificationsPage() {
                                 href="https://linkedin.com/in/syedomer17"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="font-bold text-slate-900 dark:text-white hover:underline transition-all inline-flex items-center gap-1"
+                                className="font-bold text-slate-900 dark:text-white hover:underline transition-all inline-flex items-center gap-1 hover-glitch"
                             >
                                 LinkedIn
                                 <ArrowUpRight className="w-4 h-4" />
