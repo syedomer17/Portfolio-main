@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Award, Calendar } from "lucide-react";
 
-import { certifications } from "../data/certifications";
+import { certifications } from "../../data/certifications";
 
 export default function Certifications() {
     return (

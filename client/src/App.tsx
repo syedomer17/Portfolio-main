@@ -1,15 +1,15 @@
-import Hero from "./components/Hero";
-import TechStack from "./components/TechStack";
-import Projects from "./components/Projects";
+import Hero from "./components/sections/Hero";
+import TechStack from "./components/sections/TechStack";
+import Projects from "./components/sections/Projects";
 // import Contact from "./components/Contact";
 import "./App.css";
-import Particles from "./components/Particles";
+import Particles from "./components/reactbits/Particles";
 import { motion } from "framer-motion";
-import Experience from "./components/Experience";
+import Experience from "./components/sections/Experience";
 // import Education from "./components/Education";
-import Blogs from "./components/Blogs";
-import Certifications from "./components/Certifications";
-import Newsletter from "./components/Newsletter";
+import Blogs from "./components/sections/Blogs";
+import Certifications from "./components/sections/Certifications";
+import Newsletter from "./components/sections/Newsletter";
 
 import { useState, useEffect } from "react";
 

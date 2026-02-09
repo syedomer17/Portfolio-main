@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import ThemeToggle from "../ThemeToggle";
+import ThemeToggle from "../themeToggle/ThemeToggle";
 import { projects } from "../../data/projects";
 
 export default function ProjectsPage() {

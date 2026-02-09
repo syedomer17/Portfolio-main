@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar, HandMetal } from "lucide-react";
 
-import { blogs } from "../data/blogs";
+import { blogs } from "../../data/blogs";
 
 export default function Blogs() {
   return (

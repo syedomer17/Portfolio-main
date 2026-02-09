@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Calendar, HandMetal } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import ThemeToggle from "../ThemeToggle";
+import ThemeToggle from "../themeToggle/ThemeToggle";
 import { blogs } from "../../data/blogs";
 
 export default function BlogsPage() {

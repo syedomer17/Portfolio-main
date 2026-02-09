@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle2, AlertCircle, Quote } from "lucide-react";
+import {  CheckCircle2, AlertCircle, Quote } from "lucide-react";
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function Newsletter() {

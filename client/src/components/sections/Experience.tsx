@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 
-import { experiences } from "../data/experiences";
+import { experiences } from "../../data/experiences";
 
 import { useNavigate } from "react-router-dom";
 

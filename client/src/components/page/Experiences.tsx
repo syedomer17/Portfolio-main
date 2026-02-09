@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import ThemeToggle from "../ThemeToggle";
+import ThemeToggle from "../themeToggle/ThemeToggle";
 import { experiences } from "../../data/experiences";
 
 export default function ExperiencesPage() {

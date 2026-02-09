@@ -1,4 +1,6 @@
 // Removed ContributionLevel as it's not used in the new API
+export type ContributionLevel = "NONE" | "FIRST_QUARTILE" | "SECOND_QUARTILE" | "THIRD_QUARTILE" | "FOURTH_QUARTILE";
+
 export interface ContributionDay {
     date: string;
     contributionCount: number;

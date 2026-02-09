@@ -5,28 +5,28 @@ import { CalendarDays, Eye, Mail, RefreshCw } from "lucide-react";
 
 import { HiMenu } from "react-icons/hi";
 import { FaInstagram, FaYoutube, FaDiscord, FaMedium } from "react-icons/fa";
-import { SiBehance, SiBluesky, SiLeetcode } from "react-icons/si";
+import { SiLeetcode } from "react-icons/si";
 import { useState, useEffect } from "react";
-import ThemeToggle from "./ThemeToggle";
-import { WordRotate } from "./ui/word-rotate";
-import CountUp from "./ui/CountUp";
-import ButtonCreativeTop from "./ui/creative/Button";
-import GithubHoverCard from "./Github";
-import TwitterHoverCard from "./Twitter";
-import LinkedinHoverCard from "./Linkedin";
-import MediumHoverCard from "./Medium";
-import LeetcodeHoverCard from "./Leetcode";
+import ThemeToggle from "../themeToggle/ThemeToggle";
+import { WordRotate } from "../ui/word-rotate";
+import CountUp from "../ui/CountUp";
+import ButtonCreativeTop from "../ui/creative/Button";
+import GithubHoverCard from "../socialButtons/Github";
+import TwitterHoverCard from "../socialButtons/Twitter";
+import LinkedinHoverCard from "../socialButtons/Linkedin";
+import MediumHoverCard from "../socialButtons/Medium";
+import LeetcodeHoverCard from "../socialButtons/Leetcode";
 import {
   fetchGitHubContributions,
   normalizeContributionData,
   type ContributionData,
   type ContributionDay,
   type ContributionWeek,
-} from "../utils/githubApi";
+} from "../../utils/githubApi";
 
 
 export default function Hero() {
-  const [views] = useState(3300);
+
   const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [currentImage, setCurrentImage] = useState("/myImage.png");
   const [isAnimating, setIsAnimating] = useState(false);
@@ -469,17 +469,3 @@ export default function Hero() {
   );
 }
 
-function SocialButton({ icon, label, href }: { icon: React.ReactNode; label: string; href: string }) {
-  return (
-    <motion.a
-      href={href}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      className="inline-flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
-      style={{ fontFamily: '"Instagram Sans", sans-serif' }}
-    >
-      {typeof icon === 'string' ? <span>{icon}</span> : icon}
-      <span>{label}</span>
-    </motion.a>
-  );
-}

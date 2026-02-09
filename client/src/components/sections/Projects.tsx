@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
-import { projects } from "../data/projects";
+import { projects } from "../../data/projects";
 
 export default function Projects() {
   return (
