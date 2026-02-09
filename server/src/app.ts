@@ -41,6 +41,10 @@ app.get('/api/github-contributions/:username', githubContributionsHandler);
 // Newsletter subscription endpoint
 app.post('/api/newsletter/subscribe', subscribeHandler);
 
+// Intro Call API endpoint
+import { createIntroCallHandler } from './api/intro-call.js';
+app.post('/api/intro-call', createIntroCallHandler);
+
 
 app.use(express.static(path.join(__dirname, "dist")));
 
