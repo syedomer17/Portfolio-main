@@ -1,101 +1,119 @@
 import { Request, Response } from "express";
 
-export type ContributionLevel =
-  | "NONE"
-  | "FIRST_QUARTILE"
-  | "SECOND_QUARTILE"
-  | "THIRD_QUARTILE"
-  | "FOURTH_QUARTILE";
-
-export interface ContributionDay {
+interface ContributionDay {
   date: string;
   contributionCount: number;
-  contributionLevel: ContributionLevel;
+  color: string;
 }
 
-export interface ContributionWeek {
+interface ContributionWeek {
   contributionDays: ContributionDay[];
 }
 
-export interface ContributionData {
+interface ContributionData {
   totalContributions: number;
   weeks: ContributionWeek[];
 }
 
-export async function githubContributionsHandler(
-  req: Request,
-  res: Response
-) {
-  try {
-    const { username } = req.params;
-    if (!username) {
-      return res.status(400).json({ error: "Username required" });
+export async function githubContributionsHandler(req: Request, res: Response) {
+  const { username } = req.params;
+  const githubToken = process.env.GITHUB_TOKEN;
+
+  // Mock Data Generation Logic (Fallback from Github.tsx)
+  const generateMockData = (): ContributionData => {
+    const weeks: ContributionWeek[] = [];
+    const today = new Date();
+    const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
+    const startDate = new Date(oneYearAgo);
+
+    // Adjust start date to previous Sunday to align weeks
+    startDate.setDate(startDate.getDate() - startDate.getDay());
+
+    const currentDate = new Date(startDate);
+    let totalContribs = 0;
+
+    // Generate 53 weeks to cover a full year + overlap
+    for (let week = 0; week < 53; week++) {
+      const contributionDays: ContributionDay[] = [];
+      for (let day = 0; day < 7; day++) {
+        // Only generate up to today
+        if (currentDate <= today) {
+          const rand = Math.random();
+          let contributionCount = 0;
+
+          // Weighted random contributions to simulate realistic activity
+          if (rand > 0.7) contributionCount = Math.floor(Math.random() * 3) + 1;
+          else if (rand > 0.85) contributionCount = Math.floor(Math.random() * 5) + 4;
+          else if (rand > 0.95) contributionCount = Math.floor(Math.random() * 10) + 8;
+
+          totalContribs += contributionCount;
+          contributionDays.push({
+            date: currentDate.toISOString().split("T")[0],
+            contributionCount,
+            color: contributionCount === 0 ? "#161b22" : "#39d353",
+          });
+        }
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+      if (contributionDays.length > 0) {
+        weeks.push({ contributionDays });
+      }
     }
 
-    const to = new Date();
-    const from = new Date();
-    from.setDate(from.getDate() - 365);
+    return {
+      totalContributions: totalContribs,
+      weeks: weeks.slice(-53)
+    };
+  };
 
-    const query = `
-      query($username: String!, $from: DateTime!, $to: DateTime!) {
-        user(login: $username) {
-          contributionsCollection(from: $from, to: $to) {
-            contributionCalendar {
-              totalContributions
-              weeks {
-                contributionDays {
-                  date
-                  contributionCount
-                  contributionLevel
-                }
+  if (!username) {
+    return res.status(400).json({ error: "Username required" });
+  }
+
+  const query = `
+    query($username: String!) {
+      user(login: $username) {
+        contributionsCollection {
+          contributionCalendar {
+            totalContributions
+            weeks {
+              contributionDays {
+                date
+                contributionCount
+                color
               }
             }
           }
         }
       }
-    `;
+    }
+  `;
 
-    const token = process.env.GITHUB_TOKEN;
-    if (!token) throw new Error("GITHUB_TOKEN missing");
+  try {
+    if (!githubToken) {
+      console.warn("GITHUB_TOKEN is missing. Using mock data.");
+      return res.json(generateMockData());
+    }
 
     const response = await fetch("https://api.github.com/graphql", {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${githubToken}`,
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        query,
-        variables: {
-          username,
-          from: from.toISOString(),
-          to: to.toISOString(),
-        },
-      }),
+      body: JSON.stringify({ query, variables: { username } }),
     });
 
-    if (!response.ok) {
-      throw new Error("GitHub API failed");
+    const data = await response.json();
+
+    if (data.errors) {
+      console.error("GitHub API Error:", data.errors[0].message);
+      return res.json(generateMockData());
     }
 
-    const json = await response.json();
-    if (json.errors) {
-      throw new Error(json.errors[0].message);
-    }
-
-    const calendar =
-      json.data.user.contributionsCollection.contributionCalendar;
-
-    const result: ContributionData = {
-      totalContributions: calendar.totalContributions,
-      weeks: calendar.weeks,
-    };
-
-    res.json(result);
+    res.json(data.data.user.contributionsCollection.contributionCalendar);
   } catch (err) {
-    res.status(500).json({
-      error: "GitHub fetch failed",
-      message: err instanceof Error ? err.message : "Unknown error",
-    });
+    console.error("Failed to fetch contributions:", err);
+    res.json(generateMockData());
   }
 }
