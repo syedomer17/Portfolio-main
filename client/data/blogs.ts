@@ -1,23 +1,23 @@
 export const blogs = [
-    {
-        title: "My GSOC Journey: The 2-Month Sprint from Doubt to Done",
-        date: "Jun 2025",
-        views: 340,
-        tags: ["GSOC", "Open Source"],
-        url: "#"
-    },
-    {
-        title: "JWT Authentication APIs with TypeScript, Node.js, and MongoDB.",
-        date: "Feb 2025",
-        views: 52,
-        tags: ["Authentication", "TypeScript", "MongoDB"],
-        url: "#"
-    },
-    {
-        title: "Docker with Node.js & Express.js — Basics.",
-        date: "Feb 2025",
-        views: 20,
-        tags: ["Docker", "Node.js", "Express.js"],
-        url: "#"
-    },
+  {
+    title: "Basics of IP Addresses in Computer Networking",
+    date: "Oct 9, 2025",
+    views: 0,
+    tags: ["Networking", "IP Address", "Computer Networks"],
+    url: "https://medium.com/@syedomerali2006/basics-of-ip-addresses-in-computer-networking-eaf02610c04f",
+  },
+  {
+    title: "How the Internet Works: From Browser to Server",
+    date: "Oct 8, 2024",
+    views: 0,
+    tags: ["Networking", "Internet", "Web Fundamentals"],
+    url: "https://medium.com/@syedomerali2006/how-internet-works-3be34305844a",
+  },
+  {
+    title: "Understanding Objects and Arrays in JavaScript",
+    date: "Mar 2025",
+    views: 0,
+    tags: ["JavaScript", "Basics", "Programming"],
+    url: "https://medium.com/@syedomerali2006/adding-elements-8b375452bfc4",
+  },
 ];

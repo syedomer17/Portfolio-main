@@ -212,10 +212,13 @@ export default function Hero() {
                 src={currentImage}
                 alt="Profile"
                 className="w-full h-full object-cover"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-              />
+/>
             </div>
 
             {/* Image Switch Button - Top Right of Image */}
@@ -298,14 +301,22 @@ export default function Hero() {
           {/* Bio */}
           <div className="space-y-3" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
             <p className="text-slate-700 dark:text-slate-200 leading-relaxed">
-              Hey, I'm Omer, a full stack developer who loves building clean, modern websites and apps where
-              design, functionality, and even the smallest details matter, with a focus on making products that are
-              both practical and visually satisfying.
+              Hey, I’m Omer, a full stack developer who builds clean, modern web applications with strong attention to design, performance, and the details most people ignore. I focus on shipping products that are reliable, scalable, and visually polished.
             </p>
             <p className="text-slate-700 dark:text-slate-200 leading-relaxed">
-              Tech stack isn't my concern, I'm flexible with whatever the project needs, though I prefer modern
-              frameworks and tools. I'm always open for new opportunities to learn and grow.
+              Explore my <a href="/projects" className="underline decoration-slate-300 hover:decoration-slate-500">Next.js projects and case studies</a>, read the <a href="/blogs" className="underline decoration-slate-300 hover:decoration-slate-500">developer blog</a>, and review my <a href="/experiences" className="underline decoration-slate-300 hover:decoration-slate-500">experience</a> and <a href="/certifications" className="underline decoration-slate-300 hover:decoration-slate-500">certifications</a> to see how I work end to end.
             </p>
+            <p className="text-slate-700 dark:text-slate-200 leading-relaxed">
+              I don’t chase tech stacks I choose tools based on the problem. I’m comfortable adapting fast, learning continuously, and taking ownership of real-world engineering challenges.
+            </p>
+            <div className="pt-1">
+              <p className="text-slate-600 dark:text-slate-300 text-sm font-medium">What I help with</p>
+              <ul className="mt-2 space-y-1 text-slate-700 dark:text-slate-200 text-sm leading-relaxed list-disc list-inside">
+                <li>Full stack web apps with Next.js, React, and Node.js</li>
+                <li>API design, integrations, and data workflows</li>
+                <li>Cloud deployment and DevOps automation</li>
+              </ul>
+            </div>
           </div>
 
           {/* Action Buttons */}
@@ -316,7 +327,7 @@ export default function Hero() {
               </span>
             </ButtonCreativeTop>
             <a
-              href="mailto:your@email.com"
+              href="mailto:syedomerali2006@gmail.com"
               className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-[9px] text-sm font-medium bg-white dark:bg-[#2E2E2E] text-slate-900 dark:text-[#D4D4D4] border border-slate-300 dark:border-transparent"
             >
               <Mail className="w-4 h-4" />

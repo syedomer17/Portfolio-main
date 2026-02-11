@@ -68,7 +68,7 @@ export default function GithubHoverCard() {
                         <div className="flex items-center gap-1.5 mb-3">
                             <HiLocationMarker className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                             <span className="text-sm text-slate-600 dark:text-slate-300">
-                                Delhi, India
+                                Hyderabad, India
                             </span>
                         </div>
 
@@ -80,7 +80,7 @@ export default function GithubHoverCard() {
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                             >
                                 <span className="text-sm font-bold text-slate-900 dark:text-white">
-                                    60
+                                    115
                                 </span>
                                 <span className="text-sm text-slate-600 dark:text-slate-300">
                                     Repositories
@@ -92,7 +92,7 @@ export default function GithubHoverCard() {
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                             >
                                 <span className="text-sm font-bold text-slate-900 dark:text-white">
-                                    180
+                                    16
                                 </span>
                                 <span className="text-sm text-slate-600 dark:text-slate-300">
                                     Followers

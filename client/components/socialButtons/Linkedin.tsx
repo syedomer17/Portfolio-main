@@ -59,7 +59,7 @@ export default function LinkedinHoverCard() {
                             {/* Name and Title */}
                             <div className="mb-3">
                                 <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                                    Rinkit Adhana
+                                    Syed Omer Ali
                                 </h3>
                                 <p className="text-sm text-slate-600 dark:text-slate-300 mb-1 leading-relaxed">
                                     Software Engineer. Building cool stuff on the web
@@ -69,7 +69,7 @@ export default function LinkedinHoverCard() {
                             {/* Location */}
                             <div className="flex items-center gap-1.5 mb-3">
                                 <span className="text-sm text-slate-600 dark:text-slate-300">
-                                    Delhi, India
+                                    Hyderabad, India
                                 </span>
                             </div>
 

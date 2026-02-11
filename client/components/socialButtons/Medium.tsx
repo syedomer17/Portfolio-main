@@ -52,10 +52,10 @@ export default function MediumHoverCard() {
                                 {/* Name and Username */}
                                 <div className="flex-1">
                                     <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                                        Rinkit Adhana
+                                        Syed Omer Ali
                                     </h3>
                                     <p className="text-sm text-slate-500 dark:text-slate-400">
-                                        @rinkitadhana
+                                        @syedomerali2006
                                     </p>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@ export default function MediumHoverCard() {
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
                                     <span className="text-sm font-bold text-slate-900 dark:text-white">
-                                        6
+                                        29
                                     </span>
                                     <span className="text-sm text-slate-600 dark:text-slate-300">
                                         Stories
@@ -85,7 +85,7 @@ export default function MediumHoverCard() {
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
                                     <span className="text-sm font-bold text-slate-900 dark:text-white">
-                                        100
+                                        6
                                     </span>
                                     <span className="text-sm text-slate-600 dark:text-slate-300">
                                         Followers

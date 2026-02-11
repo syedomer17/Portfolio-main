@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import {
   SiReact,
   SiNextdotjs,
-  SiExpo,
-  SiDjango,
   SiExpress,
   SiPostgresql,
   SiMongodb,
@@ -22,34 +20,55 @@ import {
   SiFigma,
   SiDocker,
   SiLinux,
-  SiBun,
-  SiNodedotjs
+  SiNodedotjs,
+  SiKubernetes,
+  SiAnsible,
+  SiJenkins,
+  SiGithubactions,
+  SiTerraform,
+  SiAmazonwebservices,
+  SiDigitalocean,
+  SiGooglecloud
 } from "react-icons/si";
 
 const skills = [
+  // Frameworks & libraries
   { name: "React", icon: SiReact },
   { name: "Next", icon: SiNextdotjs },
-  { name: "Expo", icon: SiExpo },
-  { name: "Django", icon: SiDjango },
   { name: "Express", icon: SiExpress },
   { name: "Node", icon: SiNodedotjs },
-  { name: "PostgreSQL", icon: SiPostgresql },
-  { name: "MongoDB", icon: SiMongodb },
-  { name: "Redis", icon: SiRedis },
-  { name: "Prisma", icon: SiPrisma },
   { name: "Tailwind", icon: SiTailwindcss },
-  { name: "Postman", icon: SiPostman },
+  { name: "Prisma", icon: SiPrisma },
+
+  // Languages
   { name: "TypeScript", icon: SiTypescript },
   { name: "JavaScript", icon: SiJavascript },
   { name: "Python", icon: SiPython },
   { name: "C/C++", icon: SiCplusplus },
   { name: "SQL", icon: SiPostgresql },
+
+  // Databases
+  { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "MongoDB", icon: SiMongodb },
+  { name: "Redis", icon: SiRedis },
+
+  // Tools
   { name: "Git", icon: SiGit },
   { name: "Github", icon: SiGithub },
+  { name: "Postman", icon: SiPostman },
   { name: "Figma", icon: SiFigma },
-  { name: "Docker", icon: SiDocker },
+
+  // DevOps & cloud
   { name: "Linux", icon: SiLinux },
-  { name: "Bun", icon: SiBun },
+  { name: "Docker", icon: SiDocker },
+  { name: "Kubernetes", icon: SiKubernetes },
+  { name: "Ansible", icon: SiAnsible },
+  { name: "Jenkins", icon: SiJenkins },
+  { name: "GitHub Actions", icon: SiGithubactions },
+  { name: "Terraform", icon: SiTerraform },
+  { name: "AWS", icon: SiAmazonwebservices },
+  { name: "DigitalOcean", icon: SiDigitalocean },
+  { name: "GCP", icon: SiGooglecloud },
 ];
 
 export default function TechStack() {
@@ -75,7 +94,7 @@ export default function TechStack() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-wrap gap-1.5 sm:gap-2"
+          className="flex flex-wrap gap-1.5 sm:gap-2 justify-center sm:justify-start"
         >
           {skills.map((skill, index) => {
             const Icon = skill.icon;
@@ -89,12 +108,10 @@ export default function TechStack() {
                 whileHover={{ scale: 1.05 }}
                 className="group relative"
               >
-                <div
-                  className="flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 bg-transparent border border-[#333] rounded-[10px] hover:border-[#555] transition-colors"
-                >
+                <div className="flex items-center gap-1.5 px-2 py-1 sm:px-3 sm:py-1.5 bg-transparent border border-[#333] rounded-[10px] hover:border-[#555] transition-colors">
                   <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#70717B] dark:text-[#D4D4D4] group-hover:text-[#424242] dark:group-hover:text-[#D4D4D4] transition-colors" />
                   <span
-                    className="text-xs sm:text-[13px] font-medium text-[#70717B] dark:text-[#D4D4D4] group-hover:text-[#424242] dark:group-hover:text-[#D4D4D4] transition-colors"
+                    className="text-[11px] sm:text-[13px] font-medium text-[#70717B] dark:text-[#D4D4D4] group-hover:text-[#424242] dark:group-hover:text-[#D4D4D4] transition-colors"
                     style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                   >
                     {skill.name}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Calendar, HandMetal } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import ThemeToggle from "../themeToggle/ThemeToggle";
-import { blogs } from "../../data/blogs";
+import { blogs } from "@/lib/cont";
 
 export default function BlogsPage() {
     const router = useRouter();
@@ -34,6 +34,13 @@ export default function BlogsPage() {
                     </header>
 
                     <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-4" />
+
+                    <p
+                        className="text-sm text-slate-600 dark:text-slate-300 mb-5"
+                        style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    >
+                        I write short, implementation-focused posts on Next.js, TypeScript, and DevOps. References often include the <a href="https://nextjs.org/docs" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Next.js docs</a>, <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">MDN</a>, and <a href="https://docs.aws.amazon.com/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">AWS documentation</a>. For applied examples, browse the <a href="/projects" className="underline hover:no-underline">project case studies</a>.
+                    </p>
 
                     {/* List */}
                     <div className="space-y-0">

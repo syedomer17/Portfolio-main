@@ -52,10 +52,10 @@ export default function LeetcodeHoverCard() {
                                 {/* Name and Username */}
                                 <div className="flex-1">
                                     <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                                        Rinkit Adhana
+                                     Syed Omer Ali
                                     </h3>
                                     <p className="text-sm text-slate-500 dark:text-slate-400">
-                                        rinkitadhana
+                                        syedomerali_200
                                     </p>
                                 </div>
                             </div>

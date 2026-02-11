@@ -1,34 +1,38 @@
 export const certifications = [
-    {
-        title: "Meta Front-End Developer Professional Certificate",
-        issuer: "Meta",
-        date: "Issued Sep 2023",
-        image: "/api/placeholder/400/250", // Placeholder for now
-        url: "#",
-        description: "Professional certification covering React, advanced JavaScript, version control, and UI/UX design principles."
-    },
-    {
-        title: "AWS Certified Cloud Practitioner",
-        issuer: "Amazon Web Services",
-        date: "Issued Jan 2024",
-        image: "/api/placeholder/400/250",
-        url: "#",
-        description: "Foundational understanding of AWS Cloud concepts, security, and compliance."
-    },
-    {
-        title: "Google UX Design Professional Certificate",
-        issuer: "Google",
-        date: "Issued Nov 2023",
-        image: "/api/placeholder/400/250",
-        url: "#",
-        description: "Comprehensive UX design curriculum covering user research, wireframing, prototyping, and testing."
-    },
-    {
-        title: "IBM Data Science Professional Certificate",
-        issuer: "IBM",
-        date: "Issued Dec 2023",
-        image: "/api/placeholder/400/250",
-        url: "#",
-        description: "In-depth training on data science methodology, Python programming, SQL, and data visualization."
-    }
+  {
+    title: "Linux System Administration Certification",
+    issuer: "Linux Challenge Program",
+    date: "Issued 2024",
+    image: "/certifications/linux-admin.png",
+    url: "#",
+    description:
+      "Hands-on Linux training covering system architecture, file systems, process management, permissions, networking fundamentals, and shell scripting with real command-line exercises.",
+  },
+  {
+    title: "AWS 3-Tier Architecture Project Certification",
+    issuer: "AWS Hands-On Program",
+    date: "Issued 2025",
+    image: "/certifications/aws-3-tier.png",
+    url: "#",
+    description:
+      "Designed and deployed a complete 3-tier architecture using EC2, S3, Application Load Balancer, IAM, and security groups, focusing on scalability, availability, and best practices.",
+  },
+  {
+    title: "DevOps Engineering Certification",
+    issuer: "DevOps Training Program",
+    date: "Issued 2025",
+    image: "/certifications/devops.png",
+    url: "#",
+    description:
+      "Practical DevOps training involving CI/CD pipelines, Docker containerization, Jenkins automation, Ansible configuration management, and Git/GitHub workflows.",
+  },
+  {
+    title: "Full Stack Web Development Certification",
+    issuer: "Full Stack Training Program",
+    date: "Issued 2024",
+    image: "/certifications/full-stack.png",
+    url: "#",
+    description:
+      "Comprehensive full-stack development certification covering frontend, backend, databases, REST APIs, authentication, and deployment of production-ready applications.",
+  },
 ];

@@ -35,6 +35,17 @@ export default function ExperiencesPage() {
 
                     <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-4" />
 
+                    <div className="mb-5 text-sm text-slate-600 dark:text-slate-300" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                        <p>
+                            I build and ship full stack products with a focus on reliable delivery, clean architecture, and practical DevOps. This timeline reflects hands-on roles across frontend, backend, and cloud workflows. For deeper proof points, see <a href="/certifications" className="underline hover:no-underline">certifications</a> and real-world outcomes in <a href="/projects" className="underline hover:no-underline">project case studies</a>.
+                        </p>
+                        <ul className="mt-3 list-disc list-inside space-y-1">
+                            <li>Product-focused development with measurable delivery scope</li>
+                            <li>API design, integrations, and data modeling</li>
+                            <li>CI/CD, cloud services, and deployment automation</li>
+                        </ul>
+                    </div>
+
                     {/* List */}
                     <div className="space-y-0">
                         {experiences.map((exp, index) => (
@@ -58,6 +69,8 @@ export default function ExperiencesPage() {
                                                 src={exp.logo}
                                                 alt={exp.company}
                                                 className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                                                loading="lazy"
+                                                decoding="async"
                                             />
                                         </div>
                                     </div>

@@ -25,6 +25,13 @@ export default function Blogs() {
         {/* Separator line */}
         <div className="w-full h-px bg-slate-200 dark:bg-[#333] "></div>
 
+        <p
+          className="text-sm text-slate-600 dark:text-slate-300 mt-4"
+          style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+        >
+          Short, practical notes on Next.js, TypeScript, and DevOps. For hands-on examples, see the <a href="/projects" className="underline hover:no-underline">project case studies</a> and the <a href="/experiences" className="underline hover:no-underline">experience timeline</a>.
+        </p>
+
         <div className="space-y-0">
           {blogs.map((blog, index) => (
             <motion.div

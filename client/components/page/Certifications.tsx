@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Award, Calendar } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import ThemeToggle from "../themeToggle/ThemeToggle";   
-import { certifications } from "../../data/certifications";
+import { certifications } from "@/lib/cont";
 
 export default function CertificationsPage() {
     const router = useRouter();
@@ -35,6 +35,13 @@ export default function CertificationsPage() {
 
                     <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-6" />
 
+                    <p
+                        className="text-sm text-slate-600 dark:text-slate-300 mb-5"
+                        style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    >
+                        These certifications support hands-on work in software engineering, cloud, and DevOps. They complement the practical outcomes shown in <a href="/experiences" className="underline hover:no-underline">experience</a> and <a href="/projects" className="underline hover:no-underline">project case studies</a>.
+                    </p>
+
                     {/* Certifications Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         {certifications.map((cert, index) => (
@@ -52,6 +59,8 @@ export default function CertificationsPage() {
                                             src={cert.image}
                                             alt={cert.title}
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                     </div>
                                 </div>

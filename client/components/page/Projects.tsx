@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
 import ThemeToggle from "../themeToggle/ThemeToggle";
-import { projects } from "../../data/projects";
+import { projects } from "@/lib/cont";
 
 export default function ProjectsPage() {
     const router = useRouter();
@@ -34,6 +34,13 @@ export default function ProjectsPage() {
                     </header>
 
                     <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-6" />
+
+                    <p
+                        className="text-sm text-slate-600 dark:text-slate-300 mb-5"
+                        style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    >
+                        These projects are presented as compact case studies with clear problem framing, implementation approach, and outcomes. For context on my role and process, see <a href="/experiences" className="underline hover:no-underline">experience</a> and browse the <a href="/blogs" className="underline hover:no-underline">developer blog</a> for technical deep dives.
+                    </p>
 
                     {/* Project Cards Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -97,6 +104,8 @@ export default function ProjectsPage() {
                                                 src={project.image}
                                                 alt={project.title}
                                                 className="w-full h-full object-contain rounded-md group-hover:scale-110 transition-transform duration-700 ease-out will-change-transform"
+                                                loading="lazy"
+                                                decoding="async"
                                             />
                                         )}
                                     </div>
@@ -120,11 +129,17 @@ export default function ProjectsPage() {
                                         <span
                                             className={`flex items-center gap-1.5 text-xs font-medium mt-0.5 ${project.status === "Live"
                                                 ? "text-green-500 dark:text-green-400"
-                                                : "text-red-500 dark:text-red-400"
+                                                : project.status === "Completed"
+                                                    ? "text-blue-500 dark:text-blue-400"
+                                                    : "text-red-500 dark:text-red-400"
                                                 }`}
                                         >
                                             <span
-                                                className={`w-2 h-2 rounded-full animate-pulse ${project.status === "Live" ? "bg-green-500 dark:bg-green-400" : "bg-red-500 dark:bg-red-400"
+                                                className={`w-2 h-2 rounded-full animate-pulse ${project.status === "Live"
+                                                    ? "bg-green-500 dark:bg-green-400"
+                                                    : project.status === "Completed"
+                                                        ? "bg-blue-500 dark:bg-blue-400"
+                                                        : "bg-red-500 dark:bg-red-400"
                                                     }`}
                                             />
                                             {project.status}
@@ -142,6 +157,26 @@ export default function ProjectsPage() {
                                         }}
                                     >
                                         {project.description}
+                                    </p>
+                                    <p
+                                        className="text-[12px] text-slate-500 dark:text-[#A0A0A0]"
+                                        style={{
+                                            fontFamily: '"Instagram Sans", sans-serif',
+                                            lineHeight: '18px',
+                                            fontWeight: 500
+                                        }}
+                                    >
+                                        Tech: {project.techStack.join(", ")}
+                                    </p>
+                                    <p
+                                        className="text-[12px] text-slate-500 dark:text-[#A0A0A0] mt-1"
+                                        style={{
+                                            fontFamily: '"Instagram Sans", sans-serif',
+                                            lineHeight: '18px',
+                                            fontWeight: 400
+                                        }}
+                                    >
+                                        Case study focus: {project.notes}
                                     </p>
 
                                     {/* View Project Link */}
@@ -165,6 +200,29 @@ export default function ProjectsPage() {
                                 </div>
                             </motion.div>
                         ))}
+                    </div>
+
+                    <div className="mt-6 pt-4 border-t border-dashed border-slate-200 dark:border-[#262626]">
+                        <h2
+                            className="text-base font-semibold text-slate-900 dark:text-white mb-2"
+                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                        >
+                            Project FAQ
+                        </h2>
+                        <div className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                            <div>
+                                <p className="font-medium">How are these projects built?</p>
+                                <p>Most projects use Next.js or React with TypeScript, backed by APIs and cloud-friendly deployments.</p>
+                            </div>
+                            <div>
+                                <p className="font-medium">Can I see implementation details?</p>
+                                <p>Yes. Source links are available on GitHub, and relevant write-ups live in the <a href="/blogs" className="underline hover:no-underline">technical blog</a>.</p>
+                            </div>
+                            <div>
+                                <p className="font-medium">Looking to collaborate?</p>
+                                <p>Book a <a href="/intro-call" className="underline hover:no-underline">15-minute intro call</a> to discuss scope and timelines.</p>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Github Link Footer */}

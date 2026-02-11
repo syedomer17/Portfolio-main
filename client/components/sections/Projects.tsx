@@ -90,6 +90,8 @@ export default function Projects() {
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-contain rounded-md group-hover:scale-110 transition-transform duration-700 ease-out will-change-transform"
+                      loading="lazy"
+                      decoding="async"
                     />
                   )}
                 </div>
@@ -113,11 +115,17 @@ export default function Projects() {
                   <span
                     className={`flex items-center gap-1.5 text-xs font-medium mt-0.5 ${project.status === "Live"
                       ? "text-green-500 dark:text-green-400"
-                      : "text-red-500 dark:text-red-400"
+                      : project.status === "Completed"
+                        ? "text-blue-500 dark:text-blue-400"
+                        : "text-red-500 dark:text-red-400"
                       }`}
                   >
                     <span
-                      className={`w-2 h-2 rounded-full animate-pulse ${project.status === "Live" ? "bg-green-500 dark:bg-green-400" : "bg-red-500 dark:bg-red-400"
+                      className={`w-2 h-2 rounded-full animate-pulse ${project.status === "Live"
+                        ? "bg-green-500 dark:bg-green-400"
+                        : project.status === "Completed"
+                          ? "bg-blue-500 dark:bg-blue-400"
+                          : "bg-red-500 dark:bg-red-400"
                         }`}
                     />
                     {project.status}
@@ -135,6 +143,26 @@ export default function Projects() {
                   }}
                 >
                   {project.description}
+                </p>
+                <p
+                  className="text-[12px] text-slate-500 dark:text-[#A0A0A0]"
+                  style={{
+                    fontFamily: '"Instagram Sans", sans-serif',
+                    lineHeight: '18px',
+                    fontWeight: 500
+                  }}
+                >
+                  Tech: {project.techStack.join(", ")}
+                </p>
+                <p
+                  className="text-[12px] text-slate-500 dark:text-[#A0A0A0] mt-1"
+                  style={{
+                    fontFamily: '"Instagram Sans", sans-serif',
+                    lineHeight: '18px',
+                    fontWeight: 400
+                  }}
+                >
+                  Case study focus: {project.notes}
                 </p>
 
                 {/* View Project Link */}
