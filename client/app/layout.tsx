@@ -36,8 +36,10 @@ export const metadata: Metadata = {
     "Full Stack Developer",
     "React Developer",
     "Next.js Developer",
+    "Backend Developer",
     "DevOps Engineer",
     "Cloud Engineer",
+    "AI Engineer"
   ],
 
   alternates: {
