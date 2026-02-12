@@ -28,6 +28,7 @@ import { useRouter } from "next/navigation";
 
 
 export default function Hero() {
+  const defaultViewCount = 3300;
 
   const router = useRouter();
 
@@ -37,6 +38,7 @@ export default function Hero() {
   const [contributionData, setContributionData] = useState<ContributionData | null>(null);
   const [loading, setLoading] = useState(true);
   const [hoveredDay, setHoveredDay] = useState<{ x: number; y: number; content: string } | null>(null);
+  const [viewCount, setViewCount] = useState(defaultViewCount);
   const graphRef = useRef<HTMLDivElement | null>(null);
 
   const handleImageSwitch = () => {
@@ -185,6 +187,33 @@ export default function Hero() {
     loadContributions();
   }, []);
 
+  useEffect(() => {
+    let isMounted = true;
+
+    const incrementViewCount = async () => {
+      try {
+        const response = await fetch("/api/view-count");
+        if (!response.ok) {
+          throw new Error("Failed to increment view count");
+        }
+        const data = await response.json();
+        if (isMounted && typeof data?.count === "number") {
+          setViewCount(data.count);
+        }
+      } catch (error) {
+        console.error("View count error:", error);
+      }
+    };
+
+    incrementViewCount();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const viewCountK = Number((viewCount / 1000).toFixed(1));
+
 
 
   return (
@@ -286,7 +315,7 @@ export default function Hero() {
                 <span className="text-sm leading-none flex">
                   <CountUp
                     from={0}
-                    to={3.3}
+                    to={viewCountK}
                     separator=","
                     direction="up"
                     duration={1}
