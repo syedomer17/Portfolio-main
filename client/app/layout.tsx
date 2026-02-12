@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
+import Providers from "@/components/Providers/Providers";
 import "./globals.css";
-import { ThemeProvider } from "../contexts/ThemeContext";
-import SmoothScroll from "../components/ui/SmoothScroll";
-import MountGuard from "../components/ui/MountGuard";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,43 +16,71 @@ const geistMono = Geist_Mono({
 
 const siteUrl = "https://syedomer.me";
 const siteName = "Syed Omer Ali";
-const defaultTitle = "Syed Omer Ali";
+const defaultTitle = "Syed Omer Ali | Full Stack Developer";
 const defaultDescription =
-  "Portfolio of Syed Omer Ali, a full stack developer focused on modern web applications, cloud, and DevOps.";
+  "Syed Omer Ali is a full stack developer specializing in modern web applications, cloud architecture, DevOps, and scalable systems.";
+
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+
   title: {
     default: defaultTitle,
     template: `%s | ${siteName}`,
   },
+
   description: defaultDescription,
+
+  keywords: [
+    "Syed Omer Ali",
+    "Full Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "DevOps Engineer",
+    "Cloud Engineer",
+  ],
+
   alternates: {
     canonical: "/",
   },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
   openGraph: {
+    type: "website",
+    url: siteUrl,
     title: defaultTitle,
     description: defaultDescription,
-    url: siteUrl,
     siteName,
     images: [
       {
-        url: "/banner.png",
+        url: `${siteUrl}/banner.png`,
         width: 1200,
         height: 630,
-        alt: "Syed Omer Ali - Portfolio",
+        alt: "Syed Omer Ali Portfolio Banner",
       },
     ],
     locale: "en_US",
-    type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     title: defaultTitle,
     description: defaultDescription,
-    images: ["/banner.png"],
+    images: [`${siteUrl}/banner.png`],
   },
+
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -62,40 +88,62 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
+
   manifest: "/site.webmanifest",
+
+  category: "technology",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {gaId ? (
+        {gaId && (
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
               strategy="afterInteractive"
             />
             <Script id="ga4-init" strategy="afterInteractive">
-              {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${gaId}', { anonymize_ip: true });`}
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}', {
+                  anonymize_ip: true,
+                  page_path: window.location.pathname,
+                });
+              `}
             </Script>
           </>
-        ) : null}
-        <ThemeProvider>
-          <MountGuard>
-            <SmoothScroll>
-              {children}
-            </SmoothScroll>
-          </MountGuard>
-        </ThemeProvider>
+        )}
+
+        {/* Structured Data for SEO */}
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Syed Omer Ali",
+            url: siteUrl,
+            jobTitle: "Full Stack Developer",
+            sameAs: [
+              "https://github.com/yourusername",
+              "https://linkedin.com/in/yourusername",
+            ],
+          })}
+        </Script>
+
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

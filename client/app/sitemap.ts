@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/experiences", priority: 0.7, changeFrequency: "monthly" },
     { path: "/certifications", priority: 0.6, changeFrequency: "yearly" },
     { path: "/intro-call", priority: 0.6, changeFrequency: "monthly" },
+    { path: "/send-email", priority: 0.6, changeFrequency: "monthly" },
   ];
 
   const blogRoutes: MetadataRoute.Sitemap = blogs.map((blog) => ({
