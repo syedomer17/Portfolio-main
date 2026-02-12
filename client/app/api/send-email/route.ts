@@ -135,7 +135,7 @@ export async function POST(req: NextRequest) {
 
   try {
     await transporter.sendMail({
-      from: process.env.SMTP_FROM,
+      from: `${safeName} <${email}>`,
       to: process.env.SMTP_TO,
       replyTo: email,
       subject: `New message: ${subject}`,

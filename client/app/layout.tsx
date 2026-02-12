@@ -20,7 +20,6 @@ const defaultTitle = "Syed Omer Ali | Full Stack Developer";
 const defaultDescription =
   "Syed Omer Ali is a full stack developer specializing in modern web applications, cloud architecture, DevOps, and scalable systems.";
 
-const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -104,26 +103,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {gaId && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}', {
-                  anonymize_ip: true,
-                  page_path: window.location.pathname,
-                });
-              `}
-            </Script>
-          </>
-        )}
-
         {/* Structured Data for SEO */}
         <Script
           id="json-ld"
