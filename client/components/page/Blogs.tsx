@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Calendar } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import ThemeToggle from "../themeToggle/ThemeToggle";
-import { blogs as featuredBlogs } from "@/lib/blogs";
+// import { blogs as featuredBlogs } from "@/lib/blogs";
 import { blogs as legacyBlogs } from "@/lib/cont";
 
 export default function BlogsPage() {
@@ -22,13 +22,13 @@ export default function BlogsPage() {
     };
 
     const mergedBlogs = [
-        ...featuredBlogs.map((blog) => ({
-            title: blog.title,
-            description: blog.description,
-            date: blog.publishedAt,
-            href: `/blogs/${blog.slug}`,
-            external: false,
-        })),
+        // ...featuredBlogs.map((blog) => ({
+        //     title: blog.title,
+        //     description: blog.description,
+        //     date: blog.publishedAt,
+        //     href: `/blogs/${blog.slug}`,
+        //     external: false,
+        // })),
         ...legacyBlogs.map((blog) => ({
             title: blog.title,
             description: `External article on ${blog.tags?.join(", ") || "Medium"}.`,

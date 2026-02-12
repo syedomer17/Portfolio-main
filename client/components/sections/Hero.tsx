@@ -26,6 +26,7 @@ import {
 } from "../../utils/githubApi";
 
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 
 export default function Hero() {
@@ -364,15 +365,15 @@ export default function Hero() {
                 Book an intro call
               </span>
             </ButtonCreativeTop>
-            <a
-              href="mailto:syedomerali2006@gmail.com"
+            <Link
+              href="/send-email"
               className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-[9px] text-sm font-medium bg-white dark:bg-[#2E2E2E] text-slate-900 dark:text-[#D4D4D4] border border-slate-300 dark:border-transparent"
             >
               <Mail className="w-4 h-4" />
               <span className="font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
                 Send an email
               </span>
-            </a>
+            </Link>
           </div>
 
           {/* Social Links */}
@@ -410,29 +411,29 @@ export default function Hero() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute bottom-full left-0 mb-2 w-40 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#3A3A3A] rounded-xl shadow-xl z-20 p-1.5"
+                      className="absolute bottom-full left-0 min-[430px]:-left-12 sm:left-0 mb-2 w-40 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#3A3A3A] rounded-xl shadow-xl z-20 p-1.5"
                       style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                     >
-                      <a href="https://leetcode.com/syedomerali_200" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
+                      <Link href="https://leetcode.com/syedomerali_200" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
                         <SiLeetcode className="w-4 h-4 text-[#FFA116]" />
                         <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>LeetCode</span>
-                      </a>
-                      <a href="https://medium.com/@syedomerali2006" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
+                      </Link>
+                      <Link href="https://medium.com/@syedomerali2006" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
                         <FaMedium className="w-4 h-4 text-black dark:text-white" />
                         <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Medium</span>
-                      </a>
-                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
+                      </Link>
+                      <Link href="https://www.instagram.com/syedomer.me/" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
                         <FaInstagram className="w-4 h-4 text-slate-700 dark:text-white" />
                         <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Instagram</span>
-                      </a>
-                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
+                      </Link>
+                      <Link href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
                         <FaYoutube className="w-4 h-4 text-slate-700 dark:text-white" />
                         <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>YouTube</span>
-                      </a>
-                      <a href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors">
+                      </Link>
+                      <Link href="https://discord.com/channels/@syedomerali8642" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors">
                         <FaDiscord className="w-4 h-4 text-slate-700 dark:text-white" />
                         <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Discord</span>
-                      </a>
+                      </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>

@@ -298,7 +298,7 @@ export const blogs = [
     date: "Oct 2024",
     views: 0,
     tags: ["JavaScript", "Web Basics"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/what-is-javascript-0c0e8f48770f",
   },
   {
     title: "Understanding JavaScript Data Types in Simple Terms",
@@ -363,20 +363,20 @@ export const blogs = [
     date: "Oct 2024",
     views: 0,
     tags: ["Operating System", "Computer Basics"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/what-is-operating-system-and-what-types-of-operating-system-are-07cb8b5f586",
   },
   {
     title: "What Is Linux and Its Distributions",
     date: "Oct 2024",
     views: 0,
-    url: "https://medium.com/@syedomerali2006/understanding-javascript-data-types-in-simple-terms-e9b4cf4b887c?source=rss-1e59f81c02b4------2",
+    url: "https://medium.com/@syedomerali2006/what-is-linux-and-its-distro-cfdc3a18f86a",
     tags: ["Linux", "Operating System"],
   },
   {
     title: "Linux Commands and Their Usage",
     date: "Oct 2024",
     views: 0,
-    url: "https://medium.com/@syedomerali2006/adding-elements-8b375452bfc4?source=rss-1e59f81c02b4------2",
+    url: "https://medium.com/@syedomerali2006/linux-commands-and-their-usage-8b375452bfc4",
     tags: ["Linux", "Commands"],
   },
   {
@@ -384,21 +384,21 @@ export const blogs = [
     date: "Oct 2024",
     views: 0,
     tags: ["Linux", "CLI"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/linux-command-line-essentials-from-chmod-to-sort-and-beyond-af88eb2c2dae",
   },
   {
     title: "Advanced Linux Commands for Power Users",
     date: "Oct 2024",
     views: 0,
     tags: ["Linux", "Advanced"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/linux-and-its-com-mands-8b9e718f44b9",
   },
   {
     title: "CMD Commands: Basics Every Developer Should Know",
     date: "Oct 2024",
     views: 0,
     tags: ["CLI", "Windows"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/cmd-comands-c4d7c3e07530",
   },
 
   // Networking & Fundamentals
@@ -407,21 +407,21 @@ export const blogs = [
     date: "Oct 2024",
     views: 0,
     tags: ["Networking", "IP Address"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/understanding-ip-addresses-with-public-ip-addresses-and-private-ip-addresses-and-its-classes-3ca3afc67df5",
   },
   {
     title: "Understanding 1's Complement and 2's Complement",
     date: "Oct 2024",
     views: 0,
     tags: ["Computer Science", "Number Systems"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/understanding-1s-complement-and-2-s-complement-4458ef7de872",
   },
   {
     title: "What Are Number Systems and Their Types?",
     date: "Oct 2024",
     views: 0,
     tags: ["Computer Fundamentals"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/what-are-number-system-what-are-there-types-52e3fcae2073",
   },
 
   // Git, GitHub & Dev Tools
@@ -430,28 +430,28 @@ export const blogs = [
     date: "Oct 2024",
     views: 0,
     tags: ["Git", "Version Control"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/getting-to-know-git-and-github-what-is-git-f40df1a0670a",
   },
   {
     title: "How to Push Existing Code with Git and .gitignore Configuration",
     date: "Oct 2024",
     views: 0,
     tags: ["Git", "GitHub"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/how-to-push-existing-code-with-git-and-gitignore-configuration-0e56928d33ce",
   },
   {
     title: "Step-by-Step Guide to Pushing Code to GitHub Using Ubuntu",
     date: "Oct 2024",
     views: 0,
     tags: ["GitHub", "Linux"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/step-by-step-guide-on-how-to-push-files-to-github-using-the-ubuntu-terminal-62a0e329ca12",
   },
   {
     title: "What Is SSH and Why Developers Use It",
     date: "Oct 2024",
     views: 0,
     tags: ["SSH", "Security"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/what-is-ssh-e22f761d6f28",
   },
 
   // Web Basics
@@ -460,14 +460,14 @@ export const blogs = [
     date: "Oct 2024",
     views: 0,
     tags: ["Web Basics"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/web-page-or-web-side-251288c0e874",
   },
   {
     title: "What Are Domains and Hosting?",
     date: "Oct 2024",
     views: 0,
     tags: ["Web Hosting", "Domains"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/what-is-domians-and-hosting-262f310c5432",
   },
 
   // CLI Tools
@@ -476,13 +476,13 @@ export const blogs = [
     date: "Oct 2024",
     views: 0,
     tags: ["Linux", "CLI Tools"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/what-is-wget-and-its-variations-and-options-2b0462739284",
   },
   {
     title: "curl Command Explained with Variations and Options",
     date: "Oct 2024",
     views: 0,
     tags: ["Linux", "Networking"],
-    url: "#",
+    url: "https://medium.com/@syedomerali2006/curl-with-its-variations-and-options-e1ad0c37186c",
   },
 ];
