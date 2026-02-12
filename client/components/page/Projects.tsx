@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import { projects } from "@/lib/projects";
+import Image from "next/image";
 
 export default function ProjectsPage() {
     const router = useRouter();
@@ -101,12 +102,12 @@ export default function ProjectsPage() {
                                                 </div>
                                             </div>
                                         ) : (
-                                            <img
+                                            <Image
                                                 src={project.image}
                                                 alt={project.title}
-                                                className="w-full h-full object-contain rounded-md group-hover:scale-110 transition-transform duration-700 ease-out will-change-transform"
-                                                loading="lazy"
-                                                decoding="async"
+                                                fill
+                                                sizes="(max-width: 640px) 100vw, 320px"
+                                                className="object-contain rounded-md group-hover:scale-110 transition-transform duration-700 ease-out will-change-transform"
                                             />
                                         )}
                                     </div>

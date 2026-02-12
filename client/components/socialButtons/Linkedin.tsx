@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { FaLinkedin } from 'react-icons/fa';
+import Image from "next/image";
 
 export default function LinkedinHoverCard() {
     const [showCard, setShowCard] = useState(false);
@@ -38,10 +39,12 @@ export default function LinkedinHoverCard() {
                     >
                         {/* Banner Image */}
                         <div className="h-16 bg-slate-200 dark:bg-slate-700 relative">
-                            <img
+                            <Image
                                 src="/linkedin-banner.jpg"
                                 alt="Banner"
-                                className="w-full h-full object-cover"
+                                fill
+                                sizes="(max-width: 640px) 100vw, 384px"
+                                className="object-cover"
                             />
                         </div>
 
@@ -49,10 +52,13 @@ export default function LinkedinHoverCard() {
                         <div className="p-4 pt-0">
                             {/* Profile Image - Overlapping Banner */}
                             <div className="relative -mt-6 mb-3">
-                                <img
+                                <Image
                                     src="/myImage.png"
                                     alt="Profile"
                                     className="relative w-16 h-16 rounded-full border-4 border-white dark:border-[#1C1C1C] object-cover shadow-lg"
+                                    width={64}
+                                    height={64}
+                                    sizes="64px"
                                 />
                             </div>
 

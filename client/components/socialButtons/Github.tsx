@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { HiLocationMarker } from 'react-icons/hi';
+import Image from "next/image";
 
 export default function GithubHoverCard() {
     const [showCard, setShowCard] = useState(false);
@@ -41,10 +42,13 @@ export default function GithubHoverCard() {
                         <div className="flex items-start gap-3 mb-3">
                             {/* Profile Image with Gradient Border */}
                             <div className="relative">
-                                <img
+                                <Image
                                     src="/myImage.png"
                                     alt="Profile"
                                     className="relative w-16 h-16 rounded-full border-2 border-white dark:border-[#1C1C1C] object-cover shadow-lg"
+                                    width={64}
+                                    height={64}
+                                    sizes="64px"
                                 />
                             </div>
 

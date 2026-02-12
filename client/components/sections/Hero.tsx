@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { CalendarDays, Eye, Mail, RefreshCw } from "lucide-react";
 
 import { HiMenu } from "react-icons/hi";
@@ -239,18 +240,23 @@ export default function Hero() {
             className="relative flex-shrink-0"
           >
             <div className="w-26 h-26 rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-700">
-              <motion.img
+              <motion.div
                 key={currentImage}
-                src={currentImage}
-                alt="Profile"
-                className="w-full h-full object-cover"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-/>
+                className="w-full h-full"
+              >
+                <Image
+                  src={currentImage}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                  width={104}
+                  height={104}
+                  priority
+                  sizes="104px"
+                />
+              </motion.div>
             </div>
 
             {/* Image Switch Button - Top Right of Image */}

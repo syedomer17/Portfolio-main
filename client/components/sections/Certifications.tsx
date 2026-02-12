@@ -5,6 +5,7 @@ import { ArrowUpRight, Award, Calendar } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import { certifications } from "@/data/certifications";
+import Image from "next/image";
 
 export default function Certifications() {
     const router = useRouter();
@@ -42,10 +43,12 @@ export default function Certifications() {
                             <div className="relative h-40 bg-gray-50 dark:bg-[#111] border-b border-gray-100 dark:border-[#222] overflow-hidden">
                                 <div className="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600">
                                     {/* Placeholder Logic if no image, or just use img tag */}
-                                    <img
+                                    <Image
                                         src={cert.image}
                                         alt={cert.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        fill
+                                        sizes="(max-width: 640px) 100vw, 320px"
+                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
                                 </div>
                             </div>

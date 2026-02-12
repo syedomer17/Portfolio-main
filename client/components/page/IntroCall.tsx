@@ -7,6 +7,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 import { toast } from 'react-hot-toast';
 import PhoneInput from "react-phone-number-input";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
+import Image from "next/image";
 import "react-phone-number-input/style.css";
 
 type Step = 'calendar' | 'form' | 'success';
@@ -241,7 +242,14 @@ export function IntroCallPage() {
 
             <div className={`mb-4 ${step === 'form' ? 'mt-12' : ''}`}>
                 <div className="w-12 h-12 rounded-full overflow-hidden relative">
-                    <img src="https://github.com/syedomer17.png" alt="Rinkit Adhana" className="w-full h-full object-cover" />
+                    <Image
+                        src="https://github.com/syedomer17.png"
+                        alt="Rinkit Adhana"
+                        className="w-full h-full object-cover"
+                        width={48}
+                        height={48}
+                        sizes="48px"
+                    />
                 </div>
             </div>
 

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { SiLeetcode } from 'react-icons/si';
+import Image from "next/image";
 
 export default function LeetcodeHoverCard() {
     const [showCard, setShowCard] = useState(false);
@@ -42,10 +43,13 @@ export default function LeetcodeHoverCard() {
                             <div className="flex items-center gap-3 mb-4">
                                 {/* Profile Image */}
                                 <div className="relative">
-                                    <img
+                                    <Image
                                         src="/myImage.png"
                                         alt="Profile"
                                         className="relative w-16 h-16 rounded-lg border-2 border-white dark:border-[#1C1C1C] object-cover shadow-lg"
+                                        width={64}
+                                        height={64}
+                                        sizes="64px"
                                     />
                                 </div>
 
@@ -68,7 +72,7 @@ export default function LeetcodeHoverCard() {
                                         whileHover={{ scale: 1.05 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
-                                        <div className="text-2xl font-bold text-green-500">93</div>
+                                        <div className="text-2xl font-bold text-green-500">5</div>
                                         <div className="text-xs text-slate-600 dark:text-slate-300">Easy</div>
                                     </motion.div>
                                     <motion.div
@@ -76,7 +80,7 @@ export default function LeetcodeHoverCard() {
                                         whileHover={{ scale: 1.05 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
-                                        <div className="text-2xl font-bold text-yellow-500">64</div>
+                                        <div className="text-2xl font-bold text-yellow-500">0</div>
                                         <div className="text-xs text-slate-600 dark:text-slate-300">Medium</div>
                                     </motion.div>
                                     <motion.div
@@ -84,7 +88,7 @@ export default function LeetcodeHoverCard() {
                                         whileHover={{ scale: 1.05 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
-                                        <div className="text-2xl font-bold text-red-500">9</div>
+                                        <div className="text-2xl font-bold text-red-500">0</div>
                                         <div className="text-xs text-slate-600 dark:text-slate-300">Hard</div>
                                     </motion.div>
                                 </div>
@@ -98,7 +102,7 @@ export default function LeetcodeHoverCard() {
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
                                     <span className="text-sm text-slate-600 dark:text-slate-300">Rank</span>
-                                    <span className="text-sm font-bold text-slate-900 dark:text-white">863,655</span>
+                                    <span className="text-sm font-bold text-slate-900 dark:text-white">5,000,000</span>
                                 </motion.div>
                                 <motion.div
                                     className="flex items-center justify-between cursor-pointer"
@@ -106,7 +110,7 @@ export default function LeetcodeHoverCard() {
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
                                     <span className="text-sm text-slate-600 dark:text-slate-300">Contest Rating</span>
-                                    <span className="text-sm font-bold text-yellow-600 dark:text-yellow-500">1,424</span>
+                                    <span className="text-sm font-bold text-yellow-600 dark:text-yellow-500">400000</span>
                                 </motion.div>
                                 <motion.div
                                     className="flex items-center justify-between cursor-pointer"
@@ -114,7 +118,7 @@ export default function LeetcodeHoverCard() {
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
                                     <span className="text-sm text-slate-600 dark:text-slate-300">Total Solved</span>
-                                    <span className="text-sm font-bold text-slate-900 dark:text-white">166</span>
+                                    <span className="text-sm font-bold text-slate-900 dark:text-white">5</span>
                                 </motion.div>
                             </div>
                         </div>

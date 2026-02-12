@@ -6,6 +6,7 @@ import { ArrowUpRight, Sparkles } from "lucide-react";
 import { projects } from "@/lib/projects";
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Projects() {
   const router = useRouter();
@@ -87,12 +88,12 @@ export default function Projects() {
                       </div>
                     </div>
                   ) : (
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-contain rounded-md group-hover:scale-110 transition-transform duration-700 ease-out will-change-transform"
-                      loading="lazy"
-                      decoding="async"
+                      fill
+                      sizes="(max-width: 640px) 100vw, 320px"
+                      className="object-contain rounded-md group-hover:scale-110 transition-transform duration-700 ease-out will-change-transform"
                     />
                   )}
                 </div>

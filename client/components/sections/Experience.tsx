@@ -5,6 +5,7 @@ import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 import { experiences } from "../../data/experiences";
 
@@ -55,10 +56,13 @@ export default function Experience() {
                 {/* Company Logo */}
                 <div className="shrink-0">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-700/70 flex items-center justify-center overflow-hidden p-1 shadow-sm">
-                    <img
+                    <Image
                       src={exp.logo}
                       alt={exp.company}
                       className="w-8 h-8 sm:w-10 sm:h-10 object-contain drop-shadow"
+                      width={40}
+                      height={40}
+                      sizes="40px"
                     />
                   </div>
                 </div>
