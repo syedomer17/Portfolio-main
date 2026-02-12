@@ -6,7 +6,7 @@ import { CalendarDays, Eye, Mail, RefreshCw } from "lucide-react";
 import { HiMenu } from "react-icons/hi";
 import { FaInstagram, FaYoutube, FaDiscord, FaMedium } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import { WordRotate } from "../ui/word-rotate";
 import CountUp from "../ui/CountUp";
@@ -37,6 +37,7 @@ export default function Hero() {
   const [contributionData, setContributionData] = useState<ContributionData | null>(null);
   const [loading, setLoading] = useState(true);
   const [hoveredDay, setHoveredDay] = useState<{ x: number; y: number; content: string } | null>(null);
+  const graphRef = useRef<HTMLDivElement | null>(null);
 
   const handleImageSwitch = () => {
     // Play audio
@@ -63,13 +64,15 @@ export default function Hero() {
   // Tooltip handlers (from Github.tsx)
   const handleMouseEnter = (event: React.MouseEvent, day: ContributionDay) => {
     const rect = event.currentTarget.getBoundingClientRect();
+    const graphRect = graphRef.current?.getBoundingClientRect();
     const content =
       day.contributionCount === 0
         ? `No contributions on ${formatDateForTooltip(day.date)}`
         : `${day.contributionCount} contribution${day.contributionCount !== 1 ? "s" : ""} on ${formatDateForTooltip(day.date)}`;
+    if (!graphRect) return;
     setHoveredDay({
-      x: rect.left + rect.width / 2,
-      y: rect.top - 8,
+      x: rect.left + rect.width / 2 - graphRect.left,
+      y: rect.top - graphRect.top - 8,
       content,
     });
   };
@@ -409,7 +412,7 @@ export default function Hero() {
                 <span className="text-xs text-slate-500 dark:text-slate-600">Loading contributions...</span>
               </div>
             ) : contributionData ? (
-              <>
+              <div ref={graphRef} className="relative">
                 {/* Shared Scroll Container for Alignment */}
                 <div className="overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 sm:px-0">
                   <div className="w-max min-w-full">
@@ -450,7 +453,7 @@ export default function Hero() {
                 {/* Tooltip */}
                 {hoveredDay && (
                   <div
-                    className="fixed z-50 px-2 py-1 text-xs text-white bg-gray-900 border border-gray-700 rounded shadow-lg pointer-events-none"
+                    className="absolute z-50 px-2 py-1 text-xs text-white bg-gray-900 border border-gray-700 rounded shadow-lg pointer-events-none whitespace-nowrap"
                     style={{
                       left: `${hoveredDay.x}px`,
                       top: `${hoveredDay.y}px`,
@@ -478,7 +481,7 @@ export default function Hero() {
                     <span>More</span>
                   </div>
                 </div>
-              </>
+              </div>
             ) : null}
           </div>
         </div>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
 import ThemeToggle from "../themeToggle/ThemeToggle";
-import { projects } from "@/lib/cont";
+import { projects } from "@/lib/projects";
 
 export default function ProjectsPage() {
     const router = useRouter();
@@ -45,8 +45,9 @@ export default function ProjectsPage() {
                     {/* Project Cards Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {projects.map((project, index) => (
-                            <motion.div
+                            <motion.a
                                 key={index}
+                                href={`/projects/${project.slug}`}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{
@@ -156,7 +157,7 @@ export default function ProjectsPage() {
                                             letterSpacing: 'normal'
                                         }}
                                     >
-                                        {project.description}
+                                        {project.shortDescription}
                                     </p>
                                     <p
                                         className="text-[12px] text-slate-500 dark:text-[#A0A0A0]"
@@ -176,16 +177,13 @@ export default function ProjectsPage() {
                                             fontWeight: 400
                                         }}
                                     >
-                                        Case study focus: {project.notes}
+                                        Case study focus: {project.caseStudyFocus}
                                     </p>
 
                                     {/* View Project Link */}
                                     <div className="mt-auto">
-                                        <a
-                                            href={project.url || "#"}
-                                            target={project.url ? "_blank" : undefined}
-                                            rel={project.url ? "noopener noreferrer" : undefined}
-                                            className="inline-flex items-center gap-1.5 text-[#333333] dark:text-[#D4D4D4] hover:text-black dark:hover:text-white transition-all duration-400 ease-out border-b border-transparent hover:border-black dark:hover:border-white pb-0.5"
+                                        <span
+                                            className="inline-flex items-center gap-1.5 text-[#333333] dark:text-[#D4D4D4] group-hover:text-black dark:group-hover:text-white transition-all duration-400 ease-out border-b border-transparent group-hover:border-black dark:group-hover:border-white pb-0.5"
                                             style={{
                                                 fontFamily: '"Instagram Sans", sans-serif',
                                                 fontSize: '14px',
@@ -195,10 +193,10 @@ export default function ProjectsPage() {
                                         >
                                             View Project
                                             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-400 ease-out group-hover:-translate-y-1 group-hover:translate-x-1" />
-                                        </a>
+                                        </span>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </motion.a>
                         ))}
                     </div>
 

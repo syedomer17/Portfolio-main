@@ -199,7 +199,7 @@ export const certifications: Certification[] = [
     title: "Linux System Administration Certification",
     issuer: "Linux Challenge Program",
     date: "Issued 2024",
-    image: "/certifications/linux-admin.png",
+    image: "/certifications/linux.png",
     url: "#",
     description:
       "Hands-on Linux training covering system architecture, file systems, process management, permissions, networking fundamentals, and shell scripting with real command-line exercises.",
@@ -208,7 +208,7 @@ export const certifications: Certification[] = [
     title: "AWS 3-Tier Architecture Project Certification",
     issuer: "AWS Hands-On Program",
     date: "Issued 2025",
-    image: "/certifications/aws-3-tier.png",
+    image: "/certifications/Aws.png",
     url: "#",
     description:
       "Designed and deployed a complete 3-tier architecture using EC2, S3, Application Load Balancer, IAM, and security groups, focusing on scalability, availability, and best practices.",
@@ -235,7 +235,7 @@ export const certifications: Certification[] = [
     title: "Postman API Fundamentals Student Certification",
     issuer: "Postman",
     date: "Issued 2025",
-    image: "/certifications/postman-api.png",
+    image: "/certifications/postman.png",
     url: "#",
     description:
       "Fundamental training on API development and testing using Postman, covering request building, response validation, and automation.",
@@ -254,7 +254,7 @@ export const certifications: Certification[] = [
     issuer: "Udemy",
     date: "Issued 2024",
     image: "/certifications/javascript.png",
-    url: "#",
+    url: "https://udemy-certificate.s3.amazonaws.com/image/UC-8732de05-ea94-4275-b95b-d7820a241896.jpg",
     description:
       "In-depth JavaScript training covering core concepts, ES6 features, asynchronous programming, and practical application development.",
   },
@@ -262,7 +262,7 @@ export const certifications: Certification[] = [
     title: "Full Stack Web Development Certification",
     issuer: "Full Stack Training Program",
     date: "Issued 2025",
-    image: "/certifications/full-stack.png",
+    image: "/certifications/fullstack.png",
     url: "#",
     description:
       "Comprehensive full-stack development certification covering frontend, backend, databases, REST APIs, authentication, and deployment of production-ready applications.",

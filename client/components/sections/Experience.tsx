@@ -50,31 +50,32 @@ export default function Experience() {
               {/* Card Header - Always Visible */}
               <button
                 onClick={() => toggleExpand(index)}
-                className="w-full py-4 sm:py-5 flex items-center gap-2 sm:gap-4 transition-colors group"
+                className="w-full py-4 sm:py-5 flex items-start gap-2 sm:gap-4 transition-colors group"
               >
                 {/* Company Logo */}
                 <div className="shrink-0">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center overflow-hidden">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-700/70 flex items-center justify-center overflow-hidden p-1 shadow-sm">
                     <img
                       src={exp.logo}
                       alt={exp.company}
-                      className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                      className="w-8 h-8 sm:w-10 sm:h-10 object-contain drop-shadow"
                     />
                   </div>
                 </div>
 
                 {/* Company Info */}
                 <div className="flex-1 min-w-0 text-left">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
                     <h3
-                      className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white"
+                      className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white truncate"
                       style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                      title={exp.company}
                     >
                       {exp.company}
                     </h3>
                     {/* Type Badge - Always Visible */}
                     <span
-                      className="px-1.5 py-0.5 sm:px-2 text-[10px] sm:text-xs font-medium bg-transparent text-[#70717B] dark:text-[#989898] rounded border border-slate-300 dark:border-[#3A3A3A]"
+                      className="shrink-0 px-1.5 py-0.5 sm:px-2 text-[10px] sm:text-xs font-medium bg-transparent text-[#70717B] dark:text-[#989898] rounded border border-slate-300 dark:border-[#3A3A3A]"
                     >
                       {exp.type}
                     </span>
@@ -88,7 +89,7 @@ export default function Experience() {
                 </div>
 
                 {/* Date & Location + Chevron */}
-                <div className="shrink-0 flex items-center gap-1.5 sm:gap-3">
+                <div className="shrink-0 flex items-center gap-1.5 sm:gap-3 pt-1">
                   <div className="text-right">
                     <p
                       className="text-xs sm:text-sm leading-5 font-medium text-[#333333] dark:text-[#EBEBEB]"
@@ -154,6 +155,17 @@ export default function Experience() {
                           ))}
                         </div>
                       )}
+
+                      <div className="mt-3">
+                        <a
+                          href={`/experiences/${exp.slug}`}
+                          className="inline-flex items-center gap-1 text-sm font-medium text-slate-700 dark:text-slate-300 hover:underline"
+                          style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                        >
+                          View experience details
+                          <ArrowUpRight className="w-4 h-4" />
+                        </a>
+                      </div>
 
                       {/* Empty state for cards without content */}
                       {exp.achievements.length === 0 && exp.tags.length === 0 && (

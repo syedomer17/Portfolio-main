@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
-import { projects } from "../../data/projects";
+import { projects } from "@/lib/projects";
 
 import { useRouter } from "next/navigation";
 
@@ -28,8 +28,9 @@ export default function Projects() {
         {/* Project Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={`/projects/${project.slug}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ y: -8, transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] } }}
@@ -142,7 +143,7 @@ export default function Projects() {
                     letterSpacing: 'normal'
                   }}
                 >
-                  {project.description}
+                  {project.shortDescription}
                 </p>
                 <p
                   className="text-[12px] text-slate-500 dark:text-[#A0A0A0]"
@@ -162,16 +163,13 @@ export default function Projects() {
                     fontWeight: 400
                   }}
                 >
-                  Case study focus: {project.notes}
+                  Case study focus: {project.caseStudyFocus}
                 </p>
 
                 {/* View Project Link */}
                 <div className="mt-auto">
-                  <a
-                    href={project.url || "#"}
-                    target={project.url ? "_blank" : undefined}
-                    rel={project.url ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-1.5 text-[#333333] dark:text-[#D4D4D4] hover:text-black dark:hover:text-white transition-all duration-400 ease-out border-b border-transparent hover:border-black dark:hover:border-white pb-0.5"
+                  <span
+                    className="inline-flex items-center gap-1.5 text-[#333333] dark:text-[#D4D4D4] group-hover:text-black dark:group-hover:text-white transition-all duration-400 ease-out border-b border-transparent group-hover:border-black dark:group-hover:border-white pb-0.5"
                     style={{
                       fontFamily: '"Instagram Sans", sans-serif',
                       fontSize: '14px',
@@ -181,10 +179,10 @@ export default function Projects() {
                   >
                     View Project
                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-400 ease-out group-hover:-translate-y-1 group-hover:translate-x-1" />
-                  </a>
+                  </span>
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
 

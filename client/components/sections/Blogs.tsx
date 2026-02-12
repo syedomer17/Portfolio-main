@@ -1,14 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Calendar, HandMetal } from "lucide-react";
+import { ArrowUpRight, Calendar } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-import { blogs } from "../../data/blogs";
+import { blogs } from "@/lib/blogs";
 
 export default function Blogs() {
 
   const router = useRouter();
+  const formatDate = (value: string) =>
+    new Date(value).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
   return (
     <section id="blogs" className="container mx-auto px-4 sm:px-6 pb-0">
       <div className="max-w-2xl mx-auto">
@@ -46,7 +52,7 @@ export default function Blogs() {
               }}
             >
               <a
-                href={blog.url}
+                href={`/blogs/${blog.slug}`}
                 className="group block py-4 hover:bg-transparent transition-all"
               >
                 <div className="flex items-start justify-between gap-4">
@@ -65,7 +71,7 @@ export default function Blogs() {
                     </h3>
 
                     <div
-                      className="flex items-center gap-3 text-[#70717B] dark:text-[#D4D4D4] mb-3"
+                      className="flex items-center gap-3 text-[#70717B] dark:text-[#D4D4D4] mb-2"
                       style={{
                         fontFamily: '"Instagram Sans", sans-serif',
                         fontSize: '12px',
@@ -76,35 +82,22 @@ export default function Blogs() {
                     >
                       <div className="flex items-center gap-1.5">
                         <Calendar className="w-3.5 h-3.5" />
-                        <span>{blog.date}</span>
+                        <span>{formatDate(blog.publishedAt)}</span>
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-2">
-                      <div className="flex items-center gap-1.5 text-gray-500 dark:text-[#D4D4D4] border-r border-[#333] pr-2 h-4" style={{ fontSize: '12px', fontWeight: 500 }}>
-                        <HandMetal className="w-3.5 h-3.5 dark:text-[#D4D4D4]" />
-                        <span>{blog.views}</span>
-                      </div>
+                    <p
+                      className="text-sm text-[#70717B] dark:text-[#D4D4D4]"
+                      style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    >
+                      {blog.description}
+                    </p>
 
-                      {blog.tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className="px-2.5 py-1 text-[11px] font-medium bg-gray-100 dark:bg-transparent text-[#424242] dark:text-[#D4D4D4] rounded-[4px] border border-transparent dark:border-[#333]"
-                          style={{
-                            fontFamily: '"Instagram Sans", sans-serif',
-                            fontSize: '12px',
-                            lineHeight: '16px',
-                            fontWeight: 400,
-                            letterSpacing: 'normal'
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                    <div className="mt-2 inline-flex items-center gap-1 text-sm text-slate-700 dark:text-slate-300">
+                      Read more
+                      <ArrowUpRight className="w-3.5 h-3.5" />
                     </div>
                   </div>
-
-                  <ArrowUpRight className="w-4 h-4 text-gray-400 dark:text-[#666] group-hover:text-black dark:group-hover:text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 shrink-0 mt-1 hidden sm:block" />
                 </div>
               </a>
               {/* Dashed Separator below each item except likely the last one if desired, but image shows separators. Logic here adds below each. */}

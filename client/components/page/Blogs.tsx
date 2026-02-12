@@ -1,13 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight, Calendar, HandMetal } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Calendar } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import ThemeToggle from "../themeToggle/ThemeToggle";
-import { blogs } from "@/lib/cont";
+import { blogs as featuredBlogs } from "@/lib/blogs";
+import { blogs as legacyBlogs } from "@/lib/cont";
 
 export default function BlogsPage() {
     const router = useRouter();
+    const formatDate = (value: string) => {
+        const parsed = new Date(value);
+        if (Number.isNaN(parsed.getTime())) {
+            return value;
+        }
+        return parsed.toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+        });
+    };
+
+    const mergedBlogs = [
+        ...featuredBlogs.map((blog) => ({
+            title: blog.title,
+            description: blog.description,
+            date: blog.publishedAt,
+            href: `/blogs/${blog.slug}`,
+            external: false,
+        })),
+        ...legacyBlogs.map((blog) => ({
+            title: blog.title,
+            description: `External article on ${blog.tags?.join(", ") || "Medium"}.`,
+            date: blog.date,
+            href: blog.url || "#",
+            external: blog.url?.startsWith("http") ?? false,
+        })),
+    ];
 
     return (
         <main className="min-h-screen bg-white dark:bg-[#0B0D10] transition-colors duration-300">
@@ -44,7 +73,7 @@ export default function BlogsPage() {
 
                     {/* List */}
                     <div className="space-y-0">
-                        {blogs.map((blog, index) => (
+                        {mergedBlogs.map((blog, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, y: 20 }}
@@ -56,7 +85,9 @@ export default function BlogsPage() {
                                 }}
                             >
                                 <a
-                                    href={blog.url}
+                                    href={blog.href}
+                                    target={blog.external ? "_blank" : undefined}
+                                    rel={blog.external ? "noopener noreferrer" : undefined}
                                     className="group block py-4 hover:bg-transparent transition-all"
                                 >
                                     <div className="flex items-start justify-between gap-4">
@@ -75,7 +106,7 @@ export default function BlogsPage() {
                                             </h3>
 
                                             <div
-                                                className="flex items-center gap-3 text-[#70717B] dark:text-[#D4D4D4] mb-3"
+                                                className="flex items-center gap-3 text-[#70717B] dark:text-[#D4D4D4] mb-2"
                                                 style={{
                                                     fontFamily: '"Instagram Sans", sans-serif',
                                                     fontSize: '12px',
@@ -86,39 +117,26 @@ export default function BlogsPage() {
                                             >
                                                 <div className="flex items-center gap-1.5">
                                                     <Calendar className="w-3.5 h-3.5" />
-                                                    <span>{blog.date}</span>
+                                                    <span>{formatDate(blog.date)}</span>
                                                 </div>
                                             </div>
 
-                                            <div className="flex flex-wrap items-center gap-2">
-                                                <div className="flex items-center gap-1.5 text-gray-500 dark:text-[#D4D4D4] border-r border-[#333] pr-2 h-4" style={{ fontSize: '12px', fontWeight: 500 }}>
-                                                    <HandMetal className="w-3.5 h-3.5 dark:text-[#D4D4D4]" />
-                                                    <span>{blog.views}</span>
-                                                </div>
+                                            <p
+                                                className="text-sm text-[#70717B] dark:text-[#D4D4D4]"
+                                                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                            >
+                                                {blog.description}
+                                            </p>
 
-                                                {blog.tags.map((tag, i) => (
-                                                    <span
-                                                        key={i}
-                                                        className="px-2.5 py-1 text-[11px] font-medium bg-gray-100 dark:bg-transparent text-[#424242] dark:text-[#D4D4D4] rounded-[4px] border border-transparent dark:border-[#333]"
-                                                        style={{
-                                                            fontFamily: '"Instagram Sans", sans-serif',
-                                                            fontSize: '12px',
-                                                            lineHeight: '16px',
-                                                            fontWeight: 400,
-                                                            letterSpacing: 'normal'
-                                                        }}
-                                                    >
-                                                        {tag}
-                                                    </span>
-                                                ))}
+                                            <div className="mt-2 inline-flex items-center gap-1 text-sm text-slate-700 dark:text-slate-300">
+                                                Read more
+                                                <ArrowUpRight className="w-3.5 h-3.5" />
                                             </div>
                                         </div>
-
-                                        <ArrowUpRight className="w-4 h-4 text-gray-400 dark:text-[#666] group-hover:text-black dark:group-hover:text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 shrink-0 mt-1 hidden sm:block" />
                                     </div>
                                 </a>
                                 {/* Dashed Separator */}
-                                {index < blogs.length - 1 && (
+                                {index < mergedBlogs.length - 1 && (
                                     <div className="w-full h-px border-t border-dashed border-gray-200 dark:border-[#262626] mt-0"></div>
                                 )}
                             </motion.div>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Award, Calendar } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-import { certifications } from "../../data/certifications";
+import { certifications } from "@/data/certifications";
 
 export default function Certifications() {
     const router = useRouter();
@@ -28,8 +28,9 @@ export default function Certifications() {
                 {/* Certifications Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {certifications.map((cert, index) => (
-                        <motion.div
+                        <motion.a
                             key={index}
+                            href={`/certifications/${cert.slug}`}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -95,17 +96,16 @@ export default function Certifications() {
                                         {cert.date}
                                     </span>
 
-                                    <a
-                                        href={cert.url}
-                                        className="inline-flex items-center gap-1 text-[12px] font-medium text-[#333] dark:text-[#D4D4D4] hover:text-black dark:hover:text-white transition-colors"
+                                    <span
+                                        className="inline-flex items-center gap-1 text-[12px] font-medium text-[#333] dark:text-[#D4D4D4] group-hover:text-black dark:group-hover:text-white transition-colors"
                                         style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                                     >
-                                        Show Credential
+                                        View Details
                                         <ArrowUpRight className="w-3 h-3" />
-                                    </a>
+                                    </span>
                                 </div>
                             </div>
-                        </motion.div>
+                        </motion.a>
                     ))}
                 </div>
 

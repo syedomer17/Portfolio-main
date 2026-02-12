@@ -4,10 +4,16 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Award, Calendar } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import ThemeToggle from "../themeToggle/ThemeToggle";   
-import { certifications } from "@/lib/cont";
+import { certifications } from "@/lib/certifications";
 
 export default function CertificationsPage() {
     const router = useRouter();
+    const formatDate = (value: string) =>
+        new Date(value).toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+        });
 
     return (
         <main className="min-h-screen bg-white dark:bg-[#0B0D10] transition-colors duration-300">
@@ -78,7 +84,9 @@ export default function CertificationsPage() {
                                                 letterSpacing: 'normal'
                                             }}
                                         >
-                                            {cert.title}
+                                            <a href={`/certifications/${cert.slug}`} className="hover:underline">
+                                                {cert.title}
+                                            </a>
                                         </h3>
                                         <p className="text-xs text-gray-500 dark:text-[#888] font-medium flex items-center gap-1.5">
                                             <Award className="w-3 h-3" />
@@ -108,11 +116,13 @@ export default function CertificationsPage() {
                                             letterSpacing: 'normal'
                                         }}>
                                             <Calendar className="w-3 h-3" />
-                                            {cert.date}
+                                            {formatDate(cert.issueDate)}
                                         </span>
 
                                         <a
-                                            href={cert.url}
+                                            href={cert.credentialLink || "#"}
+                                            target={cert.credentialLink ? "_blank" : undefined}
+                                            rel={cert.credentialLink ? "noopener noreferrer" : undefined}
                                             className="inline-flex items-center gap-1 text-[12px] font-medium text-[#333] dark:text-[#D4D4D4] hover:text-black dark:hover:text-white transition-colors"
                                             style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                                         >

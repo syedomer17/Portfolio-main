@@ -4,13 +4,11 @@ const baseUrl = "https://syedomer.me";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/_next/"],
-      },
-    ],
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/api/"],
+    },
     sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

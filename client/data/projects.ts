@@ -1,5 +1,6 @@
 export type Project = {
   title: string;
+  slug: string;
   description: string;
   image: string;
   status: string;
@@ -11,7 +12,17 @@ export type Project = {
   url?: string;
 };
 
-export const projects: Project[] = [
+type ProjectInput = Omit<Project, "slug"> & { slug?: string };
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+
+const projectInputs: ProjectInput[] = [
   {
     title: "AI Resume Analyzer",
     description:
@@ -82,3 +93,28 @@ export const projects: Project[] = [
     notes: "Feature-complete project. Ready for deployment.",
   },
 ];
+
+const buildProjects = (inputs: ProjectInput[]): Project[] => {
+  const usedSlugs = new Set<string>();
+
+  return inputs.map((project) => {
+    const slug = project.slug ? slugify(project.slug) : slugify(project.title);
+
+    if (!slug) {
+      throw new Error(`Invalid slug for project: ${project.title}`);
+    }
+
+    if (usedSlugs.has(slug)) {
+      throw new Error(`Duplicate slug detected: ${slug}`);
+    }
+
+    usedSlugs.add(slug);
+
+    return {
+      ...project,
+      slug,
+    };
+  });
+};
+
+export const projects = buildProjects(projectInputs);
