@@ -22,6 +22,28 @@ const normalizeSlug = (value: string) => slugify(decodeURIComponent(value));
 
 const blogInputs: BlogInput[] = [
   {
+    title: "Secure MERN Architecture for Production SaaS",
+    description:
+      "A security-first blueprint for designing MERN systems that scale, with guidance on auth, data protection, and DevSecOps delivery.",
+    content: [
+      "## Why security-first MERN architecture matters",
+      "Most startups build for speed first and patch security later. That approach compounds risk. A security-first MERN architecture bakes in authentication, authorization, input validation, and monitoring from day one.",
+      "## Core architecture layers",
+      "Separate concerns across presentation, API, and data layers. Keep sensitive logic server-side, enforce strict validation at the boundary, and define clear service contracts between modules.",
+      "## Authentication and authorization",
+      "Use short-lived access tokens with refresh rotation or secure sessions via httpOnly cookies. Implement RBAC for admin paths and isolate sensitive data access rules in a single policy layer.",
+      "## Data protection and observability",
+      "Encrypt sensitive fields, apply least-privilege database roles, and monitor for suspicious access patterns. Set alerts for auth anomalies and spikes in failed requests.",
+      "## DevSecOps delivery",
+      "Automate dependency scanning, run tests on every commit, and block deployments when critical vulnerabilities are detected. Track deployments and rollbacks to keep audit history.",
+      "## Next steps",
+      "Use the resources linked below to operationalize these practices for your stack and teams.",
+    ],
+    publishedAt: "2026-02-13",
+    updatedAt: "2026-02-13",
+    tags: ["MERN", "Security", "DevSecOps", "Architecture"],
+  },
+  {
     title: "Basics of IP Addresses in Computer Networking",
     description:
       "A practical primer on IP addresses, classes, subnetting basics, and how packets are routed across networks.",

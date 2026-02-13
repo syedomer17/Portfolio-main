@@ -40,7 +40,7 @@ export default function ProjectsPage() {
                         className="text-sm text-slate-600 dark:text-slate-300 mb-5"
                         style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                     >
-                        These projects are presented as compact case studies with clear problem framing, implementation approach, and outcomes. For context on my role and process, see <a href="/experiences" className="underline hover:no-underline">experience</a> and browse the <a href="/blogs" className="underline hover:no-underline">developer blog</a> for technical deep dives.
+                        These projects are presented as compact case studies with clear problem framing, implementation approach, and outcomes. For full breakdowns, visit the <a href="/case-studies" className="underline hover:no-underline">case studies</a> page. For context on my role and process, see <a href="/experiences" className="underline hover:no-underline">experience</a> and browse the <a href="/blogs" className="underline hover:no-underline">developer blog</a> for technical deep dives.
                     </p>
 
                     {/* Project Cards Grid */}

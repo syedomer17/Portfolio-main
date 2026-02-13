@@ -111,12 +111,41 @@ export default async function BlogDetail({
           </p>
 
           <article className="space-y-4 text-slate-700 dark:text-slate-200">
-            {blog.content.map((paragraph, index) => (
-              <p key={index} style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
-                {paragraph}
-              </p>
-            ))}
+            {blog.content.map((paragraph, index) => {
+              if (paragraph.startsWith("## ")) {
+                const heading = paragraph.replace(/^##\s+/, "");
+                return (
+                  <h2
+                    key={index}
+                    className="text-xl font-semibold text-slate-900 dark:text-white"
+                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  >
+                    {heading}
+                  </h2>
+                );
+              }
+
+              return (
+                <p key={index} style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                  {paragraph}
+                </p>
+              );
+            })}
           </article>
+
+          {blog.slug === "secure-mern-architecture-for-production-saas" ? (
+            <section className="mt-8 border-t border-slate-200 dark:border-slate-800 pt-6">
+              <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
+                Related resources
+              </h2>
+              <div className="mt-3 flex flex-wrap gap-3 text-sm">
+                <a href="/resources/mern-security-checklist" className="underline">MERN security checklist</a>
+                <a href="/resources/devsecops-pipeline-template" className="underline">DevSecOps pipeline template</a>
+                <a href="/resources/secure-auth-implementation-guide" className="underline">Secure auth guide</a>
+                <a href="/services/secure-mern-development" className="underline">Secure MERN development</a>
+              </div>
+            </section>
+          ) : null}
         </div>
       </div>
     </main>

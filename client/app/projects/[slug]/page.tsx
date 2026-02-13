@@ -82,6 +82,7 @@ export default async function ProjectDetail({
             <a
               href="/projects"
               className="text-sm text-slate-600 dark:text-slate-300 hover:underline"
+              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
             >
               Back to Projects
             </a>
@@ -89,7 +90,7 @@ export default async function ProjectDetail({
 
           <header className="mb-6">
             <h1
-              className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white"
+              className="text-xl font-bold text-slate-900 dark:text-white"
               style={{ fontFamily: '"Instagram Sans", sans-serif' }}
             >
               {project.title}
@@ -106,14 +107,14 @@ export default async function ProjectDetail({
           </header>
 
           <p
-            className="text-base text-slate-700 dark:text-slate-200 mb-4"
+            className="text-sm text-slate-700 dark:text-slate-200 mb-4"
             style={{ fontFamily: '"Instagram Sans", sans-serif' }}
           >
             {project.shortDescription}
           </p>
 
           <p
-            className="text-base text-slate-700 dark:text-slate-200 mb-6"
+            className="text-sm text-slate-700 dark:text-slate-200 mb-6"
             style={{ fontFamily: '"Instagram Sans", sans-serif' }}
           >
             {project.fullDescription}
@@ -121,7 +122,7 @@ export default async function ProjectDetail({
 
           <div className="mb-6">
             <h2
-              className="text-lg font-semibold text-slate-900 dark:text-white mb-2"
+              className="text-base font-semibold text-slate-900 dark:text-white mb-2"
               style={{ fontFamily: '"Instagram Sans", sans-serif' }}
             >
               Tech Stack

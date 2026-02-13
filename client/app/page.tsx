@@ -10,14 +10,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Syed Omer Ali",
   description:
-    "Portfolio of Syed Omer Ali, a full stack developer focused on modern web applications, cloud, and DevOps.",
+    "Portfolio of Syed Omer Ali, a full stack MERN developer focused on TypeScript, DevSecOps, and secure scalable systems.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Syed Omer Ali",
     description:
-      "Portfolio of Syed Omer Ali, a full stack developer focused on modern web applications, cloud, and DevOps.",
+      "Portfolio of Syed Omer Ali, a full stack MERN developer focused on TypeScript, DevSecOps, and secure scalable systems.",
     url: "/",
     images: [
       {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Syed Omer Ali",
     description:
-      "Portfolio of Syed Omer Ali, a full stack developer focused on modern web applications, cloud, and DevOps.",
+      "Portfolio of Syed Omer Ali, a full stack MERN developer focused on TypeScript, DevSecOps, and secure scalable systems.",
     images: ["/banner.png"],
   },
 };

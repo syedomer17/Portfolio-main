@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Calendar } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import ThemeToggle from "../themeToggle/ThemeToggle";
-// import { blogs as featuredBlogs } from "@/lib/blogs";
+import { blogs as featuredBlogs } from "@/lib/blogs";
 import { blogs as legacyBlogs } from "@/lib/cont";
 
 export default function BlogsPage() {
@@ -22,13 +22,13 @@ export default function BlogsPage() {
     };
 
     const mergedBlogs = [
-        // ...featuredBlogs.map((blog) => ({
-        //     title: blog.title,
-        //     description: blog.description,
-        //     date: blog.publishedAt,
-        //     href: `/blogs/${blog.slug}`,
-        //     external: false,
-        // })),
+        ...featuredBlogs.map((blog) => ({
+            title: blog.title,
+            description: blog.description,
+            date: blog.publishedAt,
+            href: `/blogs/${blog.slug}`,
+            external: false,
+        })),
         ...legacyBlogs.map((blog) => ({
             title: blog.title,
             description: `External article on ${blog.tags?.join(", ") || "Medium"}.`,
@@ -68,7 +68,7 @@ export default function BlogsPage() {
                         className="text-sm text-slate-600 dark:text-slate-300 mb-5"
                         style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                     >
-                        I write short, implementation-focused posts on Next.js, TypeScript, and DevOps. References often include the <a href="https://nextjs.org/docs" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Next.js docs</a>, <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">MDN</a>, and <a href="https://docs.aws.amazon.com/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">AWS documentation</a>. For applied examples, browse the <a href="/projects" className="underline hover:no-underline">project case studies</a>.
+                        I publish implementation-focused posts on secure MERN architecture, TypeScript, and DevSecOps. For applied examples, browse the <a href="/case-studies" className="underline hover:no-underline">case studies</a>. You can also grab checklists and templates in the <a href="/resources" className="underline hover:no-underline">resources</a> hub.
                     </p>
 
                     {/* List */}

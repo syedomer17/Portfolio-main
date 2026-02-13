@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 
 const siteUrl = "https://syedomer.me";
 const siteName = "Syed Omer Ali";
-const defaultTitle = "Syed Omer Ali | Full Stack Developer";
+const defaultTitle = "Syed Omer Ali | Secure Full Stack MERN Developer";
 const defaultDescription =
-  "Syed Omer Ali is a full stack developer specializing in modern web applications, cloud architecture, DevOps, and scalable systems.";
+  "Syed Omer Ali is a full stack MERN developer specializing in TypeScript, DevSecOps, and building secure, scalable systems for SaaS and startups.";
 
 
 export const metadata: Metadata = {
@@ -34,12 +34,14 @@ export const metadata: Metadata = {
   keywords: [
     "Syed Omer Ali",
     "Full Stack Developer",
+    "MERN Stack Developer",
+    "TypeScript Developer",
     "React Developer",
     "Next.js Developer",
-    "Backend Developer",
-    "DevOps Engineer",
-    "Cloud Engineer",
-    "AI Engineer"
+    "Node.js Developer",
+    "DevSecOps",
+    "Secure Web Applications",
+    "Scalable Systems"
   ],
 
   alternates: {
@@ -107,20 +109,42 @@ export default function RootLayout({
       >
         {/* Structured Data for SEO */}
         <Script
-          id="json-ld"
+          id="site-json-ld"
           type="application/ld+json"
           strategy="afterInteractive"
         >
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Syed Omer Ali",
-            url: siteUrl,
-            jobTitle: "Full Stack Developer",
-            sameAs: [
-              "https://github.com/yourusername",
-              "https://linkedin.com/in/yourusername",
-            ],
+            "@graph": [
+              {
+                "@type": "Person",
+                name: "Syed Omer Ali",
+                url: siteUrl,
+                jobTitle: "Full Stack Developer",
+                knowsAbout: [
+                  "MERN stack",
+                  "TypeScript",
+                  "DevSecOps",
+                  "Node.js security",
+                  "Scalable systems",
+                  "React",
+                  "Next.js"
+                ],
+                sameAs: [
+                  "https://github.com/syedomer17",
+                  "https://linkedin.com/in/syedomer17",
+                  "https://twitter.com/SyedOmer17Ali",
+                  "https://medium.com/@syedomerali2006"
+                ]
+              },
+              {
+                "@type": "WebSite",
+                name: siteName,
+                url: siteUrl,
+                description: defaultDescription,
+                inLanguage: "en-US"
+              }
+            ]
           })}
         </Script>
 
