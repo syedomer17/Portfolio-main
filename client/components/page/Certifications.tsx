@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import ThemeToggle from "../themeToggle/ThemeToggle";   
 import { certifications } from "@/lib/certifications";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CertificationsPage() {
     const router = useRouter();
@@ -15,6 +16,9 @@ export default function CertificationsPage() {
             day: "numeric",
             year: "numeric",
         });
+    const handleCardClick = (slug: string) => {
+        router.push(`/certifications/${slug}`);
+    };
 
     return (
         <main className="min-h-screen bg-white dark:bg-[#0B0D10] transition-colors duration-300">
@@ -57,7 +61,16 @@ export default function CertificationsPage() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                                className="group flex flex-col h-full bg-white dark:bg-[#0E0D09] border border-dashed border-gray-200 dark:border-[#3A3A3A] hover:border-gray-300 dark:hover:border-[#555] rounded-xl overflow-hidden transition-all duration-300"
+                                className="group flex flex-col h-full bg-white dark:bg-[#0E0D09] border border-dashed border-gray-200 dark:border-[#3A3A3A] hover:border-gray-300 dark:hover:border-[#555] rounded-xl overflow-hidden transition-all duration-300 cursor-pointer"
+                                role="link"
+                                tabIndex={0}
+                                onClick={() => handleCardClick(cert.slug)}
+                                onKeyDown={(event) => {
+                                    if (event.key === "Enter" || event.key === " ") {
+                                        event.preventDefault();
+                                        handleCardClick(cert.slug);
+                                    }
+                                }}
                             >
                                 {/* Image Container */}
                                 <div className="relative h-40 bg-gray-50 dark:bg-[#111] border-b border-gray-100 dark:border-[#222] overflow-hidden">
@@ -85,9 +98,7 @@ export default function CertificationsPage() {
                                                 letterSpacing: 'normal'
                                             }}
                                         >
-                                            <a href={`/certifications/${cert.slug}`} className="hover:underline">
-                                                {cert.title}
-                                            </a>
+                                            {cert.title}
                                         </h3>
                                         <p className="text-xs text-gray-500 dark:text-[#888] font-medium flex items-center gap-1.5">
                                             <Award className="w-3 h-3" />
@@ -120,16 +131,17 @@ export default function CertificationsPage() {
                                             {formatDate(cert.issueDate)}
                                         </span>
 
-                                        <a
+                                        <Link
                                             href={cert.credentialLink || "#"}
                                             target={cert.credentialLink ? "_blank" : undefined}
                                             rel={cert.credentialLink ? "noopener noreferrer" : undefined}
                                             className="inline-flex items-center gap-1 text-[12px] font-medium text-[#333] dark:text-[#D4D4D4] hover:text-black dark:hover:text-white transition-colors"
                                             style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                            onClick={(event) => event.stopPropagation()}
                                         >
                                             Show Credential
                                             <ArrowUpRight className="w-3 h-3" />
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </motion.div>
@@ -141,7 +153,7 @@ export default function CertificationsPage() {
                         <p className="text-base font-medium text-slate-600 dark:text-slate-400"
                             style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
                             For more details, view my{" "}
-                            <a
+                            <Link
                                 href="https://linkedin.com/in/syedomer17"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -149,7 +161,7 @@ export default function CertificationsPage() {
                             >
                                 LinkedIn
                                 <ArrowUpRight className="w-4 h-4" />
-                            </a>
+                            </Link>
                         </p>
                     </div>
                 </div>

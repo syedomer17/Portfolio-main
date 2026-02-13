@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
-import { projects } from "@/lib/projects";
+// import { projects } from "@/lib/projects";
+import { projects } from "@/data/projects";
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -19,7 +20,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-[18.4px] leading-[23px] font-bold mt-2 mb-3 text-[#333333] dark:text-[#EBEBEB]"
+          className="text-[18.4px] leading-5.75 font-bold mt-2 mb-3 text-[#333333] dark:text-[#EBEBEB]"
           style={{ fontFamily: '"Instagram Sans", sans-serif' }}
         >
           Projects
@@ -144,7 +145,7 @@ export default function Projects() {
                     letterSpacing: 'normal'
                   }}
                 >
-                  {project.shortDescription}
+                  {project.description}
                 </p>
                 <p
                   className="text-[12px] text-slate-500 dark:text-[#A0A0A0]"
@@ -164,7 +165,7 @@ export default function Projects() {
                     fontWeight: 400
                   }}
                 >
-                  Case study focus: {project.caseStudyFocus}
+                  Notes: {project.notes}
                 </p>
 
                 {/* View Project Link */}

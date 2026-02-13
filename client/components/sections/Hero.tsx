@@ -343,7 +343,7 @@ export default function Hero() {
               Hey, I’m Omer, a full stack developer who builds clean, modern web applications with strong attention to design, performance, and the details most people ignore. I focus on shipping products that are reliable, scalable, and visually polished.
             </p>
             <p className="text-slate-700 dark:text-slate-200 leading-relaxed">
-              Explore my <a href="/projects" className="underline decoration-slate-300 hover:decoration-slate-500">Next.js projects and case studies</a>, read the <a href="/blogs" className="underline decoration-slate-300 hover:decoration-slate-500">developer blog</a>, and review my <a href="/experiences" className="underline decoration-slate-300 hover:decoration-slate-500">experience</a> and <a href="/certifications" className="underline decoration-slate-300 hover:decoration-slate-500">certifications</a> to see how I work end to end.
+              Start with my <Link href="/about" className="underline decoration-slate-300 hover:decoration-slate-500">about page</Link>, explore <Link href="/projects" className="underline decoration-slate-300 hover:decoration-slate-500">Next.js projects and case studies</Link>, read the <Link href="/blogs" className="underline decoration-slate-300 hover:decoration-slate-500">developer blog</Link>, and review my <Link href="/experiences" className="underline decoration-slate-300 hover:decoration-slate-500">experience</Link> and <Link href="/certifications" className="underline decoration-slate-300 hover:decoration-slate-500">certifications</Link> to see how I work end to end.
             </p>
             <p className="text-slate-700 dark:text-slate-200 leading-relaxed">
               I don’t chase tech stacks I choose tools based on the problem. I’m comfortable adapting fast, learning continuously, and taking ownership of real-world engineering challenges.
@@ -411,7 +411,7 @@ export default function Hero() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute bottom-full left-0 min-[412px]:-left-15 min-[430px]:-left-12 sm:left-0 mb-2 w-40 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#3A3A3A] rounded-xl shadow-xl z-20 p-1.5"
+                      className="absolute bottom-full left-0 min-[410px]:-left-16 min-[412px]:-left-15 min-[430px]:-left-12 sm:left-0 mb-2 w-40 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#3A3A3A] rounded-xl shadow-xl z-20 p-1.5"
                       style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                     >
                       <Link href="https://leetcode.com/syedomerali_200" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">

@@ -28,29 +28,33 @@ import {
   SiTerraform,
   SiAmazonwebservices,
   SiDigitalocean,
-  SiGooglecloud
+  SiGooglecloud,
+  SiNestjs,
+  SiFastify
 } from "react-icons/si";
 
 const skills = [
   // Frameworks & libraries
   { name: "React", icon: SiReact },
   { name: "Next", icon: SiNextdotjs },
-  { name: "Express", icon: SiExpress },
   { name: "Node", icon: SiNodedotjs },
+  { name: "Express", icon: SiExpress },
+  {name: "NestJS", icon: SiNestjs},
+  {name: "Fastify", icon: SiFastify},
   { name: "Tailwind", icon: SiTailwindcss },
-  { name: "Prisma", icon: SiPrisma },
-
+  
   // Languages
   { name: "TypeScript", icon: SiTypescript },
   { name: "JavaScript", icon: SiJavascript },
   { name: "Python", icon: SiPython },
   { name: "C/C++", icon: SiCplusplus },
-  { name: "SQL", icon: SiPostgresql },
-
+  
   // Databases
+  { name: "SQL", icon: SiPostgresql },
   { name: "PostgreSQL", icon: SiPostgresql },
   { name: "MongoDB", icon: SiMongodb },
   { name: "Redis", icon: SiRedis },
+  { name: "Prisma", icon: SiPrisma },
 
   // Tools
   { name: "Git", icon: SiGit },
