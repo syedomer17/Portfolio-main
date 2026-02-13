@@ -50,7 +50,7 @@ export default function Hero() {
 
     // Show animation
     setIsAnimating(true);
-    setTimeout(() => setIsAnimating(false), 600);
+    setTimeout(() => setIsAnimating(false), 900);
 
     // Toggle image
     setCurrentImage(currentImage === "/myImage.png" ? "/background-portfolio.png" : "/myImage.png");
@@ -240,12 +240,26 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="relative flex-shrink-0"
           >
-            <div className="w-26 h-26 rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-700">
+            <div className="w-26 h-26 rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 relative">
               <motion.div
                 key={currentImage}
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
+                animate={
+                  isAnimating
+                    ? {
+                        opacity: [0.85, 1, 0.9, 1, 0.95, 1],
+                        x: [0, -3, 5, -2, 4, -1, 2, 0],
+                        y: [0, 2, -3, 3, -2, 2, -1, 0],
+                        filter: [
+                          "none",
+                          "contrast(1.75) saturate(1.7)",
+                          "contrast(1.2) saturate(1.2)",
+                          "none",
+                        ],
+                      }
+                    : { opacity: 1, x: 0, y: 0, filter: "none" }
+                }
+                transition={{ duration: 0.8, ease: "easeInOut" }}
                 className="w-full h-full"
               >
                 <Image
@@ -258,6 +272,74 @@ export default function Hero() {
                   sizes="104px"
                 />
               </motion.div>
+
+              <AnimatePresence>
+                {isAnimating && (
+                  <>
+                    <motion.div
+                      className="absolute inset-0 pointer-events-none"
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: [0, 0.75, 0.25, 0.8, 0.1, 0],
+                        backgroundPositionY: ["0%", "120%"],
+                      }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.85, ease: "linear" }}
+                      style={{
+                        backgroundImage:
+                          "repeating-linear-gradient(180deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 1px, rgba(0,0,0,0) 2px, rgba(0,0,0,0) 4px)",
+                        mixBlendMode: "screen",
+                      }}
+                    />
+                    <motion.div
+                      className="absolute inset-0 pointer-events-none"
+                      initial={{ opacity: 0, x: 0 }}
+                      animate={{
+                        opacity: [0, 0.85, 0.3, 0.9, 0.2, 0],
+                        x: [0, -8, 6, -4, 5, -2, 0],
+                        clipPath: [
+                          "inset(0 0 80% 0)",
+                          "inset(12% 0 62% 0)",
+                          "inset(32% 0 42% 0)",
+                          "inset(58% 0 14% 0)",
+                          "inset(22% 0 68% 0)",
+                          "inset(45% 0 25% 0)",
+                        ],
+                      }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(90deg, rgba(255,64,129,0.4), rgba(0,200,255,0.4))",
+                        mixBlendMode: "screen",
+                      }}
+                    />
+                    <motion.div
+                      className="absolute inset-0 pointer-events-none"
+                      initial={{ opacity: 0, x: 0 }}
+                      animate={{
+                        opacity: [0, 0.7, 0.2, 0.75, 0.15, 0],
+                        x: [0, 7, -5, 4, -3, 2, 0],
+                        clipPath: [
+                          "inset(78% 0 0 0)",
+                          "inset(58% 0 12% 0)",
+                          "inset(28% 0 48% 0)",
+                          "inset(8% 0 72% 0)",
+                          "inset(42% 0 38% 0)",
+                          "inset(18% 0 60% 0)",
+                        ],
+                      }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.85, ease: "easeOut" }}
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(90deg, rgba(0,255,160,0.35), rgba(255,255,255,0.15))",
+                        mixBlendMode: "screen",
+                      }}
+                    />
+                  </>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Image Switch Button - Top Right of Image */}
@@ -516,6 +598,15 @@ export default function Hero() {
                     </div>
                     <span>More</span>
                   </div>
+                </div>
+                <div className="mt-2 flex justify-end">
+                  <Link
+                    href="/syedomer17"
+                    className="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  >
+                    View full GitHub history
+                  </Link>
                 </div>
               </div>
             ) : null}

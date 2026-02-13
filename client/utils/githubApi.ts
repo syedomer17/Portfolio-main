@@ -18,6 +18,15 @@ export interface ContributionData {
     weeks: ContributionWeek[];
 }
 
+export interface ContributionYearData extends ContributionData {
+    year: number;
+}
+
+export interface ContributionYearsResponse {
+    username: string;
+    years: ContributionYearData[];
+}
+
 export async function fetchGitHubContributions(
     username: string
 ): Promise<ContributionData> {
@@ -29,6 +38,20 @@ export async function fetchGitHubContributions(
 
     if (!res.ok) {
         throw new Error("Failed to fetch GitHub contributions");
+    }
+
+    return res.json();
+}
+
+export async function fetchGitHubContributionYears(
+    username: string
+): Promise<ContributionYearsResponse> {
+    const res = await fetch(
+        `/api/github/contributions-all/${username}`
+    );
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch GitHub contribution years");
     }
 
     return res.json();
