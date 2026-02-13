@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import MountGuard from "../ui/MountGuard";
 import SmoothScroll from "../ui/SmoothScroll";
 import { Databuddy } from '@databuddy/sdk/react';
+import { Analytics } from '@vercel/analytics/next';
 
 export default function Providers({
   children,
@@ -25,6 +26,7 @@ export default function Providers({
             trackScrollDepth={true}
             trackWebVitals={true}
           />
+          <Analytics />
         </SmoothScroll>
       </MountGuard>
     </ThemeProvider>
