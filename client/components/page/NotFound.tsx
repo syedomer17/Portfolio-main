@@ -1,40 +1,58 @@
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-gray-200 px-6">
-      <div className="text-center">
-        
-        {/* Code-like status */}
-        <p className="text-sm text-gray-500 tracking-widest uppercase">
-          Error 404
-        </p>
-
-        {/* Big Heading */}
-        <h1 className="text-5xl md:text-7xl font-bold mt-3 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
-          Page Not Found
-        </h1>
-
-        {/* Description */}
-        <p className="text-gray-400 mt-4 max-w-md mx-auto">
-          The page you're looking for doesn't exist or may have been moved.
-        </p>
-
-        {/* Buttons */}
-        <div className="mt-8 flex justify-center gap-4">
-          <a
-            href="/"
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all"
+    <main className="min-h-screen bg-white dark:bg-[#0B0D10] transition-colors duration-300">
+      <div className="container mx-auto px-4 sm:px-6 pt-20 pb-16">
+        <div className="max-w-2xl mx-auto text-center">
+          <p
+            className="text-sm text-slate-500 tracking-widest uppercase"
+            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
           >
-            Go Home
-          </a>
+            Error 404
+          </p>
 
-          <a
-            href="mailto:syedomerali2006@gmail.com"
-            className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-gray-200 rounded-lg transition-all"
+          <h1
+            className="text-xl font-bold text-slate-900 dark:text-white mt-3"
+            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
           >
-            Contact Support
-          </a>
+            Page Not Found
+          </h1>
+
+          <p
+            className="text-sm text-slate-600 dark:text-slate-300 mt-4"
+            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+          >
+            The page you are looking for does not exist or was moved. Try the
+            homepage, projects, or resources.
+          </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-[9px] text-sm font-medium bg-slate-700 dark:bg-[#C7C7C7] text-white dark:text-[#0E0D09]"
+              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            >
+              Go Home
+            </a>
+            <a
+              href="/projects"
+              className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-[9px] text-sm font-medium bg-white dark:bg-[#2E2E2E] text-slate-900 dark:text-[#D4D4D4] border border-slate-300 dark:border-transparent"
+              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            >
+              View Projects
+            </a>
+          </div>
+
+          <div className="mt-6">
+            <a
+              href="/resources"
+              className="text-sm underline text-slate-600 dark:text-slate-300"
+              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            >
+              Browse Resources
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
