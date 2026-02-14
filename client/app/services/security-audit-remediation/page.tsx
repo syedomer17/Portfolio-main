@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import PageTopBar from "@/components/ui/PageTopBar";
+import ServiceCtas from "@/components/ui/ServiceCtas";
 
 export const metadata: Metadata = {
   title: "Security Audit & Remediation",
@@ -57,22 +58,7 @@ export default function SecurityAuditRemediationPage() {
             stack for production. I focus on practical fixes with measurable risk
             reduction.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/intro-call"
-              className="px-4 py-2 rounded-md bg-slate-900 text-white hover:bg-slate-800 transition-colors"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
-            >
-              Book an intro call
-            </Link>
-            <Link
-              href="/send-email"
-              className="px-4 py-2 rounded-md border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
-            >
-              Send a project brief
-            </Link>
-          </div>
+          <ServiceCtas />
         </section>
 
         <section className="mt-12 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -84,7 +70,7 @@ export default function SecurityAuditRemediationPage() {
               Audit focus areas
             </h2>
             <ul
-              className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300"
+              className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
               style={{ fontFamily: '"Instagram Sans", sans-serif' }}
             >
               <li>Authentication and authorization flows.</li>
@@ -101,7 +87,7 @@ export default function SecurityAuditRemediationPage() {
               Remediation deliverables
             </h2>
             <ul
-              className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300"
+              className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
               style={{ fontFamily: '"Instagram Sans", sans-serif' }}
             >
               <li>Prioritized findings with severity ratings.</li>

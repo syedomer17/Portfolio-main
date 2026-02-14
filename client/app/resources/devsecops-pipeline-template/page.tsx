@@ -66,7 +66,7 @@ export default function DevSecOpsPipelineTemplatePage() {
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">
               Pipeline Stages
             </h2>
-            <ol className="mt-3 space-y-2 list-decimal list-inside">
+            <ol className="mt-3 space-y-2 list-decimal list-outside pl-5">
               <li>Install and cache dependencies.</li>
               <li>Run tests and linting checks.</li>
               <li>Run SAST and dependency vulnerability scans.</li>
@@ -79,7 +79,7 @@ export default function DevSecOpsPipelineTemplatePage() {
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">
               Security Gates
             </h2>
-            <ul className="mt-3 space-y-2 list-disc list-inside">
+            <ul className="mt-3 space-y-2 list-disc list-outside pl-5">
               <li>Fail builds on critical vulnerabilities.</li>
               <li>Block deployments without passing tests.</li>
               <li>Tag releases and keep audit logs.</li>

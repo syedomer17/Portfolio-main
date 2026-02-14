@@ -66,7 +66,7 @@ export default function MernSecurityChecklistPage() {
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">
               Authentication
             </h2>
-            <ul className="mt-3 space-y-2 list-disc list-inside">
+            <ul className="mt-3 space-y-2 list-disc list-outside pl-5">
               <li>Use secure session handling or short-lived JWTs with refresh rotation.</li>
               <li>Enforce password strength and rate limiting on auth routes.</li>
               <li>Implement MFA where possible for admin roles.</li>
@@ -76,7 +76,7 @@ export default function MernSecurityChecklistPage() {
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">
               API Protection
             </h2>
-            <ul className="mt-3 space-y-2 list-disc list-inside">
+            <ul className="mt-3 space-y-2 list-disc list-outside pl-5">
               <li>Validate all inputs and sanitize payloads.</li>
               <li>Apply rate limiting, abuse detection, and request logging.</li>
               <li>Return consistent error responses without leaking internals.</li>
@@ -86,7 +86,7 @@ export default function MernSecurityChecklistPage() {
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">
               Data Layer
             </h2>
-            <ul className="mt-3 space-y-2 list-disc list-inside">
+            <ul className="mt-3 space-y-2 list-disc list-outside pl-5">
               <li>Use least-privilege database roles.</li>
               <li>Encrypt sensitive data at rest and in transit.</li>
               <li>Monitor slow queries and ensure index coverage.</li>
@@ -96,7 +96,7 @@ export default function MernSecurityChecklistPage() {
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">
               DevSecOps
             </h2>
-            <ul className="mt-3 space-y-2 list-disc list-inside">
+            <ul className="mt-3 space-y-2 list-disc list-outside pl-5">
               <li>Enable dependency scanning and container image checks.</li>
               <li>Automate build and release gates.</li>
               <li>Monitor production errors and security alerts.</li>

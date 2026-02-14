@@ -111,7 +111,7 @@ export default async function CaseStudySlugPage({
               {study.problem}
             </p>
             <ul
-              className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside"
+              className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
               style={{ fontFamily: '"Instagram Sans", sans-serif' }}
             >
               {study.constraints.map((item) => (
@@ -127,7 +127,7 @@ export default async function CaseStudySlugPage({
               Solution & Results
             </h2>
             <ul
-              className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside"
+              className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
               style={{ fontFamily: '"Instagram Sans", sans-serif' }}
             >
               {study.solution.map((item) => (
@@ -135,7 +135,7 @@ export default async function CaseStudySlugPage({
               ))}
             </ul>
             <ul
-              className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside"
+              className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
               style={{ fontFamily: '"Instagram Sans", sans-serif' }}
             >
               {study.results.map((item) => (

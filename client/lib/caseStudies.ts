@@ -104,6 +104,114 @@ const caseStudyInputs: CaseStudyInput[] = [
     createdAt: "2024-11-15",
     updatedAt: "2025-01-08",
   },
+  {
+    title: "AI Interviewer",
+    summary:
+      "Built an AI mock interview workflow that generates role-based questions and delivers structured feedback for practice cycles.",
+    problem:
+      "Candidates needed a way to practice interviews with consistent feedback without the bias or rigidity of static question banks.",
+    constraints: [
+      "Consistent evaluation across varied responses",
+      "Prompt design that balances helpfulness and realism",
+      "Simple UX for quick practice loops",
+    ],
+    solution: [
+      "Designed role-based prompt templates for question generation",
+      "Implemented feedback scoring with structured response categories",
+      "Built a focused practice flow with clear next-step guidance",
+    ],
+    results: [
+      "Repeatable practice sessions with consistent feedback",
+      "Reduced friction for interview prep workflows",
+      "Foundation for advanced scoring and analytics",
+    ],
+    techStack: ["React.js", "JavaScript", "Shadcn UI", "Tailwind CSS", "AI APIs"],
+    projectSlug: "ai-interviewer",
+    githubLink: "https://github.com/syedomer17/AI-Powered-Interview-Assistant",
+    createdAt: "2024-09-20",
+    updatedAt: "2024-12-05",
+  },
+  {
+    title: "Expense Tracker",
+    summary:
+      "Delivered a personal finance tracker with clean data modeling, category insights, and monthly budget visualizations.",
+    problem:
+      "Users needed a simple way to log expenses, categorize spending, and see monthly budget trends without complex setup.",
+    constraints: [
+      "Fast entry flow for recurring expenses",
+      "Clear visual summaries for budgets",
+      "Reliable CRUD and data consistency",
+    ],
+    solution: [
+      "Implemented structured data models for categories and budgets",
+      "Built monthly aggregation logic and chart views",
+      "Streamlined CRUD flows with consistent validations",
+    ],
+    results: [
+      "Clear budget visibility with monthly summaries",
+      "Stable tracking flow for repeat usage",
+      "Ready for multi-account expansion",
+    ],
+    techStack: ["React", "JavaScript", "Chart.js", "Node.js", "Express", "MongoDB"],
+    projectSlug: "expense-tracker",
+    githubLink: "https://github.com/syedomer17/Expense-Tracker-App",
+    createdAt: "2024-06-10",
+    updatedAt: "2024-09-02",
+  },
+  {
+    title: "Nginx Configuration Manager",
+    summary:
+      "Built a UI to generate, validate, and preview Nginx server blocks with guardrails for safer deployments.",
+    problem:
+      "Teams needed a safer way to create and validate Nginx configs without manual syntax errors or risky changes.",
+    constraints: [
+      "Accurate config generation with validation",
+      "Clear UX for previewing server blocks",
+      "Extensible structure for additional templates",
+    ],
+    solution: [
+      "Created a structured config generator with validation rules",
+      "Added preview and quick-copy UX for deployment",
+      "Designed a modular template system",
+    ],
+    results: [
+      "Reduced config errors with validation guardrails",
+      "Faster setup for common server blocks",
+      "Ready for multi-template expansion",
+    ],
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI"],
+    projectSlug: "nginx-configuration-manager",
+    githubLink: "https://github.com/syedomer17/Next.js-nginx-config-generator",
+    createdAt: "2025-03-05",
+    updatedAt: "2025-03-22",
+  },
+  {
+    title: "AI Fitness Assistant",
+    summary:
+      "Built an AI-driven fitness planner that generates personalized routines and progress guidance.",
+    problem:
+      "Users needed adaptable workout plans that evolve with goals, feedback, and progress without manual recalculation.",
+    constraints: [
+      "Prompt stability across different goal inputs",
+      "Safe recommendations for varied fitness levels",
+      "Consistent progress tracking UX",
+    ],
+    solution: [
+      "Built prompt flows for plan generation and adjustments",
+      "Implemented structured feedback loops for plan updates",
+      "Created progress views for routine adherence",
+    ],
+    results: [
+      "Flexible plan generation aligned to user goals",
+      "Improved consistency with structured feedback",
+      "Foundation for production-grade safety checks",
+    ],
+    techStack: ["Next.js", "TypeScript", "Shadcn UI", "Tailwind CSS", "AI APIs"],
+    projectSlug: "ai-fitness-assistant",
+    githubLink: "https://github.com/syedomer17/Next.js-AI-fitness-App",
+    createdAt: "2025-05-10",
+    updatedAt: "2025-06-01",
+  },
 ];
 
 const buildCaseStudies = (inputs: CaseStudyInput[]): CaseStudy[] => {

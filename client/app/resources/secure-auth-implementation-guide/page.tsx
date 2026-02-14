@@ -66,7 +66,7 @@ export default function SecureAuthImplementationGuidePage() {
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">
               Core Principles
             </h2>
-            <ul className="mt-3 space-y-2 list-disc list-inside">
+            <ul className="mt-3 space-y-2 list-disc list-outside pl-5">
               <li>Prefer short-lived access tokens with refresh rotation.</li>
               <li>Store sensitive tokens in httpOnly cookies.</li>
               <li>Use RBAC or ABAC for authorization logic.</li>
@@ -76,7 +76,7 @@ export default function SecureAuthImplementationGuidePage() {
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">
               Hardening Tips
             </h2>
-            <ul className="mt-3 space-y-2 list-disc list-inside">
+            <ul className="mt-3 space-y-2 list-disc list-outside pl-5">
               <li>Throttle login and reset attempts.</li>
               <li>Audit session creation and revocation.</li>
               <li>Log auth failures and monitor anomalies.</li>
