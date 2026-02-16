@@ -123,10 +123,11 @@ export async function POST(req: NextRequest) {
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
-    port: smtpPort || 587,
+    port: smtpPort || 465,
     secure: smtpSecure,
     auth: smtpUser && smtpPass ? { user: smtpUser, pass: smtpPass } : undefined,
-  });
+    family: 4, // Force IPv4
+  } as any);
 
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
@@ -135,7 +136,7 @@ export async function POST(req: NextRequest) {
 
   try {
     await transporter.sendMail({
-      from: `${safeName} <${email}>`,
+      from: email,
       to: process.env.SMTP_TO,
       replyTo: email,
       subject: `New message: ${subject}`,
