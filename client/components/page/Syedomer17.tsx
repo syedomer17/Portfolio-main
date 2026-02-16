@@ -274,8 +274,42 @@ export default function Syedomer17() {
           </p>
 
           {loading && (
-            <div className="mt-8 text-sm text-slate-500 dark:text-slate-400">
-              Loading contribution history...
+            <div className="mt-10 flex flex-col items-center gap-4 text-center">
+              <div className="relative">
+                <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-slate-100/70 to-slate-200/20 dark:from-white/5 dark:to-white/0 blur-xl" />
+                <div className="absolute -inset-1 rounded-full border border-slate-200/70 dark:border-slate-700/60" />
+                <div className="w-28 h-28 rounded-full border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-[#121417] flex items-center justify-center shadow-sm relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(148,163,184,0.25),transparent_60%)] dark:bg-[radial-gradient(circle_at_30%_30%,rgba(148,163,184,0.18),transparent_60%)]" />
+                  <svg
+                    viewBox="0 0 120 120"
+                    className="w-20 h-20 text-slate-400 dark:text-slate-500"
+                    aria-hidden="true"
+                  >
+                    <rect x="18" y="64" width="84" height="12" rx="6" fill="currentColor" opacity="0.22" />
+                    <rect x="28" y="72" width="64" height="22" rx="7" fill="currentColor" opacity="0.16" />
+                    <rect x="22" y="44" width="76" height="16" rx="8" fill="currentColor" opacity="0.3" />
+                    <circle cx="60" cy="34" r="16" fill="currentColor" opacity="0.36" />
+                    <rect x="44" y="52" width="32" height="9" rx="4.5" fill="currentColor" opacity="0.24" />
+                    <circle cx="36" cy="24" r="4" fill="currentColor" opacity="0.5" />
+                    <circle cx="84" cy="26" r="3" fill="currentColor" opacity="0.45" />
+                    <rect x="38" y="90" width="44" height="6" rx="3" fill="currentColor" opacity="0.18" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <p
+                  className="text-sm text-slate-600 dark:text-slate-300"
+                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                >
+                  Loading contribution history...
+                </p>
+                <p
+                  className="text-xs text-slate-400 dark:text-slate-500 mt-1"
+                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                >
+                  Fetching yearly activity and totals.
+                </p>
+              </div>
             </div>
           )}
 
