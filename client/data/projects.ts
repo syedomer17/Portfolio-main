@@ -39,7 +39,7 @@ const projectInputs: ProjectInput[] = [
       "MongoDB",
       "NLP APIs",
     ],
-    notes: "Project completed. Deployment pending.",
+    notes: "Project completed. Deployment pending. Testing ongoing. TBA",
   },
   {
     title: "GitHub Gist Manager",
@@ -78,7 +78,7 @@ const projectInputs: ProjectInput[] = [
   {
     title: "Expense Tracker",
     description:
-      "A personal finance tracker that allows users to log expenses, categorize spending, and visualize monthly budgets with charts and summaries.",
+      "A personal finance tracker that allows users to log expenses, categorize spending, and visualize monthly budgets with charts and summaries and savings tips.",
     image: "/projects/expense-tracker.png",
     status: "Completed",
     isComingSoon: false,
@@ -89,8 +89,9 @@ const projectInputs: ProjectInput[] = [
       "Node.js",
       "Express",
       "MongoDB",
+      "Tailwind CSS"
     ],
-    notes: "Feature-complete project. Ready for deployment.",
+    notes: "Feature-complete project. Ready for deployment. Stable in prod.!",
   },
 ];
 
