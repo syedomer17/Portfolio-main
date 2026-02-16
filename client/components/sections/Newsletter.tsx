@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {  CheckCircle2, AlertCircle, Quote } from "lucide-react";
+import { CheckCircle2, AlertCircle, Quote } from "lucide-react";
 import toast, { Toaster } from 'react-hot-toast';
+import { ConfettiButton } from "@/components/ui/confetti";
 
 export default function Newsletter() {
     const [email, setEmail] = useState("");
@@ -101,14 +102,16 @@ export default function Newsletter() {
                             />
                         </div>
 
-                        <button
+                        <ConfettiButton
                             type="submit"
                             disabled={status === "loading"}
+                            fireOnClick={false}
+                            trigger={status === "success"}
                             className={`px-6 py-2.5 rounded-lg font-medium text-sm flex items-center justify-center gap-2 transition-all duration-300 whitespace-nowrap shadow-sm min-w-[120px] ${status === "success"
                                 ? "bg-green-600 hover:bg-green-700 text-white"
                                 : status === "error"
                                     ? "bg-red-600 hover:bg-red-700 text-white"
-                                    : "bg-[#4B4C53] hover:bg-[#3A3B42] text-white dark:bg-white dark:text-black dark:hover:bg-gray-200"
+                                    : "bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
                                 } disabled:opacity-70 disabled:cursor-not-allowed`}
                             style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                         >
@@ -125,7 +128,7 @@ export default function Newsletter() {
                             ) : (
                                 "Subscribe"
                             )}
-                        </button>
+                        </ConfettiButton>
                     </form>
                 </motion.div>
 
