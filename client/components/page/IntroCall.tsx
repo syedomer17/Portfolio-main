@@ -253,7 +253,7 @@ export function IntroCallPage() {
                 </div>
             </div>
 
-            <p className="text-slate-500 dark:text-[#a1a1a1] font-semibold text-sm mb-1" style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}>Rinkit Adhana</p>
+            <p className="text-slate-500 dark:text-[#a1a1a1] font-semibold text-sm mb-1" style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}>Syed Omer Ali</p>
             <h1 className="text-2xl font-bold text-slate-900 dark:text-[#e1e1e1] mb-4" style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}>Intro Call</h1>
 
             {/* Description always visible */}
