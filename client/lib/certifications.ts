@@ -22,7 +22,7 @@ const certificationInputs: CertificationInput[] = [
   {
     title: "Linux System Administration Certification",
     issuer: "Linux Challenge Program",
-    issueDate: "2024-06-15",
+    issueDate: "2025-09-15",
     credentialLink: "#",
     image: "/certifications/linux.png",
     description:
@@ -31,7 +31,7 @@ const certificationInputs: CertificationInput[] = [
   {
     title: "AWS 3-Tier Architecture Project Certification",
     issuer: "AWS Hands-On Program",
-    issueDate: "2025-02-10",
+    issueDate: "2025-10-10",
     credentialLink: "#",
     image: "/certifications/Aws.png",
     description:
@@ -40,7 +40,7 @@ const certificationInputs: CertificationInput[] = [
   {
     title: "DevOps Engineering Certification",
     issuer: "DevOps Training Program",
-    issueDate: "2025-04-18",
+    issueDate: "2025-12-18",
     credentialLink: "#",
     image: "/certifications/Devops.png",
     description:
@@ -49,7 +49,7 @@ const certificationInputs: CertificationInput[] = [
   {
     title: "DevOps and Aws Cloud Certification",
     issuer: "Full Stack Academy",
-    issueDate: "2025-05-02",
+    issueDate: "2025-12-19",
     credentialLink: "#",
     image: "/certifications/devops-aws.png",
     description:
@@ -85,7 +85,7 @@ const certificationInputs: CertificationInput[] = [
   {
     title: "Full Stack Web Development Certification",
     issuer: "Full Stack Training Program",
-    issueDate: "2025-06-12",
+    issueDate: "2025-10-12",
     credentialLink: "#",
     image: "/certifications/fullstack.png",
     description:

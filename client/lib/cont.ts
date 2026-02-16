@@ -198,7 +198,7 @@ export const certifications: Certification[] = [
   {
     title: "Linux System Administration Certification",
     issuer: "Linux Challenge Program",
-    date: "Issued 2024",
+    date: "Issued 2025",
     image: "/certifications/linux.png",
     url: "#",
     description:

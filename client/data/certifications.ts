@@ -22,7 +22,7 @@ const certificationInputs: CertificationInput[] = [
   {
     title: "Linux System Administration Certification",
     issuer: "Linux Challenge Program",
-    date: "Issued 2024",
+    date: "Issued 2025",
     image: "/certifications/linux.png",
     url: "#",
     description:
@@ -49,7 +49,7 @@ const certificationInputs: CertificationInput[] = [
   {
     title: "Full Stack Web Development Certification",
     issuer: "Full Stack Training Program",
-    date: "Issued 2024",
+    date: "Issued 2025",
     image: "/certifications/fullstack.png",
     url: "#",
     description:
