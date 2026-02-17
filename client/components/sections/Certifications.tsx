@@ -37,7 +37,8 @@ export default function Certifications() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                             whileHover={{ y: -5 }}
-                            className="group flex flex-col h-full bg-white dark:bg-[#0E0D09] border border-dashed border-gray-200 dark:border-[#3A3A3A] hover:border-gray-300 dark:hover:border-[#555] rounded-xl overflow-hidden transition-all duration-300"
+                            className="group flex flex-col h-full bg-white dark:bg-[#0E0D09] border border-dashed border-gray-200 dark:border-[#3A3A3A] hover:border-gray-300 dark:hover:border-[#555] rounded-xl overflow-hidden transition-all duration-400"
+                            style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
                         >
                             {/* Image Container */}
                             <div className="relative h-40 bg-gray-50 dark:bg-[#111] border-b border-gray-100 dark:border-[#222] overflow-hidden">
@@ -48,7 +49,8 @@ export default function Certifications() {
                                         alt={cert.title}
                                         fill
                                         sizes="(max-width: 640px) 100vw, 320px"
-                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        className="object-cover group-hover:scale-105"
+                                        style={{ transition: 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1)' }}
                                     />
                                 </div>
                             </div>

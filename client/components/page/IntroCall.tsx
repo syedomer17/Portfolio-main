@@ -385,7 +385,7 @@ export function IntroCallPage() {
                                 <div className="flex items-center justify-between mb-6">
                                     <h2 className="text-lg text-slate-900 dark:text-white font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>{monthNames[currentMonth]} {currentYear}</h2>
                                     <div className="flex items-center gap-2">
-                                        <button onClick={handlePrevMonth} disabled={isPrevDisabled} className={`p-1 rounded transition-colors ${isPrevDisabled ? 'text-slate-300 dark:text-[#333] cursor-not-allowed' : 'hover:bg-slate-100 dark:hover:bg-[#222] text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300' }`}>
+                                        <button onClick={handlePrevMonth} disabled={isPrevDisabled} className={`p-1 rounded transition-colors ${isPrevDisabled ? 'text-slate-300 dark:text-[#333] cursor-not-allowed' : 'hover:bg-slate-100 dark:hover:bg-[#222] text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300'}`}>
                                             <ChevronLeft className="w-6 h-6" />
                                         </button>
                                         <button onClick={handleNextMonth} className="p-1 hover:bg-slate-100 dark:hover:bg-[#222] rounded transition-colors text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300">
@@ -403,15 +403,17 @@ export function IntroCallPage() {
                                     {daysInMonth.map(day => {
                                         const isSelected = selectedDate === day;
                                         const isToday = today.getDate() === day && today.getMonth() === currentMonth && today.getFullYear() === currentYear;
+                                        const isPastDay = currentYear === today.getFullYear() && currentMonth === today.getMonth() && day < today.getDate();
                                         return (
                                             <div key={day} className="aspect-square w-full">
                                                 <button
-                                                    onClick={() => setSelectedDate(day)}
-                                                    className={`w-full h-full rounded-[4px] flex flex-col items-center justify-center text-sm font-semibold transition-all relative ${isSelected ? 'bg-slate-900 dark:bg-white text-white dark:text-black' : 'bg-slate-50 dark:bg-[#1c1c1c] text-slate-700 dark:text-[#e1e1e1] hover:bg-slate-100 dark:hover:bg-[#252525] hover:border hover:border-slate-300 dark:hover:border-zinc-700'}`}
+                                                    onClick={() => !isPastDay && setSelectedDate(day)}
+                                                    disabled={isPastDay}
+                                                    className={`w-full h-full rounded-[4px] flex flex-col items-center justify-center text-sm font-semibold transition-all relative ${isPastDay ? 'bg-slate-100 dark:bg-[#0f0f0f] text-slate-300 dark:text-[#555] cursor-not-allowed' : isSelected ? 'bg-slate-900 dark:bg-white text-white dark:text-black' : 'bg-slate-50 dark:bg-[#1c1c1c] text-slate-700 dark:text-[#e1e1e1] hover:bg-slate-100 dark:hover:bg-[#252525] hover:border hover:border-slate-300 dark:hover:border-zinc-700'}`}
                                                     style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                                                 >
                                                     {day}
-                                                    {isToday && <div className={`mt-1 w-1 h-1 rounded-full ${isSelected ? 'bg-white dark:bg-black' : 'bg-slate-900 dark:bg-white'}`}></div>}
+                                                    {isToday && <div className={`mt-1 w-1 h-1 rounded-full ${isSelected ? 'bg-white dark:bg-black' : isPastDay ? 'bg-slate-300 dark:bg-[#555]' : 'bg-slate-900 dark:bg-white'}`}></div>}
                                                 </button>
                                             </div>
                                         );

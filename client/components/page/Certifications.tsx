@@ -61,7 +61,8 @@ export default function CertificationsPage() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                                className="group flex flex-col h-full bg-white dark:bg-[#0E0D09] border border-dashed border-gray-200 dark:border-[#3A3A3A] hover:border-gray-300 dark:hover:border-[#555] rounded-xl overflow-hidden transition-all duration-300 cursor-pointer"
+                                className="group flex flex-col h-full bg-white dark:bg-[#0E0D09] border border-dashed border-gray-200 dark:border-[#3A3A3A] hover:border-gray-300 dark:hover:border-[#555] rounded-xl overflow-hidden transition-all duration-400 cursor-pointer"
+                                style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
                                 role="link"
                                 tabIndex={0}
                                 onClick={() => handleCardClick(cert.slug)}
@@ -80,7 +81,8 @@ export default function CertificationsPage() {
                                             alt={cert.title}
                                             fill
                                             sizes="(max-width: 640px) 100vw, 320px"
-                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            className="object-cover group-hover:scale-105"
+                                            style={{ transition: 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1)' }}
                                         />
                                     </div>
                                 </div>

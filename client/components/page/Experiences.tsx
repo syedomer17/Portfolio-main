@@ -65,14 +65,14 @@ export default function ExperiencesPage() {
                                 <div className="w-full py-4 sm:py-5 flex items-center gap-2 sm:gap-4 transition-colors group">
                                     {/* Logo */}
                                     <div className="shrink-0">
-                                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-700/70 flex items-center justify-center overflow-hidden p-1 shadow-sm">
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-700/70 flex items-center justify-center overflow-hidden shadow-sm">
                                             <Image
                                                 src={exp.logo}
                                                 alt={exp.company}
-                                                className="w-8 h-8 sm:w-10 sm:h-10 object-contain drop-shadow"
-                                                width={40}
-                                                height={40}
-                                                sizes="40px"
+                                                className="w-full h-full object-cover"
+                                                width={56}
+                                                height={56}
+                                                sizes="56px"
                                             />
                                         </div>
                                     </div>

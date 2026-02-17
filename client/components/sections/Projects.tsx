@@ -42,7 +42,8 @@ export default function Projects() {
                 delay: index * 0.1,
                 ease: [0.4, 0, 0.2, 1]
               }}
-              className="group relative bg-white dark:bg-[#0E0D09] rounded-xl overflow-hidden border border-dashed border-gray-200 dark:border-[#3A3A3A] hover:border-gray-400 dark:hover:border-[#888] transition-all duration-500 ease-out shadow-sm hover:shadow-md dark:shadow-none dark:hover:shadow-lg dark:hover:shadow-white/5"
+              className="group relative bg-white dark:bg-[#0E0D09] rounded-xl overflow-hidden border border-dashed border-gray-200 dark:border-[#3A3A3A] hover:border-gray-400 dark:hover:border-[#888] transition-all duration-400 shadow-sm hover:shadow-md dark:shadow-none dark:hover:shadow-lg dark:hover:shadow-white/5"
+              style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
             >
               {/* Screen Label (for live projects) - Outside image */}
               {project.screenLabel && (
@@ -70,7 +71,7 @@ export default function Projects() {
                 <div className="relative h-44 rounded-lg bg-gray-50 dark:bg-[#1a1a1a] border border-gray-100 dark:border-[#333] p-3 flex items-center justify-center overflow-hidden">
                   {/* Image or Coming Soon Placeholder */}
                   {project.isComingSoon ? (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-900 dark:bg-black rounded-md group-hover:scale-110 transition-transform duration-700 ease-out will-change-transform">
+                    <div className="w-full h-full flex items-center justify-center bg-gray-900 dark:bg-black rounded-md group-hover:scale-110 transition-transform duration-400 will-change-transform" style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}>
                       <div className="text-center px-4">
                         <p className="text-white text-xs font-medium mb-2 tracking-widest">STAY TUNED</p>
                         <div className="text-white text-2xl sm:text-3xl font-bold tracking-wider leading-tight">
@@ -94,7 +95,8 @@ export default function Projects() {
                       alt={project.title}
                       fill
                       sizes="(max-width: 640px) 100vw, 320px"
-                      className="object-contain rounded-md group-hover:scale-110 transition-transform duration-700 ease-out will-change-transform"
+                      className="object-contain rounded-md group-hover:scale-110 transition-transform duration-400 will-change-transform"
+                      style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
                     />
                   )}
                 </div>
