@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 const siteUrl = "https://syedomer.me";
 const siteName = "Syed Omer Ali";
-const defaultTitle = "Syed Omer Ali | Secure Full Stack MERN Developer";
+const defaultTitle = "Syed Omer Ali | MERN Stack Developer & DevSecOps Engineer";
 const defaultDescription =
   "Syed Omer Ali is a full stack MERN developer specializing in TypeScript, DevSecOps, and building secure, scalable systems for SaaS and startups.";
 
@@ -34,19 +34,6 @@ export const metadata: Metadata = {
   verification: {
     google: "IeKi-eX5enCHjuok5UJG5pTXHPdm0nhIpPBqMUM7Uak",
   },
-
-  keywords: [
-    "Syed Omer Ali",
-    "Full Stack Developer",
-    "MERN Stack Developer",
-    "TypeScript Developer",
-    "React Developer",
-    "Next.js Developer",
-    "Node.js Developer",
-    "DevSecOps",
-    "Secure Web Applications",
-    "Scalable Systems"
-  ],
 
   alternates: {
     canonical: "/",
@@ -124,16 +111,9 @@ export default function RootLayout({
                 "@type": "Person",
                 name: "Syed Omer Ali",
                 url: siteUrl,
-                jobTitle: "Full Stack Developer",
-                knowsAbout: [
-                  "MERN stack",
-                  "TypeScript",
-                  "DevSecOps",
-                  "Node.js security",
-                  "Scalable systems",
-                  "React",
-                  "Next.js"
-                ],
+                image: `${siteUrl}/banner.png`,
+                description: defaultDescription,
+                jobTitle: "MERN Stack Developer & DevSecOps Engineer",
                 sameAs: [
                   "https://github.com/syedomer17",
                   "https://linkedin.com/in/syedomer17",
@@ -142,10 +122,15 @@ export default function RootLayout({
                 ]
               },
               {
+                "@type": "Organization",
+                name: siteName,
+                url: siteUrl,
+                logo: `${siteUrl}/banner.png`
+              },
+              {
                 "@type": "WebSite",
                 name: siteName,
                 url: siteUrl,
-                description: defaultDescription,
                 inLanguage: "en-US"
               }
             ]
