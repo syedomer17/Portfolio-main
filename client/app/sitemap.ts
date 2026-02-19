@@ -8,42 +8,72 @@ import { caseStudies } from "@/lib/caseStudies";
 const baseUrl = "https://syedomer.me";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes: Array<{
-    path: string;
-    priority: number;
-    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
-    lastModified?: string;
-  }> = [
-    { path: "", priority: 1, changeFrequency: "weekly" },
-    { path: "/about", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/projects", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/blogs", priority: 0.8, changeFrequency: "weekly" },
-    { path: "/services", priority: 0.9, changeFrequency: "monthly" },
-    { path: "/services/secure-mern-development", priority: 0.9, changeFrequency: "monthly" },
-    { path: "/services/devsecops-ci-cd", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/services/performance-optimization", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/services/security-audit-remediation", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/case-studies", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/resources", priority: 0.7, changeFrequency: "monthly" },
-    { path: "/resources/mern-security-checklist", priority: 0.7, changeFrequency: "yearly" },
-    { path: "/resources/devsecops-pipeline-template", priority: 0.7, changeFrequency: "yearly" },
-    { path: "/resources/secure-auth-implementation-guide", priority: 0.7, changeFrequency: "yearly" },
-    { path: "/experiences", priority: 0.7, changeFrequency: "monthly" },
-    { path: "/certifications", priority: 0.6, changeFrequency: "yearly" },
-    { path: "/intro-call", priority: 0.6, changeFrequency: "monthly" },
-    { path: "/send-email", priority: 0.6, changeFrequency: "monthly" },
+  const now = new Date().toISOString();
+
+  // Static content pages (ONLY real content pages)
+  const staticRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blogs`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/case-studies`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/experiences`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/certifications`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.6,
+    },
   ];
 
+  // Dynamic blog routes
   const blogRoutes: MetadataRoute.Sitemap = blogs.map((blog) => ({
     url: `${baseUrl}/blogs/${blog.slug}`,
-    lastModified: blog.updatedAt,
+    lastModified: blog.updatedAt ?? blog.publishedAt,
     changeFrequency: "monthly",
-    priority: 0.7,
+    priority: 0.8,
   }));
 
+  // Dynamic project routes
   const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
-    lastModified: project.updatedAt,
+    lastModified: project.updatedAt ?? project.createdAt,
     changeFrequency: "monthly",
     priority: 0.7,
   }));
@@ -57,28 +87,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
-  const experienceRoutes: MetadataRoute.Sitemap = experiences.map((experience) => ({
-    url: `${baseUrl}/experiences/${experience.slug}`,
-    lastModified: experience.updatedAt,
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
+  const experienceRoutes: MetadataRoute.Sitemap = experiences.map(
+    (experience) => ({
+      url: `${baseUrl}/experiences/${experience.slug}`,
+      lastModified: experience.updatedAt,
+      changeFrequency: "yearly",
+      priority: 0.6,
+    })
+  );
 
   const caseStudyRoutes: MetadataRoute.Sitemap = caseStudies.map((study) => ({
     url: `${baseUrl}/case-studies/${study.slug}`,
     lastModified: study.updatedAt,
     changeFrequency: "monthly",
-    priority: 0.7,
+    priority: 0.8,
   }));
-
-  const staticRoutes: MetadataRoute.Sitemap = routes.map(
-    ({ path, priority, changeFrequency, lastModified }) => ({
-      url: `${baseUrl}${path || "/"}`,
-      lastModified,
-      changeFrequency,
-      priority,
-    })
-  );
 
   return [
     ...staticRoutes,
