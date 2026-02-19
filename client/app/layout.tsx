@@ -31,6 +31,10 @@ export const metadata: Metadata = {
 
   description: defaultDescription,
 
+  verification: {
+    google: "IeKi-eX5enCHjuok5UJG5pTXHPdm0nhIpPBqMUM7Uak",
+  },
+
   keywords: [
     "Syed Omer Ali",
     "Full Stack Developer",
