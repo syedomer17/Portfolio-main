@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://syedomer.me";
+const siteUrl = "https://www.syedomer.me";
 const siteName = "Syed Omer Ali";
 const defaultTitle = "Syed Omer Ali | MERN Stack Developer & DevSecOps Engineer";
 const defaultDescription =

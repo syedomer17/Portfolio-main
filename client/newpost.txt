@@ -4,13 +4,13 @@ After you publish a new blog post:
 
 Open Postman or use curl and send:
 
-POST https://syedomer.me/api/indexnow
+POST https://www.syedomer.me/api/indexnow
 
 
 Body:
 
 {
-  "url": "https://syedomer.me/blog/my-new-post"
+  "url": "https://www.syedomer.me/blog/my-new-post"
 }
 
 

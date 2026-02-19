@@ -5,7 +5,7 @@ import { certifications } from "@/lib/certifications";
 import { experiences } from "@/data/experiences";
 import { caseStudies } from "@/lib/caseStudies";
 
-const baseUrl = "https://syedomer.me";
+const baseUrl = "https://www.syedomer.me";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
