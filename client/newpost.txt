@@ -1,0 +1,19 @@
+Simple Version (Manual Way)
+
+After you publish a new blog post:
+
+Open Postman or use curl and send:
+
+POST https://syedomer.me/api/indexnow
+
+
+Body:
+
+{
+  "url": "https://syedomer.me/blog/my-new-post"
+}
+
+
+That’s it.
+
+You just notified Bing instantly.
