@@ -1,13 +1,14 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
+import dynamic from "next/dynamic";
+import Image, { type StaticImageData } from "next/image";
 import { CalendarDays, Eye, Mail, RefreshCw } from "lucide-react";
 
 import { HiMenu } from "react-icons/hi";
 import { FaInstagram, FaYoutube, FaDiscord, FaMedium } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import { WordRotate } from "../ui/word-rotate";
 import CountUp from "../ui/CountUp";
@@ -17,16 +18,22 @@ import TwitterHoverCard from "../socialButtons/Twitter";
 import LinkedinHoverCard from "../socialButtons/Linkedin";
 import MediumHoverCard from "../socialButtons/Medium";
 import LeetcodeHoverCard from "../socialButtons/Leetcode";
-import {
-  fetchGitHubContributions,
-  normalizeContributionData,
-  type ContributionData,
-  type ContributionDay,
-  type ContributionWeek,
-} from "../../utils/githubApi";
+import profileImage from "../../public/myImage.png";
+import altProfileImage from "../../public/background-portfolio.png";
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+
+const HeroContributions = dynamic(() => import("./hero/HeroContributions"), {
+  ssr: false,
+  loading: () => (
+    <div className="block mt-6 sm:-mt-2 sm:-mx-6 px-0 sm:pl-8 sm:pr-6">
+      <div className="min-h-[180px] sm:min-h-[240px] flex items-center justify-center">
+        <span className="text-xs text-slate-500 dark:text-slate-600">Loading contributions...</span>
+      </div>
+    </div>
+  ),
+});
 
 
 export default function Hero() {
@@ -35,13 +42,9 @@ export default function Hero() {
   const router = useRouter();
 
   const [showMoreMenu, setShowMoreMenu] = useState(false);
-  const [currentImage, setCurrentImage] = useState("/myImage.png");
+  const [currentImage, setCurrentImage] = useState<StaticImageData>(profileImage);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [contributionData, setContributionData] = useState<ContributionData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [hoveredDay, setHoveredDay] = useState<{ x: number; y: number; content: string } | null>(null);
   const [viewCount, setViewCount] = useState(defaultViewCount);
-  const graphRef = useRef<HTMLDivElement | null>(null);
 
   const handleImageSwitch = () => {
     // Play audio
@@ -53,144 +56,21 @@ export default function Hero() {
     setTimeout(() => setIsAnimating(false), 900);
 
     // Toggle image
-    setCurrentImage(currentImage === "/myImage.png" ? "/background-portfolio.png" : "/myImage.png");
+    setCurrentImage((prev) => (prev === profileImage ? altProfileImage : profileImage));
   };
-
-  // Format date for tooltip (from Github.tsx)
-  const formatDateForTooltip = (dateStr: string) =>
-    new Date(dateStr).toLocaleDateString("en-US", {
-      weekday: "short",
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-
-  // Tooltip handlers (from Github.tsx)
-  const handleMouseEnter = (event: React.MouseEvent, day: ContributionDay) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const graphRect = graphRef.current?.getBoundingClientRect();
-    const content =
-      day.contributionCount === 0
-        ? `No contributions on ${formatDateForTooltip(day.date)}`
-        : `${day.contributionCount} contribution${day.contributionCount !== 1 ? "s" : ""} on ${formatDateForTooltip(day.date)}`;
-    if (!graphRect) return;
-    setHoveredDay({
-      x: rect.left + rect.width / 2 - graphRect.left,
-      y: rect.top - graphRect.top - 8,
-      content,
-    });
-  };
-
-  const handleMouseLeave = () => setHoveredDay(null);
-
-  // Generate month labels above the graph (from Github.tsx)
-  const getMonthLabels = () => {
-    if (!contributionData || !contributionData.weeks.length) return null;
-
-    const months: { [key: string]: string } = {
-      0: "Jan", 1: "Feb", 2: "Mar", 3: "Apr", 4: "May", 5: "Jun",
-      6: "Jul", 7: "Aug", 8: "Sep", 9: "Oct", 10: "Nov", 11: "Dec",
-    };
-
-    const labels = contributionData.weeks.map((week, i) => {
-      const firstDay = week.contributionDays[0];
-      if (!firstDay) return null;
-      const monthIndex = new Date(firstDay.date).getMonth();
-
-      // Show label only if first week or month changes from previous
-      if (
-        i === 0 ||
-        (i > 0 &&
-          new Date(contributionData.weeks[i - 1].contributionDays[0].date).getMonth() !== monthIndex)
-      ) {
-        return (
-          <div
-            key={i}
-            className="text-xs text-secondary w-2.5 text-center font-mono opacity-50 dark:text-slate-400"
-            style={{ marginLeft: i === 0 ? 2 : 0 }}
-          >
-            {months[monthIndex]}
-          </div>
-        );
-      }
-      return <div key={i} className="w-2.5" />;
-    });
-
-    return <div className="flex gap-[2px] mb-1">{labels}</div>;
-  };
-
-  // Generate mock data (from Github.tsx)
-  const generateMockData = () => {
-    const weeks: ContributionWeek[] = [];
-    const today = new Date();
-    const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
-    const startDate = new Date(oneYearAgo);
-    startDate.setDate(startDate.getDate() - startDate.getDay());
-    const currentDate = new Date(startDate);
-    let totalContribs = 0;
-
-    for (let week = 0; week < 53; week++) {
-      const contributionDays: ContributionDay[] = [];
-      for (let day = 0; day < 7; day++) {
-        if (currentDate <= today) {
-          const rand = Math.random();
-          let contributionCount = 0;
-          if (rand > 0.7) contributionCount = Math.floor(Math.random() * 3) + 1;
-          else if (rand > 0.85) contributionCount = Math.floor(Math.random() * 5) + 4;
-          else if (rand > 0.95) contributionCount = Math.floor(Math.random() * 10) + 8;
-          totalContribs += contributionCount;
-          contributionDays.push({
-            date: currentDate.toISOString().split("T")[0],
-            contributionCount,
-            color: contributionCount === 0 ? "#161b22" : "#39d353",
-          });
-        }
-        currentDate.setDate(currentDate.getDate() + 1);
-      }
-      if (contributionDays.length > 0) {
-        weeks.push({ contributionDays });
-      }
-    }
-    // Using slice(-53) to match server logic and ensure consistency
-    setContributionData({ totalContributions: totalContribs, weeks: weeks.slice(-53) });
-  };
-
-  // Get contribution intensity CSS class (Dynamic logic)
-  const getContributionIntensity = (count: number, maxCount: number) => {
-    if (count === 0) return "bg-[#ebedf0] dark:bg-[#161b22] border-none"; // Level 0: No contributions
-
-    // Clamp effective max to avoid outliers squashing the graph
-    // Use at least 5 to avoid sensitivity on very low activity
-    // Cap at 15 to ensure reasonable days (12-14 commits) show highly
-    const effectiveMax = Math.max(7, Math.min(maxCount, 15));
-    const ratio = count / effectiveMax;
-
-    if (ratio <= 0.25) return "bg-[#9be9a8] dark:bg-[#0e4429] border-none"; // Level 1
-    if (ratio <= 0.50) return "bg-[#40c463] dark:bg-[#006d32] border-none"; // Level 2
-    if (ratio <= 0.75) return "bg-[#30a14e] dark:bg-[#26a641] border-none"; // Level 3
-    return "bg-[#216e39] dark:bg-[#39d353] border-none"; // Level 4
-  };
-
-  // Fetch GitHub contribution data
-  useEffect(() => {
-    generateMockData(); // Show mock data immediately
-    async function loadContributions() {
-      try {
-        const raw = await fetchGitHubContributions("syedomer17");
-        setContributionData(normalizeContributionData(raw));
-      } catch (err) {
-        console.error(err);
-        // Keep mock data on error
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadContributions();
-  }, []);
 
   useEffect(() => {
     let isMounted = true;
+    const idleWindow =
+      typeof window !== "undefined"
+        ? (window as Window & {
+            requestIdleCallback?: (
+              cb: IdleRequestCallback,
+              options?: IdleRequestOptions
+            ) => number;
+            cancelIdleCallback?: (handle: number) => void;
+          })
+        : null;
 
     const incrementViewCount = async () => {
       try {
@@ -207,10 +87,17 @@ export default function Hero() {
       }
     };
 
-    incrementViewCount();
+    const idleId = idleWindow?.requestIdleCallback
+      ? idleWindow.requestIdleCallback(() => incrementViewCount(), { timeout: 1500 })
+      : window.setTimeout(incrementViewCount, 200);
 
     return () => {
       isMounted = false;
+      if (idleWindow?.cancelIdleCallback) {
+        idleWindow.cancelIdleCallback(idleId);
+      } else {
+        clearTimeout(idleId);
+      }
     };
   }, []);
 
@@ -219,13 +106,14 @@ export default function Hero() {
 
 
   return (
-    <section className="container mx-auto px-4 sm:px-6 pt-20 pb-0">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        className="max-w-2xl mx-auto relative"
-      >
+    <LazyMotion features={domAnimation}>
+      <section className="container mx-auto px-4 sm:px-6 pt-20 pb-0">
+        <m.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="max-w-2xl mx-auto relative"
+        >
         {/* Theme Toggle - aligned with image top */}
         <div className="absolute top-0 -right-1 z-10">
           <ThemeToggle />
@@ -234,15 +122,15 @@ export default function Hero() {
         {/* Profile Header Row */}
         <div className="flex items-end gap-3 sm:gap-6 mb-8">
           {/* Profile Image */}
-          <motion.div
+          <m.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="relative flex-shrink-0"
           >
             <div className="w-26 h-26 rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 relative">
-              <motion.div
-                key={currentImage}
+              <m.div
+                key={currentImage.src}
                 initial={{ opacity: 0 }}
                 animate={
                   isAnimating
@@ -264,19 +152,22 @@ export default function Hero() {
               >
                 <Image
                   src={currentImage}
-                  alt="Profile"
+                  alt={currentImage === profileImage ? "Syed Omer Ali profile" : "Syed Omer Ali alternate profile"}
                   className="w-full h-full object-cover"
                   width={104}
                   height={104}
                   priority
-                  sizes="104px"
+                  fetchPriority="high"
+                  placeholder="blur"
+                  quality={80}
+                  sizes="(max-width: 640px) 96px, 104px"
                 />
-              </motion.div>
+              </m.div>
 
               <AnimatePresence>
                 {isAnimating && (
                   <>
-                    <motion.div
+                    <m.div
                       className="absolute inset-0 pointer-events-none"
                       initial={{ opacity: 0 }}
                       animate={{
@@ -291,7 +182,7 @@ export default function Hero() {
                         mixBlendMode: "screen",
                       }}
                     />
-                    <motion.div
+                    <m.div
                       className="absolute inset-0 pointer-events-none"
                       initial={{ opacity: 0, x: 0 }}
                       animate={{
@@ -314,7 +205,7 @@ export default function Hero() {
                         mixBlendMode: "screen",
                       }}
                     />
-                    <motion.div
+                    <m.div
                       className="absolute inset-0 pointer-events-none"
                       initial={{ opacity: 0, x: 0 }}
                       animate={{
@@ -343,7 +234,7 @@ export default function Hero() {
             </div>
 
             {/* Image Switch Button - Top Right of Image */}
-            <motion.button
+            <m.button
               onClick={handleImageSwitch}
               className="absolute -right-8 sm:-right-12 top-[-0.1px] w-8 h-8 rounded-full text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors flex items-center justify-center"
               whileHover={{ scale: 1.1 }}
@@ -353,14 +244,14 @@ export default function Hero() {
             >
               <AnimatePresence mode="wait">
                 {isAnimating ? (
-                  <motion.div
+                  <m.div
                     key="loader"
                     className="w-4 h-4 rounded-full border-2 border-slate-400/30 border-t-slate-400 dark:border-slate-500/30 dark:border-t-slate-500"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                   />
                 ) : (
-                  <motion.div
+                  <m.div
                     key="icon"
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -368,11 +259,11 @@ export default function Hero() {
                     transition={{ duration: 0.2 }}
                   >
                     <RefreshCw className="w-4 h-4" />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
-            </motion.button>
-          </motion.div>
+            </m.button>
+          </m.div>
 
           {/* Name and Title */}
           <div className="flex-1">
@@ -394,7 +285,7 @@ export default function Hero() {
                 />
               </div>
               {/* View Count */}
-              <motion.div
+              <m.div
                 className="flex items-center gap-1 text-slate-500 dark:text-slate-400"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -412,7 +303,7 @@ export default function Hero() {
                   />
                   k
                 </span>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </div>
@@ -476,7 +367,7 @@ export default function Hero() {
 
               {/* More Button with Dropdown - Visible on all screens */}
               <div className="relative">
-                <motion.button
+                <m.button
                   onClick={() => setShowMoreMenu(!showMoreMenu)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -485,11 +376,11 @@ export default function Hero() {
                 >
                   <HiMenu className="w-4 h-4" />
                   <span>More</span>
-                </motion.button>
+                </m.button>
 
                 <AnimatePresence>
                   {showMoreMenu && (
-                    <motion.div
+                    <m.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
@@ -516,104 +407,18 @@ export default function Hero() {
                         <FaDiscord className="w-4 h-4 text-slate-700 dark:text-white" />
                         <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Discord</span>
                       </Link>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
               </div>
             </div>
           </div>
 
-          {/* GitHub Contribution Graph */}
-          <div className="block mt-6 sm:-mt-2 sm:-mx-6 px-0 sm:pl-8 sm:pr-6">
-            {loading ? (
-              <div className="flex items-center justify-center py-8">
-                <span className="text-xs text-slate-500 dark:text-slate-600">Loading contributions...</span>
-              </div>
-            ) : contributionData ? (
-              <div ref={graphRef} className="relative">
-                {/* Shared Scroll Container for Alignment */}
-                <div className="overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 sm:px-0">
-                  <div className="w-max min-w-full">
-                    {/* Month Labels */}
-                    {getMonthLabels()}
-
-                    {/* Contribution Grid - Compact */}
-                    <div className="flex gap-[2px]">
-                      {(() => {
-                        // Calculate max contribution count for relative intensity
-                        const maxCount = Math.max(
-                          ...contributionData.weeks.flatMap((w) =>
-                            w.contributionDays.map((d) => d.contributionCount)
-                          ),
-                          0
-                        );
-
-                        return contributionData.weeks.map((week, wi) => (
-                          <div key={wi} className="flex flex-col gap-[2px]">
-                            {week.contributionDays.map((day, di) => (
-                              <div
-                                key={di}
-                                className={`w-[10px] h-[10px] rounded-[2px] ${getContributionIntensity(
-                                  day.contributionCount,
-                                  maxCount
-                                )} hover:ring-1 hover:ring-slate-400 dark:hover:ring-white transition-all cursor-pointer`}
-                                onMouseEnter={(e) => handleMouseEnter(e, day)}
-                                onMouseLeave={handleMouseLeave}
-                              />
-                            ))}
-                          </div>
-                        ));
-                      })()}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Tooltip */}
-                {hoveredDay && (
-                  <div
-                    className="absolute z-50 px-2 py-1 text-xs text-white bg-gray-900 border border-gray-700 rounded shadow-lg pointer-events-none whitespace-nowrap"
-                    style={{
-                      left: `${hoveredDay.x}px`,
-                      top: `${hoveredDay.y}px`,
-                      transform: "translateX(-50%) translateY(-100%)",
-                    }}
-                  >
-                    {hoveredDay.content}
-                  </div>
-                )}
-
-                {/* Bottom Legend */}
-                <div className="flex justify-between items-center mt-3">
-                  <span className="text-xs text-slate-500 dark:text-slate-400">
-                    {contributionData.totalContributions} activities in the last year
-                  </span>
-                  <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                    <span>Less</span>
-                    <div className="flex gap-1">
-                      <div className="w-[10px] h-[10px] bg-[#ebedf0] dark:bg-[#161b22] rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-[#9be9a8] dark:bg-[#0e4429] rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-[#40c463] dark:bg-[#006d32] rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-[#30a14e] dark:bg-[#26a641] rounded-[2px]" />
-                      <div className="w-[10px] h-[10px] bg-[#216e39] dark:bg-[#39d353] rounded-[2px]" />
-                    </div>
-                    <span>More</span>
-                  </div>
-                </div>
-                <div className="mt-2 flex justify-end">
-                  <Link
-                    href="/syedomer17"
-                    className="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
-                  >
-                    View full GitHub history
-                  </Link>
-                </div>
-              </div>
-            ) : null}
-          </div>
+          <HeroContributions />
         </div>
-      </motion.div>
+      </m.div>
     </section>
+  </LazyMotion>
   );
 }
 
