@@ -3,9 +3,9 @@ import HomeSections from "@/components/page/HomeSections";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Syed Omer Ali",
+  title: "Syed Omer Ali | Full Stack MERN Developer & DevSecOps Engineer",
   description:
-    "Portfolio of Syed Omer Ali, a full stack MERN developer focused on TypeScript, DevSecOps, and secure scalable systems.",
+    "I build secure, scalable MERN stack applications for SaaS startups. TypeScript, Next.js, DevSecOps, AI engineering. Available for projects.",
   authors: [{ name: "Syed Omer Ali", url: "https://www.syedomer.me" }],
   creator: "Syed Omer Ali",
   keywords: [
@@ -16,33 +16,44 @@ export const metadata: Metadata = {
     "Next.js",
     "DevSecOps",
     "syedomer17",
+    "Hyderabad Developer",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Syed Omer Ali",
-    description:
-      "Portfolio of Syed Omer Ali, a full stack MERN developer focused on TypeScript, DevSecOps, and secure scalable systems.",
+    type: "website",
     url: "/",
+    title: "Syed Omer Ali | Full Stack MERN Developer & DevSecOps Engineer",
+    description:
+      "I build secure, scalable MERN stack applications for SaaS startups. TypeScript, Next.js, DevSecOps, AI engineering. Available for projects.",
+    siteName: "Syed Omer Ali",
     images: [
       {
-        url: "/myImage.png",
+        url: "/myImage.avif",
         width: 1200,
         height: 630,
-        alt: "Syed Omer Ali - Portfolio",
+        alt: "Syed Omer Ali - Full Stack Developer",
+        type: "image/avif",
       },
     ],
-    type: "website",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     site: "@SyedOmer17Ali",
     creator: "@SyedOmer17Ali",
-    title: "Syed Omer Ali",
+    title: "Syed Omer Ali | Full Stack MERN Developer & DevSecOps Engineer",
     description:
-      "Portfolio of Syed Omer Ali, a full stack MERN developer focused on TypeScript, DevSecOps, and secure scalable systems.",
-    images: ["/myImage.png"],
+      "I build secure, scalable MERN stack applications for SaaS startups. TypeScript, Next.js, DevSecOps, AI engineering. Available for projects.",
+    images: [
+      {
+        url: "/myImage.avif",
+        width: 1200,
+        height: 675,
+        alt: "Syed Omer Ali - Full Stack Developer",
+      },
+    ],
   },
 };
 

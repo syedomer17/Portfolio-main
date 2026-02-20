@@ -63,10 +63,11 @@ export const metadata: Metadata = {
     siteName,
     images: [
       {
-        url: `${siteUrl}/myImage.png`,
+        url: `${siteUrl}/myImage.avif`,
         width: 1200,
         height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
+        type: "image/avif",
       },
     ],
     locale: "en_US",
@@ -76,7 +77,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: defaultTitle,
     description: defaultDescription,
-    images: [`${siteUrl}/myImage.png`],
+    images: [
+      {
+        url: `${siteUrl}/myImage.avif`,
+        width: 1200,
+        height: 675,
+        alt: "Syed Omer Ali - Full Stack Developer",
+      },
+    ],
   },
 
   icons: {

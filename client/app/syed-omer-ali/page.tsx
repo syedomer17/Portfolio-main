@@ -5,9 +5,9 @@ import SyedOmerAliContent from "@/components/page/SyedOmerAliContent";
 const siteUrl = "https://www.syedomer.me";
 
 export const metadata: Metadata = {
-  title: "Syed Omer Ali - Full Stack Developer & DevSecOps Engineer",
+  title: "Syed Omer Ali | Full Stack Developer & DevSecOps Engineer",
   description:
-    "Syed Omer Ali is a Full Stack Developer based in Hyderabad, India, specializing in MERN stack, TypeScript, Next.js, DevSecOps, and AI engineering. Connect with Syed Omer Ali on GitHub, LinkedIn, and other platforms.",
+    "Meet Syed Omer Ali - Full Stack Developer specializing in MERN stack, TypeScript, Next.js, and DevSecOps. Based in Hyderabad, India.",
   keywords: [
     "Syed Omer Ali",
     "Syed Omer",
@@ -27,16 +27,17 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "profile",
-    title: "Syed Omer Ali - Full Stack Developer & DevSecOps Engineer",
+    title: "Syed Omer Ali | Full Stack Developer & DevSecOps Engineer",
     description:
-      "Syed Omer Ali is a Full Stack Developer based in Hyderabad, India, specializing in MERN stack, TypeScript, Next.js, DevSecOps, and AI engineering.",
+      "Meet Syed Omer Ali - Full Stack Developer specializing in MERN stack, TypeScript, Next.js, and DevSecOps. Based in Hyderabad, India.",
     url: `${siteUrl}/syed-omer-ali`,
     images: [
       {
-        url: `${siteUrl}/myImage.png`,
+        url: `${siteUrl}/myImage.avif`,
         width: 1200,
         height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
+        type: "image/avif",
       },
     ],
     firstName: "Syed Omer",
@@ -47,10 +48,17 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@SyedOmer17Ali",
     creator: "@SyedOmer17Ali",
-    title: "Syed Omer Ali - Full Stack Developer & DevSecOps Engineer",
+    title: "Syed Omer Ali | Full Stack Developer & DevSecOps Engineer",
     description:
-      "Syed Omer Ali is a Full Stack Developer based in Hyderabad, India, specializing in MERN stack, TypeScript, Next.js, DevSecOps, and AI engineering.",
-    images: [`${siteUrl}/myImage.png`],
+      "Meet Syed Omer Ali - Full Stack Developer specializing in MERN stack, TypeScript, Next.js, and DevSecOps. Based in Hyderabad, India.",
+    images: [
+      {
+        url: `${siteUrl}/myImage.avif`,
+        width: 1200,
+        height: 675,
+        alt: "Syed Omer Ali - Full Stack Developer",
+      },
+    ],
   },
 };
 
