@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { blogs, getBlogBySlug } from "@/lib/blogs";
 
 const siteName = "Syed Omer Ali";
+const siteUrl = "https://www.syedomer.me";
 
 export const generateStaticParams = () =>
   blogs.map((blog) => ({ slug: blog.slug }));
@@ -27,6 +29,9 @@ export const generateMetadata = async ({
   return {
     title: blog.title,
     description: blog.description,
+    authors: [{ name: "Syed Omer Ali", url: "https://www.syedomer.me" }],
+    creator: "Syed Omer Ali",
+    publisher: "Syed Omer Ali",
     alternates: {
       canonical,
     },
@@ -43,9 +48,14 @@ export const generateMetadata = async ({
         },
       ],
       type: "article",
+      publishedTime: blog.publishedAt,
+      modifiedTime: blog.updatedAt,
+      authors: ["Syed Omer Ali"],
     },
     twitter: {
       card: "summary_large_image",
+      site: "@SyedOmer17Ali",
+      creator: "@SyedOmer17Ali",
       title: `${blog.title} | ${siteName}`,
       description: blog.description,
       images: ["/myImage.png"],
@@ -72,31 +82,101 @@ export default async function BlogDetail({
     notFound();
   }
 
-  return (
-    <main className="min-h-screen bg-white dark:bg-[#0B0D10] transition-colors duration-300">
-      <div className="container mx-auto px-4 sm:px-6 pt-12 pb-10">
-        <div className="max-w-2xl mx-auto">
-          <div className="mb-6">
-            <a
-              href="/blogs"
-              className="text-sm text-slate-600 dark:text-slate-300 hover:underline"
-            >
-              Back to Blogs
-            </a>
-          </div>
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.title,
+    description: blog.description,
+    image: `${siteUrl}/myImage.png`,
+    datePublished: blog.publishedAt,
+    dateModified: blog.updatedAt,
+    author: {
+      "@type": "Person",
+      name: "Syed Omer Ali",
+      url: siteUrl,
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Syed Omer Ali",
+      url: siteUrl,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/blogs/${blog.slug}`,
+    },
+  };
 
-          <header className="mb-6">
-            <h1
-              className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
-            >
-              {blog.title}
-            </h1>
-            <p
-              className="text-sm text-slate-500 dark:text-slate-400 mt-2"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
-            >
-              Published {formatDate(blog.publishedAt)}
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blogs",
+        item: `${siteUrl}/blogs`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: blog.title,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <Script
+        id="article-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(articleSchema)}
+      </Script>
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(breadcrumbSchema)}
+      </Script>
+      <main className="min-h-screen bg-white dark:bg-[#0B0D10] transition-colors duration-300">
+        <div className="container mx-auto px-4 sm:px-6 pt-12 pb-10">
+          <div className="max-w-2xl mx-auto">
+            <div className="mb-6">
+              <a
+                href="/blogs"
+                className="text-sm text-slate-600 dark:text-slate-300 hover:underline"
+              >
+                Back to Blogs
+              </a>
+            </div>
+
+            <header className="mb-6">
+              <h1
+                className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white"
+                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              >
+                {blog.title}
+              </h1>
+              <p
+                className="text-sm text-slate-500 dark:text-slate-400 mt-2"
+                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              >
+                By{" "}
+                <a
+                  href="/syed-omer-ali"
+                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  Syed Omer Ali
+                </a>{" "}
+                • Published {formatDate(blog.publishedAt)}
               {blog.updatedAt !== blog.publishedAt
                 ? ` • Updated ${formatDate(blog.updatedAt)}`
                 : ""}
@@ -149,5 +229,6 @@ export default async function BlogDetail({
         </div>
       </div>
     </main>
+    </>
   );
 }

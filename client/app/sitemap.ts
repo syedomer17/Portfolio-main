@@ -19,6 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${baseUrl}/syed-omer-ali`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 1,
+    },
+    {
       url: `${baseUrl}/about`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -59,6 +65,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/resources`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/syedomer17`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
     },
   ];
 
@@ -103,6 +121,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Service detail pages
+  const serviceRoutes: MetadataRoute.Sitemap = [
+    "secure-mern-development",
+    "security-audit-remediation",
+    "performance-optimization",
+    "devsecops-ci-cd",
+  ].map((slug) => ({
+    url: `${baseUrl}/services/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  // Resource detail pages
+  const resourceRoutes: MetadataRoute.Sitemap = [
+    "mern-security-checklist",
+    "devsecops-pipeline-template",
+    "secure-auth-implementation-guide",
+  ].map((slug) => ({
+    url: `${baseUrl}/resources/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     ...staticRoutes,
     ...blogRoutes,
@@ -110,5 +153,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...certificationRoutes,
     ...experienceRoutes,
     ...caseStudyRoutes,
+    ...serviceRoutes,
+    ...resourceRoutes,
   ];
 }

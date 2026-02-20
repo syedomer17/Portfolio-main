@@ -31,6 +31,10 @@ export const metadata: Metadata = {
 
   description: defaultDescription,
 
+  authors: [{ name: "Syed Omer Ali", url: "https://www.syedomer.me" }],
+  creator: "Syed Omer Ali",
+  publisher: "Syed Omer Ali",
+
   verification: {
     google: "IeKi-eX5enCHjuok5UJG5pTXHPdm0nhIpPBqMUM7Uak",
   },
@@ -109,29 +113,61 @@ export default function RootLayout({
             "@graph": [
               {
                 "@type": "Person",
+                "@id": `${siteUrl}#person`,
                 name: "Syed Omer Ali",
+                alternateName: ["Syed Omer", "Omer Ali", "syedomer17"],
                 url: siteUrl,
                 image: `${siteUrl}/myImage.png`,
                 description: defaultDescription,
-                jobTitle: "MERN Stack Developer & DevSecOps Engineer",
+                jobTitle: "Full Stack Developer",
+                hasOccupation: {
+                  "@type": "Occupation",
+                  name: "Full Stack Developer",
+                  occupationLocation: {
+                    "@type": "City",
+                    name: "Hyderabad"
+                  }
+                },
+                knowsAbout: [
+                  "Full Stack Development",
+                  "MERN Stack",
+                  "TypeScript",
+                  "JavaScript",
+                  "Next.js",
+                  "React",
+                  "Node.js",
+                  "DevSecOps",
+                  "System Design",
+                  "AWS",
+                  "Docker",
+                  "PostgreSQL",
+                  "MongoDB",
+                  "AI Engineering"
+                ],
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Hyderabad",
+                  addressCountry: "IN"
+                },
                 sameAs: [
                   "https://github.com/syedomer17",
-                  "https://linkedin.com/in/syedomer17",
-                  "https://twitter.com/SyedOmer17Ali",
+                  "https://www.linkedin.com/in/syedomer17/",
+                  "https://x.com/SyedOmer17Ali",
                   "https://medium.com/@syedomerali2006"
                 ]
               },
               {
-                "@type": "Organization",
-                name: siteName,
-                url: siteUrl,
-                logo: `${siteUrl}/myImage.png`
-              },
-              {
                 "@type": "WebSite",
+                "@id": `${siteUrl}#website`,
                 name: siteName,
                 url: siteUrl,
-                inLanguage: "en-US"
+                inLanguage: "en-US",
+                author: {
+                  "@id": `${siteUrl}#person`
+                },
+                publisher: {
+                  "@id": `${siteUrl}#person`
+                }
               }
             ]
           })}

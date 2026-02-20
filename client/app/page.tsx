@@ -6,6 +6,17 @@ export const metadata: Metadata = {
   title: "Syed Omer Ali",
   description:
     "Portfolio of Syed Omer Ali, a full stack MERN developer focused on TypeScript, DevSecOps, and secure scalable systems.",
+  authors: [{ name: "Syed Omer Ali", url: "https://www.syedomer.me" }],
+  creator: "Syed Omer Ali",
+  keywords: [
+    "Syed Omer Ali",
+    "Full Stack Developer",
+    "MERN Stack",
+    "TypeScript",
+    "Next.js",
+    "DevSecOps",
+    "syedomer17",
+  ],
   alternates: {
     canonical: "/",
   },
@@ -26,6 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@SyedOmer17Ali",
+    creator: "@SyedOmer17Ali",
     title: "Syed Omer Ali",
     description:
       "Portfolio of Syed Omer Ali, a full stack MERN developer focused on TypeScript, DevSecOps, and secure scalable systems.",

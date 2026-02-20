@@ -1,16 +1,21 @@
 "use client";
 
-import { ArrowLeft, CalendarDays, Mail } from "lucide-react";
+import { ArrowLeft, CalendarDays, Mail, ExternalLink } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import ButtonCreativeTop from "../ui/creative/Button";
+import Breadcrumb from "../ui/Breadcrumb";
 
 export default function AboutPage() {
   const router = useRouter();
 
   return (
-    <main className="min-h-screen bg-white dark:bg-[#0B0D10] transition-colors duration-300">
+    <main 
+      className="min-h-screen bg-white dark:bg-[#0B0D10] transition-colors duration-300"
+      itemScope
+      itemType="https://schema.org/AboutPage"
+    >
       <div className="container mx-auto px-4 sm:px-6 pt-12 pb-6">
         <div className="max-w-2xl mx-auto">
           <header className="flex items-center justify-between mb-2">
@@ -32,11 +37,16 @@ export default function AboutPage() {
             <ThemeToggle />
           </header>
 
-          <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-5" />
+          <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-3" />
+          
+          <Breadcrumb 
+            items={[{ name: "Home", href: "/" }]} 
+            currentPage="About" 
+          />
 
           <section className="space-y-3 text-sm text-slate-600 dark:text-slate-300" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
-            <p>
-              I am Syed Omer Ali, a full stack developer working across product engineering, DevOps, cloud, AI engineering, and system design. I ship modern web platforms with a focus on clarity, reliability, and measurable outcomes.
+            <p itemProp="description">
+              I am <strong itemProp="author" itemScope itemType="https://schema.org/Person"><span itemProp="name">Syed Omer Ali</span></strong>, a full stack developer working across product engineering, DevOps, cloud, AI engineering, and system design. I ship modern web platforms with a focus on clarity, reliability, and measurable outcomes.
             </p>
             <p>
               I help teams build scalable web applications, API-driven services, and cloud-first infrastructure, while designing systems that stay performant and maintainable as they grow.
@@ -150,6 +160,21 @@ export default function AboutPage() {
               <span className="font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
                 Send an email
               </span>
+            </Link>
+          </div>
+
+          {/* Link to detailed profile */}
+          <div className="mt-6 rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/10 p-4">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-2" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+              Want to learn more about my background, skills, and how to connect?
+            </p>
+            <Link
+              href="/syed-omer-ali"
+              className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            >
+              View complete profile of Syed Omer Ali
+              <ExternalLink className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
