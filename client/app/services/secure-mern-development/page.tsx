@@ -74,7 +74,7 @@ export default function SecureMernDevelopmentPage() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-[#0B0D10] transition-colors duration-300">
-      <Script id="secure-mern-faq" type="application/ld+json">
+      <Script id="secure-mern-faq" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(faqSchema)}
       </Script>
 

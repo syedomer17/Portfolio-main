@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from "next/link";
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ButtonCreativeTopProps {
@@ -49,7 +50,15 @@ function ButtonCreativeTop({ children, href, onClick, icon }: ButtonCreativeTopP
     );
 
     if (href) {
-        return <a href={href}>{content}</a>;
+        const isInternal = href.startsWith("/");
+        if (isInternal) {
+            return <Link href={href}>{content}</Link>;
+        }
+        return (
+            <a href={href} rel="noopener noreferrer">
+                {content}
+            </a>
+        );
     }
 
     return <div onClick={onClick}>{content}</div>;

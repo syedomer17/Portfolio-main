@@ -18,17 +18,15 @@ import TwitterHoverCard from "../socialButtons/Twitter";
 import LinkedinHoverCard from "../socialButtons/Linkedin";
 import MediumHoverCard from "../socialButtons/Medium";
 import LeetcodeHoverCard from "../socialButtons/Leetcode";
-import profileImage from "../../public/myImage.png";
-import altProfileImage from "../../public/background-portfolio.png";
-
-import { useRouter } from "next/navigation";
+import profileImage from "../../public/myImage.avif";
+import altProfileImage from "../../public/background-portfolio.avif";
 import Link from "next/link";
 
 const HeroContributions = dynamic(() => import("./hero/HeroContributions"), {
   ssr: false,
   loading: () => (
     <div className="block mt-6 sm:-mt-2 sm:-mx-6 px-0 sm:pl-8 sm:pr-6">
-      <div className="min-h-[180px] sm:min-h-[240px] flex items-center justify-center">
+      <div className="min-h-45 sm:min-h-60 flex items-center justify-center">
         <span className="text-xs text-slate-500 dark:text-slate-600">Loading contributions...</span>
       </div>
     </div>
@@ -38,8 +36,6 @@ const HeroContributions = dynamic(() => import("./hero/HeroContributions"), {
 
 export default function Hero() {
   const defaultViewCount = 3300;
-
-  const router = useRouter();
 
   const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [currentImage, setCurrentImage] = useState<StaticImageData>(profileImage);
@@ -113,6 +109,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="max-w-2xl mx-auto relative"
+          style={{ willChange: "transform, opacity" }}
         >
         {/* Theme Toggle - aligned with image top */}
         <div className="absolute top-0 -right-1 z-10">
@@ -122,11 +119,12 @@ export default function Hero() {
         {/* Profile Header Row */}
         <div className="flex items-end gap-3 sm:gap-6 mb-8">
           {/* Profile Image */}
-          <m.div
+            <m.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="relative flex-shrink-0"
+            className="relative shrink-0"
+              style={{ willChange: "transform, opacity" }}
           >
             <div className="w-26 h-26 rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 relative">
               <m.div
@@ -149,6 +147,7 @@ export default function Hero() {
                 }
                 transition={{ duration: 0.8, ease: "easeInOut" }}
                 className="w-full h-full"
+                style={{ willChange: "transform, opacity, filter" }}
               >
                 <Image
                   src={currentImage}
@@ -241,6 +240,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               disabled={isAnimating}
               aria-label="Switch image"
+              style={{ willChange: "transform" }}
             >
               <AnimatePresence mode="wait">
                 {isAnimating ? (
@@ -333,7 +333,7 @@ export default function Hero() {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-2 sm:gap-3">
-            <ButtonCreativeTop onClick={() => router.push('/intro-call')} icon={<CalendarDays className="w-4 h-4" />}>
+            <ButtonCreativeTop href="/intro-call" icon={<CalendarDays className="w-4 h-4" />}>
               <span className="font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
                 Book an intro call
               </span>
