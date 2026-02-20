@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "../../contexts/ThemeContext";
+import { playSound } from "../../lib/audioUtils";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
 
   const handleToggle = () => {
-    // Play audio
-    const audio = new Audio('/audio/woosh.mp3');
-    audio.play().catch(err => console.log('Audio play failed:', err));
+    // Play audio - deferred to idle callback, won't block interaction
+    playSound("/audio/woosh.mp3", { volume: 0.8 });
 
     // Toggle theme
     toggleTheme();

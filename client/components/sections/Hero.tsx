@@ -21,6 +21,7 @@ import LeetcodeHoverCard from "../socialButtons/Leetcode";
 import profileImage from "../../public/myImage.avif";
 import altProfileImage from "../../public/background-portfolio.avif";
 import Link from "next/link";
+import { playSound } from "../../lib/audioUtils";
 
 const HeroContributions = dynamic(() => import("./hero/HeroContributions"), {
   ssr: false,
@@ -43,9 +44,8 @@ export default function Hero() {
   const [viewCount, setViewCount] = useState(defaultViewCount);
 
   const handleImageSwitch = () => {
-    // Play audio
-    const audio = new Audio('/audio/glitch.wav');
-    audio.play().catch(err => console.log('Audio play failed:', err));
+    // Play audio - deferred to idle callback, won't block interaction
+    playSound("/audio/glitch.wav", { volume: 0.7, timeout: 1000 });
 
     // Show animation
     setIsAnimating(true);

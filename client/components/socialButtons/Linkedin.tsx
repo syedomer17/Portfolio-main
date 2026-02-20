@@ -41,10 +41,11 @@ export default function LinkedinHoverCard() {
                         <div className="h-16 bg-slate-200 dark:bg-slate-700 relative">
                             <Image
                                 src="/linkedin-banner.jpg"
-                                alt="Banner"
+                                alt="LinkedIn Banner"
                                 fill
                                 sizes="(max-width: 640px) 100vw, 384px"
                                 className="object-cover"
+                                priority={false}
                             />
                         </div>
 
@@ -53,8 +54,8 @@ export default function LinkedinHoverCard() {
                             {/* Profile Image - Overlapping Banner */}
                             <div className="relative -mt-6 mb-3">
                                 <Image
-                                    src="/myImage.png"
-                                    alt="Profile"
+                                    src="/myImage.avif"
+                                    alt="Syed Omer Ali"
                                     className="relative w-16 h-16 rounded-full border-4 border-white dark:border-[#1C1C1C] object-cover shadow-lg"
                                     width={64}
                                     height={64}

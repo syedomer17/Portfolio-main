@@ -21,6 +21,15 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: "/:path*/audio/:path*\\.(mp3|wav|m4a|aac|ogg)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
     ];
   },
 };

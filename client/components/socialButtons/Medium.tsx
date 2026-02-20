@@ -44,12 +44,13 @@ export default function MediumHoverCard() {
                                 {/* Profile Image */}
                                 <div className="relative">
                                     <Image
-                                        src="/myImage.png"
-                                        alt="Profile"
+                                        src="/myImage.avif"
+                                        alt="Syed Omer Ali"
                                         className="relative w-16 h-16 rounded-full border-2 border-white dark:border-[#1C1C1C] object-cover shadow-lg"
                                         width={64}
                                         height={64}
                                         sizes="64px"
+                                        priority={false}
                                     />
                                 </div>
 

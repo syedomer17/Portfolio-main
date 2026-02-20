@@ -44,6 +44,7 @@ export default function TwitterHoverCard() {
                             <Image
                                 src="/banner.png"
                                 alt="Banner"
+                                priority={false}
                                 fill
                                 sizes="(max-width: 640px) 100vw, 384px"
                                 className="object-cover"
@@ -55,8 +56,8 @@ export default function TwitterHoverCard() {
                             {/* Profile Image with Gradient Border - Overlapping Banner */}
                             <div className="relative -mt-6 mb-3">
                                 <Image
-                                    src="/myImage.png"
-                                    alt="Profile"
+                                    src="/myImage.avif"
+                                    alt="Syed Omer Ali"
                                     className="relative w-16 h-16 rounded-full border-4 border-white dark:border-[#1C1C1C] object-cover shadow-lg"
                                     width={64}
                                     height={64}

@@ -3,16 +3,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
-
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 
 import { experiences } from "../../data/experiences";
 
 export default function Experience() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
-
-  const router = useRouter();
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -26,7 +23,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-[18.4px] leading-[23px] font-bold mt-2 mb-3 text-[#333333] dark:text-[#EBEBEB]"
+          className="text-[18.4px] leading-5.75 font-bold mt-2 mb-3 text-[#333333] dark:text-[#EBEBEB]"
           style={{ fontFamily: '"Instagram Sans", sans-serif' }}
         >
           Experiences
@@ -196,17 +193,18 @@ export default function Experience() {
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           className="flex justify-center mt-4"
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            onClick={() => router.push("/experiences")}
-            className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
-          >
-            View All
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </motion.button>
+          <Link href="/experiences">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
+              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            >
+              View All
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>
