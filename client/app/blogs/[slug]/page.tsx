@@ -36,7 +36,7 @@ export const generateMetadata = async ({
       url: canonical,
       images: [
         {
-          url: "/banner.png",
+          url: "/myImage.png",
           width: 1200,
           height: 630,
           alt: `${blog.title} - ${siteName}`,
@@ -48,7 +48,7 @@ export const generateMetadata = async ({
       card: "summary_large_image",
       title: `${blog.title} | ${siteName}`,
       description: blog.description,
-      images: ["/banner.png"],
+      images: ["/myImage.png"],
     },
   };
 };

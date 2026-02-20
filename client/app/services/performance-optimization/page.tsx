@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: "/services/performance-optimization",
     images: [
       {
-        url: "/banner.png",
+        url: "/myImage.png",
         width: 1200,
         height: 630,
         alt: "Performance Optimization - Syed Omer Ali",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Performance Optimization | Syed Omer Ali",
     description:
       "Performance and scalability optimization for MERN and TypeScript apps with measurable speed improvements.",
-    images: ["/banner.png"],
+    images: ["/myImage.png"],
   },
 };
 

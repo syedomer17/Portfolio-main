@@ -59,10 +59,10 @@ export const metadata: Metadata = {
     siteName,
     images: [
       {
-        url: `${siteUrl}/banner.png`,
+        url: `${siteUrl}/myImage.png`,
         width: 1200,
         height: 630,
-        alt: "Syed Omer Ali Portfolio Banner",
+        alt: "Syed Omer Ali - Full Stack Developer",
       },
     ],
     locale: "en_US",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: defaultTitle,
     description: defaultDescription,
-    images: [`${siteUrl}/banner.png`],
+    images: [`${siteUrl}/myImage.png`],
   },
 
   icons: {
@@ -111,7 +111,7 @@ export default function RootLayout({
                 "@type": "Person",
                 name: "Syed Omer Ali",
                 url: siteUrl,
-                image: `${siteUrl}/banner.png`,
+                image: `${siteUrl}/myImage.png`,
                 description: defaultDescription,
                 jobTitle: "MERN Stack Developer & DevSecOps Engineer",
                 sameAs: [
@@ -125,7 +125,7 @@ export default function RootLayout({
                 "@type": "Organization",
                 name: siteName,
                 url: siteUrl,
-                logo: `${siteUrl}/banner.png`
+                logo: `${siteUrl}/myImage.png`
               },
               {
                 "@type": "WebSite",

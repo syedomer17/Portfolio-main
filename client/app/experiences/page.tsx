@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: "/experiences",
     images: [
       {
-        url: "/banner.png",
+        url: "/myImage.png",
         width: 1200,
         height: 630,
         alt: "Experience - Syed Omer Ali",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Experience | Syed Omer Ali",
     description:
       "Professional experience of Syed Omer Ali across full stack, DevOps, and cloud roles.",
-    images: ["/banner.png"],
+    images: ["/myImage.png"],
   },
 };
 

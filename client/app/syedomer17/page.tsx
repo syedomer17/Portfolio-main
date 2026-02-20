@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: "/syedomer17",
     images: [
       {
-        url: "/banner.png",
+        url: "/myImage.png",
         width: 1200,
         height: 630,
         alt: "GitHub Contributions - Syed Omer Ali",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "GitHub Contributions | Syed Omer Ali",
     description:
       "GitHub contribution history for syedomer17, including yearly activity graphs and totals.",
-    images: ["/banner.png"],
+    images: ["/myImage.png"],
   },
 };
 
