@@ -20,4 +20,11 @@ export const blogs = [
     tags: ["JavaScript", "Basics", "Programming"],
     url: "https://medium.com/@syedomerali2006/adding-elements-8b375452bfc4",
   },
+  {
+    title: "I Built a Beautiful Next.js App... and Nobody Visited It",
+    date: "Feb 20, 2026",
+    views: 0,
+    tags: ["Next.js", "SEO", "Indexing"],
+    url: "https://medium.com/@syedomerali2006/i-built-a-beautiful-next-js-app-and-nobody-visited-it-7ed9983929f0",
+  },
 ];
