@@ -98,7 +98,7 @@ export default function HeroContributions() {
         return (
           <div
             key={i}
-            className="text-xs text-secondary w-2.5 text-center font-mono opacity-50 dark:text-slate-400"
+            className="text-xs w-2.5 text-center font-mono text-slate-700 dark:text-slate-300 opacity-100 dark:opacity-70"
             style={{ marginLeft: i === 0 ? 2 : 0 }}
           >
             {months[monthIndex]}
