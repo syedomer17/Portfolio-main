@@ -36,7 +36,7 @@ const experienceInputs: ExperienceInput[] = [
     updatedAt: "2026-02-01",
     summary:
       "Lead product development across frontend, backend, and infrastructure workstreams. Focus on shipping features with reliable APIs, scalable architecture, and a tight feedback loop with stakeholders.",
-    logo: "/experience/cfi.png",
+    logo: "/experience/cfi.avif",
     achievements: [
       "Leading development of product features from idea to deployment",
       "Designing scalable backend architectures and APIs",
@@ -63,7 +63,7 @@ const experienceInputs: ExperienceInput[] = [
     updatedAt: "2025-11-15",
     summary:
       "Worked on CI/CD pipelines and AWS deployments with a focus on reliability and automation. Supported containerization workflows and infrastructure maintenance for production services.",
-    logo: "/experience/fullstackAcademy.png",
+    logo: "/experience/fullstackAcademy.avif",
     achievements: [
       "Worked on CI/CD pipelines for automated build and deployment workflows",
       "Deployed and managed applications on AWS using EC2, S3, and IAM",

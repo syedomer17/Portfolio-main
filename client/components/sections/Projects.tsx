@@ -97,6 +97,8 @@ export default function Projects() {
                       sizes="(max-width: 640px) 100vw, 320px"
                       className="object-contain rounded-md group-hover:scale-110 transition-transform duration-400 will-change-transform"
                       style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
+                      quality={75}
+                      loading="lazy"
                     />
                   )}
                 </div>

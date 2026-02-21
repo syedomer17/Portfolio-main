@@ -51,6 +51,8 @@ export default function Certifications() {
                                         sizes="(max-width: 640px) 100vw, 320px"
                                         className="object-cover group-hover:scale-105"
                                         style={{ transition: 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1)' }}
+                                        quality={75}
+                                        loading="lazy"
                                     />
                                 </div>
                             </div>

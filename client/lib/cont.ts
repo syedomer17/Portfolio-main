@@ -123,7 +123,7 @@ export const experiences: Experience[] = [
     type: "Internship",
     location: "India - Onsite",
     period: "Dec 2025 - Present",
-    logo: "/logos/code-for-india.png",
+    logo: "/experience/cfi.avif",
     achievements: [
       "Leading development of product features from idea to deployment",
       "Designing scalable backend architectures and APIs",
@@ -145,7 +145,7 @@ export const experiences: Experience[] = [
     type: "Internship",
     location: "India - Hybrid",
     period: "Aug 2025 - Nov 2025",
-    logo: "/logos/full-stack-academy.png",
+    logo: "/experience/fullstackAcademy.avif",
     achievements: [
       "Worked on CI/CD pipelines for automated build and deployment workflows",
       "Deployed and managed applications on AWS using EC2, S3, and IAM",
@@ -167,7 +167,7 @@ export const experiences: Experience[] = [
     type: "Internship",
     location: "India - Onsite",
     period: "Oct 2024 - Mar 2025",
-    logo: "/logos/code-for-india.png",
+    logo: "/experience/cfi.avif",
     achievements: [
       "Built and maintained full-stack features for internal and public-facing platforms",
       "Worked on REST APIs, database design, and frontend integrations",

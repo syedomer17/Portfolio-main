@@ -158,7 +158,7 @@ export default function Hero() {
                   priority
                   fetchPriority="high"
                   placeholder="blur"
-                  quality={80}
+                  quality={75}
                   sizes="(max-width: 640px) 96px, 104px"
                 />
               </m.div>

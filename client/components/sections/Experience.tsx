@@ -60,6 +60,8 @@ export default function Experience() {
                       width={56}
                       height={56}
                       sizes="56px"
+                      quality={75}
+                      loading="lazy"
                     />
                   </div>
                 </div>
