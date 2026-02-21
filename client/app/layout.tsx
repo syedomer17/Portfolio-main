@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { instagramSans } from "@/lib/fonts";
 import ThemeProviderClient from "@/components/Providers/ThemeProviderClient";
@@ -108,80 +107,79 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${instagramSans.variable} antialiased`}
       >
-        {/* Structured Data for SEO */}
-        <Script
-          id="site-json-ld"
+        {/* Structured Data for SEO - native script, no client JS overhead */}
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
-        >
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "Person",
-                "@id": `${siteUrl}#person`,
-                name: "Syed Omer Ali",
-                alternateName: ["Syed Omer", "Omer Ali", "syedomer17"],
-                url: siteUrl,
-                image: `${siteUrl}/myImage.png`,
-                description: defaultDescription,
-                jobTitle: "Full Stack Developer",
-                hasOccupation: {
-                  "@type": "Occupation",
-                  name: "Full Stack Developer",
-                  occupationLocation: {
-                    "@type": "City",
-                    name: "Hyderabad"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Person",
+                  "@id": `${siteUrl}#person`,
+                  name: "Syed Omer Ali",
+                  alternateName: ["Syed Omer", "Omer Ali", "syedomer17"],
+                  url: siteUrl,
+                  image: `${siteUrl}/myImage.png`,
+                  description: defaultDescription,
+                  jobTitle: "Full Stack Developer",
+                  hasOccupation: {
+                    "@type": "Occupation",
+                    name: "Full Stack Developer",
+                    occupationLocation: {
+                      "@type": "City",
+                      name: "Hyderabad"
+                    }
+                  },
+                  knowsAbout: [
+                    "Full Stack Development",
+                    "MERN Stack",
+                    "TypeScript",
+                    "JavaScript",
+                    "Next.js",
+                    "React",
+                    "Node.js",
+                    "DevSecOps",
+                    "System Design",
+                    "AWS",
+                    "Docker",
+                    "PostgreSQL",
+                    "MongoDB",
+                    "AI Engineering"
+                  ],
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Hyderabad",
+                    addressCountry: "IN"
+                  },
+                  sameAs: [
+                    "https://github.com/syedomer17",
+                    "https://www.linkedin.com/in/syedomer17/",
+                    "https://x.com/SyedOmer17Ali",
+                    "https://medium.com/@syedomerali2006"
+                  ]
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": `${siteUrl}#website`,
+                  name: siteName,
+                  url: siteUrl,
+                  inLanguage: "en-US",
+                  author: {
+                    "@id": `${siteUrl}#person`
+                  },
+                  publisher: {
+                    "@id": `${siteUrl}#person`
                   }
-                },
-                knowsAbout: [
-                  "Full Stack Development",
-                  "MERN Stack",
-                  "TypeScript",
-                  "JavaScript",
-                  "Next.js",
-                  "React",
-                  "Node.js",
-                  "DevSecOps",
-                  "System Design",
-                  "AWS",
-                  "Docker",
-                  "PostgreSQL",
-                  "MongoDB",
-                  "AI Engineering"
-                ],
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: "Hyderabad",
-                  addressCountry: "IN"
-                },
-                sameAs: [
-                  "https://github.com/syedomer17",
-                  "https://www.linkedin.com/in/syedomer17/",
-                  "https://x.com/SyedOmer17Ali",
-                  "https://medium.com/@syedomerali2006"
-                ]
-              },
-              {
-                "@type": "WebSite",
-                "@id": `${siteUrl}#website`,
-                name: siteName,
-                url: siteUrl,
-                inLanguage: "en-US",
-                author: {
-                  "@id": `${siteUrl}#person`
-                },
-                publisher: {
-                  "@id": `${siteUrl}#person`
                 }
-              }
-            ]
-          })}
-        </Script>
+              ]
+            }),
+          }}
+        />
 
         {/* Minimal theme provider - only global client boundary */}
         <ThemeProviderClient>

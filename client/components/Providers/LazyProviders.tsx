@@ -4,9 +4,13 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Toaster } from "react-hot-toast";
 import MountGuard from "../ui/MountGuard";
-import SmoothScroll from "../ui/SmoothScroll";
 
-// Dynamically import analytics to avoid bundle bloat
+// Dynamically import heavy features to avoid bundle bloat
+const SmoothScroll = dynamic(() => import("../ui/SmoothScroll"), { 
+  ssr: false,
+  loading: () => <>{/* Placeholder while SmoothScroll loads */}</> 
+});
+
 const DatabuddyComponent = dynamic(
   () => import("./DatabuddyLoader"),
   { ssr: false }
@@ -23,7 +27,7 @@ const AnalyticsComponent = dynamic(
  * 
  * Features loaded here:
  * - MountGuard: Prevents SSR/hydration mismatches
- * - SmoothScroll: Adds smooth scroll behavior globally
+ * - SmoothScroll: Smooth scroll behavior (lazy-loaded to avoid blocking initial render)
  * - Toaster: Toast notifications container
  * - Analytics: Loaded separately via useEffect
  */
@@ -47,10 +51,9 @@ export function LazyProvidersLoader({
 
   return (
     <MountGuard>
-      <SmoothScroll>
-        {children}
-        {isReady && <Toaster position="top-right" />}
-      </SmoothScroll>
+      {isReady && <SmoothScroll>{children}</SmoothScroll>}
+      {!isReady && children}
+      {isReady && <Toaster position="top-right" />}
     </MountGuard>
   );
 }
