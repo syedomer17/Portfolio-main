@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
-import Providers from "@/components/Providers/Providers";
+import ThemeProviderClient from "@/components/Providers/ThemeProviderClient";
+import { LazyProvidersLoader, LazyAnalyticsProviders } from "@/components/Providers/LazyProviders";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -181,7 +182,14 @@ export default function RootLayout({
           })}
         </Script>
 
-        <Providers>{children}</Providers>
+        {/* Minimal theme provider - only global client boundary */}
+        <ThemeProviderClient>
+          {/* Lazy-loaded features that don't block initial render */}
+          <LazyProvidersLoader>{children}</LazyProvidersLoader>
+        </ThemeProviderClient>
+
+        {/* Analytics lazy-loaded after page is idle */}
+        <LazyAnalyticsProviders />
       </body>
     </html>
   );
