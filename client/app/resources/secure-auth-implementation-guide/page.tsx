@@ -44,14 +44,12 @@ export default function SecureAuthImplementationGuidePage() {
 
         <section className="max-w-2xl mx-auto">
           <h1
-            className="text-xl font-bold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-bold font-instagram text-slate-900 text-xl"
           >
             Secure Auth Implementation Guide
           </h1>
           <p
-            className="mt-4 text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram mt-4 text-slate-600 text-sm"
           >
             A simple framework for secure authentication, session handling, and
             authorization in MERN and TypeScript applications.
@@ -59,8 +57,7 @@ export default function SecureAuthImplementationGuidePage() {
         </section>
 
         <section
-          className="mt-10 max-w-2xl mx-auto space-y-6 text-sm text-slate-600 dark:text-slate-300"
-          style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+          className="dark:text-slate-300 font-instagram max-w-2xl mt-10 mx-auto space-y-6 text-slate-600 text-sm"
         >
           <div>
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">
@@ -87,8 +84,7 @@ export default function SecureAuthImplementationGuidePage() {
         <section className="mt-12 max-w-2xl mx-auto">
           <Link
             href="/services/secure-mern-development"
-            className="text-sm underline text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-instagram text-slate-900 text-sm underline"
           >
             Need help implementing auth securely?
           </Link>

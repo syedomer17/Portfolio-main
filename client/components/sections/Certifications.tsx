@@ -17,8 +17,7 @@ export default function Certifications() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-[18.4px] leading-[23px] font-bold mb-3 text-[#333333] dark:text-[#EBEBEB]"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="text-[18.4px] leading-[23px] font-bold mb-3 text-[#333333] dark:text-[#EBEBEB] font-instagram"
                 >
                     Certifications
                 </motion.h2>
@@ -61,9 +60,8 @@ export default function Certifications() {
                             <div className="p-4 flex flex-col flex-1">
                                 <div className="mb-3">
                                     <h3
-                                        className="text-[#333333] dark:text-[#EBEBEB] text-[15px] font-bold leading-tight mb-1 group-hover:text-black dark:group-hover:text-white transition-colors line-clamp-2"
+                                        className="text-[#333333] dark:text-[#EBEBEB] text-[15px] font-bold leading-tight mb-1 group-hover:text-black dark:group-hover:text-white transition-colors line-clamp-2 font-instagram"
                                         style={{
-                                            fontFamily: '"Instagram Sans", sans-serif',
                                             fontSize: '17.6px',
                                             lineHeight: '19.36px',
                                             fontWeight: 700,
@@ -79,9 +77,8 @@ export default function Certifications() {
                                 </div>
 
                                 <p
-                                    className="text-gray-600 dark:text-[#999] text-xs leading-relaxed mb-4 line-clamp-2"
+                                    className="text-gray-600 dark:text-[#999] text-xs leading-relaxed mb-4 line-clamp-2 font-instagram"
                                     style={{
-                                        fontFamily: '"Instagram Sans", sans-serif',
                                         fontSize: '14px',
                                         lineHeight: '20px',
                                         fontWeight: 400,
@@ -92,8 +89,7 @@ export default function Certifications() {
                                 </p>
 
                                 <div className="mt-auto flex items-center justify-between pt-3 border-t border-gray-100 dark:border-[#222]">
-                                    <span className="text-[11px] text-gray-400 dark:text-[#666] flex items-center gap-1" style={{
-                                        fontFamily: '"Instagram Sans", sans-serif',
+                                    <span className="text-[11px] text-gray-400 dark:text-[#666] flex items-center gap-1 font-instagram" style={{
                                         fontSize: '12px',
                                         lineHeight: '14px',
                                         fontWeight: 400,
@@ -104,8 +100,7 @@ export default function Certifications() {
                                     </span>
 
                                     <span
-                                        className="inline-flex items-center gap-1 text-[12px] font-medium text-[#333] dark:text-[#D4D4D4] group-hover:text-black dark:group-hover:text-white transition-colors"
-                                        style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                        className="inline-flex items-center gap-1 text-[12px] font-medium text-[#333] dark:text-[#D4D4D4] group-hover:text-black dark:group-hover:text-white transition-colors font-instagram"
                                     >
                                         View Details
                                         <ArrowUpRight className="w-3 h-3" />
@@ -129,8 +124,7 @@ export default function Certifications() {
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         onClick={() => router.push("/certifications")}
-                        className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
-                        style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                        className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200 font-instagram"
                     >
                         View All
                         <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

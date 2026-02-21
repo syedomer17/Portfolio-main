@@ -29,8 +29,7 @@ export default function PageTopBar({
           <ArrowLeft className="w-5 h-5" />
         </button>
         <TitleTag
-          className="text-xl font-bold text-slate-900 dark:text-white"
-          style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+          className="text-xl font-bold text-slate-900 dark:text-white font-instagram"
         >
           {title}
         </TitleTag>

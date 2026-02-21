@@ -59,22 +59,19 @@ export default function SyedOmerAliContent() {
                 <div className="flex-1 space-y-3">
                   <div>
                     <h1 
-                      className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2"
-                      style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                      className="dark:text-white font-bold font-instagram mb-2 sm:text-3xl text-2xl text-slate-900"
                       itemProp="name"
                     >
                       Syed Omer Ali
                     </h1>
                     <h2 
-                      className="text-lg font-semibold text-slate-900 dark:text-white mb-1"
-                      style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                      className="dark:text-white font-instagram font-semibold mb-1 text-lg text-slate-900"
                       itemProp="jobTitle"
                     >
                       Full Stack Developer & DevSecOps Engineer
                     </h2>
                     <p 
-                      className="text-base text-slate-600 dark:text-slate-400"
-                      style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                      className="dark:text-slate-400 font-instagram text-base text-slate-600"
                     >
                       <span itemProp="addressLocality">Hyderabad</span>, <span itemProp="addressCountry">India</span> 🇮🇳
                     </p>
@@ -88,8 +85,7 @@ export default function SyedOmerAliContent() {
                   href="https://github.com/syedomer17"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 bg-white dark:bg-[#2E2E2E] border border-slate-300 dark:border-transparent rounded-md text-xs sm:text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
-                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  className="bg-white border border-slate-300 dark:bg-[#2E2E2E] dark:border-transparent dark:hover:bg-[#3E3E3E] dark:text-white font-instagram font-medium gap-1.5 hover:bg-slate-50 inline-flex items-center px-2 py-1.5 rounded-md sm:gap-2 sm:px-3 sm:text-sm text-slate-900 text-xs transition-colors"
                   itemProp="sameAs"
                 >
                   <FaGithub className="w-4 h-4" />
@@ -99,8 +95,7 @@ export default function SyedOmerAliContent() {
                   href="https://x.com/SyedOmer17Ali"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 bg-white dark:bg-[#2E2E2E] border border-slate-300 dark:border-transparent rounded-md text-xs sm:text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
-                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  className="bg-white border border-slate-300 dark:bg-[#2E2E2E] dark:border-transparent dark:hover:bg-[#3E3E3E] dark:text-white font-instagram font-medium gap-1.5 hover:bg-slate-50 inline-flex items-center px-2 py-1.5 rounded-md sm:gap-2 sm:px-3 sm:text-sm text-slate-900 text-xs transition-colors"
                   itemProp="sameAs"
                 >
                   <FaXTwitter className="w-4 h-4" />
@@ -110,8 +105,7 @@ export default function SyedOmerAliContent() {
                   href="https://www.linkedin.com/in/syedomer17/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 bg-white dark:bg-[#2E2E2E] border border-slate-300 dark:border-transparent rounded-md text-xs sm:text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
-                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  className="bg-white border border-slate-300 dark:bg-[#2E2E2E] dark:border-transparent dark:hover:bg-[#3E3E3E] dark:text-white font-instagram font-medium gap-1.5 hover:bg-slate-50 inline-flex items-center px-2 py-1.5 rounded-md sm:gap-2 sm:px-3 sm:text-sm text-slate-900 text-xs transition-colors"
                   itemProp="sameAs"
                 >
                   <FaLinkedinIn className="w-4 h-4" />
@@ -121,8 +115,7 @@ export default function SyedOmerAliContent() {
                   href="https://medium.com/@syedomerali2006"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 bg-white dark:bg-[#2E2E2E] border border-slate-300 dark:border-transparent rounded-md text-xs sm:text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
-                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  className="bg-white border border-slate-300 dark:bg-[#2E2E2E] dark:border-transparent dark:hover:bg-[#3E3E3E] dark:text-white font-instagram font-medium gap-1.5 hover:bg-slate-50 inline-flex items-center px-2 py-1.5 rounded-md sm:gap-2 sm:px-3 sm:text-sm text-slate-900 text-xs transition-colors"
                   itemProp="sameAs"
                 >
                   <FaMedium className="w-4 h-4" />
@@ -134,14 +127,12 @@ export default function SyedOmerAliContent() {
             {/* About Section */}
             <section className="space-y-4">
               <h2 
-                className="text-xl font-semibold text-slate-900 dark:text-white"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
               >
                 About Syed Omer Ali
               </h2>
               <div 
-                className="space-y-3 text-base text-slate-600 dark:text-slate-300 leading-relaxed"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-slate-300 font-instagram leading-relaxed space-y-3 text-base text-slate-600"
                 itemProp="description"
               >
                 <p>
@@ -164,16 +155,14 @@ export default function SyedOmerAliContent() {
             {/* Skills & Expertise */}
             <section className="space-y-4">
               <h2 
-                className="text-xl font-semibold text-slate-900 dark:text-white"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
               >
                 Skills & Expertise
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-3"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-white font-instagram font-semibold mb-3 text-base text-slate-900"
                   >
                     Frontend Development
                   </h3>
@@ -191,8 +180,7 @@ export default function SyedOmerAliContent() {
                 </div>
                 <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-3"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-white font-instagram font-semibold mb-3 text-base text-slate-900"
                   >
                     Backend Development
                   </h3>
@@ -210,8 +198,7 @@ export default function SyedOmerAliContent() {
                 </div>
                 <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-3"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-white font-instagram font-semibold mb-3 text-base text-slate-900"
                   >
                     DevSecOps & Cloud
                   </h3>
@@ -229,8 +216,7 @@ export default function SyedOmerAliContent() {
                 </div>
                 <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-3"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-white font-instagram font-semibold mb-3 text-base text-slate-900"
                   >
                     System Design & AI
                   </h3>
@@ -252,22 +238,19 @@ export default function SyedOmerAliContent() {
             {/* FAQ Section */}
             <section className="space-y-4">
               <h2 
-                className="text-xl font-semibold text-slate-900 dark:text-white"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
               >
                 Frequently Asked Questions
               </h2>
               <div className="space-y-4">
                 <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-2"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-white font-instagram font-semibold mb-2 text-base text-slate-900"
                   >
                     Who is Syed Omer Ali?
                   </h3>
                   <p 
-                    className="text-sm text-slate-600 dark:text-slate-300"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
                   >
                     Syed Omer Ali is a Full Stack Developer based in Hyderabad, India, specializing in MERN stack development, 
                     TypeScript, Next.js, DevSecOps, and AI engineering. He builds scalable web applications and helps teams 
@@ -276,14 +259,12 @@ export default function SyedOmerAliContent() {
                 </div>
                 <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-2"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-white font-instagram font-semibold mb-2 text-base text-slate-900"
                   >
                     What does Syed Omer Ali specialize in?
                   </h3>
                   <p 
-                    className="text-sm text-slate-600 dark:text-slate-300"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
                   >
                     Syed Omer Ali specializes in Full Stack Development using the MERN stack, TypeScript, Next.js, 
                     DevSecOps practices, cloud infrastructure (AWS), system design, and AI engineering.
@@ -291,14 +272,12 @@ export default function SyedOmerAliContent() {
                 </div>
                 <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-2"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-white font-instagram font-semibold mb-2 text-base text-slate-900"
                   >
                     How can I contact Syed Omer Ali?
                   </h3>
                   <p 
-                    className="text-sm text-slate-600 dark:text-slate-300"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
                   >
                     You can contact Syed Omer Ali through the{" "}
                     <Link href="/send-email" className="text-blue-600 dark:text-blue-400 hover:underline">
@@ -336,14 +315,12 @@ export default function SyedOmerAliContent() {
                 </div>
                 <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-2"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-white font-instagram font-semibold mb-2 text-base text-slate-900"
                   >
                     Where is Syed Omer Ali based?
                   </h3>
                   <p 
-                    className="text-sm text-slate-600 dark:text-slate-300"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
                   >
                     Syed Omer Ali is based in Hyderabad, India, and works remotely with clients globally.
                   </p>
@@ -354,8 +331,7 @@ export default function SyedOmerAliContent() {
             {/* Explore More */}
             <section className="space-y-4">
               <h2 
-                className="text-xl font-semibold text-slate-900 dark:text-white"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
               >
                 Explore More
               </h2>
@@ -365,14 +341,12 @@ export default function SyedOmerAliContent() {
                   className="group rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
                 >
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
                   >
                     Projects →
                   </h3>
                   <p 
-                    className="text-sm text-slate-600 dark:text-slate-400"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
                   >
                     View projects built by Syed Omer Ali
                   </p>
@@ -382,14 +356,12 @@ export default function SyedOmerAliContent() {
                   className="group rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
                 >
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
                   >
                     Blog Posts →
                   </h3>
                   <p 
-                    className="text-sm text-slate-600 dark:text-slate-400"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
                   >
                     Read technical articles by Syed Omer Ali
                   </p>
@@ -399,14 +371,12 @@ export default function SyedOmerAliContent() {
                   className="group rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
                 >
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
                   >
                     Services →
                   </h3>
                   <p 
-                    className="text-sm text-slate-600 dark:text-slate-400"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
                   >
                     Services offered by Syed Omer Ali
                   </p>
@@ -416,14 +386,12 @@ export default function SyedOmerAliContent() {
                   className="group rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
                 >
                   <h3 
-                    className="text-base font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
                   >
                     More About Me →
                   </h3>
                   <p 
-                    className="text-sm text-slate-600 dark:text-slate-400"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
                   >
                     Learn more about Syed Omer Ali
                   </p>
@@ -434,21 +402,19 @@ export default function SyedOmerAliContent() {
             {/* CTA Section */}
             <section className="rounded-xl border-2 border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/10 p-6">
               <h2 
-                className="text-lg font-semibold text-slate-900 dark:text-white mb-2"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-white font-instagram font-semibold mb-2 text-lg text-slate-900"
               >
                 Work with Syed Omer Ali
               </h2>
               <p 
-                className="text-sm text-slate-600 dark:text-slate-300 mb-4"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-slate-300 font-instagram mb-4 text-slate-600 text-sm"
               >
                 Interested in building scalable web applications or need help with DevSecOps? 
                 Let's discuss your project.
               </p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 <ButtonCreativeTop href="/intro-call" icon={<CalendarDays className="w-4 h-4" />}>
-                  <span className="font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                  <span className="font-instagram font-medium">
                     Book an intro call
                   </span>
                 </ButtonCreativeTop>
@@ -457,7 +423,7 @@ export default function SyedOmerAliContent() {
                   className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-[9px] text-sm font-medium bg-white dark:bg-[#2E2E2E] text-slate-900 dark:text-[#D4D4D4] border border-slate-300 dark:border-transparent"
                 >
                   <Mail className="w-4 h-4" />
-                  <span className="font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                  <span className="font-instagram font-medium">
                     Send an email
                   </span>
                 </Link>

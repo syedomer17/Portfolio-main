@@ -59,7 +59,7 @@ export default function Newsletter() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="text-lg font-bold mb-4 text-[#333333] dark:text-[#EBEBEB] pl-1"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif', fontSize: "18.4px", lineHeight: "23px", fontWeight: 700, letterSpacing: "normal" }}
+                    style={{ fontSize: "18.4px", lineHeight: "23px", fontWeight: 700, letterSpacing: "normal" }}
                 >
                     Newsletter
                 </motion.h2>
@@ -97,8 +97,7 @@ export default function Newsletter() {
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Enter your email"
                                 required
-                                className="w-full px-4 py-2.5 bg-white dark:bg-[#0E0D09] border border-gray-200 dark:border-[#333] rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:focus:ring-gray-600 transition-all text-sm shadow-sm"
-                                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                className="bg-white border border-gray-200 dark:bg-[#0E0D09] dark:border-[#333] dark:focus:ring-gray-600 dark:placeholder-gray-600 dark:text-white focus:outline-none focus:ring-1 focus:ring-gray-400 font-instagram placeholder-gray-400 px-4 py-2.5 rounded-lg shadow-sm text-gray-900 text-sm transition-all w-full"
                             />
                         </div>
 
@@ -107,13 +106,12 @@ export default function Newsletter() {
                             disabled={status === "loading"}
                             fireOnClick={false}
                             trigger={status === "success"}
-                            className={`px-6 py-2.5 rounded-lg font-medium text-sm flex items-center justify-center gap-2 transition-all duration-300 whitespace-nowrap shadow-sm min-w-[120px] ${status === "success"
+                            className={`px-6 py-2.5 rounded-lg font-medium font-instagram text-sm flex items-center justify-center gap-2 transition-all duration-300 whitespace-nowrap shadow-sm min-w-[120px] ${status === "success"
                                 ? "bg-green-600 hover:bg-green-700 text-white"
                                 : status === "error"
                                     ? "bg-red-600 hover:bg-red-700 text-white"
                                     : "bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
                                 } disabled:opacity-70 disabled:cursor-not-allowed`}
-                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
                         >
                             {status === "loading" ? (
                                 <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
@@ -143,7 +141,7 @@ export default function Newsletter() {
                     <Quote className="w-8 h-8 text-gray-300 dark:text-[#333] mx-auto mb-4 fill-current" />
                     <p
                         className="text-xl sm:text-2xl font-bold text-[#333] dark:text-[#D4D4D4] mb-4 leading-tight italic"
-                        style={{ fontFamily: '"Instagram Sans", sans-serif', fontWeight: 400, letterSpacing: "normal" }}
+                        style={{ fontWeight: 400, letterSpacing: "normal" }}
                     >
                         &quot;Do so much work that it would be unreasonable for you to not be successful.&quot;
                     </p>
@@ -151,7 +149,7 @@ export default function Newsletter() {
                         <div className="h-px w-12 bg-gray-200 dark:bg-[#333]"></div>
                         <span
                             className="text-xs font-bold text-gray-500 dark:text-[#888] tracking-wider uppercase"
-                            style={{ fontFamily: '"Instagram Sans", sans-serif', fontSize: "14px", lineHeight: "20px", fontWeight: 600, letterSpacing: "normal" }}
+                            style={{ fontSize: "14px", lineHeight: "20px", fontWeight: 600, letterSpacing: "normal" }}
                         >
                             Syed Omer Ali
                         </span>

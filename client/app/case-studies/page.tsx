@@ -45,8 +45,7 @@ export default function CaseStudiesPage() {
 
         <section className="max-w-2xl mx-auto">
           <p
-            className="text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
           >
             Compact case studies that highlight the problem, constraints, technical
             approach, and measurable results.
@@ -61,20 +60,17 @@ export default function CaseStudiesPage() {
               className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-400 transition-colors"
             >
               <h2
-                className="text-base font-bold text-slate-900 dark:text-white"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-white font-bold font-instagram text-base text-slate-900"
               >
                 {study.title}
               </h2>
               <p
-                className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
               >
                 {study.summary}
               </p>
               <span
-                className="mt-4 inline-flex text-sm text-slate-500"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="font-instagram inline-flex mt-4 text-slate-500 text-sm"
               >
                 View case study
               </span>
@@ -84,29 +80,25 @@ export default function CaseStudiesPage() {
 
         <section className="mt-12 max-w-2xl mx-auto">
           <h2
-            className="text-base font-semibold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-instagram font-semibold text-base text-slate-900"
           >
             Want the full story?
           </h2>
           <p
-            className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
           >
             Reach out for a deeper walkthrough and project context.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link
               href="/intro-call"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Book an intro call
             </Link>
             <Link
               href="/send-email"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Send a project brief
             </Link>

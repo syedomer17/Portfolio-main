@@ -4,10 +4,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Instagram Sans Font Family */
+/* Instagram Sans Font Family - Fallback */
+/* Primary loading via next/font/local in lib/fonts.ts */
 @font-face {
   font-family: 'Instagram Sans';
-  src: url('/fonts/Instagram Sans.ttf') format('truetype');
+  src: url('/fonts/new/Instagram Sans.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -15,15 +16,7 @@
 
 @font-face {
   font-family: 'Instagram Sans';
-  src: url('/fonts/Instagram Sans Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Instagram Sans';
-  src: url('/fonts/Instagram Sans Medium.ttf') format('truetype');
+  src: url('/fonts/new/Instagram Sans Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -31,15 +24,7 @@
 
 @font-face {
   font-family: 'Instagram Sans';
-  src: url('/fonts/Instagram Sans Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Instagram Sans Headline';
-  src: url('/fonts/Instagram Sans Headline.otf') format('opentype');
+  src: url('/fonts/new/Instagram Sans Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

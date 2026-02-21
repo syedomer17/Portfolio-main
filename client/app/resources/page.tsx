@@ -44,8 +44,7 @@ export default function ResourcesPage() {
 
         <section className="max-w-2xl mx-auto">
           <p
-            className="text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
           >
             Practical checklists and implementation guides to help teams build
             secure, scalable web apps.
@@ -58,14 +57,12 @@ export default function ResourcesPage() {
             className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-400 transition-colors"
           >
             <h2
-              className="text-base font-bold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-bold font-instagram text-base text-slate-900"
             >
               MERN Security Checklist
             </h2>
             <p
-              className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
             >
               A practical checklist for hardening MERN apps before launch.
             </p>
@@ -76,14 +73,12 @@ export default function ResourcesPage() {
             className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-400 transition-colors"
           >
             <h2
-              className="text-base font-bold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-bold font-instagram text-base text-slate-900"
             >
               DevSecOps Pipeline Template
             </h2>
             <p
-              className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
             >
               A starter workflow with security scanning and quality gates.
             </p>
@@ -94,14 +89,12 @@ export default function ResourcesPage() {
             className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-400 transition-colors"
           >
             <h2
-              className="text-base font-bold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-bold font-instagram text-base text-slate-900"
             >
               Secure Auth Implementation Guide
             </h2>
             <p
-              className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
             >
               Patterns for authentication, sessions, and authorization.
             </p>

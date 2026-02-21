@@ -87,20 +87,17 @@ export default async function ExperienceDetail({
 
           <header className="mb-6">
             <h1
-              className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-bold font-instagram sm:text-3xl text-2xl text-slate-900"
             >
               {experience.role} at {experience.company}
             </h1>
             <p
-              className="text-sm text-slate-500 dark:text-slate-400 mt-2"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-400 font-instagram mt-2 text-slate-500 text-sm"
             >
               {experience.location} • {experience.period}
             </p>
             <p
-              className="text-sm text-slate-500 dark:text-slate-400 mt-2"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-400 font-instagram mt-2 text-slate-500 text-sm"
             >
               {formatDate(experience.startDate)}
               {experience.endDate ? ` - ${formatDate(experience.endDate)}` : " - Present"}
@@ -108,8 +105,7 @@ export default async function ExperienceDetail({
           </header>
 
           <p
-            className="text-base text-slate-700 dark:text-slate-200 mb-6"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-200 font-instagram mb-6 text-base text-slate-700"
           >
             {experience.summary}
           </p>
@@ -117,8 +113,7 @@ export default async function ExperienceDetail({
           {experience.achievements.length > 0 ? (
             <div className="mb-6">
               <h2
-                className="text-lg font-semibold text-slate-900 dark:text-white mb-2"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-white font-instagram font-semibold mb-2 text-lg text-slate-900"
               >
                 Key Contributions
               </h2>
@@ -126,8 +121,7 @@ export default async function ExperienceDetail({
                 {experience.achievements.map((achievement, index) => (
                   <li
                     key={index}
-                    className="text-sm text-slate-700 dark:text-slate-200 flex gap-2"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="dark:text-slate-200 flex font-instagram gap-2 text-slate-700 text-sm"
                   >
                     <span className="text-[#424242] dark:text-[#D4D4D4] mt-0.5">•</span>
                     <span>{achievement}</span>
@@ -140,8 +134,7 @@ export default async function ExperienceDetail({
           {experience.tags.length > 0 ? (
             <div>
               <h2
-                className="text-lg font-semibold text-slate-900 dark:text-white mb-2"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="dark:text-white font-instagram font-semibold mb-2 text-lg text-slate-900"
               >
                 Skills & Tools
               </h2>
@@ -149,8 +142,7 @@ export default async function ExperienceDetail({
                 {experience.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2.5 py-0.5 text-xs leading-4 font-normal bg-transparent text-[#424242] dark:text-[#D4D4D4] rounded border border-slate-300 dark:border-[#3A3A3A]"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="bg-transparent border border-slate-300 dark:border-[#3A3A3A] dark:text-[#D4D4D4] font-instagram font-normal leading-4 px-2.5 py-0.5 rounded text-[#424242] text-xs"
                   >
                     {tag}
                   </span>

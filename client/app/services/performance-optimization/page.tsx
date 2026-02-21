@@ -45,14 +45,12 @@ export default function PerformanceOptimizationPage() {
 
         <section className="max-w-2xl mx-auto">
           <h1
-            className="text-xl font-bold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-bold font-instagram text-slate-900 text-xl"
           >
             Performance & Scalability Optimization
           </h1>
           <p
-            className="mt-4 text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram mt-4 text-slate-600 text-sm"
           >
             Diagnose slow pages, API bottlenecks, and database hotspots. I deliver
             measurable improvements to speed, reliability, and scale.
@@ -63,14 +61,12 @@ export default function PerformanceOptimizationPage() {
         <section className="mt-12 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-semibold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram font-semibold text-base text-slate-900"
             >
               What gets optimized
             </h2>
             <ul
-              className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram list-disc list-outside mt-4 pl-5 space-y-2 text-slate-600 text-sm"
             >
               <li>React rendering and hydration bottlenecks.</li>
               <li>API response times and server-side latency.</li>
@@ -80,14 +76,12 @@ export default function PerformanceOptimizationPage() {
           </div>
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-semibold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram font-semibold text-base text-slate-900"
             >
               Deliverables
             </h2>
             <ul
-              className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram list-disc list-outside mt-4 pl-5 space-y-2 text-slate-600 text-sm"
             >
               <li>Performance audit report with prioritized fixes.</li>
               <li>Implementation of the highest-impact improvements.</li>
@@ -98,30 +92,26 @@ export default function PerformanceOptimizationPage() {
 
         <section className="mt-12 max-w-2xl mx-auto">
           <h2
-            className="text-base font-semibold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-instagram font-semibold text-base text-slate-900"
           >
             Related work
           </h2>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link
               href="/projects"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Projects
             </Link>
             <Link
               href="/blogs"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Technical blog
             </Link>
             <Link
               href="/services/secure-mern-development"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Secure MERN development
             </Link>

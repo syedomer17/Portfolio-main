@@ -267,7 +267,7 @@ export default function Hero() {
 
           {/* Name and Title */}
           <div className="flex-1">
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}>
+            <h1 className="text-2xl font-bold font-instagram text-slate-900 dark:text-white">
               Syed Omer Ali
             </h1>
             <div className="flex items-center justify-between">
@@ -311,7 +311,7 @@ export default function Hero() {
         {/* Content Section - Full Width Below Header */}
         <div className="space-y-6">
           {/* Bio */}
-          <div className="space-y-3" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+          <div className="space-y-3 font-instagram">
             <p className="text-slate-700 dark:text-slate-200 leading-relaxed">
               Hey, I’m Omer, a full stack developer who builds clean, modern web applications with strong attention to design, performance, and the details most people ignore. I focus on shipping products that are reliable, scalable, and visually polished.
             </p>
@@ -334,7 +334,7 @@ export default function Hero() {
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-2 sm:gap-3">
             <ButtonCreativeTop href="/intro-call" icon={<CalendarDays className="w-4 h-4" />}>
-              <span className="font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+              <span className="font-medium font-instagram">
                 Book an intro call
               </span>
             </ButtonCreativeTop>
@@ -343,7 +343,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-[9px] text-sm font-medium bg-white dark:bg-[#2E2E2E] text-slate-900 dark:text-[#D4D4D4] border border-slate-300 dark:border-transparent"
             >
               <Mail className="w-4 h-4" />
-              <span className="font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+              <span className="font-medium font-instagram">
                 Send an email
               </span>
             </Link>
@@ -371,8 +371,7 @@ export default function Hero() {
                   onClick={() => setShowMoreMenu(!showMoreMenu)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
-                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] border border-slate-300 dark:border-transparent rounded-md text-sm font-medium font-instagram text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
                 >
                   <HiMenu className="w-4 h-4" />
                   <span>More</span>
@@ -384,28 +383,27 @@ export default function Hero() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute bottom-full left-0 min-[410px]:-left-16 min-[412px]:-left-15 min-[430px]:-left-12 sm:left-0 mb-2 w-40 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#3A3A3A] rounded-xl shadow-xl z-20 p-1.5"
-                      style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                      className="absolute bottom-full left-0 min-[410px]:-left-16 min-[412px]:-left-15 min-[430px]:-left-12 sm:left-0 mb-2 w-40 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#3A3A3A] rounded-xl shadow-xl z-20 p-1.5 font-instagram"
                     >
                       <Link href="https://leetcode.com/syedomerali_200" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
                         <SiLeetcode className="w-4 h-4 text-[#FFA116]" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>LeetCode</span>
+                        <span className="text-sm font-medium font-instagram text-slate-700 dark:text-white">LeetCode</span>
                       </Link>
                       <Link href="https://medium.com/@syedomerali2006" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
                         <FaMedium className="w-4 h-4 text-black dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Medium</span>
+                        <span className="text-sm font-medium font-instagram text-slate-700 dark:text-white">Medium</span>
                       </Link>
                       <Link href="https://www.instagram.com/syedomer.me/" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
                         <FaInstagram className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Instagram</span>
+                        <span className="text-sm font-medium font-instagram text-slate-700 dark:text-white">Instagram</span>
                       </Link>
                       <Link href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
                         <FaYoutube className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>YouTube</span>
+                        <span className="text-sm font-medium font-instagram text-slate-700 dark:text-white">YouTube</span>
                       </Link>
                       <Link href="https://discord.com/channels/@syedomerali8642" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors">
                         <FaDiscord className="w-4 h-4 text-slate-700 dark:text-white" />
-                        <span className="text-sm font-medium text-slate-700 dark:text-white" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>Discord</span>
+                        <span className="text-sm font-medium font-instagram text-slate-700 dark:text-white">Discord</span>
                       </Link>
                     </m.div>
                   )}

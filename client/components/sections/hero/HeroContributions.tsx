@@ -260,8 +260,7 @@ export default function HeroContributions() {
           <div className="mt-2 flex justify-end">
             <Link
               href="/syedomer17"
-              className="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors font-instagram"
             >
               View full GitHub history
             </Link>

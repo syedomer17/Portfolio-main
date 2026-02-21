@@ -77,20 +77,17 @@ export default async function CaseStudySlugPage({
 
         <section className="max-w-2xl mx-auto">
           <p
-            className="text-sm text-slate-500"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="font-instagram text-slate-500 text-sm"
           >
             Case Study
           </p>
           <h1
-            className="text-xl font-bold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-bold font-instagram text-slate-900 text-xl"
           >
             {study.title}
           </h1>
           <p
-            className="mt-4 text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram mt-4 text-slate-600 text-sm"
           >
             {study.summary}
           </p>
@@ -99,20 +96,17 @@ export default async function CaseStudySlugPage({
         <section className="mt-10 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-semibold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram font-semibold text-base text-slate-900"
             >
               Problem & Constraints
             </h2>
             <p
-              className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
             >
               {study.problem}
             </p>
             <ul
-              className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram list-disc list-outside mt-3 pl-5 space-y-2 text-slate-600 text-sm"
             >
               {study.constraints.map((item) => (
                 <li key={item}>{item}</li>
@@ -121,22 +115,19 @@ export default async function CaseStudySlugPage({
           </div>
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-semibold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram font-semibold text-base text-slate-900"
             >
               Solution & Results
             </h2>
             <ul
-              className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram list-disc list-outside mt-3 pl-5 space-y-2 text-slate-600 text-sm"
             >
               {study.solution.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
             <ul
-              className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram list-disc list-outside mt-3 pl-5 space-y-2 text-slate-600 text-sm"
             >
               {study.results.map((item) => (
                 <li key={item}>{item}</li>
@@ -148,14 +139,12 @@ export default async function CaseStudySlugPage({
         <section className="mt-10 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-semibold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram font-semibold text-base text-slate-900"
             >
               Metrics
             </h2>
             <ul
-              className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram mt-3 space-y-2 text-slate-600 text-sm"
             >
               {study.metrics.map((metric) => (
                 <li key={metric.label}>
@@ -170,20 +159,17 @@ export default async function CaseStudySlugPage({
           </div>
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-semibold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram font-semibold text-base text-slate-900"
             >
               Stack & Links
             </h2>
             <p
-              className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
             >
               {study.techStack.join(", ")}
             </p>
             <div
-              className="mt-4 flex flex-wrap gap-3 text-sm"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="flex flex-wrap font-instagram gap-3 mt-4 text-sm"
             >
               <Link
                 href={`/projects/${study.projectSlug}`}
@@ -207,30 +193,26 @@ export default async function CaseStudySlugPage({
 
         <section className="mt-12 max-w-2xl mx-auto">
           <h2
-            className="text-base font-semibold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-instagram font-semibold text-base text-slate-900"
           >
             Want to build something similar?
           </h2>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link
               href="/services/secure-mern-development"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Secure MERN development
             </Link>
             <Link
               href="/services/performance-optimization"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Performance optimization
             </Link>
             <Link
               href="/intro-call"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Book an intro call
             </Link>

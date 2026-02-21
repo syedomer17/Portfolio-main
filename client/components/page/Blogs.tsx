@@ -53,8 +53,7 @@ export default function BlogsPage() {
                                 <ArrowLeft className="w-5 h-5" />
                             </button>
                             <h1
-                                className="text-xl font-bold text-slate-900 dark:text-white"
-                                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                className="text-xl font-bold text-slate-900 dark:text-white font-instagram"
                             >
                                 Blogs
                             </h1>
@@ -65,8 +64,7 @@ export default function BlogsPage() {
                     <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-4" />
 
                     <p
-                        className="text-sm text-slate-600 dark:text-slate-300 mb-5"
-                        style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                        className="text-sm text-slate-600 dark:text-slate-300 mb-5 font-instagram"
                     >
                         I publish implementation-focused posts on secure MERN architecture, TypeScript, and DevSecOps. For applied examples, browse the <a href="/case-studies" className="underline hover:no-underline">case studies</a>. You can also grab checklists and templates in the <a href="/resources" className="underline hover:no-underline">resources</a> hub.
                     </p>
@@ -93,9 +91,8 @@ export default function BlogsPage() {
                                     <div className="flex items-start justify-between gap-4">
                                         <div className="flex-1">
                                             <h3
-                                                className="text-[#333333] font-bold dark:text-white mb-2 group-hover:text-black dark:group-hover:text-white transition-colors duration-300"
+                                                className="text-[#333333] font-bold dark:text-white mb-2 group-hover:text-black dark:group-hover:text-white transition-colors duration-300 font-instagram"
                                                 style={{
-                                                    fontFamily: '"Instagram Sans", sans-serif',
                                                     fontSize: '16px',
                                                     lineHeight: '1.4',
                                                     fontWeight: 700,
@@ -106,9 +103,8 @@ export default function BlogsPage() {
                                             </h3>
 
                                             <div
-                                                className="flex items-center gap-3 text-[#70717B] dark:text-[#D4D4D4] mb-2"
+                                                className="flex items-center gap-3 text-[#70717B] dark:text-[#D4D4D4] mb-2 font-instagram"
                                                 style={{
-                                                    fontFamily: '"Instagram Sans", sans-serif',
                                                     fontSize: '12px',
                                                     lineHeight: '16px',
                                                     fontWeight: 500,
@@ -122,8 +118,7 @@ export default function BlogsPage() {
                                             </div>
 
                                             <p
-                                                className="text-sm text-[#70717B] dark:text-[#D4D4D4]"
-                                                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                                className="text-sm text-[#70717B] dark:text-[#D4D4D4] font-instagram"
                                             >
                                                 {blog.description}
                                             </p>
@@ -145,8 +140,7 @@ export default function BlogsPage() {
 
                     {/* Medium Link Footer */}
                     <div className="mt-2 pt-2 border-t border-dashed border-slate-200 dark:border-[#262626] text-center">
-                        <p className="text-base font-medium text-slate-600 dark:text-slate-400"
-                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                        <p className="text-base font-medium text-slate-600 dark:text-slate-400 font-instagram">
                             For more blogs, visit my{" "}
                             <a
                                 href="https://medium.com/@syedomerali_200"

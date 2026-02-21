@@ -86,14 +86,12 @@ export default function SecureMernDevelopmentPage() {
 
         <section className="max-w-2xl mx-auto">
           <h1
-            className="text-xl font-bold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-bold font-instagram text-slate-900 text-xl"
           >
             Secure MERN Development for Production-Ready SaaS
           </h1>
           <p
-            className="mt-4 text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram mt-4 text-slate-600 text-sm"
           >
             Build and harden MERN applications with TypeScript, security-first
             architecture, and DevSecOps automation. Ideal for startups that need
@@ -105,14 +103,12 @@ export default function SecureMernDevelopmentPage() {
         <section className="mt-12 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-semibold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram font-semibold text-base text-slate-900"
             >
               Outcomes you can expect
             </h2>
             <ul
-              className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram list-disc list-outside mt-4 pl-5 space-y-2 text-slate-600 text-sm"
             >
               <li>Reduced security risk through hardened auth and input validation.</li>
               <li>Stable performance with database tuning and caching strategy.</li>
@@ -121,14 +117,12 @@ export default function SecureMernDevelopmentPage() {
           </div>
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-semibold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram font-semibold text-base text-slate-900"
             >
               What is included
             </h2>
             <ul
-              className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram list-disc list-outside mt-4 pl-5 space-y-2 text-slate-600 text-sm"
             >
               <li>Architecture review and threat modeling.</li>
               <li>Secure API and data layer implementation.</li>
@@ -140,14 +134,12 @@ export default function SecureMernDevelopmentPage() {
 
         <section className="mt-12 max-w-2xl mx-auto">
           <h2
-            className="text-base font-semibold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-instagram font-semibold text-base text-slate-900"
           >
             Proof and process
           </h2>
           <p
-            className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
           >
             I document the architecture decisions, tradeoffs, and outcomes so your
             team can maintain and extend the system confidently.
@@ -155,15 +147,13 @@ export default function SecureMernDevelopmentPage() {
           <div className="mt-4 flex flex-wrap gap-3">
             <Link
               href="/projects"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               View projects
             </Link>
             <Link
               href="/blogs"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Read technical deep dives
             </Link>
@@ -172,8 +162,7 @@ export default function SecureMernDevelopmentPage() {
 
         <section className="mt-12 max-w-2xl mx-auto">
           <h2
-            className="text-base font-semibold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-instagram font-semibold text-base text-slate-900"
           >
             FAQ
           </h2>
@@ -181,14 +170,12 @@ export default function SecureMernDevelopmentPage() {
             {faqItems.map((item) => (
               <div key={item.question} className="border-b border-slate-200 dark:border-slate-800 pb-4">
                 <h3
-                  className="text-base font-semibold text-slate-900 dark:text-white"
-                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  className="dark:text-white font-instagram font-semibold text-base text-slate-900"
                 >
                   {item.question}
                 </h3>
                 <p
-                  className="mt-2 text-sm text-slate-600 dark:text-slate-300"
-                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  className="dark:text-slate-300 font-instagram mt-2 text-slate-600 text-sm"
                 >
                   {item.answer}
                 </p>

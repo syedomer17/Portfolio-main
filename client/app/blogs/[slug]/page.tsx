@@ -160,14 +160,12 @@ export default async function BlogDetail({
 
             <header className="mb-6">
               <h1
-                className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-instagram"
               >
                 {blog.title}
               </h1>
               <p
-                className="text-sm text-slate-500 dark:text-slate-400 mt-2"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-instagram"
               >
                 By{" "}
                 <a
@@ -184,8 +182,7 @@ export default async function BlogDetail({
           </header>
 
           <p
-            className="text-base text-slate-700 dark:text-slate-200 mb-6"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="text-base text-slate-700 dark:text-slate-200 mb-6 font-instagram"
           >
             {blog.description}
           </p>
@@ -197,8 +194,7 @@ export default async function BlogDetail({
                 return (
                   <h2
                     key={index}
-                    className="text-xl font-semibold text-slate-900 dark:text-white"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="text-xl font-semibold text-slate-900 dark:text-white font-instagram"
                   >
                     {heading}
                   </h2>
@@ -206,7 +202,7 @@ export default async function BlogDetail({
               }
 
               return (
-                <p key={index} style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                <p key={index} className="font-instagram">
                   {paragraph}
                 </p>
               );

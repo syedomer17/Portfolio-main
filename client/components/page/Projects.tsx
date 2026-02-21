@@ -25,8 +25,7 @@ export default function ProjectsPage() {
                                 <ArrowLeft className="w-5 h-5" />
                             </button>
                             <h1
-                                className="text-xl font-bold text-slate-900 dark:text-white"
-                                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                className="dark:text-white font-bold font-instagram text-slate-900 text-xl"
                             >
                                 Projects
                             </h1>
@@ -37,8 +36,7 @@ export default function ProjectsPage() {
                     <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-6" />
 
                     <p
-                        className="text-sm text-slate-600 dark:text-slate-300 mb-5"
-                        style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                        className="dark:text-slate-300 font-instagram mb-5 text-slate-600 text-sm"
                     >
                         These projects are presented as compact case studies with clear problem framing, implementation approach, and outcomes. For full breakdowns, visit the <a href="/case-studies" className="underline hover:no-underline">case studies</a> page. For context on my role and process, see <a href="/experiences" className="underline hover:no-underline">experience</a> and browse the <a href="/blogs" className="underline hover:no-underline">developer blog</a> for technical deep dives.
                     </p>
@@ -121,7 +119,6 @@ export default function ProjectsPage() {
                                         <h3
                                             className="text-[#333333] dark:text-[#EBEBEB] group-hover:text-black dark:group-hover:text-white transition-colors duration-500 ease-out"
                                             style={{
-                                                fontFamily: '"Instagram Sans", sans-serif',
                                                 fontSize: '17.6px',
                                                 lineHeight: '19.36px',
                                                 fontWeight: 700,
@@ -153,7 +150,6 @@ export default function ProjectsPage() {
                                     <p
                                         className="text-[#70717B] dark:text-[#989898] mb-1"
                                         style={{
-                                            fontFamily: '"Instagram Sans", sans-serif',
                                             fontSize: '14px',
                                             lineHeight: '20px',
                                             fontWeight: 400,
@@ -165,7 +161,6 @@ export default function ProjectsPage() {
                                     <p
                                         className="text-[12px] text-slate-500 dark:text-[#A0A0A0]"
                                         style={{
-                                            fontFamily: '"Instagram Sans", sans-serif',
                                             lineHeight: '18px',
                                             fontWeight: 500
                                         }}
@@ -175,7 +170,6 @@ export default function ProjectsPage() {
                                     <p
                                         className="text-[12px] text-slate-500 dark:text-[#A0A0A0] mt-1"
                                         style={{
-                                            fontFamily: '"Instagram Sans", sans-serif',
                                             lineHeight: '18px',
                                             fontWeight: 400
                                         }}
@@ -188,7 +182,6 @@ export default function ProjectsPage() {
                                         <span
                                             className="inline-flex items-center gap-1.5 text-[#333333] dark:text-[#D4D4D4] group-hover:text-black dark:group-hover:text-white transition-all duration-400 ease-out border-b border-transparent group-hover:border-black dark:group-hover:border-white pb-0.5"
                                             style={{
-                                                fontFamily: '"Instagram Sans", sans-serif',
                                                 fontSize: '14px',
                                                 lineHeight: '20px',
                                                 fontWeight: 500
@@ -205,8 +198,7 @@ export default function ProjectsPage() {
 
                     <div className="mt-6 pt-4 border-t border-dashed border-slate-200 dark:border-[#262626]">
                         <h2
-                            className="text-base font-semibold text-slate-900 dark:text-white mb-2"
-                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                            className="dark:text-white font-instagram font-semibold mb-2 text-base text-slate-900"
                         >
                             Project FAQ
                         </h2>
@@ -228,8 +220,7 @@ export default function ProjectsPage() {
 
                     {/* Github Link Footer */}
                     <div className="mt-2 pt-2 border-t border-dashed border-slate-200 dark:border-[#262626] text-center">
-                        <p className="text-base font-medium text-slate-600 dark:text-slate-400"
-                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                        <p className="dark:text-slate-400 font-instagram font-medium text-base text-slate-600">
                             For more projects, visit my{" "}
                             <a
                                 href="https://github.com/syedomer17"

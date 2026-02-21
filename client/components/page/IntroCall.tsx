@@ -253,14 +253,14 @@ export function IntroCallPage() {
                 </div>
             </div>
 
-            <p className="text-slate-500 dark:text-[#a1a1a1] font-semibold text-sm mb-1" style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}>Syed Omer Ali</p>
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-[#e1e1e1] mb-4" style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}>Intro Call</h1>
+            <p className="dark:text-[#a1a1a1] font-bold font-instagram font-semibold mb-1 text-slate-500 text-sm">Syed Omer Ali</p>
+            <h1 className="dark:text-[#e1e1e1] font-bold font-instagram mb-4 text-2xl text-slate-900">Intro Call</h1>
 
             {/* Description always visible */}
-            <p className="text-slate-600 dark:text-[#a1a1a1] text-[15px] leading-relaxed mb-4" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+            <p className="dark:text-[#a1a1a1] font-instagram leading-relaxed mb-4 text-[15px] text-slate-600">
                 This is a quick 15-minute intro call for initial conversations around projects, paid work, collaborations, job offers, and other relevant opportunities.
             </p>
-            <p className="text-slate-600 dark:text-[#a1a1a1] mb-8 text-[15px] leading-relaxed" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+            <p className="dark:text-[#a1a1a1] font-instagram leading-relaxed mb-8 text-[15px] text-slate-600">
                 Please note that this link is strictly not intended for guidance, mentoring, or advice sessions.
             </p>
 
@@ -276,11 +276,11 @@ export function IntroCallPage() {
                         </div>
                         <div className="flex items-center gap-3">
                             <Clock className="w-5 h-5 text-slate-900 dark:text-white" />
-                            <span className="text-slate-600 dark:text-[#e1e1e1]" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>15m</span>
+                            <span className="dark:text-[#e1e1e1] font-instagram text-slate-600">15m</span>
                         </div>
                         <div className="flex items-center gap-3">
                             <MapPin className="w-5 h-5 text-slate-900 dark:text-white" />
-                            <span className="text-slate-600 dark:text-[#e1e1e1]" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>2 location options</span>
+                            <span className="dark:text-[#e1e1e1] font-instagram text-slate-600">2 location options</span>
                         </div>
                         <div className="flex items-center gap-3">
                             <Globe className="w-5 h-5 text-slate-900 dark:text-white" />
@@ -291,11 +291,11 @@ export function IntroCallPage() {
                     <>
                         <div className="flex items-center gap-3">
                             <Clock className="w-5 h-5 text-slate-900 dark:text-white" />
-                            <span className="text-slate-600 dark:text-[#e1e1e1]" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>15m</span>
+                            <span className="dark:text-[#e1e1e1] font-instagram text-slate-600">15m</span>
                         </div>
                         <div className="flex items-center gap-3">
                             <MapPin className="w-5 h-5 text-slate-900 dark:text-white" />
-                            <span className="text-slate-600 dark:text-[#e1e1e1]" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>2 location options</span>
+                            <span className="dark:text-[#e1e1e1] font-instagram text-slate-600">2 location options</span>
                         </div>
                         <div className="relative" ref={dropdownRef}>
                             <div
@@ -338,19 +338,18 @@ export function IntroCallPage() {
                     <div className="w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
                         <Check className="w-8 h-8 text-green-600 dark:text-green-500" />
                     </div>
-                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2" style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}>Meeting Scheduled!</h2>
-                    <p className="text-slate-500 dark:text-[#a1a1a1] mb-8" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                    <h2 className="dark:text-white font-bold font-instagram mb-2 text-2xl text-slate-900">Meeting Scheduled!</h2>
+                    <p className="dark:text-[#a1a1a1] font-instagram mb-8 text-slate-500">
                         Your intro call has been confirmed. A calendar invitation has been sent to your email address.
                     </p>
                     <div className="bg-slate-50 dark:bg-[#1c1c1c] rounded-lg p-4 mb-8 text-left">
-                        <p className="font-semibold text-slate-900 dark:text-white mb-1" style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}>Intro Call</p>
-                        <p className="text-slate-500 dark:text-[#a1a1a1] text-sm mb-2" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>{getFormattedFullDate()}</p>
-                        <p className="text-slate-500 dark:text-[#a1a1a1] text-sm" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>{selectedTimeSlot}</p>
+                        <p className="dark:text-white font-bold font-instagram font-semibold mb-1 text-slate-900">Intro Call</p>
+                        <p className="dark:text-[#a1a1a1] font-instagram mb-2 text-slate-500 text-sm">{getFormattedFullDate()}</p>
+                        <p className="dark:text-[#a1a1a1] font-instagram text-slate-500 text-sm">{selectedTimeSlot}</p>
                     </div>
                     <button
                         onClick={() => router.push('/')}
-                        className="w-full py-2.5 bg-slate-900 dark:bg-white text-white dark:text-black font-semibold rounded-md hover:opacity-90 transition-opacity"
-                        style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                        className="bg-slate-900 dark:bg-white dark:text-black font-instagram font-semibold hover:opacity-90 py-2.5 rounded-md text-white transition-opacity w-full"
                     >
                         Back to Home
                     </button>
@@ -383,7 +382,7 @@ export function IntroCallPage() {
                             {/* Calendar */}
                             <div className="flex-1 p-6 md:px-8 border-b md:border-b-0 md:border-r border-slate-200 dark:border-[#1f1f1f] pt-6 md:pt-10">
                                 <div className="flex items-center justify-between mb-6">
-                                    <h2 className="text-lg text-slate-900 dark:text-white font-medium" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>{monthNames[currentMonth]} {currentYear}</h2>
+                                    <h2 className="dark:text-white font-instagram font-medium text-lg text-slate-900">{monthNames[currentMonth]} {currentYear}</h2>
                                     <div className="flex items-center gap-2">
                                         <button onClick={handlePrevMonth} disabled={isPrevDisabled} className={`p-1 rounded transition-colors ${isPrevDisabled ? 'text-slate-300 dark:text-[#333] cursor-not-allowed' : 'hover:bg-slate-100 dark:hover:bg-[#222] text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300'}`}>
                                             <ChevronLeft className="w-6 h-6" />
@@ -395,7 +394,7 @@ export function IntroCallPage() {
                                 </div>
 
                                 <div className="grid grid-cols-7 mb-2 text-center">
-                                    {weekDays.map(day => <div key={day} className="text-[11px] font-bold text-slate-400 dark:text-[#888] tracking-wider py-2" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>{day}</div>)}
+                                    {weekDays.map(day => <div key={day} className="dark:text-[#888] font-bold font-instagram py-2 text-[11px] text-slate-400 tracking-wider">{day}</div>)}
                                 </div>
 
                                 <div className="grid grid-cols-7 gap-3 text-center">
@@ -409,8 +408,7 @@ export function IntroCallPage() {
                                                 <button
                                                     onClick={() => !isPastDay && setSelectedDate(day)}
                                                     disabled={isPastDay}
-                                                    className={`w-full h-full rounded-[4px] flex flex-col items-center justify-center text-sm font-semibold transition-all relative ${isPastDay ? 'bg-slate-100 dark:bg-[#0f0f0f] text-slate-300 dark:text-[#555] cursor-not-allowed' : isSelected ? 'bg-slate-900 dark:bg-white text-white dark:text-black' : 'bg-slate-50 dark:bg-[#1c1c1c] text-slate-700 dark:text-[#e1e1e1] hover:bg-slate-100 dark:hover:bg-[#252525] hover:border hover:border-slate-300 dark:hover:border-zinc-700'}`}
-                                                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                                    className={`w-full h-full rounded-[4px] flex flex-col items-center justify-center font-instagram text-sm font-semibold transition-all relative ${isPastDay ? 'bg-slate-100 dark:bg-[#0f0f0f] text-slate-300 dark:text-[#555] cursor-not-allowed' : isSelected ? 'bg-slate-900 dark:bg-white text-white dark:text-black' : 'bg-slate-50 dark:bg-[#1c1c1c] text-slate-700 dark:text-[#e1e1e1] hover:bg-slate-100 dark:hover:bg-[#252525] hover:border hover:border-slate-300 dark:hover:border-zinc-700'}`}
                                                 >
                                                     {day}
                                                     {isToday && <div className={`mt-1 w-1 h-1 rounded-full ${isSelected ? 'bg-white dark:bg-black' : isPastDay ? 'bg-slate-300 dark:bg-[#555]' : 'bg-slate-900 dark:bg-white'}`}></div>}

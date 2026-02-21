@@ -22,8 +22,7 @@ export default function Blogs() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-[18.4px] leading-[23px] font-bold mt-4 mb-3 text-[#333333] dark:text-[#EBEBEB]"
-          style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+          className="dark:text-[#EBEBEB] font-bold font-instagram leading-[23px] mb-3 mt-4 text-[#333333] text-[18.4px]"
         >
           Blogs
         </motion.h2>
@@ -32,8 +31,7 @@ export default function Blogs() {
         <div className="w-full h-px bg-slate-200 dark:bg-[#333] "></div>
 
         <p
-          className="text-sm text-slate-600 dark:text-slate-300 mt-4"
-          style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+          className="dark:text-slate-300 font-instagram mt-4 text-slate-600 text-sm"
         >
           Short, practical notes on Next.js, TypeScript, and DevOps. For hands-on examples, see the <a href="/projects" className="underline hover:no-underline">project case studies</a> and the <a href="/experiences" className="underline hover:no-underline">experience timeline</a>.
         </p>
@@ -60,7 +58,6 @@ export default function Blogs() {
                     <h3
                       className="text-[#333333] font-bold dark:text-white mb-2 group-hover:text-black dark:group-hover:text-white transition-colors duration-300"
                       style={{
-                        fontFamily: '"Instagram Sans", sans-serif',
                         fontSize: '16px',
                         lineHeight: '1.4',
                         fontWeight: 700,
@@ -73,7 +70,6 @@ export default function Blogs() {
                     <div
                       className="flex items-center gap-3 text-[#70717B] dark:text-[#D4D4D4] mb-2"
                       style={{
-                        fontFamily: '"Instagram Sans", sans-serif',
                         fontSize: '12px',
                         lineHeight: '16px',
                         fontWeight: 500,
@@ -87,8 +83,7 @@ export default function Blogs() {
                     </div>
 
                     <p
-                      className="text-sm text-[#70717B] dark:text-[#D4D4D4]"
-                      style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                      className="dark:text-[#D4D4D4] font-instagram text-[#70717B] text-sm"
                     >
                       {blog.description}
                     </p>
@@ -121,8 +116,7 @@ export default function Blogs() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             onClick={() => router.push("/blogs")}
-            className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="bg-slate-900 dark:bg-white dark:hover:bg-slate-200 dark:text-slate-900 font-instagram font-medium gap-2 group hover:bg-slate-800 inline-flex items-center px-4 py-2 rounded-md text-sm text-white"
           >
             View All
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

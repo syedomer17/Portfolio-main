@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        instagram: "var(--font-instagram)",
+      },
       colors: {
         accent: {
           yellow: "#f6c400",

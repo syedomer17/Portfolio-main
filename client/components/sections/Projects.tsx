@@ -20,8 +20,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-[18.4px] leading-5.75 font-bold mt-2 mb-3 text-[#333333] dark:text-[#EBEBEB]"
-          style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+          className="dark:text-[#EBEBEB] font-bold font-instagram leading-5.75 mb-3 mt-2 text-[#333333] text-[18.4px]"
         >
           Projects
         </motion.h2>
@@ -110,7 +109,6 @@ export default function Projects() {
                   <h3
                     className="text-[#333333] dark:text-[#EBEBEB] group-hover:text-black dark:group-hover:text-white transition-colors duration-500 ease-out"
                     style={{
-                      fontFamily: '"Instagram Sans", sans-serif',
                       fontSize: '17.6px',
                       lineHeight: '19.36px',
                       fontWeight: 700,
@@ -142,7 +140,6 @@ export default function Projects() {
                 <p
                   className="text-[#70717B] dark:text-[#989898] mb-1"
                   style={{
-                    fontFamily: '"Instagram Sans", sans-serif',
                     fontSize: '14px',
                     lineHeight: '20px',
                     fontWeight: 400,
@@ -154,7 +151,6 @@ export default function Projects() {
                 <p
                   className="text-[12px] text-slate-500 dark:text-[#A0A0A0]"
                   style={{
-                    fontFamily: '"Instagram Sans", sans-serif',
                     lineHeight: '18px',
                     fontWeight: 500
                   }}
@@ -164,7 +160,6 @@ export default function Projects() {
                 <p
                   className="text-[12px] text-slate-500 dark:text-[#A0A0A0] mt-1"
                   style={{
-                    fontFamily: '"Instagram Sans", sans-serif',
                     lineHeight: '18px',
                     fontWeight: 400
                   }}
@@ -177,7 +172,6 @@ export default function Projects() {
                   <span
                     className="inline-flex items-center gap-1.5 text-[#333333] dark:text-[#D4D4D4] group-hover:text-black dark:group-hover:text-white transition-all duration-400 ease-out border-b border-transparent group-hover:border-black dark:group-hover:border-white pb-0.5"
                     style={{
-                      fontFamily: '"Instagram Sans", sans-serif',
                       fontSize: '14px',
                       lineHeight: '20px',
                       fontWeight: 500
@@ -205,8 +199,7 @@ export default function Projects() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             onClick={() => router.push("/projects")}
-            className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="bg-slate-900 dark:bg-white dark:hover:bg-slate-200 dark:text-slate-900 font-instagram font-medium gap-2 group hover:bg-slate-800 inline-flex items-center px-4 py-2 rounded-md text-sm text-white"
           >
             View All
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -23,8 +23,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-[18.4px] leading-5.75 font-bold mt-2 mb-3 text-[#333333] dark:text-[#EBEBEB]"
-          style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+          className="text-[18.4px] leading-5.75 font-bold mt-2 mb-3 text-[#333333] dark:text-[#EBEBEB] font-instagram"
         >
           Experiences
         </motion.h2>
@@ -70,8 +69,7 @@ export default function Experience() {
                 <div className="flex-1 min-w-0 text-left">
                   <div className="flex items-center gap-2 min-w-0">
                     <h3
-                      className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white truncate"
-                      style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                      className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white truncate font-instagram"
                       title={exp.company}
                     >
                       {exp.company}
@@ -84,8 +82,7 @@ export default function Experience() {
                     </span>
                   </div>
                   <p
-                    className="text-sm leading-5 font-normal text-[#70717B] dark:text-[#989898]"
-                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                    className="text-sm leading-5 font-normal text-[#70717B] dark:text-[#989898] font-instagram"
                   >
                     {exp.role}
                   </p>
@@ -95,14 +92,12 @@ export default function Experience() {
                 <div className="shrink-0 flex items-center gap-1.5 sm:gap-3 pt-1">
                   <div className="text-right">
                     <p
-                      className="text-xs sm:text-sm leading-5 font-medium text-[#333333] dark:text-[#EBEBEB]"
-                      style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                      className="text-xs sm:text-sm leading-5 font-medium text-[#333333] dark:text-[#EBEBEB] font-instagram"
                     >
                       {exp.period}
                     </p>
                     <p
-                      className="text-xs sm:text-sm text-[#70717B] dark:text-[#989898]"
-                      style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                      className="text-xs sm:text-sm text-[#70717B] dark:text-[#989898] font-instagram"
                     >
                       {exp.location}
                     </p>
@@ -134,8 +129,7 @@ export default function Experience() {
                           {exp.achievements.map((achievement, i) => (
                             <li
                               key={i}
-                              className="text-sm text-slate-600 dark:text-slate-300 flex gap-2"
-                              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                              className="text-sm text-slate-600 dark:text-slate-300 flex gap-2 font-instagram"
                             >
                               <span className="text-[#424242] dark:text-[#D4D4D4] mt-0.5">•</span>
                               <span>{achievement}</span>
@@ -150,8 +144,7 @@ export default function Experience() {
                           {exp.tags.map((tag, i) => (
                             <span
                               key={i}
-                              className="px-2.5 py-0.5 text-xs leading-4 font-normal bg-transparent text-[#424242] dark:text-[#D4D4D4] rounded border border-slate-300 dark:border-[#3A3A3A]"
-                              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                              className="px-2.5 py-0.5 text-xs leading-4 font-normal bg-transparent text-[#424242] dark:text-[#D4D4D4] rounded border border-slate-300 dark:border-[#3A3A3A] font-instagram"
                             >
                               {tag}
                             </span>
@@ -162,8 +155,7 @@ export default function Experience() {
                       <div className="mt-3">
                         <a
                           href={`/experiences/${exp.slug}`}
-                          className="inline-flex items-center gap-1 text-sm font-medium text-slate-700 dark:text-slate-300 hover:underline"
-                          style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                          className="inline-flex items-center gap-1 text-sm font-medium text-slate-700 dark:text-slate-300 hover:underline font-instagram"
                         >
                           View experience details
                           <ArrowUpRight className="w-4 h-4" />
@@ -173,8 +165,7 @@ export default function Experience() {
                       {/* Empty state for cards without content */}
                       {exp.achievements.length === 0 && exp.tags.length === 0 && (
                         <p
-                          className="text-sm text-slate-400 dark:text-slate-500 italic"
-                          style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                          className="text-sm text-slate-400 dark:text-slate-500 italic font-instagram"
                         >
                           More details coming soon...
                         </p>
@@ -200,8 +191,7 @@ export default function Experience() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="group inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200 font-instagram"
             >
               View All
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

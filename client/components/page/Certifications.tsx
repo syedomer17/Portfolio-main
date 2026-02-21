@@ -35,8 +35,7 @@ export default function CertificationsPage() {
                                 <ArrowLeft className="w-5 h-5" />
                             </button>
                             <h1
-                                className="text-xl font-bold text-slate-900 dark:text-white"
-                                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                className="text-xl font-bold text-slate-900 dark:text-white font-instagram"
                             >
                                 Certifications
                             </h1>
@@ -47,8 +46,7 @@ export default function CertificationsPage() {
                     <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-6" />
 
                     <p
-                        className="text-sm text-slate-600 dark:text-slate-300 mb-5"
-                        style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                        className="text-sm text-slate-600 dark:text-slate-300 mb-5 font-instagram"
                     >
                         These certifications support hands-on work in software engineering, cloud, and DevOps. They complement the practical outcomes shown in <a href="/experiences" className="underline hover:no-underline">experience</a> and <a href="/projects" className="underline hover:no-underline">project case studies</a>.
                     </p>
@@ -91,9 +89,8 @@ export default function CertificationsPage() {
                                 <div className="p-4 flex flex-col flex-1">
                                     <div className="mb-3">
                                         <h3
-                                            className="text-[#333333] dark:text-[#EBEBEB] text-[15px] font-bold leading-tight mb-1 group-hover:text-black dark:group-hover:text-white transition-colors line-clamp-2"
+                                            className="text-[#333333] dark:text-[#EBEBEB] text-[15px] font-bold leading-tight mb-1 group-hover:text-black dark:group-hover:text-white transition-colors line-clamp-2 font-instagram"
                                             style={{
-                                                fontFamily: '"Instagram Sans", sans-serif',
                                                 fontSize: '17.6px',
                                                 lineHeight: '19.36px',
                                                 fontWeight: 700,
@@ -109,9 +106,8 @@ export default function CertificationsPage() {
                                     </div>
 
                                     <p
-                                        className="text-gray-600 dark:text-[#999] text-xs leading-relaxed mb-4 line-clamp-2"
+                                        className="text-gray-600 dark:text-[#999] text-xs leading-relaxed mb-4 line-clamp-2 font-instagram"
                                         style={{
-                                            fontFamily: '"Instagram Sans", sans-serif',
                                             fontSize: '14px',
                                             lineHeight: '20px',
                                             fontWeight: 400,
@@ -122,8 +118,7 @@ export default function CertificationsPage() {
                                     </p>
 
                                     <div className="mt-auto flex items-center justify-between pt-3 border-t border-gray-100 dark:border-[#222]">
-                                        <span className="text-[11px] text-gray-400 dark:text-[#666] flex items-center gap-1" style={{
-                                            fontFamily: '"Instagram Sans", sans-serif',
+                                        <span className="text-[11px] text-gray-400 dark:text-[#666] flex items-center gap-1 font-instagram" style={{
                                             fontSize: '12px',
                                             lineHeight: '14px',
                                             fontWeight: 400,
@@ -137,8 +132,8 @@ export default function CertificationsPage() {
                                             href={cert.credentialLink || "#"}
                                             target={cert.credentialLink ? "_blank" : undefined}
                                             rel={cert.credentialLink ? "noopener noreferrer" : undefined}
-                                            className="inline-flex items-center gap-1 text-[12px] font-medium text-[#333] dark:text-[#D4D4D4] hover:text-black dark:hover:text-white transition-colors"
-                                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                            className="inline-flex items-center gap-1 text-[12px] font-medium text-[#333] dark:text-[#D4D4D4] hover:text-black dark:hover:text-white transition-colors font-instagram"
+                                            style={{ }}
                                             onClick={(event) => event.stopPropagation()}
                                         >
                                             Show Credential
@@ -152,8 +147,7 @@ export default function CertificationsPage() {
 
                     {/* LinkedIn Link Footer */}
                     <div className="mt-2 pt-2 border-t border-dashed border-slate-200 dark:border-[#262626] text-center">
-                        <p className="text-base font-medium text-slate-600 dark:text-slate-400"
-                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                        <p className="text-base font-medium text-slate-600 dark:text-slate-400 font-instagram">
                             For more details, view my{" "}
                             <Link
                                 href="https://linkedin.com/in/syedomer17"

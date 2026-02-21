@@ -122,7 +122,7 @@ export default function SendEmailPage() {
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
-              <h1 className="text-3xl font-semibold leading-tight sm:text-4xl" style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}>
+              <h1 className="font-bold font-instagram font-semibold leading-tight sm:text-4xl text-3xl">
                 Thoughtful products, built with intent.
               </h1>
               <p className="mt-4 text-base text-slate-600 dark:text-slate-300">

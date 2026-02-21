@@ -90,22 +90,19 @@ export default async function CertificationDetail({
 
           <header className="mb-6">
             <h1
-              className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-bold font-instagram sm:text-3xl text-2xl text-slate-900"
             >
               {certification.title}
             </h1>
             <p
-              className="text-sm text-slate-500 dark:text-slate-400 mt-2"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-400 font-instagram mt-2 text-slate-500 text-sm"
             >
               Issued {formatDate(certification.issueDate)} by {certification.issuer}
             </p>
           </header>
 
           <p
-            className="text-base text-slate-700 dark:text-slate-200 mb-6"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-200 font-instagram mb-6 text-base text-slate-700"
           >
             {certification.description}
           </p>
@@ -114,8 +111,7 @@ export default async function CertificationDetail({
             href={certification.credentialLink}
             target={certification.credentialLink ? "_blank" : undefined}
             rel={certification.credentialLink ? "noopener noreferrer" : undefined}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium bg-slate-900 text-white hover:bg-slate-800"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="bg-slate-900 font-instagram font-medium gap-2 hover:bg-slate-800 inline-flex items-center px-4 py-2 rounded-md text-sm text-white"
           >
             View Credential
           </a>

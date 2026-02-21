@@ -255,8 +255,7 @@ export default function Syedomer17() {
                 <ArrowLeft className="w-5 h-5" />
               </button>
               <h1
-                className="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white"
-                style={{ fontFamily: "Instagram Sans", fontWeight: "bold" }}
+                className="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white font-instagram font-bold"
               >
                 @syedomer17 on GitHub
               </h1>
@@ -267,8 +266,7 @@ export default function Syedomer17() {
           <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-4" />
 
           <p
-            className="mt-1 text-sm text-slate-500 dark:text-slate-400"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="mt-1 text-sm text-slate-500 dark:text-slate-400 font-instagram"
           >
             Total Contributions: {formatNumber(totalContributions)}
           </p>
@@ -298,14 +296,12 @@ export default function Syedomer17() {
               </div>
               <div>
                 <p
-                  className="text-sm text-slate-600 dark:text-slate-300"
-                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  className="text-sm text-slate-600 dark:text-slate-300 font-instagram"
                 >
                   Loading contribution history...
                 </p>
                 <p
-                  className="text-xs text-slate-400 dark:text-slate-500 mt-1"
-                  style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                  className="text-xs text-slate-400 dark:text-slate-500 mt-1 font-instagram"
                 >
                   Fetching yearly activity and totals.
                 </p>
@@ -320,7 +316,7 @@ export default function Syedomer17() {
           )}
 
         {!loading && data && (
-          <div className="mt-8 space-y-10" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+          <div className="mt-8 space-y-10 font-instagram">
             {data.years.map((yearData) => (
               <ContributionYearGraph
                 key={yearData.year}

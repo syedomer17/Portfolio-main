@@ -45,8 +45,7 @@ export default function ServicesPage() {
 
         <section className="max-w-2xl mx-auto">
           <p
-            className="text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
           >
             I help startups and SaaS teams ship secure, scalable MERN and TypeScript
             applications with production-ready DevSecOps pipelines.
@@ -57,22 +56,19 @@ export default function ServicesPage() {
         <section className="mt-12 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-bold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-bold font-instagram text-base text-slate-900"
             >
               Secure MERN Development
             </h2>
             <p
-              className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
             >
               Build hardened APIs, secure authentication, and scalable architecture
               for production-ready web apps.
             </p>
             <Link
               href="/services/secure-mern-development"
-              className="mt-4 inline-flex text-sm text-slate-900 dark:text-white underline"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram inline-flex mt-4 text-slate-900 text-sm underline"
             >
               View service details
             </Link>
@@ -80,22 +76,19 @@ export default function ServicesPage() {
 
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-bold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-bold font-instagram text-base text-slate-900"
             >
               DevSecOps & CI/CD
             </h2>
             <p
-              className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
             >
               Ship faster with secure pipelines, automated testing, and production
               monitoring.
             </p>
             <Link
               href="/services/devsecops-ci-cd"
-              className="mt-4 inline-flex text-sm text-slate-900 dark:text-white underline"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram inline-flex mt-4 text-slate-900 text-sm underline"
             >
               View service details
             </Link>
@@ -103,21 +96,18 @@ export default function ServicesPage() {
 
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-bold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-bold font-instagram text-base text-slate-900"
             >
               Performance & Scalability
             </h2>
             <p
-              className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
             >
               Diagnose bottlenecks, optimize APIs, and tune databases to scale.
             </p>
             <Link
               href="/services/performance-optimization"
-              className="mt-4 inline-flex text-sm text-slate-900 dark:text-white underline"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram inline-flex mt-4 text-slate-900 text-sm underline"
             >
               View service details
             </Link>
@@ -125,22 +115,19 @@ export default function ServicesPage() {
 
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-bold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-bold font-instagram text-base text-slate-900"
             >
               Security Audit & Remediation
             </h2>
             <p
-              className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
             >
               Security reviews, vulnerability fixes, and guardrails for long-term
               safety.
             </p>
             <Link
               href="/services/security-audit-remediation"
-              className="mt-4 inline-flex text-sm text-slate-900 dark:text-white underline"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram inline-flex mt-4 text-slate-900 text-sm underline"
             >
               View service details
             </Link>
@@ -149,14 +136,12 @@ export default function ServicesPage() {
 
         <section className="mt-12 max-w-2xl mx-auto">
           <h2
-            className="text-base font-semibold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-instagram font-semibold text-base text-slate-900"
           >
             Proof of delivery
           </h2>
           <p
-            className="mt-3 text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram mt-3 text-slate-600 text-sm"
           >
             See real builds, architecture decisions, and outcomes in the projects
             and experience sections.
@@ -164,22 +149,19 @@ export default function ServicesPage() {
           <div className="mt-4 flex flex-wrap gap-3">
             <Link
               href="/projects"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Projects
             </Link>
             <Link
               href="/experiences"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Experience
             </Link>
             <Link
               href="/blogs"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Technical blog
             </Link>

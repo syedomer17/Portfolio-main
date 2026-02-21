@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
+import { instagramSans } from "@/lib/fonts";
 import ThemeProviderClient from "@/components/Providers/ThemeProviderClient";
 import { LazyProvidersLoader, LazyAnalyticsProviders } from "@/components/Providers/LazyProviders";
 import "./globals.css";
@@ -109,7 +110,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${instagramSans.variable} antialiased`}
       >
         {/* Structured Data for SEO */}
         <Script

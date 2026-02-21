@@ -25,8 +25,7 @@ export default function ExperiencesPage() {
                                 <ArrowLeft className="w-5 h-5" />
                             </button>
                             <h1
-                                className="text-xl font-bold text-slate-900 dark:text-white"
-                                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                className="text-xl font-bold text-slate-900 dark:text-white font-instagram"
                             >
                                 Experiences
                             </h1>
@@ -36,7 +35,7 @@ export default function ExperiencesPage() {
 
                     <div className="w-full h-px bg-slate-200 dark:bg-[#333] mb-4" />
 
-                    <div className="mb-5 text-sm text-slate-600 dark:text-slate-300" style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                    <div className="mb-5 text-sm text-slate-600 dark:text-slate-300 font-instagram">
                         <p>
                             I build and ship full stack products with a focus on reliable delivery, clean architecture, and practical DevOps. This timeline reflects hands-on roles across frontend, backend, and cloud workflows. For deeper proof points, see <a href="/certifications" className="underline hover:no-underline">certifications</a> and real-world outcomes in <a href="/projects" className="underline hover:no-underline">project case studies</a>.
                         </p>
@@ -81,8 +80,7 @@ export default function ExperiencesPage() {
                                     <div className="flex-1 min-w-0 text-left">
                                         <div className="flex items-center gap-2 min-w-0">
                                             <h3
-                                                className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white truncate"
-                                                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                                className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white truncate font-instagram"
                                                 title={exp.company}
                                             >
                                                 {exp.company}
@@ -92,8 +90,7 @@ export default function ExperiencesPage() {
                                             </span>
                                         </div>
                                         <p
-                                            className="text-sm leading-5 font-normal text-[#70717B] dark:text-[#989898]"
-                                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                            className="text-sm leading-5 font-normal text-[#70717B] dark:text-[#989898] font-instagram"
                                         >
                                             {exp.role}
                                         </p>
@@ -103,14 +100,12 @@ export default function ExperiencesPage() {
                                     <div className="shrink-0 flex items-center gap-1.5 sm:gap-3">
                                         <div className="text-right">
                                             <p
-                                                className="text-xs sm:text-sm leading-5 font-medium text-[#333333] dark:text-[#EBEBEB]"
-                                                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                                className="text-xs sm:text-sm leading-5 font-medium font-instagram text-[#333333] dark:text-[#EBEBEB]"
                                             >
                                                 {exp.period}
                                             </p>
                                             <p
-                                                className="text-xs sm:text-sm text-[#70717B] dark:text-[#989898]"
-                                                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                                className="text-xs sm:text-sm font-instagram text-[#70717B] dark:text-[#989898]"
                                             >
                                                 {exp.location}
                                             </p>
@@ -129,8 +124,7 @@ export default function ExperiencesPage() {
                                             {exp.achievements.map((achievement, i) => (
                                                 <li
                                                     key={i}
-                                                    className="text-sm text-slate-600 dark:text-slate-300 flex gap-2"
-                                                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                                    className="dark:text-slate-300 flex font-instagram gap-2 text-slate-600 text-sm"
                                                 >
                                                     <span className="text-[#424242] dark:text-[#D4D4D4] mt-0.5">•</span>
                                                     <span>{achievement}</span>
@@ -145,8 +139,7 @@ export default function ExperiencesPage() {
                                             {exp.tags.map((tag, i) => (
                                                 <span
                                                     key={i}
-                                                    className="px-2.5 py-0.5 text-xs leading-4 font-normal bg-transparent text-[#424242] dark:text-[#D4D4D4] rounded border border-slate-300 dark:border-[#3A3A3A]"
-                                                    style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                                    className="bg-transparent border border-slate-300 dark:border-[#3A3A3A] dark:text-[#D4D4D4] font-instagram font-normal leading-4 px-2.5 py-0.5 rounded text-[#424242] text-xs"
                                                 >
                                                     {tag}
                                                 </span>
@@ -157,8 +150,7 @@ export default function ExperiencesPage() {
                                     <div className="mt-3">
                                         <a
                                             href={`/experiences/${exp.slug}`}
-                                            className="inline-flex items-center gap-1 text-sm font-medium text-slate-700 dark:text-slate-300 hover:underline"
-                                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                            className="dark:text-slate-300 font-instagram font-medium gap-1 hover:underline inline-flex items-center text-slate-700 text-sm"
                                         >
                                             View experience details
                                             <ArrowUpRight className="w-4 h-4" />
@@ -168,8 +160,7 @@ export default function ExperiencesPage() {
                                     {/* Empty State */}
                                     {exp.achievements.length === 0 && exp.tags.length === 0 && (
                                         <p
-                                            className="text-sm text-slate-400 dark:text-slate-500 italic"
-                                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                                            className="dark:text-slate-500 font-instagram italic text-slate-400 text-sm"
                                         >
                                             More details coming soon...
                                         </p>
@@ -181,8 +172,7 @@ export default function ExperiencesPage() {
 
                     {/* Hire Me Footer */}
                     <div className="mt-2 pt-2 border-t border-dashed border-slate-200 dark:border-[#262626] text-center">
-                        <p className="text-base font-medium text-slate-600 dark:text-slate-400"
-                            style={{ fontFamily: '"Instagram Sans", sans-serif' }}>
+                        <p className="text-base font-medium text-slate-600 dark:text-slate-400 font-instagram">
                             Love what I do?{" "}
                             <a
                                 href="mailto:syedomerali.200@gmail.com"

@@ -18,8 +18,7 @@ export default function GithubHoverCard() {
                 onMouseLeave={() => setShowCard(false)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] sm:dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors"
-                style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] sm:dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors font-instagram"
             >
                 <FaGithub className="w-4 h-4" />
                 <span>GitHub</span>
@@ -33,8 +32,7 @@ export default function GithubHoverCard() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                        className="absolute bottom-full left-0 mb-2 w-80 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#2D2D2D] rounded-xl shadow-2xl z-20 p-4"
-                        style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+                        className="absolute bottom-full left-0 mb-2 w-80 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#2D2D2D] rounded-xl shadow-2xl z-20 p-4 font-instagram"
                         onMouseEnter={() => setShowCard(true)}
                         onMouseLeave={() => setShowCard(false)}
                     >

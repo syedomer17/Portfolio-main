@@ -45,14 +45,12 @@ export default function DevSecOpsPage() {
 
         <section className="max-w-2xl mx-auto">
           <h1
-            className="text-xl font-bold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-bold font-instagram text-slate-900 text-xl"
           >
             DevSecOps & CI/CD for Secure Delivery
           </h1>
           <p
-            className="mt-4 text-sm text-slate-600 dark:text-slate-300"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-slate-300 font-instagram mt-4 text-slate-600 text-sm"
           >
             Build automated pipelines that ship fast without sacrificing security.
             I implement testing, scanning, and release workflows for MERN and
@@ -64,14 +62,12 @@ export default function DevSecOpsPage() {
         <section className="mt-12 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-semibold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram font-semibold text-base text-slate-900"
             >
               What you get
             </h2>
             <ul
-              className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram list-disc list-outside mt-4 pl-5 space-y-2 text-slate-600 text-sm"
             >
               <li>Automated build, test, and release pipelines.</li>
               <li>Security scanning for dependencies and containers.</li>
@@ -81,14 +77,12 @@ export default function DevSecOpsPage() {
           </div>
           <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl">
             <h2
-              className="text-base font-semibold text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram font-semibold text-base text-slate-900"
             >
               Ideal for
             </h2>
             <ul
-              className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside pl-5"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-slate-300 font-instagram list-disc list-outside mt-4 pl-5 space-y-2 text-slate-600 text-sm"
             >
               <li>Startups moving from manual deploys to automation.</li>
               <li>Teams needing secure releases and auditability.</li>
@@ -99,30 +93,26 @@ export default function DevSecOpsPage() {
 
         <section className="mt-12 max-w-2xl mx-auto">
           <h2
-            className="text-base font-semibold text-slate-900 dark:text-white"
-            style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+            className="dark:text-white font-instagram font-semibold text-base text-slate-900"
           >
             Related work
           </h2>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link
               href="/projects"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Projects
             </Link>
             <Link
               href="/blogs"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Technical blog
             </Link>
             <Link
               href="/services/secure-mern-development"
-              className="text-sm underline text-slate-900 dark:text-white"
-              style={{ fontFamily: '"Instagram Sans", sans-serif' }}
+              className="dark:text-white font-instagram text-slate-900 text-sm underline"
             >
               Secure MERN development
             </Link>
