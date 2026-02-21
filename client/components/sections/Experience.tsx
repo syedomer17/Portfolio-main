@@ -33,20 +33,20 @@ export default function Experience() {
         {/* Experience Cards */}
         <div className="space-y-0">
           {experiences.map((exp, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut"
-              }}
               className="border-t border-slate-200/50 dark:border-[#2A2A2A] first:border-t-0"
             >
-              {/* Card Header - Always Visible */}
-              <button
+              {/* Animated Card Header */}
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
                 onClick={() => toggleExpand(index)}
                 className="w-full py-4 sm:py-5 flex items-start gap-2 sm:gap-4 transition-colors group"
               >
@@ -115,7 +115,7 @@ export default function Experience() {
                     <ChevronDown className="w-5 h-5" />
                   </motion.div>
                 </div>
-              </button>
+              </motion.button>
 
               {/* Expandable Content */}
               <AnimatePresence>
@@ -183,7 +183,7 @@ export default function Experience() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
 
