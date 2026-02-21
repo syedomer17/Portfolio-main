@@ -90,7 +90,7 @@ const experienceInputs: ExperienceInput[] = [
     updatedAt: "2025-03-15",
     summary:
       "Built and shipped full stack features for internal and public-facing tools. Focused on API integrations, database design, and UI delivery with measurable performance improvements.",
-    logo: "/experience/cfi.png",
+    logo: "/experience/cfi.avif",
     achievements: [
       "Built and maintained full-stack features for internal and public-facing platforms",
       "Worked on REST APIs, database design, and frontend integrations",
