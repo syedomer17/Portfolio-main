@@ -2,8 +2,20 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   compress: true,
-  reactStrictMode: true,
+  // Only enable StrictMode in development for catching bugs
+  // Disable in production to prevent unnecessary double renders
+  reactStrictMode: process.env.NODE_ENV === "development",
   poweredByHeader: false,
+  experimental: {
+    optimizePackageImports: [
+      "react-icons",
+      "react-icons/fa",
+      "react-icons/fa6",
+      "react-icons/hi",
+      "react-icons/si",
+      "lucide-react",
+    ],
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 365,

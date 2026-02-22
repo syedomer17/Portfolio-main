@@ -8,11 +8,17 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: true,
 });
 
 const siteUrl = "https://www.syedomer.me";
@@ -108,6 +114,30 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Font preload hints - critical for LCP */}
+        <link
+          rel="preload"
+          as="font"
+          href="/fonts/new/Instagram Sans.woff2"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          as="font"
+          href="/fonts/new/Instagram Sans Medium.woff2"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          as="font"
+          href="/fonts/new/Instagram Sans Bold.woff2"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${instagramSans.variable} antialiased`}
       >

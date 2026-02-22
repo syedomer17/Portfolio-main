@@ -13,15 +13,37 @@ import ThemeToggle from "../themeToggle/ThemeToggle";
 import { WordRotate } from "../ui/word-rotate";
 import CountUp from "../ui/CountUp";
 import ButtonCreativeTop from "../ui/creative/Button";
-import GithubHoverCard from "../socialButtons/Github";
-import TwitterHoverCard from "../socialButtons/Twitter";
-import LinkedinHoverCard from "../socialButtons/Linkedin";
-import MediumHoverCard from "../socialButtons/Medium";
-import LeetcodeHoverCard from "../socialButtons/Leetcode";
+import DeferredLoad from "../ui/DeferredLoad";
 import profileImage from "../../public/myImage.avif";
 import altProfileImage from "../../public/background-portfolio.avif";
 import Link from "next/link";
 import { playSound } from "../../lib/audioUtils";
+
+// Lazy-load social button cards to defer framer-motion bundle
+const GithubHoverCard = dynamic(() => import("../socialButtons/Github"), {
+  ssr: false,
+  loading: () => <SocialButtonPlaceholder label="GitHub" />,
+});
+
+const TwitterHoverCard = dynamic(() => import("../socialButtons/Twitter"), {
+  ssr: false,
+  loading: () => <SocialButtonPlaceholder label="Twitter" />,
+});
+
+const LinkedinHoverCard = dynamic(() => import("../socialButtons/Linkedin"), {
+  ssr: false,
+  loading: () => <SocialButtonPlaceholder label="LinkedIn" />,
+});
+
+const MediumHoverCard = dynamic(() => import("../socialButtons/Medium"), {
+  ssr: false,
+  loading: () => <SocialButtonPlaceholder label="Medium" />,
+});
+
+const LeetcodeHoverCard = dynamic(() => import("../socialButtons/Leetcode"), {
+  ssr: false,
+  loading: () => <SocialButtonPlaceholder label="LeetCode" />,
+});
 
 const HeroContributions = dynamic(() => import("./hero/HeroContributions"), {
   ssr: false,
@@ -33,6 +55,15 @@ const HeroContributions = dynamic(() => import("./hero/HeroContributions"), {
     </div>
   ),
 });
+
+function SocialButtonPlaceholder({ label }: { label: string }) {
+  return (
+    <div className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] sm:dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white animate-pulse">
+      <div className="w-4 h-4 bg-slate-200 dark:bg-slate-700 rounded" />
+      <span>{label}</span>
+    </div>
+  );
+}
 
 
 export default function Hero() {
@@ -412,7 +443,19 @@ export default function Hero() {
             </div>
           </div>
 
-          <HeroContributions />
+          <DeferredLoad
+            triggerOnVisible={true}
+            delay={4000}
+            placeholder={
+              <div className="block mt-6 sm:-mt-2 sm:-mx-6 px-0 sm:pl-8 sm:pr-6">
+                <div className="min-h-45 sm:min-h-60 flex items-center justify-center">
+                  <span className="text-xs text-slate-500 dark:text-slate-600">Loading contributions...</span>
+                </div>
+              </div>
+            }
+          >
+            <HeroContributions />
+          </DeferredLoad>
         </div>
       </m.div>
     </section>
