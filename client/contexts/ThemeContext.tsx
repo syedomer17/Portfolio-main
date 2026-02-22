@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 type Theme = "light" | "dark";
 
@@ -12,40 +12,26 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Initialize with "light" for server - client will hydrate correctly
-  const [theme, setTheme] = useState<Theme>("light");
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  useEffect(() => {
-    // Load actual theme after hydration complete
-    // This prevents hydration mismatch
-    const saved = localStorage.getItem("theme") as Theme | null;
-    
-    if (saved) {
-      setTheme(saved);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
+  // Theme is pre-detected and applied via inline script before React hydrates
+  // This state just tracks the current theme for toggle functionality
+  const [theme, setTheme] = useState<Theme>(() => {
+    // Get the theme from DOM (already set by inline script)
+    if (typeof window !== "undefined") {
+      return document.documentElement.classList.contains("dark") ? "dark" : "light";
     }
-    
-    setIsHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isHydrated) return;
-
-    const root = document.documentElement;
-
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-
-    localStorage.setItem("theme", theme);
-  }, [theme, isHydrated]);
+    return "light";
+  });
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   };
 
   return (

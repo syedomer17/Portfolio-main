@@ -115,6 +115,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* CRITICAL: Detect and apply theme BEFORE React hydrates to prevent flash/re-render */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('theme') || 
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch {}
+            `,
+          }}
+        />
+        
         {/* Font preload hints - critical for LCP */}
         <link
           rel="preload"
