@@ -3,8 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   compress: true,
 
-  // Enable StrictMode only in development
-  reactStrictMode: process.env.NODE_ENV === "development",
+  // StrictMode catches unsafe lifecycles, legacy API usage, and side-effect
+  // bugs during rendering. Safe and recommended for production builds.
+  reactStrictMode: true,
 
   poweredByHeader: false,
 
@@ -34,8 +35,8 @@ const nextConfig: NextConfig = {
   async headers() {
     const securityHeaders = [
       // NOTE: Content-Security-Policy is NOT set here.
-      // It is applied per-request by middleware.ts using a fresh nonce so
-      // that 'unsafe-inline' is never needed in script-src.
+      // It is applied per-request by middleware.ts using a fresh nonce +
+      // strict-dynamic so that 'unsafe-inline' is never needed in script-src.
 
       {
         key: "Strict-Transport-Security",
@@ -44,6 +45,12 @@ const nextConfig: NextConfig = {
 
       {
         key: "Cross-Origin-Opener-Policy",
+        value: "same-origin",
+      },
+
+      // Prevent this site's resources from being embedded by other origins.
+      {
+        key: "Cross-Origin-Resource-Policy",
         value: "same-origin",
       },
 
@@ -62,10 +69,30 @@ const nextConfig: NextConfig = {
         value: "strict-origin-when-cross-origin",
       },
 
+      // Prevent the browser from preemptively resolving DNS for external links
+      // on the page, which can leak visited-link information to DNS providers.
+      {
+        key: "X-DNS-Prefetch-Control",
+        value: "off",
+      },
+
+      // Deny access to sensitive device APIs that this app does not need.
+      // Each feature is explicitly set to () meaning "deny to all origins".
       {
         key: "Permissions-Policy",
-        value:
-          "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+        value: [
+          "camera=()",
+          "microphone=()",
+          "geolocation=()",
+          "interest-cohort=()",
+          "accelerometer=()",
+          "gyroscope=()",
+          "magnetometer=()",
+          "payment=()",
+          "usb=()",
+          "display-capture=()",
+          "fullscreen=(self)",
+        ].join(", "),
       },
     ];
 

@@ -12,8 +12,18 @@ import { type NextRequest, NextResponse } from "next/server";
  * Flow:
  *  1. Generate nonce.
  *  2. Set x-nonce request header → layout.tsx reads it via next/headers.
- *  3. Build the CSP string using that nonce.
+ *  3. Build the CSP string using that nonce + strict-dynamic.
  *  4. Attach Content-Security-Policy to the response.
+ *
+ * strict-dynamic:
+ *  Allows nonced scripts to propagate trust to dynamically loaded child
+ *  scripts (e.g. GTM, Vercel Analytics). Modern browsers ignore 'self' and
+ *  host allowlists when strict-dynamic is present; the allowlists remain
+ *  as fallback for Safari < 15.4 and other legacy browsers.
+ *
+ * Dev vs Prod:
+ *  'unsafe-eval' is included ONLY in development for Webpack source-maps.
+ *  It is never present in production builds.
  *
  * Note on require-trusted-types-for 'script':
  *  This directive is intentionally omitted. React/Next.js uses innerHTML
@@ -27,6 +37,11 @@ export function middleware(request: NextRequest) {
     // randomUUID() returns a string like "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".
     // We strip dashes for a slightly shorter nonce attribute value.
     const nonce = crypto.randomUUID().replace(/-/g, "");
+
+    // Allow eval() only in development mode for Webpack devtool source-maps.
+    // Turbopack does not need this, but it is a safe fallback.
+    const isDev = process.env.NODE_ENV === "development";
+    const evalPolicy = isDev ? " 'unsafe-eval'" : "";
 
     // ---------------------------------------------------------------------------
     // Allowed external script origins (no broad https: fallback).
@@ -56,11 +71,11 @@ export function middleware(request: NextRequest) {
     const csp = [
         "default-src 'self'",
 
-        // Inline scripts and first-party JS allowed via nonce ONLY.
-        // next/script tags with strategy="afterInteractive" also receive the nonce
-        // automatically from Next.js when it is present in the response headers.
-        `script-src 'self' 'nonce-${nonce}' ${scriptAllowList}`,
-        `script-src-elem 'self' 'nonce-${nonce}' ${scriptAllowList}`,
+        // Scripts allowed via nonce + strict-dynamic trust propagation.
+        // 'self' and host allowlists are kept as fallback for browsers that
+        // do not support strict-dynamic (they are ignored by modern browsers).
+        `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${evalPolicy} ${scriptAllowList}`,
+        `script-src-elem 'self' 'nonce-${nonce}' 'strict-dynamic'${evalPolicy} ${scriptAllowList}`,
 
         // Event-handler attributes (onclick etc.) — disallow entirely.
         "script-src-attr 'none'",

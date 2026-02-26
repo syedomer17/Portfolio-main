@@ -120,6 +120,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Expose nonce to client components that dynamically create scripts.
+            Reading from <meta> is safer than a global variable because it cannot
+            be enumerated by third-party scripts scanning window properties. */}
+        <meta name="csp-nonce" content={nonce} />
+
         {/* CRITICAL: Detect and apply theme BEFORE React hydrates to prevent flash/re-render */}
         <script
           nonce={nonce}
