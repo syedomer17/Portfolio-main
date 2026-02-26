@@ -62,6 +62,7 @@ export function middleware(request: NextRequest) {
         "https://stats.g.doubleclick.net",
         "https://googleads.g.doubleclick.net",
         "https://api.databuddy.cc",
+        "https://basket.databuddy.cc",   // Databuddy vitals + batch endpoint
         "https://vitals.vercel-insights.com",
     ].join(" ");
 
@@ -82,14 +83,17 @@ export function middleware(request: NextRequest) {
 
         // Tailwind/CSS-in-JS needs unsafe-inline for styles.
         // Hashing every generated utility class is not feasible.
-        "style-src 'self' 'unsafe-inline'",
+        // fonts.googleapis.com serves Google Fonts CSS at runtime.
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+        "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "style-src-attr 'unsafe-inline'",
 
         // Images
         "img-src 'self' data: blob: https:",
 
-        // Fonts
-        "font-src 'self' data:",
+        // Fonts — fonts.gstatic.com serves the actual font files loaded by
+        // Google Fonts CSS from fonts.googleapis.com.
+        "font-src 'self' data: https://fonts.gstatic.com",
 
         // Fetch / XHR / WebSocket
         `connect-src 'self' ${connectAllowList}`,
@@ -97,8 +101,8 @@ export function middleware(request: NextRequest) {
         // Media for audio files served from /audio/
         "media-src 'self'",
 
-        // Allow Google Ads iframes
-        "frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com",
+        // Allow Google Ads iframes + Vercel toolbar (preview deployments)
+        "frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://vercel.live",
 
         // Hard security restrictions
         "object-src 'none'",
