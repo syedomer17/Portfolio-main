@@ -33,39 +33,9 @@ const nextConfig: NextConfig = {
 
   async headers() {
     const securityHeaders = [
-      {
-        key: "Content-Security-Policy",
-        value: [
-          "default-src 'self'",
-
-          // Scripts
-          "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
-          "script-src-elem 'self' 'unsafe-inline' https:",
-          "script-src-attr 'unsafe-inline'",
-
-          // Styles
-          "style-src 'self' 'unsafe-inline' https:",
-
-          // Images
-          "img-src 'self' data: blob: https:",
-
-          // Fonts
-          "font-src 'self' data: https:",
-
-          // Fetch / XHR / Analytics / Ads
-          "connect-src 'self' https:",
-
-          // Iframes (ads)
-          "frame-src 'self' https:",
-
-          // Hard security restrictions
-          "object-src 'none'",
-          "base-uri 'self'",
-          "form-action 'self'",
-          "frame-ancestors 'none'",
-          "upgrade-insecure-requests",
-        ].join("; "),
-      },
+      // NOTE: Content-Security-Policy is NOT set here.
+      // It is applied per-request by middleware.ts using a fresh nonce so
+      // that 'unsafe-inline' is never needed in script-src.
 
       {
         key: "Strict-Transport-Security",

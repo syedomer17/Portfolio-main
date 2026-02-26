@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Geist, Geist_Mono } from "next/font/google";
 import { instagramSans } from "@/lib/fonts";
 import ThemeProviderClient from "@/components/Providers/ThemeProviderClient";
@@ -107,16 +108,21 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Read the nonce injected by middleware.ts via the x-nonce request header.
+  // This nonce is included in the Content-Security-Policy so these inline
+  // scripts are executed without needing 'unsafe-inline'.
+  const nonce = (await headers()).get("x-nonce") ?? "";
   return (
     <html lang="en">
       <head>
         {/* CRITICAL: Detect and apply theme BEFORE React hydrates to prevent flash/re-render */}
         <script
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: `
               try {
@@ -158,6 +164,7 @@ export default function RootLayout({
       >
         {/* Structured Data for SEO - native script, no client JS overhead */}
         <script
+          nonce={nonce}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
