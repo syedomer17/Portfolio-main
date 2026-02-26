@@ -161,10 +161,18 @@ export function middleware(request: NextRequest) {
         "frame-ancestors 'none'",
         "upgrade-insecure-requests",
 
-        // Trusted Types — only the 'default' policy (created in layout.tsx
-        // before React hydrates) is allowed. Third-party scripts cannot
-        // create their own policies.
-        "trusted-types default",
+        // Trusted Types:
+        //  'default'       — our passthrough policy (layout.tsx) for React's innerHTML
+        //  'goog#html'     — Google GTM/GA/Ads internal DOM manipulation policy
+        //  'goog#html#bo'  — GTM sandboxed script execution variant
+        //  'goog#script_url' — Google script URL creation (used by Ads/GTM)
+        //
+        // SECURITY NOTE: These goog#* policies are Google-internal. By allowing
+        // them you are trusting Google's policy implementations, which are
+        // proprietary code running in your page. This is an inherent supply-chain
+        // tradeoff — the same trust exists the moment you load GTM at all.
+        // Blocking them causes: "goog#html blocked by your Trusted Types policy".
+        "trusted-types default goog#html goog#html#bo goog#script_url",
         "require-trusted-types-for 'script'",
     ].join("; ");
 
