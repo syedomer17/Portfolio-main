@@ -81,35 +81,14 @@ export default function ProjectsPage() {
                                 {/* Project Image Area */}
                                 <div className="pt-12 px-4 pb-0 bg-white dark:bg-[#1a1a1a] overflow-hidden">
                                     <div className="relative h-44 rounded-lg bg-gray-50 dark:bg-[#1a1a1a] border border-gray-100 dark:border-[#333] p-3 flex items-center justify-center overflow-hidden">
-                                        {project.isComingSoon ? (
-                                            <div className="w-full h-full flex items-center justify-center bg-gray-900 dark:bg-black rounded-md group-hover:scale-110 will-change-transform" style={{ transition: 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1)' }}>
-                                                <div className="text-center px-4">
-                                                    <p className="text-white text-xs font-medium mb-2 tracking-widest">STAY TUNED</p>
-                                                    <div className="text-white text-2xl sm:text-3xl font-bold tracking-wider leading-tight">
-                                                        <div className="flex items-center justify-center gap-1">
-                                                            <span>C</span>
-                                                            <span className="w-6 sm:w-8 h-0.5 bg-white" />
-                                                            <span>MING</span>
-                                                        </div>
-                                                        <div className="flex items-center justify-center gap-1 mt-1">
-                                                            <span>S</span>
-                                                            <span className="w-6 sm:w-8 h-0.5 bg-white" />
-                                                            <span className="w-6 sm:w-8 h-0.5 bg-white" />
-                                                            <span>N</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <Image
-                                                src={project.image}
-                                                alt={project.title}
-                                                fill
-                                                sizes="(max-width: 640px) 100vw, 320px"
-                                                className="object-contain rounded-md group-hover:scale-110 will-change-transform"
-                                                style={{ transition: 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1)' }}
-                                            />
-                                        )}
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            sizes="(max-width: 640px) 100vw, 320px"
+                                            className="object-contain rounded-md group-hover:scale-110 will-change-transform"
+                                            style={{ transition: 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1)' }}
+                                        />
                                     </div>
                                 </div>
 

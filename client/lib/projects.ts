@@ -138,6 +138,30 @@ const projectInputs: ProjectInput[] = [
     isComingSoon: false,
     caseStudyFocus: "Core functionality in development. Deployment pending.",
   },
+  {
+    title: "Urgent Blood App",
+    shortDescription:
+      "Real-time emergency blood donation platform connecting donors with patients in critical need.",
+    fullDescription:
+      "Urgent Blood App is a high-performance emergency response platform designed to optimize blood donation during critical time windows. It implements a smart matching algorithm using the Haversine formula for precise geo-location sorting, ensuring donors are alerted based on proximity and eligibility. The system integrates real-time communications via Socket.io and Firebase Cloud Messaging (FCM) to facilitate instant coordination between requesters and donors. Key features include an AI-driven emergency priority system, auto-escalation protocols for unfulfilled requests, and a comprehensive trust-based reputation system for donors.",
+    techStack: [
+      "React Native",
+      "NativeWind",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Socket.io",
+      "FCM",
+      "Google Maps API",
+    ],
+    githubLink: "https://github.com/syedomer17/Urgent-Blood-App",
+    createdAt: "2026-02-26",
+    updatedAt: "2026-02-26",
+    image: "/projects/blood-app.png",
+    status: "coming soon",
+    isComingSoon: true,
+    caseStudyFocus: "Real-time emergency matching and geo-location sorting.",
+  },
 ];
 
 const buildProjects = (inputs: ProjectInput[]): Project[] => {
