@@ -85,30 +85,54 @@ export default function HeroContributions() {
       11: "Dec",
     };
 
-    const labels = contributionData.weeks.map((week, i) => {
-      const firstDay = week.contributionDays[0];
-      if (!firstDay) return null;
-      const monthIndex = new Date(firstDay.date).getMonth();
+    let lastLabelX = -100; // Track last label's X position to prevent overlap
 
-      if (
-        i === 0 ||
-        (i > 0 &&
-          new Date(contributionData.weeks[i - 1].contributionDays[0].date).getMonth() !== monthIndex)
-      ) {
-        return (
-          <div
-            key={i}
-            className="text-xs w-2.5 text-center font-mono text-slate-700 dark:text-slate-300 opacity-100 dark:opacity-70"
-            style={{ marginLeft: i === 0 ? 2 : 0 }}
-          >
-            {months[monthIndex]}
-          </div>
-        );
-      }
-      return <div key={i} className="w-2.5" />;
-    });
+    return (
+      <div className="relative h-4 mb-1">
+        {contributionData.weeks.map((week, i) => {
+          const firstDay = week.contributionDays[0];
+          if (!firstDay) return null;
+          const monthIndex = new Date(firstDay.date).getMonth();
 
-    return <div className="flex gap-[2px] mb-1">{labels}</div>;
+          const isMonthTransition =
+            i > 0 &&
+            new Date(contributionData.weeks[i - 1].contributionDays[0].date).getMonth() !==
+            monthIndex;
+
+          let shouldShow = false;
+          if (isMonthTransition) {
+            shouldShow = true;
+          } else if (i === 0) {
+            // Only show the first month if it's the actual start of the month
+            // or if the next month is at least 3 weeks away
+            const nextMonthIndex = contributionData.weeks.findIndex(
+              (w, idx) =>
+                idx > 0 && new Date(w.contributionDays[0].date).getMonth() !== monthIndex
+            );
+            if (nextMonthIndex === -1 || nextMonthIndex > 2) {
+              shouldShow = true;
+            }
+          }
+
+          if (shouldShow) {
+            const xPos = i * 12;
+            if (xPos - lastLabelX >= 24) {
+              lastLabelX = xPos;
+              return (
+                <div
+                  key={i}
+                  className="absolute text-[10px] font-mono text-slate-700 dark:text-slate-300 opacity-100 dark:opacity-70 whitespace-nowrap"
+                  style={{ left: `${xPos}px` }}
+                >
+                  {months[monthIndex]}
+                </div>
+              );
+            }
+          }
+          return null;
+        })}
+      </div>
+    );
   };
 
   const generateMockData = () => {

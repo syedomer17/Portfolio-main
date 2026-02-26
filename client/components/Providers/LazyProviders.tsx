@@ -3,13 +3,8 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Toaster } from "react-hot-toast";
-import MountGuard from "../ui/MountGuard";
-
-// Dynamically import heavy features to avoid bundle bloat
-const SmoothScroll = dynamic(() => import("../ui/SmoothScroll"), { 
-  ssr: false,
-  loading: () => <>{/* Placeholder while SmoothScroll loads */}</> 
-});
+import Script from "next/script";
+import SmoothScroll from "../ui/SmoothScroll";
 
 const DatabuddyComponent = dynamic(
   () => import("./DatabuddyLoader"),
@@ -23,13 +18,11 @@ const AnalyticsComponent = dynamic(
 
 /**
  * Lazy provider loader for non-critical global features.
- * These features are deferred until after page is interactive.
+ * Features are configured to avoid blocking initial render or causing remounts.
  * 
  * Features loaded here:
- * - MountGuard: Prevents SSR/hydration mismatches
- * - SmoothScroll: Smooth scroll behavior (lazy-loaded to avoid blocking initial render)
- * - Toaster: Toast notifications container
- * - Analytics: Loaded separately via useEffect
+ * - SmoothScroll: Component-based smooth scrolling (stable hierarchy)
+ * - Toaster: Toast notifications container (lazy-loaded state)
  */
 export function LazyProvidersLoader({
   children,
@@ -39,24 +32,24 @@ export function LazyProvidersLoader({
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    // Load after first paint to avoid blocking initial render
+    // Interactive additions can load after page structure is stable
     if (typeof requestIdleCallback !== "undefined") {
-      requestIdleCallback(() => setIsReady(true), { timeout: 2000 });
+      requestIdleCallback(() => setIsReady(true), { timeout: 1000 });
     } else {
-      // Fallback for browsers without requestIdleCallback
-      const timer = setTimeout(() => setIsReady(true), 0);
-      return () => clearTimeout(timer);
+      setIsReady(true);
     }
   }, []);
 
   return (
-    <MountGuard>
-      {isReady && <SmoothScroll>{children}</SmoothScroll>}
-      {!isReady && children}
+    <>
+      <SmoothScroll isEnabled={isReady}>
+        {children}
+      </SmoothScroll>
       {isReady && <Toaster position="top-right" />}
-    </MountGuard>
+    </>
   );
 }
+
 
 /**
  * Separate lazy provider for analytics libraries.
@@ -65,6 +58,7 @@ export function LazyProvidersLoader({
  * Features:
  * - Databuddy: User analytics and event tracking
  * - Vercel Analytics: Web Vitals and performance monitoring
+ * - Google Analytics & Adsense: Loaded lazily to improve performance
  */
 export function LazyAnalyticsProviders() {
   const [showAnalytics, setShowAnalytics] = useState(false);
@@ -84,6 +78,29 @@ export function LazyAnalyticsProviders() {
 
   return (
     <>
+      {/* Google Analytics - Placeholder ID */}
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+      />
+      <Script id="google-analytics-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XXXXXXXXXX');
+        `}
+      </Script>
+
+      {/* Google Adsense - Placeholder ID */}
+      <Script
+        id="google-adsense"
+        strategy="afterInteractive"
+        crossOrigin="anonymous"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      />
+
       <DatabuddyComponent />
       <AnalyticsComponent />
     </>
