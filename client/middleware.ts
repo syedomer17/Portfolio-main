@@ -21,16 +21,21 @@ import { type NextRequest, NextResponse } from "next/server";
  *  host allowlists when strict-dynamic is present; the allowlists remain
  *  as fallback for Safari < 15.4 and other legacy browsers.
  *
+ * Trusted Types:
+ *  require-trusted-types-for 'script' enforces that all DOM sink operations
+ *  (innerHTML, script.src, eval, etc.) use TrustedHTML/TrustedScript/
+ *  TrustedScriptURL objects instead of raw strings. React uses innerHTML
+ *  during hydration, so layout.tsx creates a default passthrough policy
+ *  that runs before React boots. This policy:
+ *   - Satisfies the browser's Trusted Types enforcement
+ *   - Establishes a single audit point for all DOM sink operations
+ *   - Blocks third-party scripts from creating arbitrary policies
+ *  The 'trusted-types default' directive restricts which policies can
+ *  be created — only 'default' is allowed.
+ *
  * Dev vs Prod:
  *  'unsafe-eval' is included ONLY in development for Webpack source-maps.
  *  It is never present in production builds.
- *
- * Note on require-trusted-types-for 'script':
- *  This directive is intentionally omitted. React/Next.js uses innerHTML
- *  internally during hydration and does not implement a TrustedHTML policy.
- *  Adding this directive causes an immediate runtime TypeError regardless
- *  of nonce presence. The nonce approach already eliminates 'unsafe-inline'
- *  which is the real Lighthouse CSP penalty.
  */
 export function middleware(request: NextRequest) {
     // Generate a fresh nonce for every request.
@@ -110,6 +115,12 @@ export function middleware(request: NextRequest) {
         "form-action 'self'",
         "frame-ancestors 'none'",
         "upgrade-insecure-requests",
+
+        // Trusted Types — only allow the 'default' policy (created in
+        // layout.tsx before React hydrates). All other policy names are
+        // blocked, preventing third-party scripts from creating their own.
+        "trusted-types default",
+        "require-trusted-types-for 'script'",
     ].join("; ");
 
     // ---------------------------------------------------------------------------

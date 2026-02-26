@@ -120,6 +120,19 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* CRITICAL: Create the default Trusted Types policy BEFORE anything
+            else runs. React uses innerHTML during hydration — without this
+            policy, require-trusted-types-for 'script' would cause a TypeError.
+            This passthrough policy satisfies enforcement while establishing a
+            single audit point for all DOM sink operations. Only Chromium
+            browsers enforce this; Firefox/Safari ignore it gracefully. */}
+        <script
+          nonce={nonce}
+          dangerouslySetInnerHTML={{
+            __html: `if(window.trustedTypes&&window.trustedTypes.createPolicy){window.trustedTypes.createPolicy('default',{createHTML:function(s){return s},createScript:function(s){return s},createScriptURL:function(s){return s}})}`,
+          }}
+        />
+
         {/* Expose nonce to client components that dynamically create scripts.
             Reading from <meta> is safer than a global variable because it cannot
             be enumerated by third-party scripts scanning window properties. */}
