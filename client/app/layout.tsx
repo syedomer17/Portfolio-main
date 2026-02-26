@@ -39,7 +39,12 @@ export const metadata: Metadata = {
 
   description: defaultDescription,
 
-  authors: [{ name: "Syed Omer Ali", url: "https://www.syedomer.me" }],
+  authors: [
+    { name: "Syed Omer Ali", url: "https://www.syedomer.me" },
+    { name: "Syed Omer Ali", url: "https://www.linkedin.com/in/syedomer17/" },
+    { name: "Syed Omer Ali", url: "https://medium.com/@syedomerali2006" },
+    { name: "Syed Omer Ali", url: "https://github.com/syedomer17" },
+  ],
   creator: "Syed Omer Ali",
   publisher: "Syed Omer Ali",
 
@@ -71,11 +76,11 @@ export const metadata: Metadata = {
     siteName,
     images: [
       {
-        url: `${siteUrl}/myImage.avif`,
+        url: `${siteUrl}/og.png`,
         width: 1200,
         height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
-        type: "image/avif",
+        type: "image/png",
       },
     ],
     locale: "en_US",
@@ -83,13 +88,15 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
+    site: "@SyedOmer17Ali",
+    creator: "@SyedOmer17Ali",
     title: defaultTitle,
     description: defaultDescription,
     images: [
       {
-        url: `${siteUrl}/myImage.avif`,
+        url: `${siteUrl}/og.png`,
         width: 1200,
-        height: 675,
+        height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
       },
     ],
@@ -106,6 +113,17 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   category: "technology",
+
+  // og:see_also — LinkedIn and Medium crawlers use this to associate the
+  // page with your social profiles and show rich author attribution.
+  other: {
+    "og:see_also": [
+      "https://www.linkedin.com/in/syedomer17/",
+      "https://medium.com/@syedomerali2006",
+      "https://github.com/syedomer17",
+      "https://x.com/SyedOmer17Ali",
+    ],
+  },
 };
 
 export default async function RootLayout({
