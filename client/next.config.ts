@@ -78,13 +78,14 @@ const nextConfig: NextConfig = {
 
       // Deny access to sensitive device APIs that this app does not need.
       // Each feature is explicitly set to () meaning "deny to all origins".
+      // NOTE: interest-cohort is NOT included — FLoC was discontinued and
+      // replaced by Topics API. Chrome no longer recognizes it.
       {
         key: "Permissions-Policy",
         value: [
           "camera=()",
           "microphone=()",
           "geolocation=()",
-          "interest-cohort=()",
           "accelerometer=()",
           "gyroscope=()",
           "magnetometer=()",
