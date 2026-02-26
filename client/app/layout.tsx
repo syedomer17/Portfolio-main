@@ -129,7 +129,7 @@ export default function RootLayout({
             `,
           }}
         />
-        
+
         {/* Font preload hints - critical for LCP */}
         <link
           rel="preload"
@@ -229,7 +229,9 @@ export default function RootLayout({
         {/* Minimal theme provider - only global client boundary */}
         <ThemeProviderClient>
           {/* Lazy-loaded features that don't block initial render */}
-          <LazyProvidersLoader>{children}</LazyProvidersLoader>
+          <LazyProvidersLoader>
+            <main>{children}</main>
+          </LazyProvidersLoader>
         </ThemeProviderClient>
 
         {/* Analytics lazy-loaded after page is idle */}

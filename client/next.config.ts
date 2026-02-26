@@ -64,9 +64,6 @@ const nextConfig: NextConfig = {
           "form-action 'self'",
           "frame-ancestors 'none'",
           "upgrade-insecure-requests",
-
-          // Lighthouse Trusted Types requirement
-          "require-trusted-types-for 'script'",
         ].join("; "),
       },
 
