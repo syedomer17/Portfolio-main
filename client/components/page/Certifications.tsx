@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Award, Calendar } from "lucide-react";
 import { useRouter } from 'next/navigation';
-import ThemeToggle from "../themeToggle/ThemeToggle";   
+import ThemeToggle from "../themeToggle/ThemeToggle";
 import { certifications } from "@/lib/certifications";
 import Image from "next/image";
 import Link from "next/link";
@@ -130,10 +130,10 @@ export default function CertificationsPage() {
 
                                         <Link
                                             href={cert.credentialLink || "#"}
-                                            target={cert.credentialLink ? "_blank" : undefined}
-                                            rel={cert.credentialLink ? "noopener noreferrer" : undefined}
+                                            target={cert.credentialLink?.startsWith("http") ? "_blank" : undefined}
+                                            rel={cert.credentialLink?.startsWith("http") ? "noopener noreferrer" : undefined}
                                             className="inline-flex items-center gap-1 text-[12px] font-medium text-[#333] dark:text-[#D4D4D4] hover:text-black dark:hover:text-white transition-colors font-instagram"
-                                            style={{ }}
+                                            style={{}}
                                             onClick={(event) => event.stopPropagation()}
                                         >
                                             Show Credential
