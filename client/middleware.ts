@@ -59,9 +59,22 @@ function getEnvironment(): Environment {
  *  This Chrome error indicates a browser extension (ad blocker) is blocking
  *  a request. It is NOT a CSP violation. Nothing in the CSP can fix it.
  */
+// ---------------------------------------------------------------------------
+// Social crawler detection — returns true when the User-Agent belongs to a
+// known social platform bot. These crawlers only read HTML/meta tags and
+// cannot benefit from CSP; skipping it for them lets OG images resolve.
+// ---------------------------------------------------------------------------
+function isSocialBot(userAgent: string): boolean {
+    return /facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot/i.test(
+        userAgent
+    );
+}
+
 export function middleware(request: NextRequest) {
     const nonce = crypto.randomUUID().replace(/-/g, "");
     const env = getEnvironment();
+
+    const ua = request.headers.get("user-agent") ?? "";
 
     // ---------------------------------------------------------------------------
     // Script host allowlists — kept as fallback for browsers that do not
@@ -186,7 +199,10 @@ export function middleware(request: NextRequest) {
         request: { headers: requestHeaders },
     });
 
-    response.headers.set("Content-Security-Policy", csp);
+    // Only attach CSP for real users — social crawlers skip it so OG images load.
+    if (!isSocialBot) {
+        response.headers.set("Content-Security-Policy", csp);
+    }
 
     return response;
 }

@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     siteName,
     images: [
       {
-        url: `${siteUrl}/og.png`,
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     description: defaultDescription,
     images: [
       {
-        url: `${siteUrl}/og.png`,
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
