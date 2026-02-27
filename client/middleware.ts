@@ -200,7 +200,7 @@ export function middleware(request: NextRequest) {
     });
 
     // Only attach CSP for real users — social crawlers skip it so OG images load.
-    if (!isSocialBot) {
+    if (!isSocialBot(ua)) {
         response.headers.set("Content-Security-Policy", csp);
     }
 

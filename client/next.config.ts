@@ -3,6 +3,21 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   compress: true,
 
+  async redirects() {
+    return [
+      // 308 Permanent Redirect: apex → www, all paths preserved.
+      // 308 (vs 307) is cacheable by crawlers and browsers — social platforms
+      // will follow it once and cache the destination, eliminating redirect
+      // chains for OG image resolution on subsequent crawls.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "syedomer.me" }],
+        destination: "https://www.syedomer.me/:path*",
+        permanent: true, // emits 308
+      },
+    ];
+  },
+
   // StrictMode catches unsafe lifecycles, legacy API usage, and side-effect
   // bugs during rendering. Safe and recommended for production builds.
   reactStrictMode: true,

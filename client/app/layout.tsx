@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
   },
 
   robots: {
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     siteName,
     images: [
       {
-        url: "/og.png",
+        url: `${siteUrl}/og.png`,
         width: 1200,
         height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     description: defaultDescription,
     images: [
       {
-        url: "/og.png",
+        url: `${siteUrl}/og.png`,
         width: 1200,
         height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
