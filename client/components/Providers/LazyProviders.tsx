@@ -54,11 +54,11 @@ export function LazyProvidersLoader({
 /**
  * Separate lazy provider for analytics libraries.
  * These are loaded after page idle to avoid blocking main thread.
- * 
+ *
  * Features:
  * - Databuddy: User analytics and event tracking
  * - Vercel Analytics: Web Vitals and performance monitoring
- * - Google Analytics & Adsense: Loaded lazily to improve performance
+ * - Google Analytics: Loaded lazily to improve performance
  */
 export function LazyAnalyticsProviders() {
   const [showAnalytics, setShowAnalytics] = useState(false);
@@ -92,14 +92,6 @@ export function LazyAnalyticsProviders() {
           gtag('config', 'G-XXXXXXXXXX');
         `}
       </Script>
-
-      {/* Google Adsense - Placeholder ID */}
-      <Script
-        id="google-adsense"
-        strategy="afterInteractive"
-        crossOrigin="anonymous"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
-      />
 
       <DatabuddyComponent />
       <AnalyticsComponent />

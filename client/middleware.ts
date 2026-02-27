@@ -83,7 +83,6 @@ export function middleware(request: NextRequest) {
     // ---------------------------------------------------------------------------
     const scriptHosts = [
         "https://www.googletagmanager.com",     // GTM / GA loader
-        "https://pagead2.googlesyndication.com", // Google Adsense
         "https://va.vercel-scripts.com",         // Vercel Analytics
         "https://cdn.databuddy.cc",              // Databuddy
     ];
@@ -99,8 +98,6 @@ export function middleware(request: NextRequest) {
     const connectHosts = [
         "https://www.google-analytics.com",
         "https://analytics.google.com",
-        "https://stats.g.doubleclick.net",
-        "https://googleads.g.doubleclick.net",
         "https://api.databuddy.cc",
         "https://basket.databuddy.cc",
         "https://vitals.vercel-insights.com",
@@ -113,10 +110,7 @@ export function middleware(request: NextRequest) {
     // ---------------------------------------------------------------------------
     // Frame sources for iframes.
     // ---------------------------------------------------------------------------
-    const frameHosts = [
-        "https://googleads.g.doubleclick.net",
-        "https://tpc.googlesyndication.com",
-    ];
+    const frameHosts: string[] = [];
 
     if (env !== "production") {
         frameHosts.push("https://vercel.live");
@@ -165,7 +159,9 @@ export function middleware(request: NextRequest) {
         "media-src 'self'",
 
         // Iframes
-        `frame-src 'self' ${frameHosts.join(" ")}`,
+        frameHosts.length > 0
+            ? `frame-src 'self' ${frameHosts.join(" ")}`
+            : "frame-src 'self'",
 
         // Hard restrictions
         "object-src 'none'",
@@ -174,18 +170,9 @@ export function middleware(request: NextRequest) {
         "frame-ancestors 'none'",
         "upgrade-insecure-requests",
 
-        // Trusted Types:
-        //  'default'       — our passthrough policy (layout.tsx) for React's innerHTML
-        //  'goog#html'     — Google GTM/GA/Ads internal DOM manipulation policy
+        //  'goog#html'     — Google GTM/GA internal DOM manipulation policy
         //  'goog#html#bo'  — GTM sandboxed script execution variant
-        //  'goog#script_url' — Google script URL creation (used by Ads/GTM)
-        //
-        // SECURITY NOTE: These goog#* policies are Google-internal. By allowing
-        // them you are trusting Google's policy implementations, which are
-        // proprietary code running in your page. This is an inherent supply-chain
-        // tradeoff — the same trust exists the moment you load GTM at all.
-        // Blocking them causes: "goog#html blocked by your Trusted Types policy".
-        "trusted-types default goog#html goog#html#bo goog#script_url",
+        "trusted-types default goog#html goog#html#bo",
         "require-trusted-types-for 'script'",
     ].join("; ");
 
