@@ -23,18 +23,18 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "/",
+    url: "https://www.syedomer.me",
     title: "Syed Omer Ali | Full Stack MERN Developer & DevSecOps Engineer",
     description:
       "I build secure, scalable MERN stack applications for SaaS startups. TypeScript, Next.js, DevSecOps, AI engineering. Available for projects.",
     siteName: "Syed Omer Ali",
     images: [
       {
-        url: "/myImage.avif",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
         height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
-        type: "image/avif",
+        type: "image/png",
       },
     ],
     locale: "en_US",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
       "I build secure, scalable MERN stack applications for SaaS startups. TypeScript, Next.js, DevSecOps, AI engineering. Available for projects.",
     images: [
       {
-        url: "/myImage.avif",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
-        height: 675,
+        height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
       },
     ],

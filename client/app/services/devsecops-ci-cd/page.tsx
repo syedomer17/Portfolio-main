@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: "/services/devsecops-ci-cd",
     images: [
       {
-        url: "/myImage.png",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
         height: 630,
         alt: "DevSecOps & CI/CD - Syed Omer Ali",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "DevSecOps & CI/CD | Syed Omer Ali",
     description:
       "DevSecOps pipelines for MERN and TypeScript apps with automated testing, security scanning, and production monitoring.",
-    images: ["/myImage.png"],
+    images: ["https://www.syedomer.me/og.png"],
   },
 };
 

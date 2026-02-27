@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: "/services/security-audit-remediation",
     images: [
       {
-        url: "/myImage.png",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
         height: 630,
         alt: "Security Audit & Remediation - Syed Omer Ali",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Security Audit & Remediation | Syed Omer Ali",
     description:
       "Security audits and remediation for MERN and TypeScript apps. Identify risks, fix vulnerabilities, and harden production systems.",
-    images: ["/myImage.png"],
+    images: ["https://www.syedomer.me/og.png"],
   },
 };
 

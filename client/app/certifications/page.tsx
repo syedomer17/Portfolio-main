@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: "/certifications",
     images: [
       {
-        url: "/myImage.png",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
         height: 630,
         alt: "Certifications - Syed Omer Ali",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Certifications | Syed Omer Ali",
     description:
       "Certifications earned by Syed Omer Ali in software engineering, cloud, and DevOps.",
-    images: ["/myImage.png"],
+    images: ["https://www.syedomer.me/og.png"],
   },
 };
 

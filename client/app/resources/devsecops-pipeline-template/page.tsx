@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: "/resources/devsecops-pipeline-template",
     images: [
       {
-        url: "/myImage.png",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
         height: 630,
         alt: "DevSecOps Pipeline Template - Syed Omer Ali",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "DevSecOps Pipeline Template | Syed Omer Ali",
     description:
       "A DevSecOps pipeline template for MERN and TypeScript teams with security scanning and deployment gates.",
-    images: ["/myImage.png"],
+    images: ["https://www.syedomer.me/og.png"],
   },
 };
 

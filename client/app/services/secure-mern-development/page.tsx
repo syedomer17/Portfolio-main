@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     url: "/services/secure-mern-development",
     images: [
       {
-        url: "/myImage.png",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
         height: 630,
         alt: "Secure MERN Development - Syed Omer Ali",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "Secure MERN Development | Syed Omer Ali",
     description:
       "Security-first MERN development for scalable SaaS apps. Hardened APIs, secure auth, and production-ready delivery.",
-    images: ["/myImage.png"],
+    images: ["https://www.syedomer.me/og.png"],
   },
 };
 

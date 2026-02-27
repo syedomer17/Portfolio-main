@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: "/intro-call",
     images: [
       {
-        url: "/myImage.png",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
         height: 630,
         alt: "Intro Call - Syed Omer Ali",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Intro Call | Syed Omer Ali",
     description:
       "Schedule an intro call with Syed Omer Ali to discuss projects, roles, or collaboration.",
-    images: ["/myImage.png"],
+    images: ["https://www.syedomer.me/og.png"],
   },
 };
 

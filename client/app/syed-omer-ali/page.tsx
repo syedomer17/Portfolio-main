@@ -33,11 +33,11 @@ export const metadata: Metadata = {
     url: `${siteUrl}/syed-omer-ali`,
     images: [
       {
-        url: `${siteUrl}/myImage.avif`,
+        url: `${siteUrl}/og.png`,
         width: 1200,
         height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
-        type: "image/avif",
+        type: "image/png",
       },
     ],
     firstName: "Syed Omer",
@@ -53,9 +53,9 @@ export const metadata: Metadata = {
       "Meet Syed Omer Ali - Full Stack Developer specializing in MERN stack, TypeScript, Next.js, and DevSecOps. Based in Hyderabad, India.",
     images: [
       {
-        url: `${siteUrl}/myImage.avif`,
+        url: `${siteUrl}/og.png`,
         width: 1200,
-        height: 675,
+        height: 630,
         alt: "Syed Omer Ali - Full Stack Developer",
       },
     ],
@@ -93,7 +93,7 @@ export default function SyedOmerAliPage() {
       "name": "Syed Omer Ali",
       "alternateName": ["Syed Omer", "Omer Ali", "syedomer17"],
       "url": siteUrl,
-      "image": `${siteUrl}/myImage.png`,
+      "image": `${siteUrl}/og.png`,
       "description": "Full Stack Developer specializing in MERN stack, TypeScript, Next.js, DevSecOps, and AI engineering based in Hyderabad, India.",
       "jobTitle": "Full Stack Developer",
       "hasOccupation": {

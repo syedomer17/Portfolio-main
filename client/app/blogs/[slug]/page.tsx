@@ -41,10 +41,11 @@ export const generateMetadata = async ({
       url: canonical,
       images: [
         {
-          url: "/myImage.png",
+          url: `${siteUrl}/og.png`,
           width: 1200,
           height: 630,
           alt: `${blog.title} - ${siteName}`,
+          type: "image/png",
         },
       ],
       type: "article",
@@ -58,7 +59,7 @@ export const generateMetadata = async ({
       creator: "@SyedOmer17Ali",
       title: `${blog.title} | ${siteName}`,
       description: blog.description,
-      images: ["/myImage.png"],
+      images: [`${siteUrl}/og.png`],
     },
   };
 };
@@ -87,7 +88,7 @@ export default async function BlogDetail({
     "@type": "BlogPosting",
     headline: blog.title,
     description: blog.description,
-    image: `${siteUrl}/myImage.png`,
+    image: `${siteUrl}/og.png`,
     datePublished: blog.publishedAt,
     dateModified: blog.updatedAt,
     author: {
@@ -175,56 +176,56 @@ export default async function BlogDetail({
                   Syed Omer Ali
                 </a>{" "}
                 • Published {formatDate(blog.publishedAt)}
-              {blog.updatedAt !== blog.publishedAt
-                ? ` • Updated ${formatDate(blog.updatedAt)}`
-                : ""}
+                {blog.updatedAt !== blog.publishedAt
+                  ? ` • Updated ${formatDate(blog.updatedAt)}`
+                  : ""}
+              </p>
+            </header>
+
+            <p
+              className="text-base text-slate-700 dark:text-slate-200 mb-6 font-instagram"
+            >
+              {blog.description}
             </p>
-          </header>
 
-          <p
-            className="text-base text-slate-700 dark:text-slate-200 mb-6 font-instagram"
-          >
-            {blog.description}
-          </p>
+            <article className="space-y-4 text-slate-700 dark:text-slate-200">
+              {blog.content.map((paragraph, index) => {
+                if (paragraph.startsWith("## ")) {
+                  const heading = paragraph.replace(/^##\s+/, "");
+                  return (
+                    <h2
+                      key={index}
+                      className="text-xl font-semibold text-slate-900 dark:text-white font-instagram"
+                    >
+                      {heading}
+                    </h2>
+                  );
+                }
 
-          <article className="space-y-4 text-slate-700 dark:text-slate-200">
-            {blog.content.map((paragraph, index) => {
-              if (paragraph.startsWith("## ")) {
-                const heading = paragraph.replace(/^##\s+/, "");
                 return (
-                  <h2
-                    key={index}
-                    className="text-xl font-semibold text-slate-900 dark:text-white font-instagram"
-                  >
-                    {heading}
-                  </h2>
+                  <p key={index} className="font-instagram">
+                    {paragraph}
+                  </p>
                 );
-              }
+              })}
+            </article>
 
-              return (
-                <p key={index} className="font-instagram">
-                  {paragraph}
-                </p>
-              );
-            })}
-          </article>
-
-          {blog.slug === "secure-mern-architecture-for-production-saas" ? (
-            <section className="mt-8 border-t border-slate-200 dark:border-slate-800 pt-6">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
-                Related resources
-              </h2>
-              <div className="mt-3 flex flex-wrap gap-3 text-sm">
-                <a href="/resources/mern-security-checklist" className="underline">MERN security checklist</a>
-                <a href="/resources/devsecops-pipeline-template" className="underline">DevSecOps pipeline template</a>
-                <a href="/resources/secure-auth-implementation-guide" className="underline">Secure auth guide</a>
-                <a href="/services/secure-mern-development" className="underline">Secure MERN development</a>
-              </div>
-            </section>
-          ) : null}
+            {blog.slug === "secure-mern-architecture-for-production-saas" ? (
+              <section className="mt-8 border-t border-slate-200 dark:border-slate-800 pt-6">
+                <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
+                  Related resources
+                </h2>
+                <div className="mt-3 flex flex-wrap gap-3 text-sm">
+                  <a href="/resources/mern-security-checklist" className="underline">MERN security checklist</a>
+                  <a href="/resources/devsecops-pipeline-template" className="underline">DevSecOps pipeline template</a>
+                  <a href="/resources/secure-auth-implementation-guide" className="underline">Secure auth guide</a>
+                  <a href="/services/secure-mern-development" className="underline">Secure MERN development</a>
+                </div>
+              </section>
+            ) : null}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
     </>
   );
 }

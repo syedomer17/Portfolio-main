@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: "/resources/mern-security-checklist",
     images: [
       {
-        url: "/myImage.png",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
         height: 630,
         alt: "MERN Security Checklist - Syed Omer Ali",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "MERN Security Checklist | Syed Omer Ali",
     description:
       "A practical pre-launch security checklist for MERN apps covering auth, validation, rate limiting, and monitoring.",
-    images: ["/myImage.png"],
+    images: ["https://www.syedomer.me/og.png"],
   },
 };
 

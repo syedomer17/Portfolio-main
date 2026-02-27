@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: "/case-studies",
     images: [
       {
-        url: "/myImage.png",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
         height: 630,
         alt: "Case Studies - Syed Omer Ali",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Case Studies | Syed Omer Ali",
     description:
       "Case studies showcasing secure, scalable MERN and TypeScript engineering work with measurable outcomes.",
-    images: ["/myImage.png"],
+    images: ["https://www.syedomer.me/og.png"],
   },
 };
 

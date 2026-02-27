@@ -212,7 +212,7 @@ export default async function RootLayout({
                   name: "Syed Omer Ali",
                   alternateName: ["Syed Omer", "Omer Ali", "syedomer17"],
                   url: siteUrl,
-                  image: `${siteUrl}/myImage.png`,
+                  image: `${siteUrl}/og.png`,
                   description: defaultDescription,
                   jobTitle: "Full Stack Developer",
                   hasOccupation: {

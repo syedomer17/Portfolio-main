@@ -5,6 +5,7 @@ import { caseStudies, getCaseStudyBySlug } from "@/lib/caseStudies";
 import PageTopBar from "@/components/ui/PageTopBar";
 
 const siteName = "Syed Omer Ali";
+const siteUrl = "https://www.syedomer.me";
 
 export const generateStaticParams = () =>
   caseStudies.map((study) => ({ slug: study.slug }));
@@ -38,10 +39,11 @@ export const generateMetadata = async ({
       url: canonical,
       images: [
         {
-          url: "/myImage.png",
+          url: `${siteUrl}/og.png`,
           width: 1200,
           height: 630,
           alt: `${study.title} - ${siteName}`,
+          type: "image/png",
         },
       ],
       type: "article",
@@ -50,7 +52,7 @@ export const generateMetadata = async ({
       card: "summary_large_image",
       title: `${study.title} | ${siteName}`,
       description: study.summary,
-      images: ["/myImage.png"],
+      images: [`${siteUrl}/og.png`],
     },
   };
 };

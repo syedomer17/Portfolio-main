@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: "/send-email",
     images: [
       {
-        url: "/myImage.png",
+        url: "https://www.syedomer.me/og.png",
         width: 1200,
         height: 630,
         alt: "Contact - Syed Omer Ali",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "Contact | Syed Omer Ali",
     description:
       "Contact Syed Omer Ali for project inquiries, collaborations, or just to say hi. I'm always open to discussing new ideas and opportunities.",
-    images: ["/myImage.png"],
+    images: ["https://www.syedomer.me/og.png"],
   },
 };
 
