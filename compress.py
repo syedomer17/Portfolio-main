@@ -19,4 +19,4 @@ def compress_to_target(input_path, output_path, target_mb):
         
     print("Could not compress to target size without severe quality loss.")
 
-compress_to_target("newmyImage.png", "compressed_image.jpg", 1.0)
+compress_to_target("og.png", "newOg.png", 0.300)
