@@ -100,40 +100,114 @@ export default function SyedOmerAliContent() {
               </div>
             </section>
 
-            {/* About Section */}
+            {/* Introduction Section */}
             <section className="space-y-4">
               <h2
                 className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
               >
-                About Syed Omer Ali
+                Introduction
               </h2>
               <div
                 className="dark:text-slate-300 font-instagram leading-relaxed space-y-3 text-base text-slate-600"
                 itemProp="description"
               >
                 <p>
-                  <strong>Syed Omer Ali</strong> is a Full Stack Developer based in Hyderabad, India,
-                  with expertise in building modern web applications using the MERN stack (MongoDB, Express.js, React, Node.js),
-                  TypeScript, and Next.js. He specializes in creating scalable, secure, and performant systems for startups and SaaS companies.
+                  Syed Omer Ali is an Indian full stack developer, computer science engineering student, 
+                  and aspiring DevOps engineer known for building modern web applications with a focus on 
+                  scalability, security, and real-world problem solving. He specializes in JavaScript and 
+                  TypeScript ecosystems, particularly the MERN stack and Next.js framework, while actively 
+                  exploring DevOps practices and artificial intelligence integration into software products.
                 </p>
                 <p>
-                  With a strong focus on DevSecOps practices, <strong>Syed Omer Ali</strong> helps teams implement
-                  CI/CD pipelines, cloud infrastructure on AWS, and security best practices. He combines full-stack
-                  development skills with system design expertise to deliver production-ready solutions.
-                </p>
-                <p>
-                  <strong>Syed Omer Ali</strong> also works on AI engineering projects, integrating intelligent
-                  features into web applications and exploring modern AI tooling to enhance product experiences.
+                  Currently pursuing a Bachelor of Engineering degree with a specialization in Artificial 
+                  Intelligence and Machine Learning at Methodist College of Engineering and Technology, he 
+                  focuses heavily on practical implementation by building projects, experimenting with new 
+                  technologies, and documenting his learning journey.
                 </p>
               </div>
             </section>
 
-            {/* Skills & Expertise */}
+            {/* Early Interest in Technology */}
             <section className="space-y-4">
               <h2
                 className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
               >
-                Skills & Expertise
+                Early Interest in Technology
+              </h2>
+              <div
+                className="dark:text-slate-300 font-instagram leading-relaxed space-y-3 text-base text-slate-600"
+              >
+                <p>
+                  Syed Omer Ali developed an interest in technology during his early academic years, 
+                  driven by curiosity about how software systems work behind the scenes. Rather than 
+                  limiting himself to theoretical knowledge, he began exploring programming through 
+                  hands-on experimentation, gradually moving from basic web development to full stack 
+                  engineering concepts.
+                </p>
+                <p>
+                  His approach to learning has always been execution-oriented — building applications, 
+                  deploying them, and improving them through iteration. This mindset helped him gain 
+                  confidence across both frontend and backend technologies while understanding how 
+                  systems function end to end.
+                </p>
+              </div>
+            </section>
+
+            {/* Education Section */}
+            <section className="space-y-4">
+              <h2
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
+              >
+                Education
+              </h2>
+              <div className="space-y-4">
+                <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
+                  <h3
+                    className="dark:text-white font-instagram font-semibold mb-2 text-base text-slate-900"
+                  >
+                    Bachelor of Engineering in Computer Science
+                  </h3>
+                  <p
+                    className="dark:text-slate-400 font-instagram text-slate-600 text-sm mb-2"
+                  >
+                    Specialization in Artificial Intelligence and Machine Learning
+                  </p>
+                  <p
+                    className="dark:text-slate-400 font-instagram text-slate-600 text-sm mb-2"
+                  >
+                    Methodist College of Engineering and Technology, India
+                  </p>
+                  <p
+                    className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
+                  >
+                    His education provides a foundation in programming, algorithms, and AI concepts, 
+                    which he complements with independent learning in modern web technologies, system 
+                    design, and cloud infrastructure.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
+                  <h3
+                    className="dark:text-white font-instagram font-semibold mb-2 text-base text-slate-900"
+                  >
+                    Continuous Learning
+                  </h3>
+                  <p
+                    className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
+                  >
+                    Beyond formal education, Syed Omer Ali continuously expands his knowledge through 
+                    hands-on projects, technical documentation, and staying current with emerging 
+                    technologies in web development, DevOps, and artificial intelligence.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Technical Skills */}
+            <section className="space-y-4">
+              <h2
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
+              >
+                Technical Skills
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
@@ -211,6 +285,332 @@ export default function SyedOmerAliContent() {
               </div>
             </section>
 
+            {/* Projects Section */}
+            <section className="space-y-4">
+              <h2
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
+              >
+                Projects and Work
+              </h2>
+              <div
+                className="dark:text-slate-300 font-instagram leading-relaxed space-y-3 text-base text-slate-600 mb-4"
+              >
+                <p>
+                  Throughout his learning journey, Syed Omer Ali has worked on multiple projects that 
+                  demonstrate his ability to design, build, and deploy full stack applications. His 
+                  projects often focus on solving practical problems, improving user experience, and 
+                  maintaining clean architecture.
+                </p>
+              </div>
+              <div className="space-y-3">
+                <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
+                  <p
+                    className="dark:text-slate-300 font-instagram text-slate-600 text-sm mb-3"
+                  >
+                    His work includes:
+                  </p>
+                  <ul className="space-y-2 dark:text-slate-300 font-instagram text-slate-600 text-sm">
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-500 mt-1">•</span>
+                      <span>Web applications built with modern frontend frameworks and backend APIs</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-500 mt-1">•</span>
+                      <span>Developer tools and automation platforms</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-500 mt-1">•</span>
+                      <span>SaaS-style applications and productivity systems</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-500 mt-1">•</span>
+                      <span>AI-assisted tools and integrations</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-500 mt-1">•</span>
+                      <span>Portfolio and personal branding platforms showcasing his technical growth</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
+                  <p
+                    className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
+                  >
+                    He emphasizes writing maintainable code, following modular architecture principles, 
+                    and ensuring performance optimization wherever possible.
+                  </p>
+                </div>
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline font-instagram font-medium text-sm"
+                >
+                  View all projects
+                </Link>
+              </div>
+            </section>
+
+            {/* Career Goals Section */}
+            <section className="space-y-4">
+              <h2
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
+              >
+                Career Goals and Vision
+              </h2>
+              <div
+                className="dark:text-slate-300 font-instagram leading-relaxed space-y-3 text-base text-slate-600"
+              >
+                <p>
+                  Syed Omer Ali's long-term goal is to become a highly skilled engineer capable of designing 
+                  scalable systems, building impactful products, and contributing to innovative technology solutions. 
+                  He is particularly interested in roles that combine full stack development, DevOps engineering, 
+                  and AI-driven product development.
+                </p>
+                <p>
+                  He also has entrepreneurial ambitions and hopes to launch technology products that solve 
+                  real-world problems, especially tools that improve productivity, automation, and accessibility.
+                </p>
+              </div>
+              <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
+                <p
+                  className="dark:text-slate-300 font-instagram text-slate-600 text-sm mb-3"
+                >
+                  His vision includes:
+                </p>
+                <ul className="space-y-2 dark:text-slate-300 font-instagram text-slate-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Building intelligent and scalable software products</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Contributing to open-source and developer communities</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Growing into technical leadership roles</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Creating solutions that leverage artificial intelligence for practical use cases</span>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            {/* DevOps and System Design */}
+            <section className="space-y-4">
+              <h2
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
+              >
+                DevOps and System Design
+              </h2>
+              <div
+                className="dark:text-slate-300 font-instagram leading-relaxed space-y-3 text-base text-slate-600"
+              >
+                <p>
+                  Beyond application development, Syed Omer Ali has a strong interest in DevOps engineering 
+                  and infrastructure automation. He believes that modern developers should understand the 
+                  complete lifecycle of software — from development to deployment and monitoring.
+                </p>
+              </div>
+              <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
+                <p
+                  className="dark:text-slate-300 font-instagram text-slate-600 text-sm mb-3"
+                >
+                  His DevOps learning includes:
+                </p>
+                <ul className="space-y-2 dark:text-slate-300 font-instagram text-slate-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Containerization using Docker</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>CI/CD pipeline implementation</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Secure deployment practices</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Cloud hosting and infrastructure concepts</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Performance monitoring and optimization</span>
+                  </li>
+                </ul>
+              </div>
+              <p
+                className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
+              >
+                This cross-domain knowledge allows him to approach projects with a broader engineering 
+                perspective rather than focusing solely on coding.
+              </p>
+            </section>
+
+            {/* Content Creation and Knowledge Sharing */}
+            <section className="space-y-4">
+              <h2
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
+              >
+                Content Creation and Knowledge Sharing
+              </h2>
+              <div
+                className="dark:text-slate-300 font-instagram leading-relaxed space-y-3 text-base text-slate-600"
+              >
+                <p>
+                  Syed Omer Ali actively shares his learning journey through blogs, technical articles, 
+                  and online platforms. He believes that teaching and documenting concepts helps reinforce 
+                  understanding while contributing to the developer community.
+                </p>
+              </div>
+              <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
+                <p
+                  className="dark:text-slate-300 font-instagram text-slate-600 text-sm mb-3"
+                >
+                  His content typically focuses on:
+                </p>
+                <ul className="space-y-2 dark:text-slate-300 font-instagram text-slate-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Web development tutorials</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Backend architecture insights</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>DevOps learning experiences</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Project breakdowns and technical explanations</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Career growth strategies for developers</span>
+                  </li>
+                </ul>
+              </div>
+              <p
+                className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
+              >
+                By sharing knowledge publicly, he aims to help other aspiring engineers navigate their 
+                own learning paths more effectively.
+              </p>
+            </section>
+
+            {/* Personal Philosophy */}
+            <section className="space-y-4">
+              <h2
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
+              >
+                Personal Philosophy
+              </h2>
+              <div
+                className="dark:text-slate-300 font-instagram leading-relaxed space-y-3 text-base text-slate-600"
+              >
+                <p>
+                  One of the defining characteristics of Syed Omer Ali is his growth mindset and persistence. 
+                  He views challenges as opportunities to learn and consistently pushes himself beyond his 
+                  comfort zone to acquire new skills.
+                </p>
+              </div>
+              <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
+                <p
+                  className="dark:text-slate-300 font-instagram text-slate-600 text-sm mb-3"
+                >
+                  He believes that success in technology comes from:
+                </p>
+                <ul className="space-y-2 dark:text-slate-300 font-instagram text-slate-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Consistent practice</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Continuous learning</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Building real projects</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Sharing knowledge</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Staying adaptable to emerging technologies</span>
+                  </li>
+                </ul>
+              </div>
+              <p
+                className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
+              >
+                His journey reflects a commitment to improvement, discipline, and long-term progress rather 
+                than short-term achievements.
+              </p>
+            </section>
+
+            {/* Contact Section */}
+            <section className="space-y-4">
+              <h2
+                className="dark:text-white font-instagram font-semibold text-slate-900 text-xl"
+              >
+                Contact
+              </h2>
+              <div
+                className="dark:text-slate-300 font-instagram leading-relaxed space-y-3 text-base text-slate-600"
+              >
+                <p>
+                  Got a project in mind? Want to chat about tech? Or just need some advice on 
+                  your DevSecOps setup? I'm always happy to connect with fellow developers, 
+                  potential clients, or anyone building something interesting.
+                </p>
+                <p>
+                  The best ways to reach me are through the contact form below or by booking 
+                  a quick intro call. I typically respond within 24 hours (sometimes faster if 
+                  I'm glued to my laptop, which, let's be honest, is most of the time).
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <Link
+                  href="/intro-call"
+                  className="group rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
+                >
+                  <h3
+                    className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
+                  >
+                    📅 Book an Intro Call
+                  </h3>
+                  <p
+                    className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
+                  >
+                    Let's have a quick chat about your project
+                  </p>
+                </Link>
+                <Link
+                  href="/send-email"
+                  className="group rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
+                >
+                  <h3
+                    className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
+                  >
+                    ✉️ Send an Email
+                  </h3>
+                  <p
+                    className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
+                  >
+                    Prefer email? Drop me a message
+                  </p>
+                </Link>
+              </div>
+            </section>
+
             {/* FAQ Section */}
             <section className="space-y-4">
               <h2
@@ -250,43 +650,14 @@ export default function SyedOmerAliContent() {
                   <h3
                     className="dark:text-white font-instagram font-semibold mb-2 text-base text-slate-900"
                   >
-                    How can I contact Syed Omer Ali?
+                    What technologies does Syed Omer Ali work with?
                   </h3>
                   <p
                     className="dark:text-slate-300 font-instagram text-slate-600 text-sm"
                   >
-                    You can contact Syed Omer Ali through the{" "}
-                    <Link href="/send-email" className="text-blue-600 dark:text-blue-400 hover:underline">
-                      contact form
-                    </Link>{" "}
-                    or book an{" "}
-                    <Link href="/intro-call" className="text-blue-600 dark:text-blue-400 hover:underline">
-                      intro call
-                    </Link>. You can also connect on{" "}
-                    <a
-                      href="https://www.linkedin.com/in/syedomer17/"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      LinkedIn
-                    </a>,{" "}
-                    <a
-                      href="https://github.com/syedomer17"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      GitHub
-                    </a>, or{" "}
-                    <a
-                      href="https://x.com/SyedOmer17Ali"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      X/Twitter
-                    </a>.
+                    On the frontend: React, Next.js, TypeScript, Tailwind CSS. Backend: Node.js, Express.js, 
+                    MongoDB, PostgreSQL, MySQL. DevOps: AWS, Docker, GitHub Actions, CI/CD pipelines. 
+                    Plus system design, security best practices, and AI integration.
                   </p>
                 </div>
                 <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5">
@@ -313,33 +684,18 @@ export default function SyedOmerAliContent() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <Link
-                  href="/projects"
-                  className="group rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
-                >
-                  <h3
-                    className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
-                  >
-                    Projects →
-                  </h3>
-                  <p
-                    className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
-                  >
-                    View projects built by Syed Omer Ali
-                  </p>
-                </Link>
-                <Link
                   href="/blogs"
                   className="group rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
                 >
                   <h3
                     className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
                   >
-                    Blog Posts →
+                    Blog Posts
                   </h3>
                   <p
                     className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
                   >
-                    Read technical articles by Syed Omer Ali
+                    Read technical articles and tutorials
                   </p>
                 </Link>
                 <Link
@@ -349,12 +705,27 @@ export default function SyedOmerAliContent() {
                   <h3
                     className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
                   >
-                    Services →
+                    Services
                   </h3>
                   <p
                     className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
                   >
-                    Services offered by Syed Omer Ali
+                    See what services I offer
+                  </p>
+                </Link>
+                <Link
+                  href="/case-studies"
+                  className="group rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-5 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
+                >
+                  <h3
+                    className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
+                  >
+                    Case Studies
+                  </h3>
+                  <p
+                    className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
+                  >
+                    Detailed project breakdowns
                   </p>
                 </Link>
                 <Link
@@ -364,44 +735,13 @@ export default function SyedOmerAliContent() {
                   <h3
                     className="dark:group-hover:text-blue-400 dark:text-white font-instagram font-semibold group-hover:text-blue-600 mb-1 text-base text-slate-900"
                   >
-                    More About Me →
+                    More About Me
                   </h3>
                   <p
                     className="dark:text-slate-400 font-instagram text-slate-600 text-sm"
                   >
-                    Learn more about Syed Omer Ali
+                    Other ways to learn about my work
                   </p>
-                </Link>
-              </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className="rounded-xl border-2 border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/10 p-6">
-              <h2
-                className="dark:text-white font-instagram font-semibold mb-2 text-lg text-slate-900"
-              >
-                Work with Syed Omer Ali
-              </h2>
-              <p
-                className="dark:text-slate-300 font-instagram mb-4 text-slate-600 text-sm"
-              >
-                Interested in building scalable web applications or need help with DevSecOps?
-                Let's discuss your project.
-              </p>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                <ButtonCreativeTop href="/intro-call" icon={<CalendarDays className="w-4 h-4" />}>
-                  <span className="font-instagram font-medium">
-                    Book an intro call
-                  </span>
-                </ButtonCreativeTop>
-                <Link
-                  href="/send-email"
-                  className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-[9px] text-sm font-medium bg-white dark:bg-[#2E2E2E] text-slate-900 dark:text-[#D4D4D4] border border-slate-300 dark:border-transparent"
-                >
-                  <Mail className="w-4 h-4" />
-                  <span className="font-instagram font-medium">
-                    Send an email
-                  </span>
                 </Link>
               </div>
             </section>
