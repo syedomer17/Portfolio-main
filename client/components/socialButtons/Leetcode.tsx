@@ -62,6 +62,11 @@ export default function LeetcodeHoverCard() {
                                 </div>
                             </div>
 
+                            {/* Bio */}
+                            <p className="text-sm text-slate-700 dark:text-slate-200 mb-3 leading-relaxed">
+                                Full Stack Developer • Problem Solving • Algorithms Learner
+                            </p>
+
                             {/* Problem Stats */}
                             <div className="bg-slate-100 dark:bg-[#2A2A2A] rounded-lg p-3 mb-3">
                                 <div className="grid grid-cols-3 gap-4">

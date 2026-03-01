@@ -65,7 +65,7 @@ export default function MediumHoverCard() {
 
                             {/* Bio */}
                             <p className="text-sm text-slate-700 dark:text-slate-200 mb-3 leading-relaxed">
-                                Writing about web development, programming, and tech.
+                               Full Stack Developer focused on MERN, Next.js, and TypeScript. Interested in DevOps, system design, and AI-powered applications. I write about projects, backend architecture, and modern web development.
                             </p>
 
                             {/* Stats */}

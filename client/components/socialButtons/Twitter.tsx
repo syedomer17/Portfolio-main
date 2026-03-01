@@ -79,9 +79,20 @@ export default function TwitterHoverCard() {
                             </div>
 
                             {/* Bio */}
-                            <p className="text-sm text-slate-700 dark:text-slate-200 mb-3 leading-relaxed">
-                                Software Engineer. Building cool stuff on the web
-                            </p>
+                            <div className="text-sm text-slate-700 dark:text-slate-200 mb-3 leading-relaxed">
+                              <p>Full Stack Developer • MERN & Next.js • DevOps Learner • AI Apps • Building projects and sharing my journey</p>
+                              <p className="mt-2">
+                                🌐{' '}
+                                <a
+                                  href="https://www.syedomer.me"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                                >
+                                  syedomer.me
+                                </a>
+                              </p>
+                            </div>
 
                             {/* Joined Date */}
                             <div className="flex items-center gap-1.5 mb-3">

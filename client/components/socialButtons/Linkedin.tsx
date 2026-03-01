@@ -67,7 +67,7 @@ export default function LinkedinHoverCard() {
                                     Syed Omer Ali
                                 </h3>
                                 <p className="text-sm text-slate-600 dark:text-slate-300 mb-1 leading-relaxed">
-                                    Software Engineer. Building cool stuff on the web
+                                    Full Stack Developer (MERN, Next.js, TypeScript) | DevOps & AI Enthusiast | Building Scalable Web Applications
                                 </p>
                             </div>
 

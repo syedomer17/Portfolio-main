@@ -63,7 +63,7 @@ export default function GithubHoverCard() {
 
                         {/* Bio */}
                         <p className="text-sm text-slate-700 dark:text-slate-200 mb-3 leading-relaxed">
-                            If I can imagine it, I can build it.
+                            Full Stack Developer • MERN • Next.js • TypeScript • DevOps Learner • AI Enthusiast
                         </p>
 
                         {/* Location */}
