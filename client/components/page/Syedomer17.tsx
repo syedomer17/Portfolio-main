@@ -98,6 +98,7 @@ function ContributionYearGraph({
 }) {
   const [tooltip, setTooltip] = useState<TooltipState>(null);
   const graphRef = useRef<HTMLDivElement | null>(null);
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
 
   const maxCount = Math.max(
     1,
@@ -131,6 +132,37 @@ function ContributionYearGraph({
   };
 
   const handleMouseLeave = () => setTooltip(null);
+
+  // Adjust tooltip position to keep it within viewport bounds
+  useEffect(() => {
+    if (!tooltip || !tooltipRef.current || !graphRef.current) return;
+
+    const tooltipElement = tooltipRef.current;
+    const tooltipRect = tooltipElement.getBoundingClientRect();
+    const graphRect = graphRef.current.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+
+    // Calculate the default centered position
+    let translateX = -50;
+    
+    // Check if tooltip would overflow on the left
+    const tooltipLeft = tooltip.x + graphRect.left - tooltipRect.width / 2;
+    if (tooltipLeft < 8) {
+      // Adjust to keep 8px padding from left edge
+      const offset = 8 - tooltipLeft;
+      translateX = -50 + (offset / tooltipRect.width * 100);
+    }
+    
+    // Check if tooltip would overflow on the right
+    const tooltipRight = tooltip.x + graphRect.left + tooltipRect.width / 2;
+    if (tooltipRight > viewportWidth - 8) {
+      // Adjust to keep 8px padding from right edge
+      const overflow = tooltipRight - (viewportWidth - 8);
+      translateX = -50 - (overflow / tooltipRect.width * 100);
+    }
+
+    tooltipElement.style.transform = `translateX(${translateX}%) translateY(-100%)`;
+  }, [tooltip]);
 
   return (
     <div className="space-y-3">
@@ -178,6 +210,7 @@ function ContributionYearGraph({
 
         {tooltip && (
           <div
+            ref={tooltipRef}
             className="absolute z-50 px-2 py-1 text-xs text-white bg-gray-900 border border-gray-700 rounded shadow-lg pointer-events-none whitespace-nowrap"
             style={{
               left: `${tooltip.x}px`,

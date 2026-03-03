@@ -41,6 +41,7 @@ export default function HeroContributions() {
   const [loading, setLoading] = useState(true);
   const [hoveredDay, setHoveredDay] = useState<{ x: number; y: number; content: string } | null>(null);
   const graphRef = useRef<HTMLDivElement | null>(null);
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
 
   const formatDateForTooltip = (dateStr: string) =>
     new Date(dateStr).toLocaleDateString("en-US", {
@@ -66,6 +67,37 @@ export default function HeroContributions() {
   };
 
   const handleMouseLeave = () => setHoveredDay(null);
+
+  // Adjust tooltip position to keep it within viewport bounds
+  useEffect(() => {
+    if (!hoveredDay || !tooltipRef.current || !graphRef.current) return;
+
+    const tooltip = tooltipRef.current;
+    const tooltipRect = tooltip.getBoundingClientRect();
+    const graphRect = graphRef.current.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+
+    // Calculate the default centered position
+    let translateX = -50;
+    
+    // Check if tooltip would overflow on the left
+    const tooltipLeft = hoveredDay.x + graphRect.left - tooltipRect.width / 2;
+    if (tooltipLeft < 8) {
+      // Adjust to keep 8px padding from left edge
+      const offset = 8 - tooltipLeft;
+      translateX = -50 + (offset / tooltipRect.width * 100);
+    }
+    
+    // Check if tooltip would overflow on the right
+    const tooltipRight = hoveredDay.x + graphRect.left + tooltipRect.width / 2;
+    if (tooltipRight > viewportWidth - 8) {
+      // Adjust to keep 8px padding from right edge
+      const overflow = tooltipRight - (viewportWidth - 8);
+      translateX = -50 - (overflow / tooltipRect.width * 100);
+    }
+
+    tooltip.style.transform = `translateX(${translateX}%) translateY(-100%)`;
+  }, [hoveredDay]);
 
   const getMonthLabels = () => {
     if (!contributionData || !contributionData.weeks.length) return null;
@@ -254,6 +286,7 @@ export default function HeroContributions() {
 
           {hoveredDay && (
             <div
+              ref={tooltipRef}
               className="absolute z-50 px-2 py-1 text-xs text-white bg-gray-900 border border-gray-700 rounded shadow-lg pointer-events-none whitespace-nowrap"
               style={{
                 left: `${hoveredDay.x}px`,
