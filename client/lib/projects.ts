@@ -35,7 +35,7 @@ const slugify = (value: string) =>
 const projectInputs: ProjectInput[] = [
   {
     title: "AI Powered Resume Maker",
-    slug: "ai-resume-analyzer",
+    slug: "ai-powered-resume-maker",
     shortDescription:
       "AI resume analysis platform that identifies skill gaps and suggests improvements using NLP scoring.",
     fullDescription:
