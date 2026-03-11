@@ -30,7 +30,9 @@ import {
   SiDigitalocean,
   SiGooglecloud,
   SiNestjs,
-  SiFastify
+  SiFastify,
+  SiGin,
+  SiGo,
 } from "react-icons/si";
 
 const skills = [
@@ -48,6 +50,8 @@ const skills = [
   { name: "JavaScript", icon: SiJavascript },
   { name: "Python", icon: SiPython },
   { name: "C/C++", icon: SiCplusplus },
+  { name: "Golang", icon: SiGo },
+  { name: "Gin", icon: SiGin },
   
   // Databases
   { name: "SQL", icon: SiPostgresql },
