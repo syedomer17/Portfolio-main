@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { ArrowLeft, Mail, CalendarDays } from "lucide-react";
 import ThemeToggle from "@/components/themeToggle/ThemeToggle";
 import ButtonCreativeTop from "@/components/ui/creative/Button";
+import ResumeCTA from "@/components/ui/ResumeCTA";
 
 const GithubHoverCard = dynamic(() => import("@/components/socialButtons/Github"), { ssr: false });
 const TwitterHoverCard = dynamic(() => import("@/components/socialButtons/Twitter"), { ssr: false });
@@ -80,6 +81,8 @@ export default function SyedOmerAliContent() {
                       <span itemProp="addressLocality">Hyderabad</span>, <span itemProp="addressCountry">India</span> 🇮🇳
                     </p>
                   </div>
+
+                  <ResumeCTA source="hero" variant="primary" className="mt-1" />
                 </div>
               </div>
 
@@ -124,6 +127,15 @@ export default function SyedOmerAliContent() {
                   focuses heavily on practical implementation by building projects, experimenting with new 
                   technologies, and documenting his learning journey.
                 </p>
+              </div>
+            </section>
+
+            <section className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-4 sm:p-5">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <p className="text-sm text-slate-600 dark:text-slate-300 font-instagram">
+                  Want a quick snapshot of my experience, skills, and projects?
+                </p>
+                <ResumeCTA source="intro" variant="secondary" />
               </div>
             </section>
 

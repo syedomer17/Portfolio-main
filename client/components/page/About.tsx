@@ -6,6 +6,7 @@ import Link from "next/link";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import ButtonCreativeTop from "../ui/creative/Button";
 import Breadcrumb from "../ui/Breadcrumb";
+import { FileText } from "lucide-react";
 
 export default function AboutPage() {
   const router = useRouter();
@@ -51,6 +52,16 @@ export default function AboutPage() {
               I help teams build scalable web applications, API-driven services, and cloud-first infrastructure, while designing systems that stay performant and maintainable as they grow.
             </p>
           </section>
+
+          <div className="mt-4">
+            <Link
+              href="/SyedOmerAli.pdf  "
+              className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-[9px] text-sm font-medium bg-slate-700 dark:bg-[#C7C7C7] text-white dark:text-[#0E0D09]"
+            >
+              <FileText className="w-4 h-4" />
+              <span className="font-medium font-instagram">View Resume</span>
+            </Link>
+          </div>
 
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#0E0D09] p-4">
