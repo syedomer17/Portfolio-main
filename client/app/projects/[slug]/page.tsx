@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, CheckCircle2, Calendar, Github } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Calendar } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 import { getProjectBySlug, projects } from "@/lib/projects";
 import PageTopBar from "@/components/ui/PageTopBar";
 
@@ -229,7 +230,7 @@ export default async function ProjectDetail({
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-instagram font-medium px-4 py-2 rounded-lg text-sm hover:bg-slate-700 dark:hover:bg-slate-100 transition-colors"
             >
-              <Github className="w-4 h-4" />
+              <SiGithub className="w-4 h-4" />
               View on GitHub
             </a>
             {project.liveLink && (

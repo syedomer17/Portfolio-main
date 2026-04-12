@@ -14,7 +14,6 @@ export default function DatabuddyLoader() {
         trackAttributes={true}
         trackOutgoingLinks={true}
         trackInteractions={true}
-        trackScrollDepth={true}
         trackWebVitals={true}
       />
     );

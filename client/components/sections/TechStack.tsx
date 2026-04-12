@@ -26,7 +26,6 @@ import {
   SiJenkins,
   SiGithubactions,
   SiTerraform,
-  SiAmazonwebservices,
   SiDigitalocean,
   SiGooglecloud,
   SiNestjs,
@@ -34,6 +33,7 @@ import {
   SiGin,
   SiGo,
 } from "react-icons/si";
+import { FaAws } from "react-icons/fa6";
 
 const skills = [
   // Frameworks & libraries
@@ -74,7 +74,7 @@ const skills = [
   { name: "Jenkins", icon: SiJenkins },
   { name: "GitHub Actions", icon: SiGithubactions },
   { name: "Terraform", icon: SiTerraform },
-  { name: "AWS", icon: SiAmazonwebservices },
+  { name: "AWS", icon: FaAws },
   { name: "DigitalOcean", icon: SiDigitalocean },
   { name: "GCP", icon: SiGooglecloud },
 ];
