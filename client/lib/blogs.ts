@@ -133,19 +133,19 @@ const blogInputs: BlogInput[] = [
     updatedAt: "2024-10-08",
     tags: ["Networking", "Internet", "Web Fundamentals"],
   },
-  {
-    title: "Understanding Objects and Arrays in JavaScript",
-    description:
-      "A practical refresher on core JavaScript data structures with common patterns and pitfalls.",
-    content: [
-      "This post covers how objects and arrays are represented in JavaScript, including common patterns for access and mutation.",
-      "It highlights iteration methods, reference behavior, and techniques to avoid unintended side effects in state updates.",
-      "Use these fundamentals to write cleaner data transformations and reduce bugs in application logic.",
-    ],
-    publishedAt: "2025-03-01",
-    updatedAt: "2025-03-01",
-    tags: ["JavaScript", "Basics", "Programming"],
-  },
+  // {
+  //   title: "Understanding Objects and Arrays in JavaScript",
+  //   description:
+  //     "A practical refresher on core JavaScript data structures with common patterns and pitfalls.",
+  //   content: [
+  //     "This post covers how objects and arrays are represented in JavaScript, including common patterns for access and mutation.",
+  //     "It highlights iteration methods, reference behavior, and techniques to avoid unintended side effects in state updates.",
+  //     "Use these fundamentals to write cleaner data transformations and reduce bugs in application logic.",
+  //   ],
+  //   publishedAt: "2025-03-01",
+  //   updatedAt: "2025-03-01",
+  //   tags: ["JavaScript", "Basics", "Programming"],
+  // },
 ];
 
 const buildBlogs = (inputs: BlogInput[]): Blog[] => {
