@@ -121,7 +121,7 @@ importers:
         specifier: ^17.5.0
         version: 17.5.0
       minimatch:
-        specifier: ^10.2.5
+        specifier: '>=10.2.1'
         version: 10.2.5
       shadcn:
         specifier: ^4.2.0
