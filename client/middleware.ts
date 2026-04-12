@@ -110,7 +110,9 @@ export function middleware(request: NextRequest) {
     // ---------------------------------------------------------------------------
     // Frame sources for iframes.
     // ---------------------------------------------------------------------------
-    const frameHosts: string[] = [];
+    const frameHosts: string[] = [
+        "https://www.googletagmanager.com",      // GTM noscript iframe
+    ];
 
     if (env !== "production") {
         frameHosts.push("https://vercel.live");
