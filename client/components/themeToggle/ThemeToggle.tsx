@@ -30,7 +30,7 @@ export default function ThemeToggle() {
           opacity: isDark ? 1 : 0,
           rotate: isDark ? 0 : 180,
         }}
-        transition={{ duration: 0.7, ease: "easeInOut" }}
+        transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
         className="absolute"
       >
         <Moon className="text-[#D4D4D4]" style={{ width: '15.9862px', height: '15.9862px' }} />
@@ -43,7 +43,7 @@ export default function ThemeToggle() {
           opacity: isDark ? 0 : 1,
           rotate: isDark ? -180 : 0,
         }}
-        transition={{ duration: 0.7, ease: "easeInOut" }}
+        transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
         className="absolute"
       >
         <Sun className="w-5 h-5 text-black" />

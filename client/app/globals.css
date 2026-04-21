@@ -137,12 +137,18 @@
   --sidebar-ring: 147 51 234;
 }
 
-/* Smooth transitions for theme switching */
-* {
-  /* Premium smooth transition */
-  transition: background-color 0.7s cubic-bezier(0.23, 1, 0.32, 1), 
-              color 0.7s cubic-bezier(0.23, 1, 0.32, 1), 
-              border-color 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+/* Smooth theme switch — transition is applied ONLY while `.theme-transitioning`
+   is on <html>, added by ThemeContext for ~350ms around the class toggle.
+   Scoping it this way keeps hover/focus/state changes elsewhere snappy. */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              fill 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke 300ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 @layer base {
