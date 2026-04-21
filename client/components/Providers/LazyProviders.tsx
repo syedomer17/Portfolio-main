@@ -45,7 +45,31 @@ export function LazyProvidersLoader({
       <SmoothScroll isEnabled={isReady}>
         {children}
       </SmoothScroll>
-      {isReady && <Toaster position="top-right" />}
+      {isReady && (
+        <Toaster
+          position="top-right"
+          gutter={10}
+          containerStyle={{ top: 20, right: 20 }}
+          toastOptions={{
+            duration: 4000,
+            className: "modern-toast",
+            success: {
+              className: "modern-toast toast-success",
+              iconTheme: { primary: "#34d399", secondary: "#ffffff" },
+              ariaProps: { role: "status", "aria-live": "polite" },
+            },
+            error: {
+              className: "modern-toast toast-error",
+              iconTheme: { primary: "#ef4444", secondary: "#ffffff" },
+              ariaProps: { role: "alert", "aria-live": "assertive" },
+            },
+            loading: {
+              className: "modern-toast toast-loading",
+              iconTheme: { primary: "#f6c400", secondary: "#ffffff" },
+            },
+          }}
+        />
+      )}
     </>
   );
 }

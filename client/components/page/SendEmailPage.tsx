@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { CalendarCheck, PenLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/themeToggle/ThemeToggle";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 interface FormState {
   name: string;
@@ -110,7 +110,6 @@ export default function SendEmailPage() {
 
   return (
     <main className="min-h-screen bg-white text-slate-900 dark:bg-[#0B0D10] dark:text-slate-50">
-      <Toaster position="bottom-right" />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute -top-32 left-1/2 h-72 w-[48rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,transparent,transparent)]" />
         <div className="pointer-events-none absolute -bottom-40 right-0 h-72 w-[40rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(15,23,42,0.12),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(148,163,184,0.08),transparent_60%)]" />

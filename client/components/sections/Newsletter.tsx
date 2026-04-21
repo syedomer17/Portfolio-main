@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, AlertCircle, Quote } from "lucide-react";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { ConfettiButton } from "@/components/ui/confetti";
 
 export default function Newsletter() {
@@ -51,8 +51,6 @@ export default function Newsletter() {
     return (
         <section id="newsletter" className="container mx-auto px-4 sm:px-6 pb-20 pt-4">
             <div className="max-w-2xl mx-auto">
-                <Toaster position="bottom-right" />
-
                 {/* Header */}
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}

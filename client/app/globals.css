@@ -323,3 +323,58 @@ html {
 .dark .hover-glitch:hover {
   text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
 }
+
+/* Modern Toast (react-hot-toast) — theme-aware, glassy, top-right */
+.modern-toast {
+  background: rgba(255, 255, 255, 0.82) !important;
+  color: rgb(15, 23, 42) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-radius: 14px !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  letter-spacing: -0.01em;
+  max-width: 380px !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 24px -6px rgba(15, 23, 42, 0.12),
+    0 20px 40px -12px rgba(15, 23, 42, 0.14) !important;
+}
+
+.dark .modern-toast {
+  background: rgba(17, 22, 36, 0.78) !important;
+  color: rgb(248, 250, 252) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 8px 24px -6px rgba(0, 0, 0, 0.45),
+    0 20px 40px -12px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Accent stripe per toast type */
+.modern-toast.toast-success {
+  border-left: 3px solid #34d399 !important;
+}
+.modern-toast.toast-error {
+  border-left: 3px solid #ef4444 !important;
+}
+.modern-toast.toast-loading {
+  border-left: 3px solid #f6c400 !important;
+}
+
+/* Entrance/exit polish — soft lift rather than harsh slide */
+@keyframes toast-in {
+  0%   { opacity: 0; transform: translate3d(0, -8px, 0) scale(0.96); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes toast-out {
+  0%   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  100% { opacity: 0; transform: translate3d(0, -8px, 0) scale(0.96); }
+}
+.modern-toast {
+  animation-timing-function: cubic-bezier(0.21, 1.02, 0.73, 1) !important;
+}
