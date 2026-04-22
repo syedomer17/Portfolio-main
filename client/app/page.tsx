@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import HomeSections from "@/components/page/HomeSections";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -62,6 +63,7 @@ export default function Home() {
     <main>
       <Hero />
       <HomeSections />
+      <ScrollToTop />
     </main>
   );
 }
