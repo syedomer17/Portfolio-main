@@ -6,6 +6,8 @@ import { ArrowUpRight, CheckCircle2, Calendar } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { getProjectBySlug, projects } from "@/lib/projects";
 import PageTopBar from "@/components/ui/PageTopBar";
+import RelatedContent from "@/components/RelatedContent";
+import { getRelatedProjects, getCaseStudyForProject } from "@/lib/related";
 
 const siteName = "Syed Omer Ali";
 const siteUrl = "https://www.syedomer.me";
@@ -251,6 +253,28 @@ export default async function ProjectDetail({
               All Projects
             </Link>
           </div>
+
+          {(() => {
+            const study = getCaseStudyForProject(project.slug);
+            if (!study) return null;
+            return (
+              <RelatedContent
+                eyebrow="Deep dive"
+                heading="Read the case study"
+                items={[study]}
+                hubHref="/case-studies"
+                hubLabel="See all case studies"
+              />
+            );
+          })()}
+
+          <RelatedContent
+            eyebrow="More work"
+            heading="Related projects"
+            items={getRelatedProjects(project.slug, project.techStack ?? [], 3)}
+            hubHref="/projects"
+            hubLabel="Browse all projects"
+          />
         </div>
       </div>
     </main>

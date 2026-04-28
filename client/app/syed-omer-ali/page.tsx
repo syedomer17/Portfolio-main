@@ -133,7 +133,9 @@ export default function SyedOmerAliPage() {
         "https://github.com/syedomer17",
         "https://www.linkedin.com/in/syedomer17/",
         "https://x.com/SyedOmer17Ali",
-        "https://medium.com/@syedomerali2006"
+        "https://medium.com/@syedomerali2006",
+        "https://leetcode.com/syedomerali_200",
+        "https://www.instagram.com/syedomer.me/"
       ]
     }
   };

@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { instagramSans } from "@/lib/fonts";
 import ThemeProviderClient from "@/components/Providers/ThemeProviderClient";
 import { LazyProvidersLoader, LazyAnalyticsProviders } from "@/components/Providers/LazyProviders";
+import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -270,7 +271,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     "https://github.com/syedomer17",
                     "https://www.linkedin.com/in/syedomer17/",
                     "https://x.com/SyedOmer17Ali",
-                    "https://medium.com/@syedomerali2006"
+                    "https://medium.com/@syedomerali2006",
+                    "https://leetcode.com/syedomerali_200",
+                    "https://www.instagram.com/syedomer.me/"
                   ]
                 },
                 {
@@ -296,6 +299,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           {/* Lazy-loaded features that don't block initial render */}
           <LazyProvidersLoader>
             <main>{children}</main>
+            {/* <SiteFooter /> */}
           </LazyProvidersLoader>
         </ThemeProviderClient>
 

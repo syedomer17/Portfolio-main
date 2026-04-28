@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { blogs, getBlogBySlug } from "@/lib/blogs";
+import RelatedContent from "@/components/RelatedContent";
+import { getRelatedBlogs } from "@/lib/related";
 
 const siteName = "Syed Omer Ali";
 const siteUrl = "https://www.syedomer.me";
@@ -223,6 +225,14 @@ export default async function BlogDetail({
                 </div>
               </section>
             ) : null}
+
+            <RelatedContent
+              eyebrow="Keep reading"
+              heading="More from the developer blog"
+              items={getRelatedBlogs(blog.slug, blog.tags ?? [], 3)}
+              hubHref="/blogs"
+              hubLabel="Browse all posts"
+            />
           </div>
         </div>
       </main>

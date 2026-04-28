@@ -3,6 +3,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudyBySlug } from "@/lib/caseStudies";
 import PageTopBar from "@/components/ui/PageTopBar";
+import RelatedContent from "@/components/RelatedContent";
+import {
+  getRelatedCaseStudies,
+  getProjectForCaseStudy,
+} from "@/lib/related";
 
 const siteName = "Syed Omer Ali";
 const siteUrl = "https://www.syedomer.me";
@@ -220,6 +225,30 @@ export default async function CaseStudySlugPage({
             </Link>
           </div>
         </section>
+
+        <div className="max-w-2xl mx-auto">
+          {(() => {
+            const project = getProjectForCaseStudy(study.projectSlug);
+            if (!project) return null;
+            return (
+              <RelatedContent
+                eyebrow="The build"
+                heading="See the project"
+                items={[project]}
+                hubHref="/projects"
+                hubLabel="Browse all projects"
+              />
+            );
+          })()}
+
+          <RelatedContent
+            eyebrow="More wins"
+            heading="Related case studies"
+            items={getRelatedCaseStudies(study.slug, study.techStack ?? [], 3)}
+            hubHref="/case-studies"
+            hubLabel="Browse all case studies"
+          />
+        </div>
       </div>
     </main>
   );
