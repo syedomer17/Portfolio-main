@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { useRouter } from "next/navigation";
 import { ChevronDown, ChevronLeft, ChevronRight, Clock, Globe, MapPin, Check, Sun, Moon, Calendar, ArrowLeft, UserPlus, X } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
@@ -84,14 +84,123 @@ export function IntroCallPage() {
         return formatTime(endH, endM, is24);
     };
 
-    const timezones = [
-        { label: "Asia/Ashgabat", value: "Asia/Ashgabat" }, // Simplified labels for better fit
-        { label: "Asia/Samarkand", value: "Asia/Samarkand" },
-        { label: "Asia/Tashkent", value: "Asia/Tashkent" },
-        { label: "Asia/Calcutta", value: "Asia/Calcutta" }, // Changed to Calcutta to match image
+    type TimezoneOption = { value: string; label: string; offset: string; offsetMinutes: number };
+
+    const FALLBACK_TIMEZONES = [
+        'UTC', 'Africa/Cairo', 'Africa/Johannesburg', 'Africa/Lagos',
+        'America/Anchorage', 'America/Bogota', 'America/Buenos_Aires',
+        'America/Chicago', 'America/Denver', 'America/Halifax', 'America/Lima',
+        'America/Los_Angeles', 'America/Mexico_City', 'America/New_York',
+        'America/Phoenix', 'America/Sao_Paulo', 'America/Toronto',
+        'Asia/Almaty', 'Asia/Baghdad', 'Asia/Bangkok', 'Asia/Calcutta',
+        'Asia/Colombo', 'Asia/Dhaka', 'Asia/Dubai', 'Asia/Hong_Kong',
+        'Asia/Istanbul', 'Asia/Jakarta', 'Asia/Jerusalem', 'Asia/Karachi',
+        'Asia/Manila', 'Asia/Riyadh', 'Asia/Seoul', 'Asia/Shanghai',
+        'Asia/Singapore', 'Asia/Taipei', 'Asia/Tashkent', 'Asia/Tehran',
+        'Asia/Tokyo', 'Atlantic/Azores',
+        'Australia/Adelaide', 'Australia/Brisbane', 'Australia/Perth',
+        'Australia/Sydney', 'Europe/Amsterdam', 'Europe/Athens',
+        'Europe/Berlin', 'Europe/Brussels', 'Europe/Bucharest',
+        'Europe/Dublin', 'Europe/Helsinki', 'Europe/Kyiv', 'Europe/Lisbon',
+        'Europe/London', 'Europe/Madrid', 'Europe/Moscow', 'Europe/Paris',
+        'Europe/Prague', 'Europe/Rome', 'Europe/Stockholm', 'Europe/Warsaw',
+        'Europe/Zurich', 'Pacific/Auckland', 'Pacific/Fiji', 'Pacific/Honolulu',
     ];
 
-    const [selectedTimezone, setSelectedTimezone] = useState(timezones[3]);
+    const parseOffsetMinutes = (offset: string): number => {
+        const match = offset.match(/GMT([+-])(\d{1,2}):?(\d{2})?/);
+        if (!match) return 0;
+        const sign = match[1] === '-' ? -1 : 1;
+        const hours = parseInt(match[2], 10);
+        const minutes = match[3] ? parseInt(match[3], 10) : 0;
+        return sign * (hours * 60 + minutes);
+    };
+
+    const timezones = useMemo<TimezoneOption[]>(() => {
+        const supportedValuesOf = (Intl as unknown as {
+            supportedValuesOf?: (key: 'timeZone') => string[];
+        }).supportedValuesOf;
+        const list = supportedValuesOf?.('timeZone') ?? FALLBACK_TIMEZONES;
+        const now = new Date();
+        const seen = new Set<string>();
+        return list
+            .filter((tz) => {
+                if (seen.has(tz)) return false;
+                seen.add(tz);
+                return true;
+            })
+            .map((tz): TimezoneOption => {
+                let offset = 'GMT';
+                try {
+                    const parts = new Intl.DateTimeFormat('en-US', {
+                        timeZone: tz,
+                        timeZoneName: 'longOffset',
+                    }).formatToParts(now);
+                    const tzPart = parts.find((p) => p.type === 'timeZoneName');
+                    if (tzPart?.value) offset = tzPart.value;
+                } catch {
+                    // Skip invalid zones; offset stays "GMT"
+                }
+                if (offset === 'GMT') offset = 'GMT+00:00';
+                return {
+                    value: tz,
+                    label: tz.replace(/_/g, ' '),
+                    offset,
+                    offsetMinutes: parseOffsetMinutes(offset),
+                };
+            })
+            .sort((a, b) => {
+                if (a.offsetMinutes !== b.offsetMinutes) {
+                    return a.offsetMinutes - b.offsetMinutes;
+                }
+                return a.value.localeCompare(b.value);
+            });
+    }, []);
+
+    const [selectedTimezone, setSelectedTimezone] = useState<TimezoneOption>(() => {
+        const detected =
+            typeof Intl !== 'undefined'
+                ? Intl.DateTimeFormat().resolvedOptions().timeZone
+                : 'Asia/Calcutta';
+        return {
+            value: detected || 'Asia/Calcutta',
+            label: (detected || 'Asia/Calcutta').replace(/_/g, ' '),
+            offset: 'GMT+00:00',
+            offsetMinutes: 0,
+        };
+    });
+
+    useEffect(() => {
+        const match = timezones.find((t) => t.value === selectedTimezone.value);
+        if (match && match.offset !== selectedTimezone.offset) {
+            setSelectedTimezone(match);
+        } else if (!match && timezones.length > 0) {
+            const fallback = timezones.find((t) => t.value === 'Asia/Calcutta') || timezones[0];
+            setSelectedTimezone(fallback);
+        }
+    }, [timezones, selectedTimezone.value, selectedTimezone.offset]);
+
+    const [timezoneSearch, setTimezoneSearch] = useState('');
+    const timezoneSearchRef = useRef<HTMLInputElement>(null);
+
+    const filteredTimezones = useMemo(() => {
+        const q = timezoneSearch.trim().toLowerCase();
+        if (!q) return timezones;
+        return timezones.filter((t) =>
+            t.value.toLowerCase().includes(q) ||
+            t.label.toLowerCase().includes(q) ||
+            t.offset.toLowerCase().includes(q)
+        );
+    }, [timezones, timezoneSearch]);
+
+    useEffect(() => {
+        if (!isTimezoneOpen) {
+            setTimezoneSearch('');
+            return;
+        }
+        const id = requestAnimationFrame(() => timezoneSearchRef.current?.focus());
+        return () => cancelAnimationFrame(id);
+    }, [isTimezoneOpen]);
 
     // Calendar Logic
     const weekDays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
@@ -180,11 +289,35 @@ export function IntroCallPage() {
         setIsSubmitting(true);
 
         try {
-            const dateObj = new Date(currentYear, currentMonth, selectedDate!);
+            const parseTimeSlot = (raw: string): { h: number; m: number } => {
+                const is24 = raw.includes(':') && !/[ap]m$/i.test(raw);
+                if (is24) {
+                    const [hStr, mStr] = raw.split(':');
+                    return { h: parseInt(hStr, 10), m: parseInt(mStr, 10) };
+                }
+                const match = raw.match(/^(\d{1,2}):(\d{2})(am|pm)$/i);
+                if (!match) return { h: 0, m: 0 };
+                let h = parseInt(match[1], 10);
+                const m = parseInt(match[2], 10);
+                const period = match[3].toLowerCase();
+                if (period === 'pm' && h !== 12) h += 12;
+                if (period === 'am' && h === 12) h = 0;
+                return { h, m };
+            };
+
+            const { h, m } = parseTimeSlot(selectedTimeSlot || '');
+            const yyyy = currentYear.toString();
+            const mm = (currentMonth + 1).toString().padStart(2, '0');
+            const dd = selectedDate!.toString().padStart(2, '0');
+            const hh = h.toString().padStart(2, '0');
+            const mn = m.toString().padStart(2, '0');
+            const wallClockIso = `${yyyy}-${mm}-${dd}T${hh}:${mn}:00`;
+
             const payload = {
                 ...formData,
-                date: dateObj.toISOString(),
+                date: wallClockIso,
                 timeSlot: selectedTimeSlot,
+                timezone: selectedTimezone.value,
                 duration: 15
             };
 
@@ -284,7 +417,10 @@ export function IntroCallPage() {
                         </div>
                         <div className="flex items-center gap-3">
                             <Globe className="w-5 h-5 text-slate-900 dark:text-white" />
-                            <span className="text-slate-600 dark:text-[#e1e1e1]">{selectedTimezone.value}</span>
+                            <span className="text-slate-600 dark:text-[#e1e1e1] truncate">
+                                {selectedTimezone.label}
+                                <span className="dark:text-[#888] ml-2 text-slate-400 text-xs">{selectedTimezone.offset}</span>
+                            </span>
                         </div>
                     </>
                 ) : (
@@ -299,26 +435,50 @@ export function IntroCallPage() {
                         </div>
                         <div className="relative" ref={dropdownRef}>
                             <div
-                                className={`flex items-center gap-3 cursor-pointer hover:bg-slate-100 dark:hover:bg-[#1f1f1f] py-1 px-1 -ml-1 rounded transition-colors w-fit ${isTimezoneOpen ? 'bg-slate-100 dark:bg-[#1f1f1f]' : ''}`}
+                                className={`flex items-center gap-3 cursor-pointer hover:bg-slate-100 dark:hover:bg-[#1f1f1f] py-1 px-1 -ml-1 rounded transition-colors w-fit max-w-full ${isTimezoneOpen ? 'bg-slate-100 dark:bg-[#1f1f1f]' : ''}`}
                                 onClick={() => setIsTimezoneOpen(!isTimezoneOpen)}
                             >
-                                <Globe className="w-5 h-5 text-slate-900 dark:text-white" />
-                                <span className="text-slate-600 dark:text-[#e1e1e1]">{selectedTimezone.value}</span>
-                                <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isTimezoneOpen ? 'rotate-180' : ''}`} />
+                                <Globe className="w-5 h-5 text-slate-900 dark:text-white shrink-0" />
+                                <span className="text-slate-600 dark:text-[#e1e1e1] truncate">{selectedTimezone.label}</span>
+                                <span className="dark:text-[#888] shrink-0 text-slate-400 text-xs">{selectedTimezone.offset}</span>
+                                <ChevronDown className={`w-4 h-4 ml-1 shrink-0 transition-transform ${isTimezoneOpen ? 'rotate-180' : ''}`} />
                             </div>
                             {isTimezoneOpen && (
-                                <div className="absolute top-full left-0 mt-2 w-72 bg-white dark:bg-[#1c1c1c] border border-slate-200 dark:border-[#333] rounded-md shadow-lg dark:shadow-2xl z-50 text-sm overflow-hidden py-1">
-                                    <div className="max-h-60 overflow-y-auto custom-scrollbar">
-                                        {timezones.map((tz) => (
-                                            <button
-                                                key={tz.value}
-                                                onClick={() => { setSelectedTimezone(tz); setIsTimezoneOpen(false); }}
-                                                className={`w-full text-left px-4 py-3 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-[#2c2c2c] transition-colors ${selectedTimezone.value === tz.value ? 'bg-slate-50 dark:bg-[#2c2c2c]' : 'text-slate-600 dark:text-[#a1a1a1]'}`}
-                                            >
-                                                <span className={selectedTimezone.value === tz.value ? 'text-slate-900 dark:text-white' : ''}>{tz.label}</span>
-                                                {selectedTimezone.value === tz.value && <Check className="w-4 h-4 text-slate-900 dark:text-white" />}
-                                            </button>
-                                        ))}
+                                <div className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-[#1c1c1c] border border-slate-200 dark:border-[#333] rounded-md shadow-lg dark:shadow-2xl z-50 text-sm overflow-hidden">
+                                    <div className="border-b border-slate-100 dark:border-[#222] p-2">
+                                        <input
+                                            ref={timezoneSearchRef}
+                                            type="text"
+                                            value={timezoneSearch}
+                                            onChange={(e) => setTimezoneSearch(e.target.value)}
+                                            placeholder="Search timezone or offset"
+                                            className="w-full bg-slate-50 dark:bg-[#111] border border-transparent rounded px-3 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#666] focus:outline-none focus:border-slate-300 dark:focus:border-[#444]"
+                                            onClick={(e) => e.stopPropagation()}
+                                        />
+                                    </div>
+                                    <div className="max-h-72 overflow-y-auto custom-scrollbar py-1">
+                                        {filteredTimezones.length === 0 ? (
+                                            <div className="px-4 py-6 text-center text-slate-400 dark:text-[#666] text-sm">
+                                                No matches for &quot;{timezoneSearch}&quot;
+                                            </div>
+                                        ) : (
+                                            filteredTimezones.map((tz) => {
+                                                const isActive = selectedTimezone.value === tz.value;
+                                                return (
+                                                    <button
+                                                        key={tz.value}
+                                                        onClick={() => { setSelectedTimezone(tz); setIsTimezoneOpen(false); }}
+                                                        className={`w-full text-left px-4 py-2.5 flex items-center justify-between gap-3 hover:bg-slate-50 dark:hover:bg-[#2c2c2c] transition-colors ${isActive ? 'bg-slate-50 dark:bg-[#2c2c2c]' : 'text-slate-600 dark:text-[#a1a1a1]'}`}
+                                                    >
+                                                        <span className={`truncate ${isActive ? 'text-slate-900 dark:text-white' : ''}`}>{tz.label}</span>
+                                                        <span className="flex items-center gap-2 shrink-0">
+                                                            <span className="text-xs text-slate-400 dark:text-[#666] font-mono">{tz.offset}</span>
+                                                            {isActive && <Check className="w-4 h-4 text-slate-900 dark:text-white" />}
+                                                        </span>
+                                                    </button>
+                                                );
+                                            })
+                                        )}
                                     </div>
                                 </div>
                             )}

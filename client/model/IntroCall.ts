@@ -11,7 +11,10 @@ export interface IIntroCall extends Document {
     notes?: string;
     guests?: string[];
     date: Date;
-    duration: number; // in minutes
+    duration: number;
+    timeSlot?: string;
+    timezone?: string;
+    meetLink?: string;
 }
 
 const IntroCallSchema: Schema = new Schema({
@@ -29,6 +32,9 @@ const IntroCallSchema: Schema = new Schema({
     guests: [{ type: String }],
     date: { type: Date, required: true },
     duration: { type: Number, default: 15 },
+    timeSlot: { type: String },
+    timezone: { type: String },
+    meetLink: { type: String },
 }, { timestamps: true });
 
-export default mongoose.model<IIntroCall>('IntroCall', IntroCallSchema);
+export default mongoose.models.IntroCall || mongoose.model<IIntroCall>('IntroCall', IntroCallSchema);
