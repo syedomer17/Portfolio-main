@@ -120,7 +120,10 @@ export function IntroCallPage() {
         const supportedValuesOf = (Intl as unknown as {
             supportedValuesOf?: (key: 'timeZone') => string[];
         }).supportedValuesOf;
-        const list = supportedValuesOf?.('timeZone') ?? FALLBACK_TIMEZONES;
+        const raw = supportedValuesOf?.('timeZone') ?? FALLBACK_TIMEZONES;
+        // Drop legacy aliases so the dropdown only shows the canonical IANA name.
+        const list = raw.filter((tz) => tz !== 'Asia/Calcutta');
+        if (!list.includes('Asia/Kolkata')) list.push('Asia/Kolkata');
         const now = new Date();
         const seen = new Set<string>();
         return list
@@ -157,50 +160,30 @@ export function IntroCallPage() {
             });
     }, []);
 
-    const [selectedTimezone, setSelectedTimezone] = useState<TimezoneOption>(() => {
-        const detected =
-            typeof Intl !== 'undefined'
-                ? Intl.DateTimeFormat().resolvedOptions().timeZone
-                : 'Asia/Calcutta';
-        return {
-            value: detected || 'Asia/Calcutta',
-            label: (detected || 'Asia/Calcutta').replace(/_/g, ' '),
-            offset: 'GMT+00:00',
-            offsetMinutes: 0,
-        };
-    });
+    const DEFAULT_TZ = 'Asia/Kolkata';
+
+    const [selectedTimezone, setSelectedTimezone] = useState<TimezoneOption>(() => ({
+        value: DEFAULT_TZ,
+        label: DEFAULT_TZ.replace(/_/g, ' '),
+        offset: 'GMT+05:30',
+        offsetMinutes: 330,
+    }));
 
     useEffect(() => {
+        if (timezones.length === 0) return;
         const match = timezones.find((t) => t.value === selectedTimezone.value);
         if (match && match.offset !== selectedTimezone.offset) {
             setSelectedTimezone(match);
-        } else if (!match && timezones.length > 0) {
-            const fallback = timezones.find((t) => t.value === 'Asia/Calcutta') || timezones[0];
+            return;
+        }
+        if (!match) {
+            const fallback =
+                timezones.find((t) => t.value === DEFAULT_TZ) ||
+                timezones.find((t) => t.value === 'Asia/Calcutta') ||
+                timezones[0];
             setSelectedTimezone(fallback);
         }
     }, [timezones, selectedTimezone.value, selectedTimezone.offset]);
-
-    const [timezoneSearch, setTimezoneSearch] = useState('');
-    const timezoneSearchRef = useRef<HTMLInputElement>(null);
-
-    const filteredTimezones = useMemo(() => {
-        const q = timezoneSearch.trim().toLowerCase();
-        if (!q) return timezones;
-        return timezones.filter((t) =>
-            t.value.toLowerCase().includes(q) ||
-            t.label.toLowerCase().includes(q) ||
-            t.offset.toLowerCase().includes(q)
-        );
-    }, [timezones, timezoneSearch]);
-
-    useEffect(() => {
-        if (!isTimezoneOpen) {
-            setTimezoneSearch('');
-            return;
-        }
-        const id = requestAnimationFrame(() => timezoneSearchRef.current?.focus());
-        return () => cancelAnimationFrame(id);
-    }, [isTimezoneOpen]);
 
     // Calendar Logic
     const weekDays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
@@ -417,10 +400,8 @@ export function IntroCallPage() {
                         </div>
                         <div className="flex items-center gap-3">
                             <Globe className="w-5 h-5 text-slate-900 dark:text-white" />
-                            <span className="text-slate-600 dark:text-[#e1e1e1] truncate">
-                                {selectedTimezone.label}
-                                <span className="dark:text-[#888] ml-2 text-slate-400 text-xs">{selectedTimezone.offset}</span>
-                            </span>
+                            <span className="text-slate-600 dark:text-[#e1e1e1]">{selectedTimezone.label}</span>
+                            <span className="text-slate-500 dark:text-[#777] text-sm">{selectedTimezone.offset}</span>
                         </div>
                     </>
                 ) : (
@@ -439,46 +420,29 @@ export function IntroCallPage() {
                                 onClick={() => setIsTimezoneOpen(!isTimezoneOpen)}
                             >
                                 <Globe className="w-5 h-5 text-slate-900 dark:text-white shrink-0" />
-                                <span className="text-slate-600 dark:text-[#e1e1e1] truncate">{selectedTimezone.label}</span>
-                                <span className="dark:text-[#888] shrink-0 text-slate-400 text-xs">{selectedTimezone.offset}</span>
+                                <span className="text-slate-600 dark:text-[#e1e1e1]">{selectedTimezone.label}</span>
+                                <span className="text-slate-500 dark:text-[#777] text-sm shrink-0">{selectedTimezone.offset}</span>
                                 <ChevronDown className={`w-4 h-4 ml-1 shrink-0 transition-transform ${isTimezoneOpen ? 'rotate-180' : ''}`} />
                             </div>
                             {isTimezoneOpen && (
                                 <div className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-[#1c1c1c] border border-slate-200 dark:border-[#333] rounded-md shadow-lg dark:shadow-2xl z-50 text-sm overflow-hidden">
-                                    <div className="border-b border-slate-100 dark:border-[#222] p-2">
-                                        <input
-                                            ref={timezoneSearchRef}
-                                            type="text"
-                                            value={timezoneSearch}
-                                            onChange={(e) => setTimezoneSearch(e.target.value)}
-                                            placeholder="Search timezone or offset"
-                                            className="w-full bg-slate-50 dark:bg-[#111] border border-transparent rounded px-3 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#666] focus:outline-none focus:border-slate-300 dark:focus:border-[#444]"
-                                            onClick={(e) => e.stopPropagation()}
-                                        />
-                                    </div>
                                     <div className="max-h-72 overflow-y-auto custom-scrollbar py-1">
-                                        {filteredTimezones.length === 0 ? (
-                                            <div className="px-4 py-6 text-center text-slate-400 dark:text-[#666] text-sm">
-                                                No matches for &quot;{timezoneSearch}&quot;
-                                            </div>
-                                        ) : (
-                                            filteredTimezones.map((tz) => {
-                                                const isActive = selectedTimezone.value === tz.value;
-                                                return (
-                                                    <button
-                                                        key={tz.value}
-                                                        onClick={() => { setSelectedTimezone(tz); setIsTimezoneOpen(false); }}
-                                                        className={`w-full text-left px-4 py-2.5 flex items-center justify-between gap-3 hover:bg-slate-50 dark:hover:bg-[#2c2c2c] transition-colors ${isActive ? 'bg-slate-50 dark:bg-[#2c2c2c]' : 'text-slate-600 dark:text-[#a1a1a1]'}`}
-                                                    >
-                                                        <span className={`truncate ${isActive ? 'text-slate-900 dark:text-white' : ''}`}>{tz.label}</span>
-                                                        <span className="flex items-center gap-2 shrink-0">
-                                                            <span className="text-xs text-slate-400 dark:text-[#666] font-mono">{tz.offset}</span>
-                                                            {isActive && <Check className="w-4 h-4 text-slate-900 dark:text-white" />}
-                                                        </span>
-                                                    </button>
-                                                );
-                                            })
-                                        )}
+                                        {timezones.map((tz) => {
+                                            const isActive = selectedTimezone.value === tz.value;
+                                            return (
+                                                <button
+                                                    key={tz.value}
+                                                    onClick={() => { setSelectedTimezone(tz); setIsTimezoneOpen(false); }}
+                                                    className={`w-full text-left px-4 py-2 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-[#2c2c2c] transition-colors ${isActive ? 'bg-slate-50 dark:bg-[#2c2c2c]' : 'text-slate-600 dark:text-[#a1a1a1]'}`}
+                                                >
+                                                    <span className={`${isActive ? 'text-slate-900 dark:text-white' : ''}`}>{tz.label}</span>
+                                                    <span className="flex items-center gap-2">
+                                                        <span className="text-sm text-slate-500 dark:text-[#777]">{tz.offset}</span>
+                                                        {isActive && <Check className="w-4 h-4 text-slate-900 dark:text-white shrink-0" />}
+                                                    </span>
+                                                </button>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             )}

@@ -24,7 +24,7 @@ import {
 export const runtime = "nodejs";
 
 const HOST_NAME = "Syed Omer Ali";
-const DEFAULT_TIMEZONE = "Asia/Calcutta";
+const DEFAULT_TIMEZONE = "Asia/Kolkata";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
