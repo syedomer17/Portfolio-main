@@ -1,27 +1,10 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { instagramSans } from "@/lib/fonts";
 import ThemeProviderClient from "@/components/Providers/ThemeProviderClient";
 import { LazyProvidersLoader, LazyAnalyticsProviders } from "@/components/Providers/LazyProviders";
-import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  display: "swap",
-  preload: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  preload: true,
-});
 
 const siteUrl = "https://www.syedomer.me";
 const siteName = "Syed Omer Ali";
@@ -173,43 +156,14 @@ export default async function RootLayout({
           }}
         />
 
-        {/* Google Tag Manager — loaded as early as possible per GTM docs */}
-        <script
-          nonce={nonce}
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T3LNQBHK');`,
-          }}
-        />
-
-        {/* Font preload hints - critical for LCP */}
-        <link
-          rel="preload"
-          as="font"
-          href="/fonts/new/Instagram Sans.woff2"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          as="font"
-          href="/fonts/new/Instagram Sans Medium.woff2"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          as="font"
-          href="/fonts/new/Instagram Sans Bold.woff2"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        {/* Font preloads are emitted automatically by next/font/local
+            (lib/fonts.ts has preload: true). Manual <link rel="preload">
+            tags here would point to /fonts/new/... while the CSS references
+            the hashed /static/media/... copy — that mismatch caused the
+            same font to be downloaded twice. */}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${instagramSans.variable} antialiased`}
+        className={`${instagramSans.variable} antialiased`}
       >
         {/* Google Tag Manager (noscript) — fallback for JS-disabled browsers */}
         <noscript>
@@ -294,12 +248,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
 
+        {/* Google Tag Manager — deferred via next/script to avoid blocking
+            the critical render path. afterInteractive runs after hydration,
+            so the analytics ping happens after the page is interactive
+            instead of competing with LCP. */}
+        <Script
+          id="gtm-init"
+          strategy="afterInteractive"
+          nonce={nonce}
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T3LNQBHK');`,
+          }}
+        />
+
         {/* Minimal theme provider - only global client boundary */}
         <ThemeProviderClient>
           {/* Lazy-loaded features that don't block initial render */}
           <LazyProvidersLoader>
             <main>{children}</main>
-            {/* <SiteFooter /> */}
           </LazyProvidersLoader>
         </ThemeProviderClient>
 

@@ -1,34 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
-/* Instagram Sans Font Family - Fallback */
-/* Primary loading via next/font/local in lib/fonts.ts */
-@font-face {
-  font-family: 'Instagram Sans';
-  src: url('/fonts/new/Instagram Sans.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Instagram Sans';
-  src: url('/fonts/new/Instagram Sans Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Instagram Sans';
-  src: url('/fonts/new/Instagram Sans Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Instagram Sans is loaded via next/font/local in lib/fonts.ts.
+   Duplicating @font-face here causes a second download and bloats the
+   render-blocking CSS chunk, so the fallback declarations were removed. */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -160,11 +137,11 @@ html.theme-transitioning *::after {
   }
   body {
     @apply bg-white dark:bg-[#0B0D10] text-slate-900 dark:text-slate-50 antialiased;
-    font-family: 'Instagram Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-instagram), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Instagram Sans Headline', 'Instagram Sans', sans-serif;
+    font-family: var(--font-instagram), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 }
 
@@ -300,20 +277,6 @@ html.theme-transitioning *::after {
   transform: scale(1.08);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Hide scrollbar but keep functionality */
-.scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari and Opera */
-}
-
 /* Smooth Chromatic Aberration / Glitch Hover Effect */
 .hover-glitch {
   position: relative;
@@ -328,6 +291,16 @@ html {
 
 .dark .hover-glitch:hover {
   text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }
 
 /* Modern Toast (react-hot-toast) — theme-aware, glassy, top-right */
