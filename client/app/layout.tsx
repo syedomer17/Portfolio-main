@@ -4,6 +4,7 @@ import Script from "next/script";
 import { instagramSans } from "@/lib/fonts";
 import ThemeProviderClient from "@/components/Providers/ThemeProviderClient";
 import { LazyProvidersLoader, LazyAnalyticsProviders } from "@/components/Providers/LazyProviders";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const siteUrl = "https://www.syedomer.me";
@@ -275,6 +276,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         {/* Analytics lazy-loaded after page is idle */}
         <LazyAnalyticsProviders />
+
+        <SpeedInsights />
       </body>
     </html>
   );
