@@ -30,9 +30,9 @@ const experienceInputs: ExperienceInput[] = [
     role: "Full Stack Product Developer",
     type: "Internship",
     location: "India - Onsite",
-    period: "Dec 2025 - Present",
+    period: "Dec 2025 - May 2026",
     startDate: "2025-12-12",
-    endDate: null,
+    endDate: "2026-05-12",
     updatedAt: "2026-02-01",
     summary:
       "Lead product development across frontend, backend, and infrastructure workstreams. Focus on shipping features with reliable APIs, scalable architecture, and a tight feedback loop with stakeholders.",
