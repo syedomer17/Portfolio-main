@@ -216,6 +216,48 @@ const certificationInputs: CertificationInput[] = [
     takeaway:
       "Building full stack isn't about being mediocre at everything — it's about understanding the whole system well enough to make good decisions at every layer. This certification helped me develop that perspective.",
   },
+  {
+  title: "Human Computer Interaction (HCI) Certification",
+  issuer: "NPTEL (IIT Madras)",
+  issueDate: "2026-04",
+  credentialLink: "#",
+  image: "/certifications/nptl.png",
+  description:
+    "A comprehensive NPTEL certification focused on the principles of Human-Computer Interaction, user-centered design, usability engineering, cognitive psychology, interface design, accessibility, and user experience evaluation. The course explored how people interact with digital systems and how to design intuitive, efficient, and user-friendly interfaces.",
+
+  keyTopics: [
+    "User-Centered Design (UCD) principles",
+    "Human cognition and perception in interface design",
+    "Usability engineering and heuristic evaluation",
+    "Interaction design methodologies",
+    "Accessibility and inclusive design",
+    "User research techniques and personas",
+    "Prototyping and interface design",
+    "Usability testing and user feedback analysis",
+  ],
+
+  whatILearned:
+    "This course fundamentally changed the way I think about software development. Before studying HCI, I primarily focused on making applications functional. Through this certification, I learned that a successful product is not only about features but also about how easily and comfortably users can interact with it. I gained practical knowledge of usability testing, user-centered design approaches, interface evaluation methods, and accessibility considerations. Understanding human cognition, attention, memory, and perception helped me appreciate why certain design patterns work better than others.",
+
+  whyItMatters:
+    "As a Full Stack Developer, I build applications that people use daily. Technical excellence alone is not enough if users struggle to navigate or understand a product. HCI bridges the gap between development and user experience, enabling me to create applications that are intuitive, accessible, and engaging. The concepts learned in this certification directly improve my ability to design better user interfaces, structure user flows, and make data-driven UX decisions.",
+
+  skills: [
+    "Human Computer Interaction",
+    "User Experience (UX)",
+    "User Interface Design",
+    "Usability Testing",
+    "User Research",
+    "Accessibility",
+    "Interaction Design",
+    "Wireframing & Prototyping",
+    "Heuristic Evaluation",
+    "User-Centered Design"
+  ],
+
+  takeaway:
+    "Great software is not just built for users—it is built around users. This certification reinforced that understanding user behavior, needs, and limitations is just as important as writing clean and efficient code."
+}
 ];
 
 const buildCertifications = (inputs: CertificationInput[]): Certification[] => {
