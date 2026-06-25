@@ -283,6 +283,68 @@ const projectInputs: ProjectInput[] = [
     role:
       "Lead developer — system architecture, geo-matching algorithm, real-time socket layer, push notification integration, React Native mobile app, and the Node.js/Express backend.",
   },
+  {
+  title: "Student Tracker App",
+  shortDescription:
+    "Comprehensive student management platform for tracking attendance, assignments, curriculum, and academic performance.",
+
+  fullDescription:
+    "Student Tracker App is a centralized education management platform built to streamline communication and academic workflows between Administrators, Mentors, and Students. The system provides real-time visibility into attendance, curriculum progress, assignments, mentorship sessions, and student performance through role-based dashboards. Designed with scalability and usability in mind, it simplifies institutional management while giving students a structured environment to monitor their learning journey.",
+
+  techStack: [
+    "React",
+    "Vite",
+    "TypeScript",
+    "Tailwind CSS",
+    "Shadcn UI",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "JWT Authentication",
+    "Cookies",
+  ],
+
+  githubLink: "https://github.com/syedomer17/student-tracker-app/",
+
+  createdAt: "2026-01-15",
+  updatedAt: "2026-06-23",
+
+  image: "/projects/student-tracker.png",
+
+  status: "completed",
+
+  isComingSoon: false,
+
+  caseStudyFocus:
+    "Role-based academic management with centralized tracking, curriculum monitoring, and performance analytics.",
+
+  problemSolved:
+    "Educational institutions often rely on disconnected tools for attendance, assignments, curriculum management, and student monitoring, making it difficult for mentors and administrators to track progress efficiently. Student Tracker App consolidates these workflows into a single platform, providing structured academic management, real-time progress visibility, and improved collaboration between students, mentors, and administrators.",
+
+  keyFeatures: [
+    "Role-based authentication for Admins, Mentors, and Students",
+    "Interactive student dashboard with attendance statistics and recent activity",
+    "Attendance tracking with complete historical records",
+    "Curriculum management with learning resources and milestone tracking",
+    "Assignment creation, submission, grading, and feedback",
+    "Leaderboard to encourage student engagement and healthy competition",
+    "Batch management for mentors with student progress monitoring",
+    "Session scheduling and mentorship management",
+    "Administrative user, batch, and curriculum management",
+    "Reports and analytics dashboard for institutional performance",
+    "Secure JWT authentication using HTTP-only cookies",
+    "Responsive modern UI built with Tailwind CSS and Shadcn UI",
+  ],
+
+  challenges:
+    "Designing a scalable role-based access system was the primary challenge, as each user type required unique permissions and workflows while sharing a common backend. Maintaining data consistency across attendance, assignments, curriculum, and analytics demanded a well-structured database design and optimized API architecture. Building intuitive dashboards that presented complex academic data without overwhelming users also required careful UI and UX planning.",
+
+  outcome:
+    "The platform successfully provides a centralized solution for academic management, allowing administrators to manage institutional operations, mentors to oversee student progress efficiently, and students to monitor their academic journey through a single modern application. The modular architecture also allows future expansion with features such as notifications, AI-powered performance insights, and real-time collaboration.",
+
+  role:
+    "Full Stack Developer designed the system architecture, developed the React frontend with TypeScript and Tailwind CSS, implemented the Node.js and Express backend, designed MongoDB schemas, built secure JWT authentication with cookies, and developed role-based dashboards, attendance tracking, assignment management, curriculum modules, and analytics."
+},
 ];
 
 const buildProjects = (inputs: ProjectInput[]): Project[] => {
