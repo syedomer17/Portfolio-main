@@ -242,48 +242,6 @@ const projectInputs: ProjectInput[] = [
       "Solo — product design, AI prompt engineering, safety guardrails, plan adaptation logic, and the Next.js frontend.",
   },
   {
-    title: "Urgent Blood App",
-    shortDescription:
-      "Real-time emergency blood donation platform connecting donors with patients in critical need.",
-    fullDescription:
-      "Urgent Blood App is a high-performance emergency response platform designed to optimize blood donation during critical time windows. It implements a smart matching algorithm using the Haversine formula for precise geo-location sorting, ensuring donors are alerted based on proximity and eligibility. The system integrates real-time communications via Socket.io and Firebase Cloud Messaging (FCM) to facilitate instant coordination between requesters and donors.",
-    techStack: [
-      "React Native",
-      "NativeWind",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Socket.io",
-      "FCM",
-      "Google Maps API",
-    ],
-    githubLink: "https://github.com/syedomer17/Urgent-Blood-App",
-    createdAt: "2026-02-26",
-    updatedAt: "2026-02-26",
-    image: "/projects/blood-app.png",
-    status: "coming soon",
-    isComingSoon: true,
-    caseStudyFocus: "Real-time emergency matching and geo-location sorting.",
-    problemSolved:
-      "Blood shortages during emergencies cost lives — not because blood isn't available, but because the logistics of finding compatible nearby donors fast enough consistently fail. Existing solutions are too slow and too manual for genuine emergencies. This platform is built specifically for the time-critical scenario: match the right donor, in the right location, as fast as possible.",
-    keyFeatures: [
-      "Haversine-based geo-matching to surface the closest compatible donors first",
-      "Real-time push notifications via Firebase Cloud Messaging",
-      "Live request feeds with Socket.io for instant updates without polling",
-      "Blood group compatibility checking baked into matching logic",
-      "Donor trust and reputation system to improve match reliability",
-      "AI-driven priority scoring for critical vs. standard requests",
-      "Google Maps integration for visual donor proximity display",
-      "Auto-escalation for unfulfilled requests past a time threshold",
-    ],
-    challenges:
-      "The core challenge was latency — in an emergency, every second matters. Getting the matching, notification, and confirmation flow to complete in under 10 seconds required careful architecture decisions: real-time sockets over REST for status updates, FCM for push delivery, and pre-computed geo-indexes in MongoDB to avoid slow proximity queries under load. Building the trust system was also non-trivial — a donor who repeatedly accepts requests but doesn't show up needs to be surfaced less prominently without being permanently penalized.",
-    outcome:
-      "The platform is in active development with the core matching and notification pipeline working end-to-end. The geo-matching algorithm reliably identifies the closest eligible donors within milliseconds, and the real-time communication layer keeps all parties synchronized without manual refresh.",
-    role:
-      "Lead developer — system architecture, geo-matching algorithm, real-time socket layer, push notification integration, React Native mobile app, and the Node.js/Express backend.",
-  },
-  {
   title: "Student Tracker App",
   shortDescription:
     "Comprehensive student management platform for tracking attendance, assignments, curriculum, and academic performance.",
@@ -345,6 +303,48 @@ const projectInputs: ProjectInput[] = [
   role:
     "Full Stack Developer designed the system architecture, developed the React frontend with TypeScript and Tailwind CSS, implemented the Node.js and Express backend, designed MongoDB schemas, built secure JWT authentication with cookies, and developed role-based dashboards, attendance tracking, assignment management, curriculum modules, and analytics."
 },
+  {
+    title: "Urgent Blood App",
+    shortDescription:
+      "Real-time emergency blood donation platform connecting donors with patients in critical need.",
+    fullDescription:
+      "Urgent Blood App is a high-performance emergency response platform designed to optimize blood donation during critical time windows. It implements a smart matching algorithm using the Haversine formula for precise geo-location sorting, ensuring donors are alerted based on proximity and eligibility. The system integrates real-time communications via Socket.io and Firebase Cloud Messaging (FCM) to facilitate instant coordination between requesters and donors.",
+    techStack: [
+      "React Native",
+      "NativeWind",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Socket.io",
+      "FCM",
+      "Google Maps API",
+    ],
+    githubLink: "https://github.com/syedomer17/Urgent-Blood-App",
+    createdAt: "2026-02-26",
+    updatedAt: "2026-02-26",
+    image: "/projects/blood-app.png",
+    status: "coming soon",
+    isComingSoon: true,
+    caseStudyFocus: "Real-time emergency matching and geo-location sorting.",
+    problemSolved:
+      "Blood shortages during emergencies cost lives — not because blood isn't available, but because the logistics of finding compatible nearby donors fast enough consistently fail. Existing solutions are too slow and too manual for genuine emergencies. This platform is built specifically for the time-critical scenario: match the right donor, in the right location, as fast as possible.",
+    keyFeatures: [
+      "Haversine-based geo-matching to surface the closest compatible donors first",
+      "Real-time push notifications via Firebase Cloud Messaging",
+      "Live request feeds with Socket.io for instant updates without polling",
+      "Blood group compatibility checking baked into matching logic",
+      "Donor trust and reputation system to improve match reliability",
+      "AI-driven priority scoring for critical vs. standard requests",
+      "Google Maps integration for visual donor proximity display",
+      "Auto-escalation for unfulfilled requests past a time threshold",
+    ],
+    challenges:
+      "The core challenge was latency — in an emergency, every second matters. Getting the matching, notification, and confirmation flow to complete in under 10 seconds required careful architecture decisions: real-time sockets over REST for status updates, FCM for push delivery, and pre-computed geo-indexes in MongoDB to avoid slow proximity queries under load. Building the trust system was also non-trivial — a donor who repeatedly accepts requests but doesn't show up needs to be surfaced less prominently without being permanently penalized.",
+    outcome:
+      "The platform is in active development with the core matching and notification pipeline working end-to-end. The geo-matching algorithm reliably identifies the closest eligible donors within milliseconds, and the real-time communication layer keeps all parties synchronized without manual refresh.",
+    role:
+      "Lead developer — system architecture, geo-matching algorithm, real-time socket layer, push notification integration, React Native mobile app, and the Node.js/Express backend.",
+  },
 ];
 
 const buildProjects = (inputs: ProjectInput[]): Project[] => {
