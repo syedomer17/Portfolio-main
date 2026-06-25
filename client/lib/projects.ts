@@ -311,7 +311,7 @@ const projectInputs: ProjectInput[] = [
 
   image: "/projects/student-tracker.png",
 
-  status: "completed",
+  status: "Completed",
 
   isComingSoon: false,
 
