@@ -3,16 +3,19 @@ import { headers } from "next/headers";
 import Script from "next/script";
 import { instagramSans } from "@/lib/fonts";
 import ThemeProviderClient from "@/components/Providers/ThemeProviderClient";
-import { LazyProvidersLoader, LazyAnalyticsProviders } from "@/components/Providers/LazyProviders";
+import {
+  LazyProvidersLoader,
+  LazyAnalyticsProviders,
+} from "@/components/Providers/LazyProviders";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const siteUrl = "https://www.syedomer.me";
 const siteName = "Syed Omer Ali";
-const defaultTitle = "Syed Omer Ali | MERN Stack Developer & DevSecOps Engineer";
+const defaultTitle =
+  "Syed Omer Ali | MERN Stack Developer & DevSecOps Engineer";
 const defaultDescription =
   "Syed Omer Ali is a full stack MERN developer specializing in TypeScript, DevSecOps, and building secure, scalable systems for SaaS and startups.";
-
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -98,17 +101,6 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   category: "technology",
-
-  // og:see_also — LinkedIn and Medium crawlers use this to associate the
-  // page with your social profiles and show rich author attribution.
-  other: {
-    "og:see_also": [
-      "https://www.linkedin.com/in/syedomer17/",
-      "https://medium.com/@syedomerali2006",
-      "https://github.com/syedomer17",
-      "https://x.com/SyedOmer17Ali",
-    ],
-  },
 };
 
 export default async function RootLayout({
@@ -163,9 +155,7 @@ export default async function RootLayout({
             the hashed /static/media/... copy — that mismatch caused the
             same font to be downloaded twice. */}
       </head>
-      <body
-        className={`${instagramSans.variable} antialiased`}
-      >
+      <body className={`${instagramSans.variable} antialiased`}>
         {/* Google Tag Manager (noscript) — fallback for JS-disabled browsers */}
         <noscript>
           <iframe
@@ -198,8 +188,8 @@ export default async function RootLayout({
                     name: "Full Stack Developer",
                     occupationLocation: {
                       "@type": "City",
-                      name: "Hyderabad"
-                    }
+                      name: "Hyderabad",
+                    },
                   },
                   knowsAbout: [
                     "Full Stack Development",
@@ -215,12 +205,12 @@ export default async function RootLayout({
                     "Docker",
                     "PostgreSQL",
                     "MongoDB",
-                    "AI Engineering"
+                    "AI Engineering",
                   ],
                   address: {
                     "@type": "PostalAddress",
                     addressLocality: "Hyderabad",
-                    addressCountry: "IN"
+                    addressCountry: "IN",
                   },
                   sameAs: [
                     "https://github.com/syedomer17",
@@ -228,8 +218,8 @@ export default async function RootLayout({
                     "https://x.com/SyedOmer17Ali",
                     "https://medium.com/@syedomerali2006",
                     "https://leetcode.com/syedomerali_200",
-                    "https://www.instagram.com/syedomer.me/"
-                  ]
+                    "https://www.instagram.com/syedomer.me/",
+                  ],
                 },
                 {
                   "@type": "WebSite",
@@ -238,13 +228,13 @@ export default async function RootLayout({
                   url: siteUrl,
                   inLanguage: "en-US",
                   author: {
-                    "@id": `${siteUrl}#person`
+                    "@id": `${siteUrl}#person`,
                   },
                   publisher: {
-                    "@id": `${siteUrl}#person`
-                  }
-                }
-              ]
+                    "@id": `${siteUrl}#person`,
+                  },
+                },
+              ],
             }),
           }}
         />
