@@ -8,9 +8,9 @@ import { type NextRequest, NextResponse } from "next/server";
 type Environment = "development" | "preview" | "production";
 
 function getEnvironment(): Environment {
-    if (process.env.NODE_ENV === "development") return "development";
-    if (process.env.VERCEL_ENV === "preview") return "preview";
-    return "production";
+  if (process.env.NODE_ENV === "development") return "development";
+  if (process.env.VERCEL_ENV === "preview") return "preview";
+  return "production";
 }
 
 /**
@@ -65,135 +65,135 @@ function getEnvironment(): Environment {
 // cannot benefit from CSP; skipping it for them lets OG images resolve.
 // ---------------------------------------------------------------------------
 function isSocialBot(userAgent: string): boolean {
-    return /facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot/i.test(
-        userAgent
-    );
+  return /facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot/i.test(
+    userAgent,
+  );
 }
 
 export function middleware(request: NextRequest) {
-    const nonce = crypto.randomUUID().replace(/-/g, "");
-    const env = getEnvironment();
+  const nonce = crypto.randomUUID().replace(/-/g, "");
+  const env = getEnvironment();
 
-    const ua = request.headers.get("user-agent") ?? "";
+  const ua = request.headers.get("user-agent") ?? "";
 
-    // ---------------------------------------------------------------------------
-    // Script host allowlists — kept as fallback for browsers that do not
-    // support strict-dynamic. Modern browsers IGNORE these when
-    // strict-dynamic is present; scripts work via trust propagation instead.
-    // ---------------------------------------------------------------------------
-    const scriptHosts = [
-        "https://www.googletagmanager.com",     // GTM / GA loader
-        "https://va.vercel-scripts.com",         // Vercel Analytics
-        "https://cdn.databuddy.cc",              // Databuddy
-    ];
+  // ---------------------------------------------------------------------------
+  // Script host allowlists — kept as fallback for browsers that do not
+  // support strict-dynamic. Modern browsers IGNORE these when
+  // strict-dynamic is present; scripts work via trust propagation instead.
+  // ---------------------------------------------------------------------------
+  const scriptHosts = [
+    "https://www.googletagmanager.com", // GTM / GA loader
+    "https://va.vercel-scripts.com", // Vercel Analytics
+    "https://cdn.databuddy.cc", // Databuddy
+  ];
 
-    // Preview/dev: Vercel Live toolbar injects scripts from vercel.live.
-    if (env !== "production") {
-        scriptHosts.push("https://vercel.live");
-    }
+  // Preview/dev: Vercel Live toolbar injects scripts from vercel.live.
+  if (env !== "production") {
+    scriptHosts.push("https://vercel.live");
+  }
 
-    // ---------------------------------------------------------------------------
-    // Connect origins for fetch / XHR / WebSocket.
-    // ---------------------------------------------------------------------------
-    const connectHosts = [
-        "https://www.google-analytics.com",
-        "https://analytics.google.com",
-        "https://api.databuddy.cc",
-        "https://basket.databuddy.cc",
-        "https://vitals.vercel-insights.com",
-    ];
+  // ---------------------------------------------------------------------------
+  // Connect origins for fetch / XHR / WebSocket.
+  // ---------------------------------------------------------------------------
+  const connectHosts = [
+    "https://www.google-analytics.com",
+    "https://analytics.google.com",
+    "https://api.databuddy.cc",
+    "https://basket.databuddy.cc",
+    "https://vitals.vercel-insights.com",
+  ];
 
-    if (env !== "production") {
-        connectHosts.push("https://vercel.live");
-    }
+  if (env !== "production") {
+    connectHosts.push("https://vercel.live");
+  }
 
-    // ---------------------------------------------------------------------------
-    // Frame sources for iframes.
-    // ---------------------------------------------------------------------------
-    const frameHosts: string[] = [
-        "https://www.googletagmanager.com",      // GTM noscript iframe
-    ];
+  // ---------------------------------------------------------------------------
+  // Frame sources for iframes.
+  // ---------------------------------------------------------------------------
+  const frameHosts: string[] = [
+    "https://www.googletagmanager.com", // GTM noscript iframe
+  ];
 
-    if (env !== "production") {
-        frameHosts.push("https://vercel.live");
-    }
+  if (env !== "production") {
+    frameHosts.push("https://vercel.live");
+  }
 
-    // ---------------------------------------------------------------------------
-    // Dev-only: allow eval() for Webpack's eval-source-map devtool.
-    // ---------------------------------------------------------------------------
-    const evalPolicy = env === "development" ? " 'unsafe-eval'" : "";
+  // ---------------------------------------------------------------------------
+  // Dev-only: allow eval() for Webpack's eval-source-map devtool.
+  // ---------------------------------------------------------------------------
+  const evalPolicy = env === "development" ? " 'unsafe-eval'" : "";
 
-    // ---------------------------------------------------------------------------
-    // Build the CSP.
-    //
-    // IMPORTANT: script-src-elem is intentionally NOT set separately.
-    // When script-src-elem is present, some browsers handle strict-dynamic
-    // trust propagation inconsistently between script-src and script-src-elem.
-    // Omitting script-src-elem means script-src governs all <script> elements,
-    // which is the most reliable configuration for strict-dynamic.
-    // ---------------------------------------------------------------------------
-    const csp = [
-        "default-src 'self'",
+  // ---------------------------------------------------------------------------
+  // Build the CSP.
+  //
+  // IMPORTANT: script-src-elem is intentionally NOT set separately.
+  // When script-src-elem is present, some browsers handle strict-dynamic
+  // trust propagation inconsistently between script-src and script-src-elem.
+  // Omitting script-src-elem means script-src governs all <script> elements,
+  // which is the most reliable configuration for strict-dynamic.
+  // ---------------------------------------------------------------------------
+  const csp = [
+    "default-src 'self'",
 
-        // Scripts: nonce + strict-dynamic. Host allowlists are fallback only.
-        `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${evalPolicy} ${scriptHosts.join(" ")}`,
+    // Scripts: nonce + strict-dynamic. Host allowlists are fallback only.
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${evalPolicy} ${scriptHosts.join(" ")}`,
 
-        // Event-handler attributes (onclick etc.) — disallow entirely.
-        "script-src-attr 'none'",
+    // Event-handler attributes (onclick etc.) — disallow entirely.
+    "script-src-attr 'none'",
 
-        // Styles: unsafe-inline required for Tailwind/CSS-in-JS.
-        // fonts.googleapis.com serves Google Fonts CSS at runtime.
-        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-        "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com",
-        "style-src-attr 'unsafe-inline'",
+    // Styles: unsafe-inline required for Tailwind/CSS-in-JS.
+    // fonts.googleapis.com serves Google Fonts CSS at runtime.
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "style-src-attr 'unsafe-inline'",
 
-        // Images — https: is broad but necessary for external images
-        // (GitHub avatars, Unsplash, etc.). Not a script execution vector.
-        "img-src 'self' data: blob: https:",
+    // Images — https: is broad but necessary for external images
+    // (GitHub avatars, Unsplash, etc.). Not a script execution vector.
+    "img-src 'self' data: blob: https:",
 
-        // Fonts — fonts.gstatic.com serves font files loaded by Google Fonts.
-        "font-src 'self' data: https://fonts.gstatic.com",
+    // Fonts — fonts.gstatic.com serves font files loaded by Google Fonts.
+    "font-src 'self' data: https://fonts.gstatic.com",
 
-        // Fetch / XHR / WebSocket
-        `connect-src 'self' ${connectHosts.join(" ")}`,
+    // Fetch / XHR / WebSocket
+    `connect-src 'self' ${connectHosts.join(" ")}`,
 
-        // Media
-        "media-src 'self'",
+    // Media
+    "media-src 'self'",
 
-        // Iframes
-        frameHosts.length > 0
-            ? `frame-src 'self' ${frameHosts.join(" ")}`
-            : "frame-src 'self'",
+    // Iframes
+    frameHosts.length > 0
+      ? `frame-src 'self' ${frameHosts.join(" ")}`
+      : "frame-src 'self'",
 
-        // Hard restrictions
-        "object-src 'none'",
-        "base-uri 'self'",
-        "form-action 'self'",
-        "frame-ancestors 'none'",
-        "upgrade-insecure-requests",
+    // Hard restrictions
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    "upgrade-insecure-requests",
 
-        //  'goog#html'     — Google GTM/GA internal DOM manipulation policy
-        //  'goog#html#bo'  — GTM sandboxed script execution variant
-        "trusted-types default goog#html goog#html#bo",
-        "require-trusted-types-for 'script'",
-    ].join("; ");
+    //  'goog#html'     — Google GTM/GA internal DOM manipulation policy
+    //  'goog#html#bo'  — GTM sandboxed script execution variant
+    "trusted-types default goog#html goog#html#bo",
+    "require-trusted-types-for 'script'",
+  ].join("; ");
 
-    // ---------------------------------------------------------------------------
-    // Pass nonce to layout.tsx via request header.
-    // ---------------------------------------------------------------------------
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set("x-nonce", nonce);
+  // ---------------------------------------------------------------------------
+  // Pass nonce to layout.tsx via request header.
+  // ---------------------------------------------------------------------------
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-nonce", nonce);
 
-    const response = NextResponse.next({
-        request: { headers: requestHeaders },
-    });
+  const response = NextResponse.next({
+    request: { headers: requestHeaders },
+  });
 
-    // Only attach CSP for real users — social crawlers skip it so OG images load.
-    if (!isSocialBot(ua)) {
-        response.headers.set("Content-Security-Policy", csp);
-    }
+  // Only attach CSP for real users — social crawlers skip it so OG images load.
+  if (!isSocialBot(ua)) {
+    response.headers.set("Content-Security-Policy", csp);
+  }
 
-    return response;
+  return response;
 }
 
 /**
@@ -201,7 +201,7 @@ export function middleware(request: NextRequest) {
  * Exclude static assets to avoid pointless Edge invocations.
  */
 export const config = {
-    matcher: [
-        "/((?!_next/static|_next/image|favicon\\.ico|.*\\.(?:png|jpg|jpeg|webp|avif|svg|ico|woff2?|mp3|wav|aac|m4a)).*)",
-    ],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon\\.ico|.*\\.(?:png|jpg|jpeg|webp|avif|svg|ico|woff2?|mp3|wav|aac|m4a)).*)",
+  ],
 };
