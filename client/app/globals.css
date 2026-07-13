@@ -47,6 +47,7 @@
 
 :root {
   --radius: 0.5rem;
+  --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
   --background: 255 255 255;
   --foreground: 15 23 42;
   --card: 248 250 252;
@@ -121,11 +122,39 @@ html.theme-transitioning,
 html.theme-transitioning *,
 html.theme-transitioning *::before,
 html.theme-transitioning *::after {
-  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
-              color 300ms cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
-              fill 300ms cubic-bezier(0.4, 0, 0.2, 1),
-              stroke 300ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition:
+    background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 300ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+::view-transition-group(root) {
+  animation-timing-function: var(--expo-out);
+}
+
+::view-transition-new(root) {
+  mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="0" cy="0" r="18" fill="white" filter="url(%23blur)"/></svg>')
+    top left / 0 no-repeat;
+  mask-origin: content-box;
+  animation: scale 1s;
+  animation-fill-mode: both;
+  transform-origin: top left;
+}
+
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: scale 1s;
+  animation-fill-mode: both;
+  transform-origin: top left;
+  z-index: -1;
+}
+
+@keyframes scale {
+  to {
+    mask-size: 350vmax;
+  }
 }
 
 @layer base {
@@ -137,11 +166,26 @@ html.theme-transitioning *::after {
   }
   body {
     @apply bg-white dark:bg-[#0B0D10] text-slate-900 dark:text-slate-50 antialiased;
-    font-family: var(--font-instagram), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family:
+      var(--font-instagram),
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-instagram), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family:
+      var(--font-instagram),
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
   }
 }
 
@@ -162,7 +206,7 @@ html.theme-transitioning *::after {
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(251, 191, 36, 0.2);
-  box-shadow: 
+  box-shadow:
     0 8px 32px 0 rgba(0, 0, 0, 0.4),
     inset 0 1px 0 0 rgba(251, 191, 36, 0.1);
 }
@@ -263,8 +307,8 @@ html.theme-transitioning *::after {
   backdrop-filter: blur(10px);
 
   box-shadow:
-    inset 0 0 12px rgba(255,255,255,0.06),
-    0 0 18px rgba(0,0,0,0.35);
+    inset 0 0 12px rgba(255, 255, 255, 0.06),
+    0 0 18px rgba(0, 0, 0, 0.35);
 
   transition: all 0.25s ease;
   cursor: pointer;
@@ -284,23 +328,27 @@ html.theme-transitioning *::after {
 }
 
 .hover-glitch:hover {
-  text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
+  text-shadow:
+    2px 0 #ff0000,
+    -2px 0 #00ffff;
   letter-spacing: 0.05em; /* Slight expansion */
   transform: scale(1.05);
 }
 
 .dark .hover-glitch:hover {
-  text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
+  text-shadow:
+    2px 0 #ff0000,
+    -2px 0 #00ffff;
 }
 
 /* Hide scrollbar but keep functionality */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari and Opera */
+  display: none; /* Chrome, Safari and Opera */
 }
 
 /* Modern Toast (react-hot-toast) — theme-aware, glassy, top-right */
@@ -347,12 +395,24 @@ html.theme-transitioning *::after {
 
 /* Entrance/exit polish — soft lift rather than harsh slide */
 @keyframes toast-in {
-  0%   { opacity: 0; transform: translate3d(0, -8px, 0) scale(0.96); }
-  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
 }
 @keyframes toast-out {
-  0%   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
-  100% { opacity: 0; transform: translate3d(0, -8px, 0) scale(0.96); }
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0) scale(0.96);
+  }
 }
 .modern-toast {
   animation-timing-function: cubic-bezier(0.21, 1.02, 0.73, 1) !important;
