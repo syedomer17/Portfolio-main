@@ -56,11 +56,6 @@
     "typescript-eslint": "^8.58.1",
     "vite": "^8.0.8"
   },
-  "pnpm": {
-    "overrides": {
-      "minimatch": ">=10.2.1"
-    }
-  },
   "browserslist": [
     "Chrome >= 87",
     "Edge >= 88",

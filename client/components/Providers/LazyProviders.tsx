@@ -6,20 +6,18 @@ import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import SmoothScroll from "../ui/SmoothScroll";
 
-const DatabuddyComponent = dynamic(
-  () => import("./DatabuddyLoader"),
-  { ssr: false }
-);
+const DatabuddyComponent = dynamic(() => import("./DatabuddyLoader"), {
+  ssr: false,
+});
 
-const AnalyticsComponent = dynamic(
-  () => import("./AnalyticsLoader"),
-  { ssr: false }
-);
+const AnalyticsComponent = dynamic(() => import("./AnalyticsLoader"), {
+  ssr: false,
+});
 
 /**
  * Lazy provider loader for non-critical global features.
  * Features are configured to avoid blocking initial render or causing remounts.
- * 
+ *
  * Features loaded here:
  * - SmoothScroll: Component-based smooth scrolling (stable hierarchy)
  * - Toaster: Toast notifications container (lazy-loaded state)
@@ -42,9 +40,11 @@ export function LazyProvidersLoader({
 
   return (
     <>
-      <SmoothScroll isEnabled={isReady}>
-        {children}
-      </SmoothScroll>
+      {isReady ? (
+        <SmoothScroll isEnabled={isReady}>{children}</SmoothScroll>
+      ) : (
+        children
+      )}
       {isReady && (
         <Toaster
           position="top-right"
@@ -73,7 +73,6 @@ export function LazyProvidersLoader({
     </>
   );
 }
-
 
 /**
  * Separate lazy provider for analytics libraries.
