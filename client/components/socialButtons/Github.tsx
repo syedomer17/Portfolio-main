@@ -82,7 +82,7 @@ export default function GithubHoverCard() {
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                             >
                                 <span className="text-sm font-bold text-slate-900 dark:text-white">
-                                    137
+                                    138
                                 </span>
                                 <span className="text-sm text-slate-600 dark:text-slate-300">
                                     Repositories
@@ -94,7 +94,7 @@ export default function GithubHoverCard() {
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                             >
                                 <span className="text-sm font-bold text-slate-900 dark:text-white">
-                                    19
+                                    18
                                 </span>
                                 <span className="text-sm text-slate-600 dark:text-slate-300">
                                     Followers
