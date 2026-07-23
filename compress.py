@@ -2,7 +2,15 @@ import os
 from PIL import Image
 
 def compress_to_target(input_path, output_path, target_mb):
-    img = Image.open(input_path).convert("RGB")  # 🔥 FIX
+    img = Image.open(input_path)
+
+    if img.mode in ('RGBA', 'LA') or (img.mode == 'P' and 'transparency' in img.info):
+        alpha = img.convert('RGBA').split()[-1]
+        bg = Image.new("RGB", img.size, (255, 255, 255))
+        bg.paste(img, mask=alpha)
+        img = bg
+    else:
+        img = img.convert("RGB")
     
     quality = 95
     target_bytes = target_mb * 1024 * 1024
