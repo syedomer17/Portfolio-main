@@ -149,9 +149,7 @@ export async function GET(
   const years = [today.getFullYear(), today.getFullYear() - 1, today.getFullYear() - 2];
 
   try {
-    const yearData: ContributionYearData[] = [];
-
-    for (const year of years) {
+    const yearDataPromises = years.map(async (year) => {
       const { from, to } = buildYearRange(year, today);
       const calendar = await fetchContributionYear(
         username,
@@ -160,12 +158,14 @@ export async function GET(
         githubToken
       );
 
-      yearData.push({
+      return {
         year,
         totalContributions: calendar.totalContributions,
         weeks: calendar.weeks,
-      });
-    }
+      };
+    });
+
+    const yearData: ContributionYearData[] = await Promise.all(yearDataPromises);
 
     const response: ContributionYearsResponse = {
       username,
