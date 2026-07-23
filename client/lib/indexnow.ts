@@ -57,7 +57,12 @@ export async function notifyIndexNow(
   const urlList = Array.isArray(urls) ? urls : [urls];
   const results = { success: 0, failed: 0, total: urlList.length };
 
-  for (const url of urlList) {
+  const promises = urlList.map(async (url, index) => {
+    // Rate limiting: stagger requests
+    if (index > 0) {
+      await new Promise((resolve) => setTimeout(resolve, index * delayMs));
+    }
+
     try {
       // Validate URL format
       if (!url.startsWith('http')) {
@@ -93,12 +98,9 @@ export async function notifyIndexNow(
         throw error;
       }
     }
+  });
 
-    // Rate limiting: wait between requests
-    if (urlList.length > 1 && urlList.indexOf(url) < urlList.length - 1) {
-      await new Promise((resolve) => setTimeout(resolve, delayMs));
-    }
-  }
+  await Promise.all(promises);
 
   if (verbose && urlList.length > 1) {
     console.log(
