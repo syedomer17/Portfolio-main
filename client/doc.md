@@ -2,6 +2,7 @@
 
 This document describes the production-style view counter used in the Hero section.
 
+
 ## Overview
 - The view count is stored in MongoDB and increments on a visitor's first hit in a 24-hour window.
 - A short, httpOnly cookie is used to avoid counting reloads in the same 24 hours.
