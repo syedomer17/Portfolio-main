@@ -28,23 +28,32 @@ export function LazyProvidersLoader({
   children: React.ReactNode;
 }) {
   const [isReady, setIsReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
     // Interactive additions can load after page structure is stable
     if (typeof requestIdleCallback !== "undefined") {
       requestIdleCallback(() => setIsReady(true), { timeout: 1000 });
     } else {
       setIsReady(true);
     }
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return (
     <>
-      {isReady ? (
-        <SmoothScroll isEnabled={isReady}>{children}</SmoothScroll>
-      ) : (
-        children
-      )}
+      <SmoothScroll isEnabled={isReady && !isMobile}>
+        {children}
+      </SmoothScroll>
       {isReady && (
         <Toaster
           position="top-right"
