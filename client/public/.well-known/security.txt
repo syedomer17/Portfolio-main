@@ -1,3 +1,8 @@
-Contact: mailto:syedomer17@gmail.com
-Expires: 2027-12-31T23:59:59.000Z
+Contact: mailto:syedomerali2006@gmail.com
+Contact: https://www.syedomer.me/contact
+
+Expires: 2027-02-01T00:00:00Z
+
 Preferred-Languages: en
+
+Canonical: https://www.syedomer.me/.well-known/security.txt
