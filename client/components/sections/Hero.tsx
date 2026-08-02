@@ -50,7 +50,7 @@ const HeroContributions = dynamic(() => import("./hero/HeroContributions"), {
   loading: () => (
     <div className="block mt-6 sm:-mt-2 sm:-mx-6 px-0 sm:pl-8 sm:pr-6">
       <div className="min-h-45 sm:min-h-60 flex items-center justify-center">
-        <span className="text-xs text-slate-500 dark:text-slate-600">Loading contributions...</span>
+        <span className="text-xs text-slate-600 dark:text-slate-300">Loading contributions...</span>
       </div>
     </div>
   ),
@@ -302,7 +302,7 @@ export default function Hero() {
               Syed Omer Ali
             </h1>
             <div className="flex items-center justify-between">
-              <div className="text-slate-400 dark:text-slate-600 text-base">
+              <div className="text-slate-600 dark:text-slate-300 text-base">
                 <WordRotate
                   words={[
                     "Indie Hacker",
@@ -317,7 +317,7 @@ export default function Hero() {
               </div>
               {/* View Count */}
               <m.div
-                className="flex items-center gap-1 text-slate-500 dark:text-slate-400"
+                className="flex items-center gap-1 text-slate-600 dark:text-slate-300"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -382,7 +382,7 @@ export default function Hero() {
 
           {/* Social Links */}
           <div>
-            <p className="text-slate-500 dark:text-[#94A3B8] text-sm mb-2 sm:mb-4 mt-6">
+            <p className="text-slate-600 dark:text-slate-300 text-sm mb-2 sm:mb-4 mt-6">
               Here are my <strong className="font-medium text-slate-900 dark:text-white">socials</strong>
             </p>
             <div className="flex flex-wrap gap-1.5">
@@ -449,7 +449,7 @@ export default function Hero() {
             placeholder={
               <div className="block mt-6 sm:-mt-2 sm:-mx-6 px-0 sm:pl-8 sm:pr-6">
                 <div className="min-h-45 sm:min-h-60 flex items-center justify-center">
-                  <span className="text-xs text-slate-500 dark:text-slate-600">Loading contributions...</span>
+                  <span className="text-xs text-slate-600 dark:text-slate-300">Loading contributions...</span>
                 </div>
               </div>
             }
