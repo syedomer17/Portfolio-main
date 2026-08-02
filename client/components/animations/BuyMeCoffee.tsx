@@ -20,6 +20,8 @@ function BuyMeCoffee({
         )}
       >
         <svg
+          role="img"
+          aria-label="Buy me a coffee"
           width='424'
           className={cn(
             'absolute top-0 left-0 w-full h-full scale-[2] translate-x-6 group-hover:scale-50 group-hover:opacity-0 duration-300 group-hover:delay-0 delay-200'

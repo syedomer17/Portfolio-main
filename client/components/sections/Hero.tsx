@@ -417,23 +417,23 @@ export default function Hero() {
                       className="absolute bottom-full left-0 min-[410px]:-left-16 min-[412px]:-left-15 min-[430px]:-left-12 sm:left-0 mb-2 w-40 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#3A3A3A] rounded-xl shadow-xl z-20 p-1.5 font-instagram"
                     >
                       <Link href="https://leetcode.com/syedomerali_200" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
-                        <SiLeetcode className="w-4 h-4 text-[#FFA116]" />
+                        <SiLeetcode className="w-4 h-4 text-[#FFA116]" aria-hidden="true" focusable="false" />
                         <span className="text-sm font-medium font-instagram text-slate-700 dark:text-white">LeetCode</span>
                       </Link>
                       <Link href="https://medium.com/@syedomerali2006" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
-                        <FaMedium className="w-4 h-4 text-black dark:text-white" />
+                        <FaMedium className="w-4 h-4 text-black dark:text-white" aria-hidden="true" focusable="false" />
                         <span className="text-sm font-medium font-instagram text-slate-700 dark:text-white">Medium</span>
                       </Link>
                       <Link href="https://www.instagram.com/syedomer.me/" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
-                        <FaInstagram className="w-4 h-4 text-slate-700 dark:text-white" />
+                        <FaInstagram className="w-4 h-4 text-slate-700 dark:text-white" aria-hidden="true" focusable="false" />
                         <span className="text-sm font-medium font-instagram text-slate-700 dark:text-white">Instagram</span>
                       </Link>
                       <Link href="#" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
-                        <FaYoutube className="w-4 h-4 text-slate-700 dark:text-white" />
+                        <FaYoutube className="w-4 h-4 text-slate-700 dark:text-white" aria-hidden="true" focusable="false" />
                         <span className="text-sm font-medium font-instagram text-slate-700 dark:text-white">YouTube</span>
                       </Link>
                       <Link href="https://discord.com/channels/@syedomerali8642" className="flex items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors">
-                        <FaDiscord className="w-4 h-4 text-slate-700 dark:text-white" />
+                        <FaDiscord className="w-4 h-4 text-slate-700 dark:text-white" aria-hidden="true" focusable="false" />
                         <span className="text-sm font-medium font-instagram text-slate-700 dark:text-white">Discord</span>
                       </Link>
                     </m.div>

@@ -20,7 +20,7 @@ export default function GithubHoverCard() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-[#2E2E2E] sm:dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors font-instagram"
             >
-                <FaGithub className="w-4 h-4" />
+                <FaGithub className="w-4 h-4" aria-hidden="true" focusable="false" />
                 <span>GitHub</span>
             </motion.a>
 
@@ -68,7 +68,7 @@ export default function GithubHoverCard() {
 
                         {/* Location */}
                         <div className="flex items-center gap-1.5 mb-3">
-                            <HiLocationMarker className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                            <HiLocationMarker className="w-4 h-4 text-slate-500 dark:text-slate-400" aria-hidden="true" focusable="false" />
                             <span className="text-sm text-slate-600 dark:text-slate-300">
                                 Hyderabad, India
                             </span>

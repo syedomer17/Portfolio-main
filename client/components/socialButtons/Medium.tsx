@@ -19,7 +19,7 @@ export default function MediumHoverCard() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors font-instagram"
             >
-                <FaMedium className="w-4 h-4" />
+                <FaMedium className="w-4 h-4" aria-hidden="true" focusable="false" />
                 <span>Medium</span>
             </motion.a>
 

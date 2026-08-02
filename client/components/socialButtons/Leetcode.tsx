@@ -19,7 +19,7 @@ export default function LeetcodeHoverCard() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-transparent border border-slate-300 dark:border-transparent rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#3E3E3E] transition-colors font-instagram"
             >
-                <SiLeetcode className="w-4 h-4" />
+                <SiLeetcode className="w-4 h-4 text-[#FFA116]" aria-hidden="true" focusable="false" />
                 <span>LeetCode</span>
             </motion.a>
 
