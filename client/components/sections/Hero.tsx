@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
+import { AnimatePresence, LazyMotion, m, type Transition } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image, { type StaticImageData } from "next/image";
 import { CalendarDays, Eye, Mail, RefreshCw } from "lucide-react";
@@ -8,7 +8,7 @@ import { CalendarDays, Eye, Mail, RefreshCw } from "lucide-react";
 import { HiMenu } from "react-icons/hi";
 import { FaInstagram, FaYoutube, FaDiscord, FaMedium } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import { WordRotate } from "../ui/word-rotate";
 import CountUp from "../ui/CountUp";
@@ -66,6 +66,29 @@ function SocialButtonPlaceholder({ label }: { label: string }) {
 }
 
 
+const loadFeatures = () => import("framer-motion").then((res) => res.domAnimation);
+
+const JOB_TITLES = [
+  "Indie Hacker",
+  "Full Stack Developer",
+  "DevOps Engineer",
+  "Cloud Engineer",
+  "Software Engineer",
+  "System Designer",
+];
+
+const HERO_INITIAL = { opacity: 0.01, y: 30 };
+const HERO_ANIMATE = { opacity: 1, y: 0 };
+const HERO_TRANSITION: Transition = { duration: 0.9, ease: "easeOut" };
+
+const PROFILE_INITIAL = { scale: 0.8, opacity: 0.01 };
+const PROFILE_ANIMATE = { scale: 1, opacity: 1 };
+const PROFILE_TRANSITION: Transition = { delay: 0.2, duration: 0.5 };
+
+const VIEW_COUNT_INITIAL = { opacity: 0.01 };
+const VIEW_COUNT_ANIMATE = { opacity: 1 };
+const VIEW_COUNT_TRANSITION: Transition = { delay: 0.5 };
+
 export default function Hero() {
   const defaultViewCount = 3300;
 
@@ -74,7 +97,7 @@ export default function Hero() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [viewCount, setViewCount] = useState(defaultViewCount);
 
-  const handleImageSwitch = () => {
+  const handleImageSwitch = useCallback(() => {
     // Play audio - deferred to idle callback, won't block interaction
     playSound("/audio/glitch.wav", { volume: 0.7, timeout: 1000 });
 
@@ -84,7 +107,7 @@ export default function Hero() {
 
     // Toggle image
     setCurrentImage((prev) => (prev === profileImage ? altProfileImage : profileImage));
-  };
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -128,17 +151,17 @@ export default function Hero() {
     };
   }, []);
 
-  const viewCountK = Number((viewCount / 1000).toFixed(1));
+  const viewCountK = useMemo(() => Number((viewCount / 1000).toFixed(1)), [viewCount]);
 
 
 
   return (
-    <LazyMotion features={domAnimation}>
+    <LazyMotion features={loadFeatures}>
       <section className="container mx-auto px-4 sm:px-6 pt-20 pb-0">
         <m.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+          initial={HERO_INITIAL}
+          animate={HERO_ANIMATE}
+          transition={HERO_TRANSITION}
           className="max-w-2xl mx-auto relative"
           style={{ willChange: "transform, opacity" }}
         >
@@ -151,9 +174,9 @@ export default function Hero() {
         <div className="flex items-end gap-3 sm:gap-6 mb-8">
           {/* Profile Image */}
             <m.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            initial={PROFILE_INITIAL}
+            animate={PROFILE_ANIMATE}
+            transition={PROFILE_TRANSITION}
             className="relative shrink-0"
               style={{ willChange: "transform, opacity" }}
           >
@@ -284,9 +307,9 @@ export default function Hero() {
                 ) : (
                   <m.div
                     key="icon"
-                    initial={{ opacity: 0, scale: 0.5 }}
+                    initial={{ opacity: 0.01, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.5 }}
+                    exit={{ opacity: 0.01, scale: 0.5 }}
                     transition={{ duration: 0.2 }}
                   >
                     <RefreshCw className="w-4 h-4" />
@@ -304,23 +327,16 @@ export default function Hero() {
             <div className="flex items-center justify-between">
               <div className="text-slate-600 dark:text-slate-300 text-base">
                 <WordRotate
-                  words={[
-                    "Indie Hacker",
-                    "Full Stack Developer",
-                    "DevOps Engineer",
-                    "Cloud Engineer",
-                    "Software Engineer",
-                    "System Designer",
-                  ]}
+                  words={JOB_TITLES}
                   className="text-sm sm:text-base font-normal"
                 />
               </div>
               {/* View Count */}
               <m.div
                 className="flex items-center gap-1 text-slate-600 dark:text-slate-300"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
+                initial={VIEW_COUNT_INITIAL}
+                animate={VIEW_COUNT_ANIMATE}
+                transition={VIEW_COUNT_TRANSITION}
               >
                 <Eye className="w-3.5 h-3.5" />
                 <span className="text-sm leading-none flex">
@@ -411,9 +427,9 @@ export default function Hero() {
                 <AnimatePresence>
                   {showMoreMenu && (
                     <m.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0.01, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
+                      exit={{ opacity: 0.01, y: 10 }}
                       className="absolute bottom-full left-0 min-[410px]:-left-16 min-[412px]:-left-15 min-[430px]:-left-12 sm:left-0 mb-2 w-40 bg-white dark:bg-[#1C1C1C] border border-slate-200 dark:border-[#3A3A3A] rounded-xl shadow-xl z-20 p-1.5 font-instagram"
                     >
                       <Link href="https://leetcode.com/syedomerali_200" target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center gap-3 px-3 py-1.5 bg-slate-50 dark:bg-[#2A2A2A] hover:bg-slate-100 dark:hover:bg-[#333] rounded-lg transition-colors mb-1">
