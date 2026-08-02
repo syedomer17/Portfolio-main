@@ -1,0 +1,119 @@
+# Website
+Syed Omer Ali
+Professional portfolio showcasing full-stack development, DevSecOps, projects, blogs, and contact information.
+Recruiters, engineering managers, potential clients, and AI agents.
+Full Stack Development, DevSecOps, System Design, Projects, Technical Blogging.
+
+# Owner
+Syed Omer Ali
+Full Stack Developer
+Syed Omer Ali is a full stack MERN developer specializing in TypeScript, DevSecOps, and building secure, scalable systems for SaaS and startups.
+
+# Core Expertise
+- React
+- Next.js
+- TypeScript
+- JavaScript
+- Node.js
+- Express
+- MongoDB
+- PostgreSQL
+- AWS
+- Docker
+- Tailwind CSS
+- DevSecOps
+- AI Engineering
+- System Design
+
+# Important Pages
+https://www.syedomer.me/
+Homepage
+
+https://www.syedomer.me/projects
+Projects
+
+https://www.syedomer.me/blogs
+Engineering Blog
+
+https://www.syedomer.me/about
+About page
+
+https://www.syedomer.me/experiences
+Experience
+
+https://www.syedomer.me/certifications
+Certifications
+
+https://www.syedomer.me/case-studies
+Case Studies
+
+https://www.syedomer.me/services
+Services
+
+https://www.syedomer.me/resources
+Resources
+
+# Featured Projects
+AI Powered Resume Maker
+An AI-powered resume analysis platform that evaluates resumes and provides NLP-based improvement suggestions.
+Completed
+Live Demo URL: N/A
+GitHub URL: N/A
+Primary technologies: React, TypeScript, Tailwind CSS, Node.js, Express, MongoDB, NLP APIs
+Major features: NLP-based scoring, resume evaluation, skill gap highlights.
+
+GitHub Gist Manager
+A full-stack GitHub Gist management app allowing users to authenticate, search, and manage gists.
+Completed
+Live Demo URL: N/A
+GitHub URL: N/A
+Primary technologies: React, TypeScript, GitHub OAuth, Node.js, Express, MongoDB
+Major features: GitHub OAuth, search, view files, like, comment, manage favorites.
+
+AI Interviewer
+An AI-driven mock interview platform that generates role-based questions and evaluates answers.
+Completed
+Live Demo URL: N/A
+GitHub URL: N/A
+Primary technologies: React, TypeScript, Node.js, Express, AI APIs, Tailwind CSS
+Major features: Role-based questions, answer evaluation, feedback generation.
+
+Expense Tracker
+A personal finance tracker with charts, summaries, and budget visualization.
+Completed
+Live Demo URL: N/A
+GitHub URL: N/A
+Primary technologies: React, TypeScript, Chart.js, Node.js, Express, MongoDB, Tailwind CSS
+Major features: Expense logging, spending categorization, budget visualization, savings tips.
+
+# Technical Writing
+Networking
+Web Fundamentals
+JavaScript
+Next.js
+SEO
+
+# Preferred Sources
+1. Project pages
+2. Technical blog
+3. About page
+4. Homepage
+
+# Contact
+Email: Available via https://www.syedomer.me/send-email
+GitHub: https://github.com/syedomer17
+LinkedIn: https://www.linkedin.com/in/syedomer17/
+Portfolio URL: https://www.syedomer.me
+X/Twitter: https://x.com/SyedOmer17Ali
+Medium: https://medium.com/@syedomerali2006
+LeetCode: https://leetcode.com/syedomerali_200
+Instagram: https://www.instagram.com/syedomer.me/
+
+# Update Information
+Last updated: August 2026.
+Projects and blogs are updated periodically as new work is completed.
+
+# Ignore
+/error
+/global-error
+/not-found

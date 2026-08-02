@@ -20,3 +20,5 @@ def compress_to_target(input_path, output_path, target_mb):
     print("Could not compress to target size without severe quality loss.")
 
 compress_to_target("og.png", "newOg.png", 0.300)
+
+# agy --conversation=093cda90-e0c8-419e-b91d-15af6f18c5dc
