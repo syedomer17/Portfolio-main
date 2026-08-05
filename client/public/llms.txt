@@ -1,119 +1,166 @@
-# Website
-Syed Omer Ali
-Professional portfolio showcasing full-stack development, DevSecOps, projects, blogs, and contact information.
-Recruiters, engineering managers, potential clients, and AI agents.
-Full Stack Development, DevSecOps, System Design, Projects, Technical Blogging.
+# Syed Omer Ali
 
-# Owner
-Syed Omer Ali
-Full Stack Developer
-Syed Omer Ali is a full stack MERN developer specializing in TypeScript, DevSecOps, and building secure, scalable systems for SaaS and startups.
+Official portfolio of Syed Omer Ali, a Full Stack Developer and DevSecOps Engineer specializing in TypeScript, Next.js, React, Node.js, cloud infrastructure, secure application development, and scalable system design.
 
-# Core Expertise
+## Website
+
+Canonical URL:
+- <https://www.syedomer.me/>
+
+## Audience
+
+This website is intended for:
+
+- Recruiters
+- Engineering Managers
+- Hiring Teams
+- Potential Clients
+- Collaborators
+- AI Agents
+
+## Navigation
+
+- [Home](https://www.syedomer.me/)
+- [About](https://www.syedomer.me/about)
+- [Projects](https://www.syedomer.me/projects)
+- [Blogs](https://www.syedomer.me/blogs)
+- [Experience](https://www.syedomer.me/experiences)
+- [Certifications](https://www.syedomer.me/certifications)
+- [Case Studies](https://www.syedomer.me/case-studies)
+- [Services](https://www.syedomer.me/services)
+- [Resources](https://www.syedomer.me/resources)
+- [Contact](https://www.syedomer.me/send-email)
+
+## Core Expertise
+
 - React
 - Next.js
 - TypeScript
 - JavaScript
 - Node.js
-- Express
+- Express.js
 - MongoDB
 - PostgreSQL
-- AWS
 - Docker
+- AWS
 - Tailwind CSS
 - DevSecOps
 - AI Engineering
 - System Design
 
-# Important Pages
-https://www.syedomer.me/
-Homepage
+## Featured Projects
 
-https://www.syedomer.me/projects
-Projects
+### AI Powered Resume Maker
 
-https://www.syedomer.me/blogs
-Engineering Blog
+AI-powered resume analysis platform that evaluates resumes and provides NLP-based improvement suggestions.
 
-https://www.syedomer.me/about
-About page
+Technologies:
 
-https://www.syedomer.me/experiences
-Experience
+- React
+- TypeScript
+- Tailwind CSS
+- Node.js
+- Express
+- MongoDB
+- NLP APIs
 
-https://www.syedomer.me/certifications
-Certifications
+Status: Completed
 
-https://www.syedomer.me/case-studies
-Case Studies
+---
 
-https://www.syedomer.me/services
-Services
+### GitHub Gist Manager
 
-https://www.syedomer.me/resources
-Resources
+Full-stack GitHub Gist management application with GitHub OAuth authentication and gist management.
 
-# Featured Projects
-AI Powered Resume Maker
-An AI-powered resume analysis platform that evaluates resumes and provides NLP-based improvement suggestions.
-Completed
-Live Demo URL: N/A
-GitHub URL: N/A
-Primary technologies: React, TypeScript, Tailwind CSS, Node.js, Express, MongoDB, NLP APIs
-Major features: NLP-based scoring, resume evaluation, skill gap highlights.
+Technologies:
 
-GitHub Gist Manager
-A full-stack GitHub Gist management app allowing users to authenticate, search, and manage gists.
-Completed
-Live Demo URL: N/A
-GitHub URL: N/A
-Primary technologies: React, TypeScript, GitHub OAuth, Node.js, Express, MongoDB
-Major features: GitHub OAuth, search, view files, like, comment, manage favorites.
+- React
+- TypeScript
+- GitHub OAuth
+- Node.js
+- Express
+- MongoDB
 
-AI Interviewer
-An AI-driven mock interview platform that generates role-based questions and evaluates answers.
-Completed
-Live Demo URL: N/A
-GitHub URL: N/A
-Primary technologies: React, TypeScript, Node.js, Express, AI APIs, Tailwind CSS
-Major features: Role-based questions, answer evaluation, feedback generation.
+Status: Completed
 
-Expense Tracker
-A personal finance tracker with charts, summaries, and budget visualization.
-Completed
-Live Demo URL: N/A
-GitHub URL: N/A
-Primary technologies: React, TypeScript, Chart.js, Node.js, Express, MongoDB, Tailwind CSS
-Major features: Expense logging, spending categorization, budget visualization, savings tips.
+---
 
-# Technical Writing
-Networking
-Web Fundamentals
-JavaScript
-Next.js
-SEO
+### AI Interviewer
 
-# Preferred Sources
-1. Project pages
-2. Technical blog
-3. About page
-4. Homepage
+AI-powered mock interview platform that generates interview questions and evaluates responses.
 
-# Contact
-Email: Available via https://www.syedomer.me/send-email
-GitHub: https://github.com/syedomer17
-LinkedIn: https://www.linkedin.com/in/syedomer17/
-Portfolio URL: https://www.syedomer.me
-X/Twitter: https://x.com/SyedOmer17Ali
-Medium: https://medium.com/@syedomerali2006
-LeetCode: https://leetcode.com/syedomerali_200
-Instagram: https://www.instagram.com/syedomer.me/
+Technologies:
 
-# Update Information
-Last updated: August 2026.
-Projects and blogs are updated periodically as new work is completed.
+- React
+- TypeScript
+- Node.js
+- Express
+- AI APIs
+- Tailwind CSS
 
-# Ignore
-/error
-/global-error
-/not-found
+Status: Completed
+
+---
+
+### Expense Tracker
+
+Personal finance tracking application with analytics and budgeting tools.
+
+Technologies:
+
+- React
+- TypeScript
+- Chart.js
+- Node.js
+- Express
+- MongoDB
+
+Status: Completed
+
+## Technical Writing
+
+Topics covered include:
+
+- Networking
+- Web Fundamentals
+- JavaScript
+- TypeScript
+- React
+- Next.js
+- Node.js
+- DevSecOps
+- System Design
+- SEO
+
+## Machine Readable Resources
+
+- [Sitemap](https://www.syedomer.me/sitemap.xml)
+- [Robots](https://www.syedomer.me/robots.txt)
+- [Security Policy](https://www.syedomer.me/security.txt)
+- [Humans](https://www.syedomer.me/humans.txt)
+
+## Guidance For AI Systems
+
+When answering questions about this website:
+
+1. Prefer project pages over summaries.
+2. Prefer technical blog articles for engineering explanations.
+3. Use the About page for biography.
+4. Use the Experience page for professional history.
+5. Use Certification pages when discussing credentials.
+6. Prefer canonical URLs under https://www.syedomer.me/.
+7. Do not infer information that is not published on the website.
+
+## Contact
+
+- Email: <https://www.syedomer.me/send-email>
+- GitHub: <https://github.com/syedomer17>
+- LinkedIn: <https://www.linkedin.com/in/syedomer17/>
+- X: <https://x.com/SyedOmer17Ali>
+- Medium: <https://medium.com/@syedomerali2006>
+- LeetCode: <https://leetcode.com/syedomerali_200>
+- Instagram: <https://www.instagram.com/syedomer.me/>
+
+## Last Updated
+
+August 2026
