@@ -268,6 +268,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <LazyAnalyticsProviders />
 
         <SpeedInsights />
+
+        {/* Register Service Worker */}
+        <Script
+          id="sw-register"
+          strategy="afterInteractive"
+          nonce={nonce}
+          dangerouslySetInnerHTML={{
+            __html: `if ('serviceWorker' in navigator) { window.addEventListener('load', function() { navigator.serviceWorker.register('/sw.js').catch(function(err) {}); }); }`
+          }}
+        />
       </body>
     </html>
   );
