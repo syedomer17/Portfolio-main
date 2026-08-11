@@ -37,6 +37,8 @@
       }
     }
 
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       padding: 0;
@@ -46,20 +48,18 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      box-sizing: border-box;
-      transition: background-color 0.2s ease, color 0.2s ease;
+      min-height: 100dvh;
+      -webkit-text-size-adjust: 100%;
     }
 
-    /* Header styling */
     header {
       width: 100%;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 1.5rem 1.5rem;
+      padding: 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-sizing: border-box;
     }
 
     .logo {
@@ -71,7 +71,7 @@
     }
 
     .status-badge {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       font-size: 0.7rem;
@@ -89,38 +89,34 @@
       height: 6px;
       border-radius: 50%;
       display: inline-block;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
     }
 
-    .dot.offline {
+    .dot-offline {
       background-color: var(--dot-offline);
       box-shadow: 0 0 6px var(--dot-offline);
     }
 
-    .dot.online {
+    .dot-online {
       background-color: var(--dot-online);
       box-shadow: 0 0 6px var(--dot-online);
     }
 
-    .dot.online-detected {
+    .dot-pulse {
       background-color: var(--dot-online);
       box-shadow: 0 0 10px var(--dot-online);
       animation: pulse 1.5s infinite;
     }
 
     @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.3); opacity: 0.6; }
-      100% { transform: scale(1); opacity: 1; }
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.5; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .dot.online-detected {
-        animation: none;
-      }
+      .dot-pulse { animation: none; }
     }
 
-    /* Main container */
     main {
       flex: 1;
       display: flex;
@@ -128,7 +124,6 @@
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
-      box-sizing: border-box;
     }
 
     .card {
@@ -137,16 +132,14 @@
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 0.5rem;
-      padding: 2.25rem 1.75rem;
-      box-sizing: border-box;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
     }
 
     h1 {
       font-size: 1.75rem;
       font-weight: 700;
-      margin-top: 0;
-      margin-bottom: 0.5rem;
+      margin: 0 0 0.5rem;
       letter-spacing: -0.02em;
     }
 
@@ -154,11 +147,10 @@
       color: var(--muted);
       font-size: 0.925rem;
       line-height: 1.5;
-      margin-top: 0;
-      margin-bottom: 1.5rem;
+      margin: 0 0 1.5rem;
     }
 
-    /* Terminal emulation */
+    /* Terminal */
     .terminal {
       background-color: var(--terminal-bg);
       border: 1px solid var(--card-border);
@@ -170,7 +162,7 @@
       text-align: left;
     }
 
-    .terminal-header {
+    .terminal-bar {
       background-color: var(--card-bg);
       border-bottom: 1px solid var(--card-border);
       padding: 0.4rem 0.6rem;
@@ -179,16 +171,12 @@
       gap: 0.35rem;
     }
 
-    .t-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-    }
-    .t-dot.r { background-color: #ef4444; }
-    .t-dot.y { background-color: #f59e0b; }
-    .t-dot.g { background-color: #10b981; }
+    .td { width: 5px; height: 5px; border-radius: 50%; }
+    .td-r { background: #ef4444; }
+    .td-y { background: #f59e0b; }
+    .td-g { background: #10b981; }
 
-    .terminal-title {
+    .terminal-label {
       color: var(--muted);
       font-size: 0.7rem;
       margin-left: auto;
@@ -197,36 +185,19 @@
 
     .terminal-body {
       padding: 0.75rem 0.875rem;
-      max-height: 120px;
+      max-height: 130px;
       overflow-y: auto;
-      line-height: 1.4285;
+      line-height: 1.45;
     }
 
-    .terminal-line {
-      margin-bottom: 0.25rem;
-      white-space: pre-wrap;
-      word-break: break-all;
-    }
+    .tl { margin-bottom: 0.2rem; white-space: pre-wrap; word-break: break-all; }
+    .tl:last-child { margin-bottom: 0; }
+    .tp { color: var(--accent); font-weight: bold; user-select: none; }
+    .tl-err { color: var(--error-color); }
+    .tl-ok { color: var(--success-color); }
 
-    .terminal-line:last-child {
-      margin-bottom: 0;
-    }
-
-    .prompt {
-      color: var(--accent);
-      font-weight: bold;
-      user-select: none;
-    }
-
-    .terminal-line.error {
-      color: var(--error-color);
-    }
-
-    .terminal-line.success {
-      color: var(--success-color);
-    }
-
-    .feedback {
+    /* Feedback banner */
+    .fb {
       font-size: 0.825rem;
       padding: 0.6rem 0.875rem;
       border-radius: 0.25rem;
@@ -236,35 +207,27 @@
       text-align: left;
       line-height: 1.35;
     }
-
-    .feedback.error {
+    .fb-err {
       display: block;
-      background-color: rgba(239, 68, 68, 0.08);
+      background: rgba(239, 68, 68, 0.08);
       border: 1px solid rgba(239, 68, 68, 0.18);
       color: var(--error-color);
     }
-
-    .feedback.success {
+    .fb-ok {
       display: block;
-      background-color: rgba(34, 197, 129, 0.08);
-      border: 1px solid rgba(34, 197, 129, 0.18);
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.18);
       color: var(--success-color);
     }
-
-    .feedback.info {
+    .fb-info {
       display: block;
-      background-color: rgba(148, 163, 184, 0.08);
+      background: rgba(148, 163, 184, 0.08);
       border: 1px solid rgba(148, 163, 184, 0.18);
       color: var(--muted);
     }
 
-    /* Retry button */
-    .btn-container {
-      display: flex;
-      flex-direction: column;
-    }
-
-    button {
+    /* Button */
+    .retry-btn {
       background-color: var(--accent);
       color: rgb(15, 23, 42);
       border: none;
@@ -274,45 +237,30 @@
       border-radius: 0.25rem;
       cursor: pointer;
       width: 100%;
-      box-sizing: border-box;
-      transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background-color 0.15s ease, opacity 0.15s ease;
+      -webkit-appearance: none;
+      appearance: none;
+      touch-action: manipulation;
     }
 
-    button:hover:not(:disabled) {
-      background-color: var(--accent-hover);
-    }
+    .retry-btn:hover:not(:disabled) { background-color: var(--accent-hover); }
+    .retry-btn:active:not(:disabled) { transform: scale(0.98); }
+    .retry-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .retry-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-    button:active:not(:disabled) {
-      transform: scale(0.98);
-    }
-
-    button:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-
-    button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    /* Footer styling */
     footer {
       width: 100%;
       text-align: center;
       padding: 1.5rem;
       color: var(--muted);
       font-size: 0.7rem;
-      box-sizing: border-box;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      button {
-        transition: none;
-      }
+      .retry-btn { transition: none; }
     }
   </style>
 </head>
@@ -320,8 +268,8 @@
   <header>
     <div class="logo">Syed Omer</div>
     <div class="status-badge" aria-live="polite">
-      <span id="status-dot" class="dot offline"></span>
-      <span id="status-text">Offline</span>
+      <span id="dot" class="dot dot-offline"></span>
+      <span id="status">Offline</span>
     </div>
   </header>
 
@@ -331,145 +279,133 @@
       <p class="description">You're currently offline. Reconnect to the internet and try again.</p>
 
       <div class="terminal" aria-hidden="true">
-        <div class="terminal-header">
-          <span class="t-dot r"></span>
-          <span class="t-dot y"></span>
-          <span class="t-dot g"></span>
-          <span class="terminal-title">zsh</span>
+        <div class="terminal-bar">
+          <span class="td td-r"></span>
+          <span class="td td-y"></span>
+          <span class="td td-g"></span>
+          <span class="terminal-label">zsh</span>
         </div>
-        <div class="terminal-body" id="terminal-body">
-          <div class="terminal-line"><span class="prompt">$</span> ping -c 1 syedomer.me</div>
-          <div class="terminal-line error">ping: sendto: Network is unreachable</div>
+        <div class="terminal-body" id="term">
+          <div class="tl"><span class="tp">$ </span>ping -c 1 syedomer.me</div>
+          <div class="tl tl-err">ping: sendto: Network is unreachable</div>
         </div>
       </div>
 
-      <div id="feedback-msg" class="feedback" role="alert"></div>
+      <div id="fb" class="fb" role="alert"></div>
 
-      <div class="btn-container">
-        <button id="retry-btn" onclick="checkConnection()">Try Again</button>
-      </div>
+      <button type="button" class="retry-btn" id="btn" aria-label="Try Again">Try Again</button>
     </div>
   </main>
 
-  <footer>
-    &copy; <script>document.write(new Date().getFullYear())</script> Syed Omer Ali. All rights reserved.
-  </footer>
+  <footer id="ft"></footer>
 
   <script>
-    const statusDot = document.getElementById('status-dot');
-    const statusText = document.getElementById('status-text');
-    const retryBtn = document.getElementById('retry-btn');
-    const feedbackMsg = document.getElementById('feedback-msg');
-    const terminalBody = document.getElementById('terminal-body');
+    // DOM refs
+    var dot = document.getElementById('dot');
+    var status = document.getElementById('status');
+    var btn = document.getElementById('btn');
+    var fb = document.getElementById('fb');
+    var term = document.getElementById('term');
+    var ft = document.getElementById('ft');
 
-    let isChecking = false;
+    // Footer year (no document.write)
+    ft.textContent = '\u00A9 ' + new Date().getFullYear() + ' Syed Omer Ali. All rights reserved.';
 
-    function logToTerminal(command, output, isError = false) {
-      const lineClass = isError ? 'error' : (output.includes('64 bytes') || output.includes('link active') ? 'success' : '');
-      const content = `
-        <div class="terminal-line"><span class="prompt">$</span> ${command}</div>
-        <div class="terminal-line ${lineClass}">${output}</div>
-      `;
-      terminalBody.insertAdjacentHTML('beforeend', content);
-      terminalBody.scrollTop = terminalBody.scrollHeight;
+    var checking = false;
+
+    function log(cmd, out, err) {
+      var cls = err ? ' tl-err' : (out.indexOf('64 bytes') > -1 || out.indexOf('restored') > -1 ? ' tl-ok' : '');
+      var h = '<div class="tl"><span class="tp">$ </span>' + cmd + '</div>'
+            + '<div class="tl' + cls + '">' + out + '</div>';
+      term.insertAdjacentHTML('beforeend', h);
+      term.scrollTop = term.scrollHeight;
     }
 
-    async function checkConnection() {
-      if (isChecking) return;
-      isChecking = true;
+    function setOffline(msg) {
+      checking = false;
+      btn.disabled = false;
+      btn.textContent = 'Try Again';
+      fb.className = 'fb fb-err';
+      fb.textContent = msg || 'Connection still unavailable. Check your internet and try again.';
+      dot.className = 'dot dot-offline';
+      status.textContent = 'Offline';
+    }
 
-      // Update button & feedback state
-      retryBtn.disabled = true;
-      retryBtn.innerText = 'Checking connection...';
-      feedbackMsg.className = 'feedback info';
-      feedbackMsg.innerText = 'Testing network interface and host reachability...';
+    function setOnline() {
+      checking = false;
+      btn.disabled = true;
+      btn.textContent = 'Reloading\u2026';
+      fb.className = 'fb fb-ok';
+      fb.textContent = 'Internet connection detected. Reloading portfolio\u2026';
+      dot.className = 'dot dot-online';
+      status.textContent = 'Online';
+      log('ping -c 1 syedomer.me', '64 bytes from syedomer.me: icmp_seq=1 ttl=56 time=14.3 ms', false);
+      setTimeout(function () { location.reload(); }, 800);
+    }
 
-      // 1. Initial check: navigator.onLine
+    function check() {
+      if (checking) return;
+      checking = true;
+      btn.disabled = true;
+      btn.textContent = 'Checking connection\u2026';
+      fb.className = 'fb fb-info';
+      fb.textContent = 'Testing network reachability\u2026';
+
+      // Quick gate: navigator.onLine
       if (!navigator.onLine) {
-        setTimeout(() => {
-          handleOffline('ping: sendto: Network is unreachable');
-        }, 800);
+        setTimeout(function () {
+          log('ping -c 1 syedomer.me', 'ping: sendto: Network is unreachable', true);
+          setOffline();
+        }, 600);
         return;
       }
 
-      // 2. Real connectivity check: fetch lightweight asset
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3500);
+      // Real connectivity check: HEAD request to a lightweight same-origin asset.
+      // This bypasses the Service Worker because mode !== 'navigate'.
+      var ctrl = new AbortController();
+      var tid = setTimeout(function () { ctrl.abort(); }, 4000);
 
-      try {
-        const response = await fetch(`/favicon-16x16.png?_cb=${Date.now()}`, {
-          method: 'HEAD',
-          cache: 'no-store',
-          signal: controller.signal
-        });
-
-        clearTimeout(timeoutId);
-
-        if (response.ok) {
-          handleOnline();
+      fetch('/favicon-16x16.png?_sw_check=' + Date.now(), {
+        method: 'HEAD',
+        cache: 'no-store',
+        signal: ctrl.signal
+      }).then(function (r) {
+        clearTimeout(tid);
+        if (r.ok) {
+          setOnline();
         } else {
-          handleOffline(`curl: (22) The requested URL returned error: ${response.status}`);
+          log('curl -I syedomer.me', 'HTTP ' + r.status, true);
+          setOffline('Server returned an error. Please try again shortly.');
         }
-      } catch (err) {
-        clearTimeout(timeoutId);
-        let errorMsg = 'ping: sendto: Host is unreachable';
-        if (err.name === 'AbortError') {
-          errorMsg = 'ping: request timeout';
-        }
-        handleOffline(errorMsg);
-      }
+      }).catch(function (e) {
+        clearTimeout(tid);
+        var msg = e.name === 'AbortError' ? 'ping: request timeout' : 'ping: sendto: Host is unreachable';
+        log('ping -c 1 syedomer.me', msg, true);
+        setOffline();
+      });
     }
 
-    function handleOffline(terminalOutput) {
-      isChecking = false;
-      retryBtn.disabled = false;
-      retryBtn.innerText = 'Try Again';
+    // Attach via addEventListener (no inline onclick — safe with any CSP)
+    btn.addEventListener('click', check);
 
-      feedbackMsg.className = 'feedback error';
-      feedbackMsg.innerText = 'Connection still unavailable. Please verify your internet connection and try again.';
-
-      logToTerminal('ping -c 1 syedomer.me', terminalOutput, true);
-
-      statusDot.className = 'dot offline';
-      statusText.innerText = 'Offline';
-    }
-
-    function handleOnline() {
-      isChecking = false;
-      retryBtn.disabled = true;
-      retryBtn.innerText = 'Reloading...';
-
-      feedbackMsg.className = 'feedback success';
-      feedbackMsg.innerText = 'Internet connection detected. Reloading portfolio...';
-
-      logToTerminal('ping -c 1 syedomer.me', '64 bytes from syedomer.me: icmp_seq=1 ttl=56 time=14.3 ms');
-
-      statusDot.className = 'dot online';
-      statusText.innerText = 'Online';
-
-      setTimeout(() => {
-        location.reload();
-      }, 1000);
-    }
-
-    // Passive listeners for network change events
-    window.addEventListener('online', () => {
-      statusDot.className = 'dot online-detected';
-      statusText.innerText = 'Back Online';
-      feedbackMsg.className = 'feedback success';
-      feedbackMsg.innerText = 'Network connection restored. Click below to continue.';
-      retryBtn.innerText = 'Continue';
-      retryBtn.disabled = false;
-      logToTerminal('sysctl -n net.link.ether', 'link active (connection restored)');
+    // Passive network events
+    window.addEventListener('online', function () {
+      dot.className = 'dot dot-pulse';
+      status.textContent = 'Back Online';
+      fb.className = 'fb fb-ok';
+      fb.textContent = 'Connection restored. Tap below to continue.';
+      btn.textContent = 'Continue';
+      btn.disabled = false;
+      log('ip link', 'state UP (connection restored)', false);
     });
 
-    window.addEventListener('offline', () => {
-      statusDot.className = 'dot offline';
-      statusText.innerText = 'Offline';
-      feedbackMsg.className = 'feedback error';
-      feedbackMsg.innerText = 'Connection lost.';
-      retryBtn.innerText = 'Try Again';
-      logToTerminal('sysctl -n net.link.ether', 'link down (connection lost)', true);
+    window.addEventListener('offline', function () {
+      dot.className = 'dot dot-offline';
+      status.textContent = 'Offline';
+      fb.className = 'fb fb-err';
+      fb.textContent = 'Connection lost.';
+      btn.textContent = 'Try Again';
+      log('ip link', 'state DOWN (connection lost)', true);
     });
   </script>
 </body>

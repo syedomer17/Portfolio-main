@@ -1,52 +1,70 @@
-const CACHE_NAME = 'portfolio-offline-v1';
+/**
+ * Service Worker — Offline Navigation Fallback
+ *
+ * Purpose: Cache a single offline.html page and serve it when navigation
+ * requests fail due to network unavailability.
+ *
+ * Strategy: Network-first for navigation requests only.
+ * All other requests (API, static assets, JS chunks) pass through untouched.
+ *
+ * Cache: Versioned. Bump CACHE_VERSION when offline.html changes to ensure
+ * users receive the updated page.
+ */
+
+const CACHE_VERSION = 2;
+const CACHE_NAME = 'portfolio-offline-v' + CACHE_VERSION;
 const OFFLINE_URL = '/offline.html';
 
-self.addEventListener('install', (event) => {
+// ---------------------------------------------------------------------------
+// Install — cache the offline fallback page.
+// ---------------------------------------------------------------------------
+self.addEventListener('install', function (event) {
   event.waitUntil(
-    (async () => {
-      const cache = await caches.open(CACHE_NAME);
-      await cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
-    })()
+    caches.open(CACHE_NAME).then(function (cache) {
+      return cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
+    }).then(function () {
+      return self.skipWaiting();
+    })
   );
-  self.skipWaiting();
 });
 
-self.addEventListener('activate', (event) => {
+// ---------------------------------------------------------------------------
+// Activate — clean up obsolete cache versions, then claim clients so the
+// new SW controls all open tabs immediately.
+// ---------------------------------------------------------------------------
+self.addEventListener('activate', function (event) {
   event.waitUntil(
-    (async () => {
-      if ('navigationPreload' in self.registration) {
-        await self.registration.navigationPreload.enable();
-      }
-      const cacheNames = await caches.keys();
-      await Promise.all(
-        cacheNames.map((name) => {
-          if (name !== CACHE_NAME) {
-            return caches.delete(name);
-          }
+    caches.keys().then(function (names) {
+      return Promise.all(
+        names.filter(function (name) {
+          // Only delete caches that belong to this offline system.
+          // Match "portfolio-offline-v<number>" pattern.
+          return name.startsWith('portfolio-offline-') && name !== CACHE_NAME;
+        }).map(function (name) {
+          return caches.delete(name);
         })
       );
-    })()
+    }).then(function () {
+      return self.clients.claim();
+    })
   );
-  self.clients.claim();
 });
 
-self.addEventListener('fetch', (event) => {
-  if (event.request.mode === 'navigate') {
-    event.respondWith(
-      (async () => {
-        try {
-          const preloadResponse = await event.preloadResponse;
-          if (preloadResponse) {
-            return preloadResponse;
-          }
-          const networkResponse = await fetch(event.request);
-          return networkResponse;
-        } catch (error) {
-          const cache = await caches.open(CACHE_NAME);
-          const cachedResponse = await cache.match(OFFLINE_URL);
-          return cachedResponse;
-        }
-      })()
-    );
+// ---------------------------------------------------------------------------
+// Fetch — intercept ONLY navigation requests. Try network first; on failure
+// return the cached offline page.
+// ---------------------------------------------------------------------------
+self.addEventListener('fetch', function (event) {
+  // Only handle top-level navigation (HTML page loads / reloads).
+  if (event.request.mode !== 'navigate') {
+    return;
   }
+
+  event.respondWith(
+    fetch(event.request).catch(function () {
+      return caches.open(CACHE_NAME).then(function (cache) {
+        return cache.match(OFFLINE_URL);
+      });
+    })
+  );
 });
