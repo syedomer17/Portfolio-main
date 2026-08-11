@@ -189,7 +189,9 @@ export function middleware(request: NextRequest) {
   });
 
   // Only attach CSP for real users — social crawlers skip it so OG images load.
-  if (!isSocialBot(ua)) {
+  // Also bypass for offline.html to allow its inline retry script to run without CSP nonce mismatch.
+  const isOfflineHtml = request.nextUrl.pathname === "/offline.html";
+  if (!isSocialBot(ua) && !isOfflineHtml) {
     response.headers.set("Content-Security-Policy", csp);
   }
 
@@ -202,6 +204,6 @@ export function middleware(request: NextRequest) {
  */
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon\\.ico|.*\\.(?:png|jpg|jpeg|webp|avif|svg|ico|woff2?|mp3|wav|aac|m4a)).*)",
+    "/((?!_next/static|_next/image|offline\\.html|sw\\.js|favicon\\.ico|.*\\.(?:png|jpg|jpeg|webp|avif|svg|ico|woff2?|mp3|wav|aac|m4a)).*)",
   ],
 };
