@@ -269,13 +269,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <SpeedInsights />
 
-        {/* Register Service Worker */}
+        {/* Register Service Worker for offline fallback.
+            Registration runs immediately since afterInteractive already
+            guarantees the DOM is ready. We check readyState as a safeguard:
+            if the page hasn't fully loaded yet, we defer to the load event;
+            otherwise we register right away. This avoids the race condition
+            where the load event fires before this script runs (common on
+            mobile), which would cause registration to silently never happen. */}
         <Script
           id="sw-register"
           strategy="afterInteractive"
           nonce={nonce}
           dangerouslySetInnerHTML={{
-            __html: `if ('serviceWorker' in navigator) { window.addEventListener('load', function() { navigator.serviceWorker.register('/sw.js').catch(function(err) {}); }); }`
+            __html: `(function(){if(!('serviceWorker' in navigator))return;function r(){navigator.serviceWorker.register('/sw.js').catch(function(){});}if(document.readyState==='complete'){r();}else{window.addEventListener('load',r);}})();`
           }}
         />
       </body>
