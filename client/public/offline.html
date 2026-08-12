@@ -4,408 +4,691 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Offline | Syed Omer Ali</title>
-  <style>
-    :root {
-      --bg: rgb(15, 23, 42);
-      --fg: rgb(248, 250, 252);
-      --card-bg: rgb(30, 41, 59);
-      --card-border: rgb(71, 85, 105);
-      --muted: rgb(148, 163, 184);
-      --accent: rgb(251, 146, 60);
-      --accent-hover: rgb(253, 186, 116);
-      --dot-offline: #ef4444;
-      --dot-online: #22c55e;
-      --terminal-bg: rgb(9, 15, 29);
-      --error-color: #f87171;
-      --success-color: #4ade80;
-    }
-
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: rgb(255, 255, 255);
-        --fg: rgb(15, 23, 42);
-        --card-bg: rgb(248, 250, 252);
-        --card-border: rgb(226, 232, 240);
-        --muted: rgb(100, 116, 139);
-        --accent: rgb(59, 130, 246);
-        --accent-hover: rgb(37, 99, 235);
-        --dot-offline: #ef4444;
-        --dot-online: #22c55e;
-        --terminal-bg: rgb(241, 245, 249);
-        --error-color: #dc2626;
-        --success-color: #16a34a;
+  <script>
+    // Theme auto-detector: matches portfolio's ThemeToggle state instantly
+    try {
+      var theme = localStorage.getItem('theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
       }
+    } catch (e) {}
+  </script>
+  <style>
+    /* ──────────────────────────────────────────────
+       Fonts Configuration — loads cached local WOFF2
+       to guarantee brand typography matches offline.
+       ────────────────────────────────────────────── */
+    @font-face {
+      font-family: 'Instagram Sans';
+      src: url('/fonts/new/Instagram Sans.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Instagram Sans';
+      src: url('/fonts/new/Instagram Sans Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Instagram Sans';
+      src: url('/fonts/new/Instagram Sans Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
     }
 
-    * { box-sizing: border-box; }
+    /* ──────────────────────────────────────────────
+       Design System Tokens — mapped to Syed Omer Ali
+       brand foundations (SKILL.md & globals.css)
+       ────────────────────────────────────────────── */
+    :root {
+      /* Typography scale */
+      --fs-xs: 12px;
+      --fs-sm: 14px;
+      --fs-md: 16px;
+      --fs-lg: 17.6px;
+      --fs-xl: 18px;
+      --fs-2xl: 18.4px;
+      --fs-3xl: 24px;
 
-    body {
+      /* Spacing scale */
+      --sp-1: 4px;
+      --sp-2: 6px;
+      --sp-3: 8px;
+      --sp-4: 10px;
+      --sp-5: 12px;
+      --sp-6: 16px;
+      --sp-7: 20px;
+      --sp-8: 24px;
+
+      /* Brand colors & surfaces */
+      --bg: #ffffff;
+      --fg: #0f172a;
+      --heading: #333333;
+      --body: #475569;
+      --muted: #70717b;
+      --border-color: #e2e8f0;
+      --divider: #e2e8f0;
+      --card-bg: #ffffff;
+
+      /* Accents */
+      --accent-gold: #f6c400;
+      --accent-blue: #3b82f6;
+      --status-red: #ef4444;
+      --status-green: #22c55e;
+
+      /* Buttons (radius.md = 9px) */
+      --btn-radius: 9px;
+      --btn-primary-bg: #334155;
+      --btn-primary-fg: #ffffff;
+      --btn-primary-hover: #1e293b;
+      --btn-secondary-bg: #ffffff;
+      --btn-secondary-fg: #334155;
+      --btn-secondary-border: #cbd5e1;
+      --btn-secondary-hover: #f8fafc;
+
+      /* Terminal */
+      --term-bg: #f8fafc;
+      --term-border: #e2e8f0;
+      --term-header: #f1f5f9;
+      --term-text: #334155;
+
+      /* Status banners */
+      --banner-info-bg: rgba(100, 116, 139, 0.06);
+      --banner-info-border: rgba(100, 116, 139, 0.15);
+      --banner-info-text: #475569;
+
+      --banner-success-bg: rgba(34, 197, 94, 0.06);
+      --banner-success-border: rgba(34, 197, 94, 0.15);
+      --banner-success-text: #15803d;
+
+      --banner-error-bg: rgba(239, 68, 68, 0.06);
+      --banner-error-border: rgba(239, 68, 68, 0.15);
+      --banner-error-text: #b91c1c;
+    }
+
+    /* Dark Mode variables */
+    .dark {
+      --bg: #0b0d10;
+      --fg: #f8fafc;
+      --heading: #ebebeb;
+      --body: #d4d4d4;
+      --muted: #989898;
+      --border-color: #3a3a3a;
+      --divider: #2a2a2a;
+      --card-bg: #0e0d09;
+
+      /* Buttons */
+      --btn-primary-bg: #c7c7c7;
+      --btn-primary-fg: #0e0d09;
+      --btn-primary-hover: #f8fafc;
+      --btn-secondary-bg: #2e2e2e;
+      --btn-secondary-fg: #d4d4d4;
+      --btn-secondary-border: transparent;
+      --btn-secondary-hover: #3e3e3e;
+
+      /* Terminal (terminal-glass theme) */
+      --term-bg: rgba(26, 29, 41, 0.6);
+      --term-border: rgba(251, 191, 36, 0.2);
+      --term-header: rgba(26, 29, 41, 0.8);
+      --term-text: #e5e7eb;
+
+      /* Status banners */
+      --banner-info-bg: rgba(255, 255, 255, 0.04);
+      --banner-info-border: rgba(255, 255, 255, 0.08);
+      --banner-info-text: #989898;
+
+      --banner-success-bg: rgba(52, 211, 153, 0.06);
+      --banner-success-border: rgba(52, 211, 153, 0.15);
+      --banner-success-text: #34d399;
+
+      --banner-error-bg: rgba(239, 68, 68, 0.06);
+      --banner-error-border: rgba(239, 68, 68, 0.15);
+      --banner-error-text: #f87171;
+    }
+
+    /* Base resets */
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
       background-color: var(--bg);
       color: var(--fg);
-      display: flex;
-      flex-direction: column;
+      font-family: 'Instagram Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: var(--fs-md);
+      line-height: 24px;
       min-height: 100vh;
       min-height: 100dvh;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    header {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* ── Width constraints: aligns with max-w-2xl (672px) portfolio column ── */
+    .container {
+      width: 100%;
+      max-width: 672px;
+      margin: 0 auto;
+      padding: 0 var(--sp-6);
+    }
+
+    /* ── Header ── */
+    header {
+      padding: var(--sp-8) 0;
+    }
+
+    .header-inner {
+      display: flex;
       align-items: center;
+      justify-content: space-between;
     }
 
-    .logo {
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      user-select: none;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      text-decoration: none;
     }
 
-    .status-badge {
+    .brand-square {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      background-color: var(--accent-gold);
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Status badges ── */
+    .badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.7rem;
+      gap: var(--sp-2);
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
+      color: var(--muted);
       background-color: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border-color);
+      padding: var(--sp-1) var(--sp-4);
       border-radius: 9999px;
+      transition: border-color 0.3s ease;
     }
 
     .dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      display: inline-block;
       flex-shrink: 0;
     }
 
     .dot-offline {
-      background-color: var(--dot-offline);
-      box-shadow: 0 0 6px var(--dot-offline);
+      background-color: var(--status-red);
+      box-shadow: 0 0 6px var(--status-red);
     }
 
     .dot-online {
-      background-color: var(--dot-online);
-      box-shadow: 0 0 6px var(--dot-online);
+      background-color: var(--status-green);
+      box-shadow: 0 0 6px var(--status-green);
     }
 
     .dot-pulse {
-      background-color: var(--dot-online);
-      box-shadow: 0 0 10px var(--dot-online);
+      background-color: var(--status-green);
+      box-shadow: 0 0 10px var(--status-green);
       animation: pulse 1.5s infinite;
     }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.4); opacity: 0.5; }
+      50% { transform: scale(1.35); opacity: 0.55; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .dot-pulse { animation: none; }
+      .dot-pulse {
+        animation: none;
+      }
     }
 
+    /* ── Main content layout ── */
     main {
       flex: 1;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: var(--sp-8) 0;
     }
 
-    .card {
+    .divider {
       width: 100%;
-      max-width: 440px;
+      height: 1px;
+      background-color: var(--divider);
+      margin-bottom: var(--sp-8);
+      transition: background-color 0.3s ease;
+    }
+
+    /* Card matches project card structure */
+    .card {
       background-color: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 0.5rem;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      border: 1px dashed var(--border-color);
+      border-radius: 12px;
+      padding: var(--sp-8) var(--sp-6);
+      box-shadow: var(--shadow-2);
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    @media (min-width: 640px) {
+      .card {
+        padding: 32px var(--sp-8);
+      }
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      margin-bottom: var(--sp-3);
     }
 
     h1 {
-      font-size: 1.75rem;
+      font-size: var(--fs-2xl);
       font-weight: 700;
-      margin: 0 0 0.5rem;
+      color: var(--heading);
       letter-spacing: -0.02em;
+      margin-bottom: var(--sp-3);
     }
 
     .description {
+      font-size: var(--fs-sm);
+      line-height: 20px;
       color: var(--muted);
-      font-size: 0.925rem;
-      line-height: 1.5;
-      margin: 0 0 1.5rem;
+      margin-bottom: var(--sp-6);
     }
 
-    /* Terminal */
+    /* ── Terminal emulation (terminal-glass / VS Code style) ── */
     .terminal {
-      background-color: var(--terminal-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 0.375rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.775rem;
-      margin-bottom: 1.5rem;
+      background-color: var(--term-bg);
+      border: 1px solid var(--term-border);
+      border-radius: 10px;
       overflow: hidden;
-      text-align: left;
+      margin-bottom: var(--sp-6);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s ease, background-color 0.3s ease;
     }
 
-    .terminal-bar {
-      background-color: var(--card-bg);
-      border-bottom: 1px solid var(--card-border);
-      padding: 0.4rem 0.6rem;
+    .term-header {
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 6px;
+      padding: var(--sp-3) var(--sp-4);
+      background-color: var(--term-header);
+      border-bottom: 1px solid var(--term-border);
+      transition: border-color 0.3s ease, background-color 0.3s ease;
     }
 
-    .td { width: 5px; height: 5px; border-radius: 50%; }
-    .td-r { background: #ef4444; }
-    .td-y { background: #f59e0b; }
-    .td-g { background: #10b981; }
+    .term-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+    .td-r { background-color: #ef4444; }
+    .td-y { background-color: #f59e0b; }
+    .td-g { background-color: #10b981; }
 
-    .terminal-label {
-      color: var(--muted);
-      font-size: 0.7rem;
+    .term-title {
       margin-left: auto;
+      font-size: 11px;
+      color: var(--muted);
       font-weight: 500;
+      font-family: 'Instagram Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    .terminal-body {
-      padding: 0.75rem 0.875rem;
-      max-height: 130px;
+    .term-body {
+      padding: var(--sp-4);
+      max-height: 150px;
       overflow-y: auto;
-      line-height: 1.45;
+      line-height: 20px;
+      color: var(--term-text);
     }
 
-    .tl { margin-bottom: 0.2rem; white-space: pre-wrap; word-break: break-all; }
-    .tl:last-child { margin-bottom: 0; }
-    .tp { color: var(--accent); font-weight: bold; user-select: none; }
-    .tl-err { color: var(--error-color); }
-    .tl-ok { color: var(--success-color); }
+    .term-line {
+      margin-bottom: 4px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .term-line:last-child {
+      margin-bottom: 0;
+    }
 
-    /* Feedback banner */
-    .fb {
-      font-size: 0.825rem;
-      padding: 0.6rem 0.875rem;
-      border-radius: 0.25rem;
-      margin-bottom: 1.25rem;
+    .term-prompt {
+      color: var(--accent-gold);
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .tl-err {
+      color: var(--banner-error-text);
+    }
+
+    .tl-ok {
+      color: var(--banner-success-text);
+    }
+
+    /* Blinking terminal cursor */
+    .cursor {
+      display: inline-block;
+      width: 6px;
+      height: 13px;
+      background-color: var(--term-text);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      from, to { background-color: transparent }
+      50% { background-color: var(--term-text) }
+    }
+
+    /* ── Connection Banner feedback ── */
+    .feedback {
+      font-size: var(--fs-sm);
+      padding: var(--sp-4) var(--sp-5);
+      border-radius: 10px;
+      margin-bottom: var(--sp-6);
       display: none;
       font-weight: 500;
+      line-height: 1.4;
+      border: 1px solid transparent;
       text-align: left;
-      line-height: 1.35;
     }
+
     .fb-err {
       display: block;
-      background: rgba(239, 68, 68, 0.08);
-      border: 1px solid rgba(239, 68, 68, 0.18);
-      color: var(--error-color);
+      background-color: var(--banner-error-bg);
+      border-color: var(--banner-error-border);
+      color: var(--banner-error-text);
     }
+
     .fb-ok {
       display: block;
-      background: rgba(34, 197, 94, 0.08);
-      border: 1px solid rgba(34, 197, 94, 0.18);
-      color: var(--success-color);
+      background-color: var(--banner-success-bg);
+      border-color: var(--banner-success-border);
+      color: var(--banner-success-text);
     }
+
     .fb-info {
       display: block;
-      background: rgba(148, 163, 184, 0.08);
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      color: var(--muted);
+      background-color: var(--banner-info-bg);
+      border-color: var(--banner-info-border);
+      color: var(--banner-info-text);
     }
 
-    /* Button */
-    .retry-btn {
-      background-color: var(--accent);
-      color: rgb(15, 23, 42);
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 700;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      width: 100%;
+    /* ── Actions & Buttons ── */
+    .actions {
       display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+    }
+
+    .btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: background-color 0.15s ease, opacity 0.15s ease;
+      padding: var(--sp-4) var(--sp-6);
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      border-radius: var(--btn-radius);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+      touch-action: manipulation;
       -webkit-appearance: none;
       appearance: none;
-      touch-action: manipulation;
+      text-decoration: none;
     }
 
-    .retry-btn:hover:not(:disabled) { background-color: var(--accent-hover); }
-    .retry-btn:active:not(:disabled) { transform: scale(0.98); }
-    .retry-btn:disabled { opacity: 0.55; cursor: not-allowed; }
-    .retry-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .btn-primary {
+      background-color: var(--btn-primary-bg);
+      color: var(--btn-primary-fg);
+    }
 
+    .btn-primary:hover:not(:disabled) {
+      background-color: var(--btn-primary-hover);
+      opacity: 0.95;
+    }
+
+    .btn-secondary {
+      background-color: var(--btn-secondary-bg);
+      color: var(--btn-secondary-fg);
+      border: 1px solid var(--btn-secondary-border);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background-color: var(--btn-secondary-hover);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--accent-blue);
+      outline-offset: 2px;
+    }
+
+    /* ── Footer ── */
     footer {
-      width: 100%;
-      text-align: center;
-      padding: 1.5rem;
-      color: var(--muted);
-      font-size: 0.7rem;
+      padding: var(--sp-6) 0;
+      border-top: 1px solid var(--divider);
+      transition: border-color 0.3s ease;
     }
 
+    .footer-text {
+      font-size: var(--fs-xs);
+      color: var(--muted);
+      line-height: 16px;
+    }
+
+    /* Reduced Motion adjustments */
     @media (prefers-reduced-motion: reduce) {
-      .retry-btn { transition: none; }
+      body, .card, .btn, .terminal, .term-header, .feedback, .dot-pulse {
+        transition: none;
+        animation: none;
+      }
+      .cursor {
+        animation: none;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">Syed Omer</div>
-    <div class="status-badge" aria-live="polite">
-      <span id="dot" class="dot dot-offline"></span>
-      <span id="status">Offline</span>
+    <div class="container header-inner">
+      <a href="/" class="brand">
+        <span class="brand-square" aria-hidden="true"></span>
+        <span class="brand-name">Syed Omer Ali</span>
+      </a>
+      <div class="badge" aria-live="polite">
+        <span id="dot" class="dot dot-offline" aria-hidden="true"></span>
+        <span id="status">Offline</span>
+      </div>
     </div>
   </header>
 
   <main>
-    <div class="card">
-      <h1>Connection Lost</h1>
-      <p class="description">You're currently offline. Reconnect to the internet and try again.</p>
+    <div class="container">
+      <div class="divider"></div>
+      <div class="card">
+        <p class="section-label">System State</p>
+        <h1>Connection Lost</h1>
+        <p class="description">You are currently offline. Reconnect to the internet and check again to load the portfolio.</p>
 
-      <div class="terminal" aria-hidden="true">
-        <div class="terminal-bar">
-          <span class="td td-r"></span>
-          <span class="td td-y"></span>
-          <span class="td td-g"></span>
-          <span class="terminal-label">zsh</span>
+        <div class="terminal" aria-hidden="true">
+          <div class="term-header">
+            <span class="term-dot td-r"></span>
+            <span class="term-dot td-y"></span>
+            <span class="term-dot td-g"></span>
+            <span class="term-title">zsh</span>
+          </div>
+          <div class="term-body" id="term">
+            <div class="term-line"><span class="term-prompt">$ </span>curl -I https://www.syedomer.me</div>
+            <div class="term-line tl-err">curl: (6) Could not resolve host: www.syedomer.me</div>
+          </div>
         </div>
-        <div class="terminal-body" id="term">
-          <div class="tl"><span class="tp">$ </span>ping -c 1 syedomer.me</div>
-          <div class="tl tl-err">ping: sendto: Network is unreachable</div>
+
+        <div id="fb" class="feedback" role="alert"></div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="btn" aria-label="Try Again">Try Again</button>
+          <noscript><a href="/" class="btn btn-secondary">Reload Page</a></noscript>
         </div>
       </div>
-
-      <div id="fb" class="fb" role="alert"></div>
-
-      <button type="button" class="retry-btn" id="btn" aria-label="Try Again">Try Again</button>
     </div>
   </main>
 
-  <footer id="ft"></footer>
+  <footer>
+    <div class="container">
+      <p class="footer-text" id="ft"></p>
+    </div>
+  </footer>
 
   <script>
-    // DOM refs
     var dot = document.getElementById('dot');
-    var status = document.getElementById('status');
+    var st = document.getElementById('status');
     var btn = document.getElementById('btn');
     var fb = document.getElementById('fb');
     var term = document.getElementById('term');
     var ft = document.getElementById('ft');
 
-    // Footer year (no document.write)
-    ft.textContent = '\u00A9 ' + new Date().getFullYear() + ' Syed Omer Ali. All rights reserved.';
+    // Matches footer format
+    ft.textContent = '\u00A9 ' + new Date().getFullYear() + ' Syed Omer Ali \u00B7 Hyderabad, India';
+    
+    var busy = false;
 
-    var checking = false;
-
-    function log(cmd, out, err) {
-      var cls = err ? ' tl-err' : (out.indexOf('64 bytes') > -1 || out.indexOf('restored') > -1 ? ' tl-ok' : '');
-      var h = '<div class="tl"><span class="tp">$ </span>' + cmd + '</div>'
-            + '<div class="tl' + cls + '">' + out + '</div>';
-      term.insertAdjacentHTML('beforeend', h);
+    function log(command, output, isError) {
+      var cls = isError ? ' tl-err' : (output.indexOf('200 OK') > -1 || output.indexOf('restored') > -1 ? ' tl-ok' : '');
+      var content = '<div class="term-line"><span class="term-prompt">$ </span>' + command + '</div>'
+                  + '<div class="term-line' + cls + '">' + output + '</div>';
+      term.insertAdjacentHTML('beforeend', content);
       term.scrollTop = term.scrollHeight;
     }
 
-    function setOffline(msg) {
-      checking = false;
+    function setOffline(errorMsg) {
+      busy = false;
       btn.disabled = false;
       btn.textContent = 'Try Again';
-      fb.className = 'fb fb-err';
-      fb.textContent = msg || 'Connection still unavailable. Check your internet and try again.';
+      fb.className = 'feedback fb-err';
+      fb.textContent = errorMsg || 'Connection still unavailable. Check your internet and try again.';
       dot.className = 'dot dot-offline';
-      status.textContent = 'Offline';
+      st.textContent = 'Offline';
     }
 
     function setOnline() {
-      checking = false;
+      busy = false;
       btn.disabled = true;
       btn.textContent = 'Reloading\u2026';
-      fb.className = 'fb fb-ok';
+      fb.className = 'feedback fb-ok';
       fb.textContent = 'Internet connection detected. Reloading portfolio\u2026';
-      dot.className = 'dot dot-online';
-      status.textContent = 'Online';
-      log('ping -c 1 syedomer.me', '64 bytes from syedomer.me: icmp_seq=1 ttl=56 time=14.3 ms', false);
-      setTimeout(function () { location.reload(); }, 800);
+      log('curl -I https://www.syedomer.me', 'HTTP/2 200 OK', false);
+      dot.className = 'dot dot-pulse';
+      st.textContent = 'Online';
+      setTimeout(function() {
+        location.reload();
+      }, 800);
     }
 
     function check() {
-      if (checking) return;
-      checking = true;
+      if (busy) return;
+      busy = true;
       btn.disabled = true;
-      btn.textContent = 'Checking connection\u2026';
-      fb.className = 'fb fb-info';
-      fb.textContent = 'Testing network reachability\u2026';
+      btn.textContent = 'Checking\u2026';
+      fb.className = 'feedback fb-info';
+      fb.textContent = 'Testing connection\u2026';
 
-      // Quick gate: navigator.onLine
+      // 1. Check navigator.onLine first
       if (!navigator.onLine) {
-        setTimeout(function () {
-          log('ping -c 1 syedomer.me', 'ping: sendto: Network is unreachable', true);
+        setTimeout(function() {
+          log('curl -I https://www.syedomer.me', 'curl: (6) Could not resolve host: www.syedomer.me', true);
           setOffline();
         }, 600);
         return;
       }
 
-      // Real connectivity check: HEAD request to a lightweight same-origin asset.
-      // This bypasses the Service Worker because mode !== 'navigate'.
+      // 2. Direct fetch with AbortController timeout
       var ctrl = new AbortController();
-      var tid = setTimeout(function () { ctrl.abort(); }, 4000);
+      var tid = setTimeout(function() {
+        ctrl.abort();
+      }, 4000);
 
-      fetch('/favicon-16x16.png?_sw_check=' + Date.now(), {
+      fetch('/favicon-16x16.png?_t=' + Date.now(), {
         method: 'HEAD',
         cache: 'no-store',
         signal: ctrl.signal
-      }).then(function (r) {
+      })
+      .then(function(res) {
         clearTimeout(tid);
-        if (r.ok) {
+        if (res.ok) {
           setOnline();
         } else {
-          log('curl -I syedomer.me', 'HTTP ' + r.status, true);
-          setOffline('Server returned an error. Please try again shortly.');
+          log('curl -I https://www.syedomer.me', 'HTTP ' + res.status, true);
+          setOffline('Server returned error status ' + res.status + '. Try again shortly.');
         }
-      }).catch(function (e) {
+      })
+      .catch(function(err) {
         clearTimeout(tid);
-        var msg = e.name === 'AbortError' ? 'ping: request timeout' : 'ping: sendto: Host is unreachable';
-        log('ping -c 1 syedomer.me', msg, true);
+        var msg = err.name === 'AbortError' ? 'curl: (28) Connection timed out' : 'curl: (7) Failed to connect to host';
+        log('curl -I https://www.syedomer.me', msg, true);
         setOffline();
       });
     }
 
-    // Attach via addEventListener (no inline onclick — safe with any CSP)
     btn.addEventListener('click', check);
 
-    // Passive network events
-    window.addEventListener('online', function () {
+    // Passive connection listeners
+    window.addEventListener('online', function() {
       dot.className = 'dot dot-pulse';
-      status.textContent = 'Back Online';
-      fb.className = 'fb fb-ok';
+      st.textContent = 'Back Online';
+      fb.className = 'feedback fb-ok';
       fb.textContent = 'Connection restored. Tap below to continue.';
       btn.textContent = 'Continue';
       btn.disabled = false;
-      log('ip link', 'state UP (connection restored)', false);
+      log('networkctl status', 'online (connection restored)', false);
     });
 
-    window.addEventListener('offline', function () {
+    window.addEventListener('offline', function() {
       dot.className = 'dot dot-offline';
-      status.textContent = 'Offline';
-      fb.className = 'fb fb-err';
+      st.textContent = 'Offline';
+      fb.className = 'feedback fb-err';
       fb.textContent = 'Connection lost.';
       btn.textContent = 'Try Again';
-      log('ip link', 'state DOWN (connection lost)', true);
+      log('networkctl status', 'offline (link down)', true);
     });
   </script>
 </body>

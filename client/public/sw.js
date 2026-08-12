@@ -1,27 +1,35 @@
 /**
  * Service Worker — Offline Navigation Fallback
  *
- * Purpose: Cache a single offline.html page and serve it when navigation
- * requests fail due to network unavailability.
+ * Purpose: Cache a single offline.html page and its assets, serving them
+ * when navigation requests fail due to network unavailability.
  *
  * Strategy: Network-first for navigation requests only.
+ * Font resources are cached-first to ensure offline rendering matching the app typography.
  * All other requests (API, static assets, JS chunks) pass through untouched.
  *
  * Cache: Versioned. Bump CACHE_VERSION when offline.html changes to ensure
  * users receive the updated page.
  */
 
-const CACHE_VERSION = 2;
+const CACHE_VERSION = 4;
 const CACHE_NAME = 'portfolio-offline-v' + CACHE_VERSION;
 const OFFLINE_URL = '/offline.html';
 
+const ASSETS_TO_CACHE = [
+  OFFLINE_URL,
+  '/fonts/new/Instagram Sans.woff2',
+  '/fonts/new/Instagram Sans Medium.woff2',
+  '/fonts/new/Instagram Sans Bold.woff2'
+];
+
 // ---------------------------------------------------------------------------
-// Install — cache the offline fallback page.
+// Install — cache the offline fallback page and fonts.
 // ---------------------------------------------------------------------------
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
-      return cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
+      return cache.addAll(ASSETS_TO_CACHE);
     }).then(function () {
       return self.skipWaiting();
     })
@@ -51,20 +59,28 @@ self.addEventListener('activate', function (event) {
 });
 
 // ---------------------------------------------------------------------------
-// Fetch — intercept ONLY navigation requests. Try network first; on failure
-// return the cached offline page.
+// Fetch — intercept navigation requests and local brand font files.
 // ---------------------------------------------------------------------------
 self.addEventListener('fetch', function (event) {
-  // Only handle top-level navigation (HTML page loads / reloads).
-  if (event.request.mode !== 'navigate') {
+  // 1. Intercept navigation requests (network-first, catch-to-cache fallback)
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(function () {
+        return caches.open(CACHE_NAME).then(function (cache) {
+          return cache.match(OFFLINE_URL);
+        });
+      })
+    );
     return;
   }
 
-  event.respondWith(
-    fetch(event.request).catch(function () {
-      return caches.open(CACHE_NAME).then(function (cache) {
-        return cache.match(OFFLINE_URL);
-      });
-    })
-  );
+  // 2. Intercept local brand font files (cache-first to guarantee offline availability)
+  const url = new URL(event.request.url);
+  if (url.pathname.startsWith('/fonts/new/')) {
+    event.respondWith(
+      caches.match(event.request).then(function (cachedResponse) {
+        return cachedResponse || fetch(event.request);
+      })
+    );
+  }
 });
