@@ -136,5 +136,5 @@ Deploy to Vercel or any Node-compatible platform.
 
 ## License
 
-MIT License
+This project is licensed under the [MIT License](LICENSE).
 
